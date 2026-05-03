@@ -16,3 +16,15 @@ Thumbs.db
 # Claude internal
 .claude/
 .agents/
+
+# Uploaded files
+backend/uploads/
+terenuri-imagini-yardly/
+
+# Design mockups
+stitch/
+
+# Dev/test scripts
+test_login.py
+test_login2.py
+reset_passwords.js
