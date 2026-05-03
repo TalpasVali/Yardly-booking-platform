@@ -1,0 +1,164 @@
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-left">
+    <h2 class="page-title">User Management</h2>
+    <div class="search-wrap">
+      <span class="material-symbols-outlined search-icon">search</span>
+      <input class="search-input" [(ngModel)]="searchQuery" placeholder="Search by name, email, or ID..." />
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="btn-icon">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="notif-dot"></span>
+    </button>
+    <button class="btn-primary">
+      <span class="material-symbols-outlined">person_add</span>
+      Invite User
+    </button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content-wrap" [class.has-panel]="selectedUser">
+
+  <!-- Main Table Area -->
+  <div class="table-area">
+
+    <!-- Filters -->
+    <div class="filters-bar">
+      <div class="filter-tabs">
+        <button [class.active]="activeFilter() === 'all'"     (click)="setFilter('all')">All Users</button>
+        <button [class.active]="activeFilter() === 'active'"  (click)="setFilter('active')">Active</button>
+        <button [class.active]="activeFilter() === 'blocked'" (click)="setFilter('blocked')">Blocked</button>
+      </div>
+      <button class="filter-btn">
+        <span class="material-symbols-outlined">location_city</span>
+        City: All
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+      <button class="filter-btn">
+        <span class="material-symbols-outlined">sort</span>
+        Bookings: High to Low
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+      <div class="filters-right">
+        <span class="count-label">Showing {{ filteredUsers.length }} users</span>
+        <button class="btn-icon-sm">
+          <span class="material-symbols-outlined">file_download</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Contact &amp; City</th>
+            <th>Bookings (T/C)</th>
+            <th>No-shows</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers"
+              [class.selected]="selectedUser?.id === user.id"
+              (click)="selectUser(user)">
+            <td>
+              <div class="user-cell">
+                <div class="user-avatar">{{ user.initials }}</div>
+                <span class="user-name">{{ user.name }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="contact-cell">
+                <span>{{ user.email }}</span>
+                <span class="city-text">{{ user.city }}</span>
+              </div>
+            </td>
+            <td>
+              <span class="booking-total">{{ user.bookingsTotal }}</span>
+              <span class="booking-cancelled"> / {{ user.bookingsCancelled }}</span>
+            </td>
+            <td>
+              <span [class]="user.noShows > 0 ? 'badge-warn' : 'badge-ok'">{{ user.noShows }}</span>
+            </td>
+            <td>
+              <span [class]="user.status === 'active' ? 'status-active' : 'status-blocked'">
+                {{ user.status === 'active' ? 'Active' : 'Blocked' }}
+              </span>
+            </td>
+            <td class="muted">{{ user.createdAt }}</td>
+            <td>
+              <button class="btn-row-action" (click)="blockUser(user, $event)" title="Toggle block">
+                <span class="material-symbols-outlined">{{ user.status === 'active' ? 'block' : 'check_circle' }}</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <span class="muted">Page 1 of 8</span>
+        <div class="pagination-btns">
+          <button class="page-btn" disabled>Previous</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Insights Panel -->
+  <div class="insights-panel" *ngIf="selectedUser">
+    <div class="panel-header">
+      <h3 class="panel-title">User Insights</h3>
+      <button class="btn-close" (click)="selectedUser = null">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="panel-avatar">{{ selectedUser.initials }}</div>
+    <h4 class="panel-name">{{ selectedUser.name }}</h4>
+    <p class="panel-role">Private user · Member since 2024</p>
+
+    <div class="panel-stats">
+      <div class="stat-item">
+        <span class="stat-value">{{ selectedUser.bookingsTotal }}</span>
+        <span class="stat-label">Total Bookings</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value accent">$1.2k</span>
+        <span class="stat-label">Revenue</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h5 class="section-title">Recent Activity</h5>
+      <div class="activity-item">
+        <span class="material-symbols-outlined act-icon">sports_tennis</span>
+        <span>Booked Padel Court #2</span>
+      </div>
+      <div class="activity-item">
+        <span class="material-symbols-outlined act-icon">sports</span>
+        <span>Completed Tennis Lesson</span>
+      </div>
+      <div class="activity-item warn">
+        <span class="material-symbols-outlined act-icon">warning</span>
+        <span>Late Cancellation</span>
+      </div>
+    </div>
+
+    <button class="btn-outline-full">Download Full History</button>
+    <button class="btn-danger-full" (click)="blockUser(selectedUser, $event)">
+      {{ selectedUser.status === 'active' ? 'Block ' + selectedUser.email : 'Unblock ' + selectedUser.email }}
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,163 @@
+<div class="bc-page">
+
+  @if (reservation(); as r) {
+
+    <!-- Success Header -->
+    <div class="bc-success-header">
+      <div class="bc-check-ring">
+        <span class="material-symbols-outlined bc-check-icon">check_circle</span>
+      </div>
+      <h1 class="bc-title">Reservation Confirmed!</h1>
+      <p class="bc-subtitle">Get your gear ready, you're all set for the pitch.</p>
+    </div>
+
+    <!-- Booking Card -->
+    <div class="bc-booking-card">
+      <div class="bc-card-inner">
+        <!-- Image -->
+        @if (field()?.images?.length) {
+          <div class="bc-card-image">
+            <img [src]="field()!.images[0] | imageUrl" [alt]="field()!.name" class="bc-field-img">
+            <div class="bc-img-overlay"></div>
+            <span class="bc-premium-badge">PREMIUM FIELD</span>
+          </div>
+        }
+
+        <!-- Details -->
+        <div class="bc-card-body">
+          <div class="bc-card-top">
+            <div>
+              <p class="bc-booking-ref">Booking ID: #{{ bookingId() }}</p>
+              <h2 class="bc-field-name">{{ field()?.name || r.field }}</h2>
+            </div>
+            <div class="bc-price-col">
+              <span class="bc-price">{{ field()?.pricePerHour }} RON</span>
+              <span class="bc-price-label">Total plătit</span>
+            </div>
+          </div>
+
+          <div class="bc-details-grid">
+            <div class="bc-detail-item">
+              <div class="bc-detail-icon-box">
+                <span class="material-symbols-outlined">calendar_today</span>
+              </div>
+              <div>
+                <p class="bc-detail-label">Data &amp; Ora</p>
+                <p class="bc-detail-value">{{ r.date | date:'mediumDate' }} · {{ r.time }}</p>
+              </div>
+            </div>
+            <div class="bc-detail-item">
+              <div class="bc-detail-icon-box">
+                <span class="material-symbols-outlined">sports_soccer</span>
+              </div>
+              <div>
+                <p class="bc-detail-label">Sport</p>
+                <p class="bc-detail-value">{{ sportName() }}</p>
+              </div>
+            </div>
+            <div class="bc-detail-item">
+              <div class="bc-detail-icon-box">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <p class="bc-detail-label">Locație</p>
+                <p class="bc-detail-value">{{ field()?.address || '—' }}</p>
+              </div>
+            </div>
+            <div class="bc-detail-item">
+              <div class="bc-detail-icon-box">
+                <span class="material-symbols-outlined">timer</span>
+              </div>
+              <div>
+                <p class="bc-detail-label">Durată</p>
+                <p class="bc-detail-value">{{ r.duration }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="bc-bottom-row">
+
+      <!-- Players Joined -->
+      <div class="bc-section-card">
+        <div class="bc-section-header">
+          <h3>Jucători alăturați</h3>
+          <span class="bc-spots-badge">4/10 LOCURI OCUPATE</span>
+        </div>
+        <div class="bc-avatars-row">
+          <div class="bc-avatar bc-avatar-letter">A</div>
+          <div class="bc-avatar bc-avatar-letter">M</div>
+          <div class="bc-avatar bc-avatar-letter">R</div>
+          <div class="bc-avatar bc-avatar-letter">I</div>
+          <div class="bc-avatar bc-avatar-more">+6</div>
+        </div>
+        <div class="bc-progress-bar-wrap">
+          <div class="bc-progress-bar" style="width: 40%"></div>
+        </div>
+        <p class="bc-players-hint">6 locuri rămase. Nu uita să inviți echipa!</p>
+      </div>
+
+      <!-- Invite Friends -->
+      <div class="bc-section-card">
+        <h3>Invită prieteni</h3>
+        <div class="bc-share-link-row">
+          <span class="bc-share-link-text">{{ shareLink }}</span>
+          <button class="bc-icon-btn" (click)="copyLink()" [class.bc-copied]="copied">
+            <span class="material-symbols-outlined">{{ copied ? 'check' : 'content_copy' }}</span>
+          </button>
+        </div>
+        <div class="bc-share-buttons">
+          <button class="bc-share-btn bc-whatsapp-btn" (click)="shareWhatsApp()">
+            <span class="material-symbols-outlined">share</span> WhatsApp
+          </button>
+          <button class="bc-share-btn bc-messenger-btn" (click)="shareMessenger()">
+            <span class="material-symbols-outlined">message</span> Messenger
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="bc-actions">
+      <button class="bc-action-btn bc-btn-primary" (click)="addToCalendar()">
+        <span class="material-symbols-outlined">calendar_add_on</span>
+        Adaugă în Calendar
+      </button>
+      <a class="bc-action-btn bc-btn-secondary" [routerLink]="['/booking-details', r._id]">
+        <span class="material-symbols-outlined">receipt_long</span>
+        Vezi Rezervarea
+      </a>
+      <a class="bc-action-btn bc-btn-ghost" routerLink="/fields">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Înapoi la Căutare
+      </a>
+    </div>
+
+  } @else {
+
+    <!-- No reservation (direct navigation) -->
+    <div class="bc-success-header">
+      <div class="bc-check-ring">
+        <span class="material-symbols-outlined bc-check-icon">check_circle</span>
+      </div>
+      <h1 class="bc-title">Rezervare completă!</h1>
+      <p class="bc-subtitle">Rezervarea ta a fost trimisă cu succes.</p>
+    </div>
+    <div class="bc-actions">
+      <a class="bc-action-btn bc-btn-secondary" routerLink="/profile">
+        <span class="material-symbols-outlined">person</span>
+        Rezervările mele
+      </a>
+      <a class="bc-action-btn bc-btn-ghost" routerLink="/fields">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Înapoi la Căutare
+      </a>
+    </div>
+
+  }
+
+</div>

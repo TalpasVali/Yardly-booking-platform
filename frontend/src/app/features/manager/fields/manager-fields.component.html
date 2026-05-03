@@ -1,0 +1,150 @@
+<div class="fields-page">
+  <!-- Header -->
+  <header class="page-header">
+    <div>
+      <h2 class="page-title">Fields Management</h2>
+      <p class="page-sub">
+        Configure, monitor and manage availability of your sports assets.
+      </p>
+    </div>
+    <div class="header-actions">
+      <div class="view-toggle">
+        <button
+          class="toggle-btn"
+          [class.active]="viewMode === 'grid'"
+          (click)="viewMode = 'grid'"
+        >
+          <span class="material-symbols-outlined">grid_view</span>
+        </button>
+        <button
+          class="toggle-btn"
+          [class.active]="viewMode === 'list'"
+          (click)="viewMode = 'list'"
+        >
+          <span class="material-symbols-outlined">table_rows</span>
+        </button>
+      </div>
+      <button class="btn-add" (click)="goToFieldEditor()">
+        <span class="material-symbols-outlined">add</span>
+        Add New Field
+      </button>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let s of stats()">
+        <div class="stat-top">
+          <div class="stat-icon-box">
+            <span class="material-symbols-outlined">{{ s.icon }}</span>
+          </div>
+        </div>
+        <p class="stat-label">{{ s.label }}</p>
+        <h3 class="stat-value">{{ s.value }}</h3>
+        <p class="stat-sub">{{ s.sub }}</p>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-state" *ngIf="loading()">
+      <span class="material-symbols-outlined">hourglass_empty</span>
+      <p>Loading fields...</p>
+    </div>
+
+    <!-- Fields grid -->
+    <div class="fields-grid" *ngIf="!loading()">
+      <div
+        class="field-card"
+        *ngFor="let f of managerFields()"
+        [class.field-card--repairing]="f.status === 'repairing'"
+      >
+        <!-- Image + badges -->
+        <div
+          class="card-img"
+          [style.backgroundImage]="'url(' + getFieldImage(f) + ')'"
+        >
+          <div class="img-overlay"></div>
+          <span
+            class="sport-badge"
+            [style.backgroundColor]="getSportColor(f.sport)"
+            >{{ f.sport }}</span
+          >
+          <span class="occupancy-badge" *ngIf="f.status !== 'repairing'">
+            ★ {{ f.averageRating | number: "1.1-1" }}
+          </span>
+          <span class="repairing-badge" *ngIf="f.status === 'repairing'"
+            >Maintenance</span
+          >
+        </div>
+
+        <!-- Info -->
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3 class="card-name">{{ f.name }}</h3>
+            <span class="card-price"
+              ><strong>${{ f.pricePerHour }}</strong
+              >/hr</span
+            >
+          </div>
+          <p class="card-type">{{ f.description || f.address }}</p>
+
+          <div class="card-meta">
+            <span
+              class="meta-status"
+              [class]="'meta-status--' + (f.status || 'active')"
+            >
+              <span class="status-dot"></span>
+              {{ f.status === "repairing" ? "Repairing" : "Active" }}
+            </span>
+            <span class="meta-util" *ngIf="f.status !== 'repairing'">
+              <span class="material-symbols-outlined">location_on</span>
+              {{ f.city }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="card-actions">
+          <button class="btn-edit">
+            <span class="material-symbols-outlined">edit</span>
+            Edit
+          </button>
+          <button class="btn-bookings">
+            <span class="material-symbols-outlined">calendar_today</span>
+            Bookings
+          </button>
+          <button class="btn-block" *ngIf="f.status !== 'repairing'">
+            <span class="material-symbols-outlined">block</span>
+            Block Time Slot
+          </button>
+          <button class="btn-ready" *ngIf="f.status === 'repairing'">
+            <span class="material-symbols-outlined">check_circle</span>
+            Mark as Ready
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state-card" *ngIf="managerFields().length === 0">
+        <span class="material-symbols-outlined">sports</span>
+        <p>No fields found. Add your first field!</p>
+      </div>
+
+      <!-- Add field card -->
+      <div
+        class="add-field-card"
+        (click)="goToFieldEditor()"
+        style="cursor: pointer"
+      >
+        <div class="add-field-inner">
+          <div class="add-icon">
+            <span class="material-symbols-outlined">add</span>
+          </div>
+          <h3 class="add-title">Add another field</h3>
+          <p class="add-sub">Expand your venue operations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

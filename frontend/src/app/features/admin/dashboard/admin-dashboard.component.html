@@ -1,0 +1,198 @@
+<!-- Page Header -->
+<div class="page-header">
+  <div>
+    <h2 class="page-title">Admin Dashboard</h2>
+    <p class="page-subtitle">Global platform search</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn-icon">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="notif-dot"></span>
+    </button>
+    <button class="btn-icon" (click)="goTo('/admin/settings')">
+      <span class="material-symbols-outlined">settings</span>
+    </button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="page-content">
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card" *ngFor="let kpi of kpis; let i = index" (click)="goTo(kpiRoutes[i])" style="cursor:pointer">
+      <p class="kpi-label">{{ kpi.label }}</p>
+      <div class="kpi-row">
+        <h3 class="kpi-value">{{ kpi.value }}</h3>
+        <span class="kpi-badge" [class.positive]="kpi.positive" [class.negative]="!kpi.positive">
+          {{ kpi.change }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+
+    <!-- Bookings over Time -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h4 class="card-title">Bookings over Time</h4>
+          <p class="card-subtitle">Total volume for the last 7 months</p>
+        </div>
+        <select class="select-period">
+          <option>Last 7 Months</option>
+          <option>Last Year</option>
+        </select>
+      </div>
+      <div class="bar-chart">
+        <div class="bars">
+          <div class="bar" *ngFor="let h of bookingBars" [style.height.%]="h">
+            <div class="bar-fill"></div>
+          </div>
+        </div>
+        <div class="chart-labels">
+          <span *ngFor="let m of bookingMonths">{{ m }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revenue Growth -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h4 class="card-title">Revenue Growth</h4>
+          <p class="card-subtitle">Net platform revenue after tax</p>
+        </div>
+        <button class="btn-link" (click)="goTo('/admin/finances')">View Ledger</button>
+      </div>
+      <div class="line-chart">
+        <svg width="100%" height="100%" viewBox="0 0 400 150" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="revGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#39E819;stop-opacity:0.4" />
+              <stop offset="100%" style="stop-color:#39E819;stop-opacity:0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0,130 C50,120 80,40 120,60 S180,10 240,40 S320,100 400,20"
+            fill="none"
+            stroke="#39E819"
+            stroke-width="3"
+            stroke-linecap="round" />
+          <path
+            d="M0,130 C50,120 80,40 120,60 S180,10 240,40 S320,100 400,20 V150 H0 Z"
+            fill="url(#revGrad)" />
+        </svg>
+      </div>
+      <div class="chart-labels">
+        <span *ngFor="let m of revenueMonths">{{ m }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="bottom-grid">
+
+    <!-- Left: Cities + Heatmap -->
+    <div class="bottom-left">
+
+      <!-- Top Performing Cities -->
+      <div class="card">
+        <h4 class="card-title" style="margin-bottom: 1.25rem;">Top Performing Cities</h4>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>City</th>
+                <th>Fields</th>
+                <th>Active Users</th>
+                <th>Bookings</th>
+                <th>Growth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let city of topCities">
+                <td>
+                  <div class="city-cell">
+                    <div class="city-icon">
+                      <span class="material-symbols-outlined">location_city</span>
+                    </div>
+                    {{ city.name }}
+                  </div>
+                </td>
+                <td>{{ city.fields }}</td>
+                <td>{{ city.activeUsers }}</td>
+                <td>{{ city.bookings }}</td>
+                <td class="growth-positive">{{ city.growth }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Market Activity Heatmap -->
+      <div class="card">
+        <h4 class="card-title" style="margin-bottom: 1.25rem;">Market Activity Heatmap</h4>
+        <div class="heatmap">
+          <div class="heatmap-glow"></div>
+          <span class="material-symbols-outlined heatmap-icon">public</span>
+          <div class="heatmap-footer">
+            <span class="live-dot"></span>
+            <span class="heatmap-label">Live Bookings: 42</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Recent Activity + Quick Approvals -->
+    <div class="bottom-right">
+
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Recent Activity</h4>
+          <button class="btn-link" (click)="goTo('/admin/bookings')">View All Activity</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item" *ngFor="let item of recentActivity">
+            <div class="activity-icon" [class]="'icon-' + item.iconColor">
+              <span class="material-symbols-outlined">{{ item.icon }}</span>
+            </div>
+            <div class="activity-body">
+              <p class="activity-title">{{ item.title }}</p>
+              <p class="activity-sub">{{ item.subtitle }}</p>
+              <p class="activity-time">{{ item.time }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Approvals -->
+      <div class="card">
+        <h4 class="card-title" style="margin-bottom: 1rem;">Quick Approvals</h4>
+        <div class="approvals-list">
+          <div class="approval-item" *ngFor="let item of pendingApprovals">
+            <div class="approval-info">
+              <p class="approval-name">{{ item.name }}</p>
+              <p class="approval-sub">{{ item.subtitle }}</p>
+            </div>
+            <div class="approval-actions" *ngIf="!item.approved && !item.rejected">
+              <button class="btn-reject" (click)="reject(item)">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+              <button class="btn-approve" (click)="approve(item)">
+                <span class="material-symbols-outlined">check</span>
+              </button>
+            </div>
+            <span *ngIf="item.approved" class="approval-done approved">Approved</span>
+            <span *ngIf="item.rejected" class="approval-done rejected">Rejected</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

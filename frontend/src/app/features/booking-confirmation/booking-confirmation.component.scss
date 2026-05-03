@@ -1,0 +1,395 @@
+$bg:        var(--yardly-bg);
+$card:      var(--yardly-bg-card);
+$border:    var(--yardly-border);
+$accent:    var(--yardly-accent);
+$accent-soft: var(--yardly-accent-soft);
+$muted:     var(--yardly-muted);
+
+.bc-page {
+  background: $bg;
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+// ── Success Header ─────────────────────────────────────────────────────────────
+.bc-success-header {
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+
+.bc-check-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(50,205,50,0.1);
+  box-shadow: 0 0 0 12px rgba(50,205,50,0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.bc-check-icon {
+  font-size: 3rem;
+  color: $accent;
+}
+
+.bc-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--yardly-text);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.bc-subtitle {
+  color: $accent-soft;
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+// ── Booking Card ───────────────────────────────────────────────────────────────
+.bc-booking-card {
+  background: $card;
+  border: 1px solid rgba(50,205,50,0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+.bc-card-inner {
+  display: flex;
+  @media (max-width: 680px) { flex-direction: column; }
+}
+
+.bc-card-image {
+  position: relative;
+  width: 33%;
+  min-height: 200px;
+  flex-shrink: 0;
+  @media (max-width: 680px) { width: 100%; height: 180px; }
+}
+
+.bc-field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(17,77,49,0.3), transparent);
+}
+
+.bc-premium-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: $accent;
+  color: $bg;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.bc-card-body {
+  flex: 1;
+  padding: 2rem;
+}
+
+.bc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.bc-booking-ref {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $accent;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem;
+}
+
+.bc-field-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--yardly-text);
+  margin: 0;
+}
+
+.bc-price-col {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bc-price {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: $accent;
+}
+
+.bc-price-label {
+  font-size: 0.7rem;
+  color: rgba(50,205,50,0.5);
+}
+
+.bc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  @media (max-width: 480px) { grid-template-columns: 1fr; }
+}
+
+.bc-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.bc-detail-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  background: $bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  .material-symbols-outlined {
+    font-size: 1.2rem;
+    color: $accent;
+  }
+}
+
+.bc-detail-label {
+  font-size: 0.7rem;
+  color: $muted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.2rem;
+}
+
+.bc-detail-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+// ── Bottom Row ─────────────────────────────────────────────────────────────────
+.bc-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  @media (max-width: 680px) { grid-template-columns: 1fr; }
+}
+
+.bc-section-card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  padding: 1.5rem;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 1rem;
+  }
+}
+
+.bc-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  h3 { margin: 0; }
+}
+
+.bc-spots-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: rgba(50,205,50,0.15);
+  color: $accent;
+  border: 1px solid rgba(50,205,50,0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.bc-avatars-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.bc-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid $bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.bc-avatar-letter {
+  background: rgba(50,205,50,0.2);
+  color: $accent;
+}
+
+.bc-avatar-more {
+  background: rgba(50,205,50,0.12);
+  color: $accent;
+  font-size: 0.75rem;
+}
+
+.bc-progress-bar-wrap {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.bc-progress-bar {
+  height: 100%;
+  background: $accent;
+  border-radius: 999px;
+}
+
+.bc-players-hint {
+  font-size: 0.78rem;
+  color: rgba(50,205,50,0.5);
+  font-style: italic;
+  margin: 0;
+}
+
+// ── Invite ─────────────────────────────────────────────────────────────────────
+.bc-share-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: $bg;
+  border: 1px solid rgba(50,205,50,0.2);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bc-share-link-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: $muted;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bc-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $accent;
+  display: flex;
+  align-items: center;
+  padding: 0.15rem;
+
+  &.bc-copied { opacity: 0.75; }
+  .material-symbols-outlined { font-size: 1.1rem; }
+}
+
+.bc-share-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.bc-share-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  &:hover { opacity: 0.85; }
+  .material-symbols-outlined { font-size: 1rem; }
+}
+
+.bc-whatsapp-btn  { background: #25D366; color: white; }
+.bc-messenger-btn { background: #0084FF; color: white; }
+
+// ── Actions ────────────────────────────────────────────────────────────────────
+.bc-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.bc-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: transform 0.15s, opacity 0.15s;
+  font-family: inherit;
+
+  &:hover { transform: scale(1.03); }
+  &:active { transform: scale(0.97); }
+
+  .material-symbols-outlined { font-size: 1.2rem; }
+}
+
+.bc-btn-primary {
+  background: $accent;
+  color: $bg;
+  box-shadow: 0 0 20px rgba(50,205,50,0.3);
+}
+
+.bc-btn-secondary {
+  background: $card;
+  color: white;
+  border: 1px solid rgba(50,205,50,0.3);
+}
+
+.bc-btn-ghost {
+  background: none;
+  color: $muted;
+  border: 1px solid transparent;
+  &:hover { color: white; transform: none; }
+}

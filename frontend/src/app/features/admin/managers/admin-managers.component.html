@@ -1,0 +1,179 @@
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-left">
+    <h2 class="page-title">Managers</h2>
+    <div class="search-wrap">
+      <span class="material-symbols-outlined search-icon">search</span>
+      <input class="search-input" [(ngModel)]="searchQuery" placeholder="Search by name, email, or ID..." />
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="btn-icon">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="notif-dot"></span>
+    </button>
+    <div class="admin-badge">
+      <span class="material-symbols-outlined">shield_person</span>
+      Platform Admin
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content-wrap">
+
+  <!-- Main -->
+  <div class="main-area">
+
+    <!-- Pending Verifications -->
+    <div class="section" *ngIf="pendingManagers.length > 0">
+      <div class="section-header">
+        <h3 class="section-title">
+          <span class="material-symbols-outlined warn-icon">warning</span>
+          Pending Verifications
+        </h3>
+        <button class="btn-link">View All Requests</button>
+      </div>
+      <div class="pending-grid">
+        <div class="pending-card" *ngFor="let m of pendingManagers">
+          <div class="pending-top">
+            <div class="pending-avatar">{{ m.initials }}</div>
+            <div>
+              <p class="pending-name">{{ m.name }}</p>
+              <span class="pending-badge">{{ m.fieldsCount }} FIELDS PENDING</span>
+            </div>
+          </div>
+          <div class="doc-list">
+            <div class="doc-item" *ngFor="let doc of m.docStatus">
+              <span class="material-symbols-outlined" [class.doc-ok]="doc.verified" [class.doc-warn]="!doc.verified">
+                {{ doc.verified ? 'check_circle' : 'pending' }}
+              </span>
+              <span>{{ doc.label }}</span>
+            </div>
+          </div>
+          <div class="pending-actions">
+            <button class="btn-approve" (click)="approveManager(m, $event)">Approve</button>
+            <button class="btn-outline-sm">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All Managers -->
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">All Managers</h3>
+        <div class="section-actions">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined">filter_list</span>
+            Filter
+          </button>
+          <button class="filter-btn">
+            <span class="material-symbols-outlined">file_download</span>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Manager</th>
+              <th>Location</th>
+              <th>Fields</th>
+              <th>Bookings</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of filteredManagers" (click)="selectManager(m)">
+              <td>
+                <div class="manager-cell">
+                  <div class="user-avatar">{{ m.initials }}</div>
+                  <div>
+                    <p class="manager-name">{{ m.name }}</p>
+                    <p class="manager-email">{{ m.email }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="muted">{{ m.location }}</td>
+              <td>
+                <span>{{ m.fields }}</span>
+                <span class="muted"> Managed</span>
+              </td>
+              <td>{{ m.bookings }}</td>
+              <td class="accent-text">{{ m.revenue }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span class="muted">Showing 1–30 of 140 managers</span>
+          <div class="pagination-btns">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span class="muted">...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Manager Profile Panel -->
+  <div class="profile-panel" *ngIf="selectedProfile">
+    <div class="panel-header">
+      <h3 class="panel-title">Manager Profile</h3>
+      <button class="btn-close" (click)="selectedProfile = null">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="profile-avatar">{{ selectedProfile.initials }}</div>
+    <h4 class="profile-name">{{ selectedProfile.name }}</h4>
+    <span class="tier-badge">{{ selectedProfile.tier }}</span>
+
+    <div class="profile-stats">
+      <div class="stat-item">
+        <p class="stat-label">Field Utilization</p>
+        <p class="stat-value">{{ selectedProfile.fieldUtilization }}%</p>
+        <div class="util-bar">
+          <div class="util-fill" [style.width.%]="selectedProfile.fieldUtilization"></div>
+        </div>
+      </div>
+      <div class="stat-item center">
+        <p class="stat-label">Active Fields</p>
+        <p class="stat-value">{{ selectedProfile.activeFields }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="selectedProfile.managedFields.length > 0">
+      <p class="list-section-label">Managed Fields</p>
+      <div class="field-item" *ngFor="let f of selectedProfile.managedFields">
+        <div class="field-icon">
+          <span class="material-symbols-outlined">stadium</span>
+        </div>
+        <div class="field-info">
+          <p class="field-name">{{ f.name }}</p>
+          <p class="field-sport">{{ f.sport }}</p>
+        </div>
+        <span class="field-revenue">{{ f.revenue }}</span>
+      </div>
+    </div>
+
+    <div *ngIf="selectedProfile.recentActivity.length > 0">
+      <p class="list-section-label">Recent Activity</p>
+      <div class="activity-item" *ngFor="let a of selectedProfile.recentActivity">
+        <span class="material-symbols-outlined act-icon">check_circle</span>
+        {{ a }}
+      </div>
+    </div>
+
+    <button class="btn-contact">
+      <span class="material-symbols-outlined">mail</span>
+      Contact Manager
+    </button>
+  </div>
+
+</div>

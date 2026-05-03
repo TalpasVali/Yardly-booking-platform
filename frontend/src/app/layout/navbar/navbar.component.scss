@@ -1,0 +1,130 @@
+$nav-height: 70px;
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: $nav-height;
+  background-color: var(--yardly-nav-bg);
+  border-bottom: 1px solid var(--yardly-border);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+
+  &.scrolled {
+    box-shadow: var(--yardly-nav-shadow);
+  }
+}
+
+.sticky-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sticky-nav-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--yardly-text);
+  text-decoration: none;
+
+  img {
+    height: 40px;
+  }
+}
+
+.sticky-nav-menu {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0 1rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.5rem 0;
+    color: var(--yardly-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--yardly-text);
+    }
+
+    &.active {
+      color: var(--yardly-accent);
+    }
+  }
+}
+
+// Theme toggle button
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--yardly-border);
+  background-color: var(--yardly-bg-card);
+  color: var(--yardly-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--yardly-accent);
+    color: var(--yardly-accent);
+    background-color: var(--yardly-hover);
+  }
+
+  i {
+    font-size: 0.875rem;
+  }
+}
+
+.sticky-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--yardly-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .sticky-nav-menu {
+    position: fixed;
+    top: $nav-height;
+    left: 0;
+    width: 100%;
+    background-color: var(--yardly-nav-bg);
+    border-bottom: 1px solid var(--yardly-border);
+    padding: 1rem 0;
+    display: none;
+
+    &.mobile-active {
+      display: block;
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .sticky-nav-toggle {
+    display: block;
+  }
+}

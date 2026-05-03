@@ -1,0 +1,147 @@
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+@import "colors";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// ============================================================
+// YARDLY THEME - CSS Custom Properties
+// ============================================================
+
+// Dark mode (default)
+:root,
+[data-theme="dark"] {
+  --yardly-bg:          #072A1C;
+  --yardly-nav-bg:      #021e0c;
+  --yardly-bg-card:     #114D31;
+  --yardly-hover:       #1a5e3d;
+  --yardly-border:      #1a5e3d;
+  --yardly-accent:      #39E819;
+  --yardly-accent-soft: #57E439;
+  --yardly-accent-10:   rgba(57, 232, 25, 0.10);
+  --yardly-accent-20:   rgba(57, 232, 25, 0.20);
+  --yardly-accent-30:   rgba(57, 232, 25, 0.30);
+  --yardly-input-bg:    rgba(7, 42, 28, 0.50);
+  --yardly-text:        #ffffff;
+  --yardly-muted:       #8ba98b;
+  --yardly-danger:      #C34040;
+  --yardly-available:   #A3E635;
+  --yardly-nav-shadow:  0 2px 20px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}
+
+// Light mode
+[data-theme="light"] {
+  --yardly-bg:          #F1F5F9;
+  --yardly-nav-bg:      #ffffff;
+  --yardly-bg-card:     #ffffff;
+  --yardly-hover:       #f0fdf4;
+  --yardly-border:      #E2E8F0;
+  --yardly-accent:      #32CD32;
+  --yardly-accent-soft: #39E819;
+  --yardly-accent-10:   rgba(50, 205, 50, 0.10);
+  --yardly-accent-20:   #E2E8F0;
+  --yardly-accent-30:   #E2E8F0;
+  --yardly-input-bg:    #ffffff;
+  --yardly-text:        #0F172A;
+  --yardly-muted:       #64748B;
+  --yardly-danger:      #ef4444;
+  --yardly-available:   #22c55e;
+  --yardly-nav-shadow:  0 2px 20px rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
+}
+
+// ============================================================
+// GLOBAL BASE STYLES
+// ============================================================
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--yardly-bg);
+  color: var(--yardly-text);
+  font-family: $font-family;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// ============================================================
+// GLOBAL AUTOFILL OVERRIDE
+// Chrome's :-webkit-autofill overrides bg visually using an
+// inset box-shadow — the only way to neutralize it.
+// ============================================================
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--yardly-input-bg) inset !important;
+  -webkit-text-fill-color: var(--yardly-text) !important;
+  caret-color: var(--yardly-text);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+// ============================================================
+// GLOBAL BUTTON OVERRIDES
+// ============================================================
+
+.btn-yardly-primary {
+  background-color: var(--yardly-accent);
+  border-color: var(--yardly-accent);
+  color: #021e0c;
+  font-weight: 700;
+
+  &:hover, &:focus {
+    background-color: var(--yardly-accent-soft);
+    border-color: var(--yardly-accent-soft);
+    color: #021e0c;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.btn-yardly-outline {
+  background-color: transparent;
+  border: 1px solid var(--yardly-accent);
+  color: var(--yardly-accent);
+  font-weight: 700;
+
+  &:hover, &:focus {
+    background-color: var(--yardly-accent);
+    color: #021e0c;
+  }
+}
+
+// ============================================================
+// GLOBAL CARD STYLE
+// ============================================================
+
+.yardly-card {
+  background-color: var(--yardly-bg-card);
+  border: 1px solid var(--yardly-border);
+  border-radius: $radius-lg;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--yardly-accent);
+  }
+}
+
+// ============================================================
+// SCROLLBAR
+// ============================================================
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--yardly-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--yardly-bg-card);
+  border-radius: 10px;
+}

@@ -1,0 +1,58 @@
+<div class="not-found-page">
+
+  <!-- Page Label -->
+  <div class="page-label">
+    <h1 class="page-title">Design Showcase: Empty States</h1>
+    <p class="page-subtitle">Common dark fields states for search, bookings, and errors.</p>
+  </div>
+
+  <!-- Top Row: Two Empty State Cards -->
+  <div class="empty-states-row">
+
+    <!-- No Fields Found -->
+    <div class="empty-card">
+      <div class="empty-icon-wrap">
+        <span class="material-symbols-outlined empty-icon">search_off</span>
+      </div>
+      <h2 class="empty-title">No fields found</h2>
+      <p class="empty-description">
+        We couldn't find any sports fields matching your current filters.
+        Try adjusting your search or clearing your preferences.
+      </p>
+      <button class="empty-btn primary-btn" (click)="resetFilters()">Reset Filters</button>
+    </div>
+
+    <!-- No Bookings -->
+    <div class="empty-card">
+      <div class="empty-icon-wrap">
+        <span class="material-symbols-outlined empty-icon">calendar_month</span>
+        <span class="empty-icon-x material-symbols-outlined">close</span>
+      </div>
+      <h2 class="empty-title">You have no bookings yet</h2>
+      <p class="empty-description">
+        Ready to play? Browse available fields in your area and schedule
+        your next match in just a few clicks.
+      </p>
+      <button class="empty-btn primary-btn" (click)="exploreFields()">Explore Fields</button>
+    </div>
+
+  </div>
+
+  <!-- 404 Section -->
+  <div class="not-found-card">
+    <div class="four-o-four">404</div>
+    <div class="flag-icon-wrap">
+      <span class="material-symbols-outlined flag-icon">sports_score</span>
+    </div>
+    <h2 class="not-found-title">Oops! Page not found</h2>
+    <p class="not-found-description">
+      Looks like you've sprinted off the pitch. The page you're looking for
+      doesn't exist or has been moved to a different league.
+    </p>
+    <div class="not-found-actions">
+      <button class="empty-btn primary-btn" routerLink="/">Back to Home</button>
+      <button class="empty-btn outline-btn" (click)="contactSupport()">Contact Support</button>
+    </div>
+  </div>
+
+</div>

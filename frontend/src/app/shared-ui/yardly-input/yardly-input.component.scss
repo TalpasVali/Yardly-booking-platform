@@ -1,0 +1,43 @@
+.dropdown-menu {
+  background-color: var(--yardly-bg-card);
+  border: 1px solid var(--yardly-accent);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  background-color: var(--yardly-bg-card);
+  color: var(--yardly-text);
+  border: 1px solid var(--yardly-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+
+  &:focus {
+    border-color: var(--yardly-accent);
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--yardly-muted);
+  }
+}
+
+.dropdown-item {
+  color: var(--yardly-text);
+}
+
+.dropdown-item.active {
+  background-color: var(--yardly-hover);
+  color: var(--yardly-text);
+}
+
+.dropdown-item:hover {
+  background-color: var(--yardly-hover);
+  color: var(--yardly-text);
+}
+
+.dropdown-item.disabled {
+  color: var(--yardly-muted);
+  pointer-events: none;
+}

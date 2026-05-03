@@ -1,0 +1,156 @@
+<div class="details-page">
+
+  @if (loading() && !reservation()) {
+    <app-skeleton type="table-row" [count]="4" />
+  }
+
+  @if (reservation(); as r) {
+
+    <!-- Breadcrumb & Top Actions -->
+    <div class="page-top">
+      <div class="breadcrumb">
+        <a routerLink="/profile" class="breadcrumb-link">My Bookings</a>
+        <span class="material-symbols-outlined breadcrumb-sep">chevron_right</span>
+        <span class="breadcrumb-current">Booking #{{ r._id?.slice(-6)?.toUpperCase() }}</span>
+      </div>
+      <button class="cancel-btn" (click)="cancelBooking()">
+        <span class="material-symbols-outlined">cancel</span>
+        Cancel Booking
+      </button>
+    </div>
+
+    <h1 class="page-title">Booking Details</h1>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+
+      <!-- Left Column -->
+      <div class="left-column">
+
+        <!-- Booking Card -->
+        <div class="section-card booking-card">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            {{ bookingStatus() }}
+          </div>
+          <h2 class="field-name">{{ field()?.name || r.field }}</h2>
+          <div class="meta-row">
+            <span class="meta-item">
+              <span class="material-symbols-outlined">sports_handball</span>
+              {{ sportName() }}
+            </span>
+            <span class="meta-item">
+              <span class="material-symbols-outlined">calendar_today</span>
+              {{ r.date | date:'fullDate' }}
+            </span>
+            <span class="meta-item">
+              <span class="material-symbols-outlined">schedule</span>
+              {{ r.time }} · {{ r.duration }}
+            </span>
+          </div>
+          <div class="booking-actions">
+            <button class="book-action-btn" (click)="addToCalendar()">
+              <span class="material-symbols-outlined">calendar_add_on</span>
+              Add to Calendar
+            </button>
+            <button class="book-action-btn" (click)="downloadReceipt()">
+              <span class="material-symbols-outlined">receipt_long</span>
+              Download Receipt
+            </button>
+          </div>
+        </div>
+
+        <!-- Invite Players -->
+        <div class="section-card">
+          <h3>Invite Players</h3>
+          <p class="section-sub">Share this link with your friends to fill the remaining spots.</p>
+          <div class="share-link-row">
+            <span class="share-link-text">{{ shareLink }}</span>
+            <div class="share-icons">
+              <button class="icon-action-btn" (click)="copyLink()" [title]="copied ? 'Copied!' : 'Copy link'">
+                <span class="material-symbols-outlined">{{ copied ? 'check' : 'content_copy' }}</span>
+              </button>
+              <button class="icon-action-btn" (click)="shareNative()" title="Share">
+                <span class="material-symbols-outlined">share</span>
+              </button>
+              <button class="icon-action-btn" (click)="openMessage()" title="Message">
+                <span class="material-symbols-outlined">chat_bubble</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="right-sidebar">
+
+        <!-- Field Image -->
+        @if (field()?.images?.length) {
+          <div class="venue-image-wrap">
+            <img [src]="field()!.images[0]" [alt]="field()!.name" class="venue-image" />
+          </div>
+        }
+
+        <!-- Venue Info -->
+        <div class="section-card venue-card">
+          <div class="venue-header">
+            <span class="material-symbols-outlined venue-pin">location_on</span>
+            <div>
+              <h4 class="venue-name">{{ field()?.name || '—' }}</h4>
+              <p class="venue-address">{{ field()?.address || '—' }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facilities -->
+        @if (field()?.facilities?.length) {
+          <div class="section-card rules-card">
+            <h4 class="rules-title">
+              <span class="material-symbols-outlined rules-icon">gavel</span>
+              Facilities
+            </h4>
+            <ul class="rules-list">
+              @for (f of field()!.facilities; track f) {
+                <li class="rule-item">
+                  <span class="material-symbols-outlined rule-icon rule-allowed">check_circle</span>
+                  <span class="rule-text">{{ f }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+
+        <!-- Support -->
+        <div class="section-card support-card">
+          <p class="support-hint">Need help with this booking?</p>
+          <button class="support-btn" (click)="contactSupport()">Contact Support</button>
+        </div>
+
+      </div>
+    </div>
+
+  } @else if (!loading()) {
+    <div class="empty-state text-center py-5">
+      <span class="material-symbols-outlined" style="font-size:3rem">search_off</span>
+      <p>Booking not found.</p>
+      <a routerLink="/profile" class="btn-accent">Back to Profile</a>
+    </div>
+  }
+
+  <!-- Cancel Confirm Modal -->
+  @if (showCancelConfirm) {
+    <div class="modal-overlay" (click)="dismissCancel()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <span class="material-symbols-outlined modal-icon">warning</span>
+        <h3>Cancel Booking?</h3>
+        <p>This action cannot be undone. Are you sure you want to cancel this booking?</p>
+        <div class="modal-actions">
+          <button class="modal-btn modal-keep" (click)="dismissCancel()">Keep Booking</button>
+          <button class="modal-btn modal-cancel" (click)="confirmCancel()">Yes, Cancel</button>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

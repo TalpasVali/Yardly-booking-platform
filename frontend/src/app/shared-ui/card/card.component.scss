@@ -1,0 +1,184 @@
+$bg:     var(--yardly-bg);
+$card:   var(--yardly-bg-card);
+$border: var(--yardly-border);
+$accent: var(--yardly-accent);
+$muted:  var(--yardly-muted);
+
+.yc-card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+
+    .yc-img { transform: scale(1.06); }
+  }
+}
+
+.yc-img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.yc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.yc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(7,42,28,0.7) 100%);
+}
+
+.yc-rating-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+
+  .material-symbols-outlined {
+    font-size: 0.9rem;
+    color: #facc15;
+  }
+}
+
+.fill-1 { font-variation-settings: 'FILL' 1; }
+
+.yc-status-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+
+  &.yc-status-available {
+    background: rgba(50,205,50,0.2);
+    color: $accent;
+  }
+}
+
+.yc-body {
+  padding: 1.1rem;
+}
+
+.yc-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.yc-name-col { flex: 1; min-width: 0; }
+
+.yc-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--yardly-text);
+  margin: 0 0 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yc-address {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  color: $muted;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .material-symbols-outlined { font-size: 0.85rem; flex-shrink: 0; }
+}
+
+.yc-price-col {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.yc-price {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: $accent;
+}
+
+.yc-price-unit {
+  font-size: 0.65rem;
+  color: $muted;
+}
+
+.yc-facilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.yc-facility-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(50,205,50,0.1);
+  border: 1px solid rgba(50,205,50,0.2);
+  color: rgba(50,205,50,0.8);
+  text-transform: capitalize;
+}
+
+.yc-book-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem;
+  background: $accent;
+  color: $bg;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.15s;
+
+  &:hover:not(:disabled) { opacity: 0.85; }
+
+  &:disabled {
+    background: rgba(255,255,255,0.1);
+    color: $muted;
+    cursor: not-allowed;
+  }
+
+  .material-symbols-outlined { font-size: 1rem; }
+}

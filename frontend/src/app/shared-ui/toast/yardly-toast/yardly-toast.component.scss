@@ -1,0 +1,61 @@
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.yardly-toast {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 14px 24px;
+  border-radius: 16px;
+  border-left: 4px solid;
+  max-width: 360px;
+  min-width: 300px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: start;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  transition: all 0.3s ease;
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  &.text-success {
+    border-color: #22c55e;
+    color: #22c55e !important;
+  }
+  &.text-error {
+    border-color: #f44336;
+    color: #f44336 !important;
+  }
+  &.text-warning {
+    border-color: #f59e0b;
+    color: #f59e0b !important;
+  }
+
+  &.enter {
+    animation: fadeSlideIn 0.4s forwards;
+  }
+
+  &.leave {
+    animation: fadeSlideOut 0.4s forwards;
+  }
+}

@@ -1,0 +1,114 @@
+<div class="register-wrapper">
+    <div class="register-center">
+        <div class="register-card">
+
+            <!-- Header -->
+            <div class="card-header">
+                <h1 class="card-title">Create Account</h1>
+                <p class="card-subtitle">Join Yardly to manage and book sports yards.</p>
+            </div>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+
+                <!-- Global Error -->
+                <div *ngIf="authFacade.vm.error()" class="alert-error">
+                    {{ authFacade.vm.error() }}
+                </div>
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon material-symbols-outlined">person</span>
+                        <input formControlName="fullName" class="form-control has-icon"
+                            placeholder="John Doe" type="text" />
+                    </div>
+                    <div *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
+                        class="error-text">
+                        Please enter your full name (min. 2 characters).
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon material-symbols-outlined">mail</span>
+                        <input formControlName="email" class="form-control has-icon"
+                            placeholder="john@example.com" type="email" />
+                    </div>
+                    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+                        class="error-text">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon material-symbols-outlined">lock</span>
+                        <input formControlName="password" class="form-control has-icon"
+                            placeholder="••••••••" [type]="showPassword ? 'text' : 'password'" />
+                        <button (click)="togglePassword()" class="toggle-password" type="button">
+                            <span class="material-symbols-outlined">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
+                        </button>
+                    </div>
+                    <p class="hint-text">Must be at least 8 characters long.</p>
+                    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+                        class="error-text">
+                        Password must be at least 8 characters.
+                    </div>
+                </div>
+
+                <!-- Role Selector -->
+                <div class="form-group">
+                    <label class="form-label">I want to...</label>
+                    <div class="role-selector">
+                        <button type="button" class="role-btn"
+                            [class.active]="registerForm.get('role')?.value === 'user'"
+                            (click)="setRole('user')">
+                            Book Yards
+                        </button>
+                        <button type="button" class="role-btn"
+                            [class.active]="registerForm.get('role')?.value === 'manager'"
+                            (click)="setRole('manager')">
+                            Manage Yards
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="terms-row">
+                    <input formControlName="terms" type="checkbox" id="terms" class="terms-checkbox" />
+                    <label for="terms" class="terms-label">
+                        By creating an account, I agree to the
+                        <a href="#" class="terms-link">Terms of Service</a> and
+                        <a href="#" class="terms-link">Privacy Policy</a>.
+                    </label>
+                </div>
+                <div *ngIf="registerForm.get('terms')?.touched && registerForm.get('terms')?.invalid"
+                    class="error-text">
+                    You must accept the terms to continue.
+                </div>
+
+                <!-- Submit -->
+                <button [disabled]="authFacade.vm.isLoading()" class="btn-register" type="submit">
+                    <span *ngIf="authFacade.vm.isLoading()"
+                        class="material-symbols-outlined spin">progress_activity</span>
+                    {{ authFacade.vm.isLoading() ? 'Creating account...' : 'Create Account' }}
+                </button>
+
+            </form>
+
+            <!-- Login hint -->
+            <div class="login-hint">
+                <p>
+                    Already have an account?
+                    <a class="login-link" [routerLink]="['/login']">Log In</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

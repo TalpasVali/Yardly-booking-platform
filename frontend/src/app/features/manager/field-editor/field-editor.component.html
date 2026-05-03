@@ -1,0 +1,190 @@
+<div class="editor-page">
+
+  <!-- Breadcrumb + Top Bar -->
+  <div class="top-bar">
+    <nav class="breadcrumb">
+      <span class="breadcrumb-link">Fields</span>
+      <span class="material-symbols-outlined breadcrumb-sep">chevron_right</span>
+      <span class="breadcrumb-current">Edit Field: Sky High Soccer Arena</span>
+    </nav>
+    <div class="top-actions">
+      <button class="btn-discard" (click)="onDiscard()">Discard Changes</button>
+      <button class="btn-draft" (click)="onSaveDraft()">Save Draft</button>
+      <button class="btn-publish" (click)="onPublish()">Publish Listing</button>
+    </div>
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="editor-layout">
+
+    <!-- LEFT: Form -->
+    <div class="form-col">
+      <div class="form-header">
+        <h1 class="form-title">Field Listing Editor</h1>
+        <p class="form-subtitle">Configure your facility details, pricing, and availability for the Yardly marketplace.</p>
+      </div>
+
+      <form [formGroup]="form" class="editor-form">
+
+        <!-- Basic Info -->
+        <div class="form-section">
+          <div class="section-label">
+            <span class="section-icon">
+              <span class="material-symbols-outlined">info</span>
+            </span>
+            Basic Info
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Field Display Name</label>
+            <input
+              formControlName="displayName"
+              class="field-input"
+              placeholder="e.g. Central Park Arena Pitch 1"
+            />
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Sport Type</label>
+              <div class="select-wrap">
+                <select formControlName="sportType" class="field-select">
+                  <option *ngFor="let s of sportTypes" [value]="s">{{ s }}</option>
+                </select>
+                <span class="material-symbols-outlined select-arrow">expand_more</span>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Surface Type</label>
+              <div class="select-wrap">
+                <select formControlName="surfaceType" class="field-select">
+                  <option *ngFor="let s of surfaceTypes" [value]="s">{{ s }}</option>
+                </select>
+                <span class="material-symbols-outlined select-arrow">expand_more</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Gallery -->
+        <div class="form-section">
+          <div class="section-label">
+            <span class="section-icon">
+              <span class="material-symbols-outlined">photo_library</span>
+            </span>
+            Media Gallery
+          </div>
+
+          <div
+            class="drop-zone"
+            [class.dragging]="isDragging"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave()"
+            (drop)="onDrop($event)"
+          >
+            <span class="material-symbols-outlined drop-icon">cloud_upload</span>
+            <p class="drop-primary">Drag and drop images here</p>
+            <p class="drop-secondary">High-quality JPG or PNG files up to 10MB</p>
+            <button type="button" class="btn-select-files">Select from Files</button>
+          </div>
+        </div>
+
+        <!-- Pricing & Booking -->
+        <div class="form-section">
+          <div class="section-label">
+            <span class="section-icon">
+              <span class="material-symbols-outlined">payments</span>
+            </span>
+            Pricing &amp; Booking
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Hourly Rate ($)</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">$</span>
+                <input
+                  formControlName="hourlyRate"
+                  type="number"
+                  class="field-input has-prefix"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Minimum Booking</label>
+              <div class="select-wrap">
+                <select formControlName="minBooking" class="field-select">
+                  <option *ngFor="let m of minBookingOptions" [value]="m">{{ m }}</option>
+                </select>
+                <span class="material-symbols-outlined select-arrow">expand_more</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- RIGHT: Live Preview -->
+    <div class="preview-col">
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <span class="preview-label">LIVE PREVIEW</span>
+          <span class="preview-live-dot">
+            <span class="live-dot"></span>
+            REAL-TIME
+          </span>
+        </div>
+
+        <div class="preview-image">
+          <div class="preview-img-placeholder">
+            <span class="material-symbols-outlined">stadium</span>
+          </div>
+          <div class="preview-rating">
+            <span class="material-symbols-outlined rating-star">star</span>
+            4.9
+          </div>
+        </div>
+
+        <div class="preview-body">
+          <h3 class="preview-field-name">{{ previewName }}</h3>
+          <div class="preview-location">
+            <span class="material-symbols-outlined loc-icon">location_on</span>
+            Downtown Sports District, NY
+          </div>
+          <div class="preview-tags">
+            <span class="preview-tag">{{ form.get('sportType')?.value }}</span>
+            <span class="preview-tag">{{ form.get('surfaceType')?.value }}</span>
+          </div>
+          <div class="preview-footer">
+            <div class="preview-price">
+              <span class="price-from">FROM</span>
+              <span class="price-value">${{ form.get('hourlyRate')?.value || 85 }}</span>
+              <span class="price-unit">/hr</span>
+            </div>
+            <button class="btn-book-now">BOOK NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listing Health -->
+      <div class="health-card">
+        <div class="health-header">
+          <span class="health-label">Listing Health</span>
+          <span class="health-pct">{{ listingHealth }}% Complete</span>
+        </div>
+        <div class="health-bar">
+          <div class="health-fill" [style.width.%]="listingHealth"></div>
+        </div>
+      </div>
+
+      <!-- Pro Tip -->
+      <div class="tip-card">
+        <span class="material-symbols-outlined tip-icon">lightbulb</span>
+        <p class="tip-text">Pro Tip: Fields with 5+ photos receive 40% more bookings.</p>
+      </div>
+    </div>
+
+  </div>
+</div>

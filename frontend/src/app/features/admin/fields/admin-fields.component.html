@@ -1,0 +1,191 @@
+<div class="page-shell">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="page-title">Fields Moderation</h1>
+      <div class="search-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input class="search-input" [(ngModel)]="searchQuery" placeholder="Search fields..." />
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap">
+    <div class="main-area">
+
+      <!-- Pending Approval -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="material-symbols-outlined warn-icon">pending</span>
+            Pending Approval
+            <span class="badge-count">{{ pendingCount }} Requests</span>
+          </h2>
+        </div>
+
+        <div class="pending-grid">
+          <div class="pending-card" *ngFor="let field of pendingFields">
+            <div class="pending-image" [class.approved]="field.approved" [class.rejected]="field.rejected">
+              <div class="pending-img-bg">
+                <span class="material-symbols-outlined">stadium</span>
+              </div>
+              <span class="submitted-ago">SUBMITTED {{ field.submittedAgo.toUpperCase() }}</span>
+            </div>
+
+            <div class="pending-info">
+              <div class="pending-name-row">
+                <h3 class="pending-name">{{ field.name }}</h3>
+                <span class="pending-price" *ngIf="field.price > 0">${{ field.price }}/hr</span>
+              </div>
+              <div class="pending-meta">
+                <span class="material-symbols-outlined meta-icon">location_on</span>
+                {{ field.city }}, {{ field.state }}
+              </div>
+              <div class="pending-meta">
+                <span class="material-symbols-outlined meta-icon">person</span>
+                Owner: {{ field.owner }}
+              </div>
+              <div class="pending-meta">
+                <span class="material-symbols-outlined meta-icon">sports_soccer</span>
+                {{ field.type }}
+              </div>
+            </div>
+
+            <div class="pending-actions" *ngIf="!field.approved && !field.rejected">
+              <button class="btn-approve" (click)="approve(field)">
+                <span class="material-symbols-outlined">check_circle</span>
+                Approve
+              </button>
+              <button class="btn-reject" (click)="reject(field)">
+                <span class="material-symbols-outlined">cancel</span>
+                Reject
+              </button>
+            </div>
+            <div class="action-result" *ngIf="field.approved">
+              <span class="material-symbols-outlined">check_circle</span>
+              Approved
+            </div>
+            <div class="action-result rejected-result" *ngIf="field.rejected">
+              <span class="material-symbols-outlined">cancel</span>
+              Rejected
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Management -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="material-symbols-outlined warn-icon accent-icon">inventory_2</span>
+            Inventory Management
+          </h2>
+        </div>
+
+        <div class="table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Sport</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let field of filteredInventory"
+                (click)="selectField(field)"
+                [class.selected]="selectedField?.id === field.id"
+              >
+                <td>
+                  <div class="thumb" [style.background]="field.imageColor">
+                    <span class="material-symbols-outlined">{{ getSportIcon(field.sport) }}</span>
+                  </div>
+                </td>
+                <td class="field-name-cell">{{ field.name }}</td>
+                <td class="muted">{{ field.sport }}</td>
+                <td class="muted">{{ field.city }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Panel: Venue Details -->
+    <div class="detail-panel" *ngIf="selectedField">
+      <div class="panel-header">
+        <h3 class="panel-title">Venue Details</h3>
+        <button class="btn-close" (click)="closePanel()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Photo Gallery -->
+      <div class="gallery-section">
+        <p class="panel-section-label">PHOTO GALLERY</p>
+        <div class="gallery-grid">
+          <div class="gallery-thumb" *ngFor="let c of galleryColors; let i = index" [style.background]="c">
+            <span class="material-symbols-outlined" *ngIf="i < 3">photo</span>
+            <div class="gallery-more" *ngIf="i === 3">
+              <span class="material-symbols-outlined">add</span>
+              More
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location Map -->
+      <div class="gallery-section">
+        <p class="panel-section-label">LOCATION MAP</p>
+        <div class="map-placeholder">
+          <span class="material-symbols-outlined map-bg-icon">map</span>
+          <div class="map-pin">
+            <span class="material-symbols-outlined">location_on</span>
+          </div>
+        </div>
+        <p class="map-address">122 Broadway St, New York, NY 10012</p>
+      </div>
+
+      <!-- Venue Facilities -->
+      <div class="gallery-section">
+        <p class="panel-section-label">VENUE FACILITIES</p>
+        <div class="facilities-grid">
+          <div class="facility-item" *ngFor="let fac of venueFacilities; let i = index">
+            <span class="material-symbols-outlined fac-icon">{{ facilityIcons[i] }}</span>
+            {{ fac }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Manager Info -->
+      <div class="manager-info">
+        <div class="manager-avatar">DG</div>
+        <div>
+          <p class="manager-name">David Goldman</p>
+          <p class="manager-since">Manager since 2021</p>
+        </div>
+        <button class="btn-msg">
+          <span class="material-symbols-outlined">chat</span>
+        </button>
+      </div>
+
+      <!-- Actions -->
+      <div class="panel-actions">
+        <button class="btn-modify">
+          <span class="material-symbols-outlined">edit</span>
+          Modify Details
+        </button>
+        <button class="btn-suspend">
+          <span class="material-symbols-outlined">block</span>
+          Suspend Field
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

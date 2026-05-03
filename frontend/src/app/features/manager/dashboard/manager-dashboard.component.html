@@ -1,0 +1,127 @@
+<div class="dashboard">
+  <!-- Header -->
+  <header class="dash-header">
+    <div>
+      <h2 class="dash-title">Dashboard Overview</h2>
+      <p class="dash-sub">Welcome back, here's what's happening today.</p>
+    </div>
+    <div class="header-actions">
+      <div class="search-box">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" placeholder="Search data..." />
+      </div>
+      <button class="btn-icon">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="btn-create" (click)="goTo('/manager/reservations')">
+        <span class="material-symbols-outlined">add</span>
+        Create Booking
+      </button>
+    </div>
+  </header>
+
+  <div class="dash-body">
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let s of stats">
+        <div class="stat-top">
+          <div class="stat-icon-box">
+            <span class="material-symbols-outlined">{{ s.icon }}</span>
+          </div>
+          <span class="stat-trend" [class.up]="s.up" [class.down]="!s.up">{{ s.trend }}</span>
+        </div>
+        <p class="stat-label">{{ s.label }}</p>
+        <h3 class="stat-value">{{ s.value }}</h3>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Quick Actions</h3>
+        <button class="link-btn">View All Actions</button>
+      </div>
+      <div class="quick-actions">
+        <button class="action-btn" *ngFor="let a of quickActions" (click)="goTo(a.route)">
+          <span class="material-symbols-outlined">{{ a.icon }}</span>
+          {{ a.label }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom grid -->
+    <div class="bottom-grid">
+      <!-- Reservations table -->
+      <div class="table-card">
+        <div class="table-header">
+          <h3 class="section-title">Upcoming Reservations</h3>
+          <div class="table-actions">
+            <button class="icon-btn"><span class="material-symbols-outlined">filter_list</span></button>
+            <button class="icon-btn"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Field</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th class="text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of reservations()">
+                <td>
+                  <div class="user-cell">
+                    <div class="user-initials">{{ r.initials }}</div>
+                    <span>{{ r.name }}</span>
+                  </div>
+                </td>
+                <td class="muted">{{ r.field }}</td>
+                <td class="muted">{{ r.time }}</td>
+                <td>
+                  <span class="status-badge" [class]="'status--' + r.status">{{ r.status | titlecase }}</span>
+                </td>
+                <td class="text-right bold">{{ r.amount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <button class="link-btn" (click)="goTo('/manager/reservations')">View All Reservations</button>
+        </div>
+      </div>
+
+      <!-- Fields summary -->
+      <div class="fields-summary">
+        <div class="section-header">
+          <h3 class="section-title">Fields Summary</h3>
+          <button class="link-btn" (click)="goTo('/manager/fields')">Manage</button>
+        </div>
+        <div class="field-cards">
+          <div class="field-card" *ngFor="let f of fields()">
+            <div class="field-img" [style.backgroundImage]="'url(' + f.image + ')'">
+              <div class="field-img-overlay"></div>
+              <div class="field-img-info">
+                <span class="field-name">{{ f.name }}</span>
+                <span class="field-sub">{{ f.sub }}</span>
+              </div>
+            </div>
+            <div class="field-stats">
+              <div>
+                <p class="util-label">Today's Utilization</p>
+                <p class="util-value">{{ f.utilization }}%</p>
+              </div>
+            </div>
+          </div>
+          <button class="add-field-btn" (click)="goTo('/manager/field-editor')">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span>Add More Fields</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

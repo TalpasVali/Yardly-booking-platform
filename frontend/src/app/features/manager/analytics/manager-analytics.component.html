@@ -1,0 +1,215 @@
+<div class="analytics-page">
+
+  <!-- ─── Header ─────────────────────────────────────────────────────── -->
+  <header class="page-header">
+    <div>
+      <h2 class="page-title">Analytics</h2>
+      <p class="page-sub">Track revenue, bookings and performance across all your fields.</p>
+    </div>
+    <div class="header-actions">
+      <div class="period-toggle">
+        <button
+          *ngFor="let p of periods"
+          class="period-btn"
+          [class.active]="activePeriod === p.id"
+          (click)="activePeriod = p.id"
+        >{{ p.label }}</button>
+      </div>
+      <button class="btn-export">
+        <span class="material-symbols-outlined">download</span>
+        Export
+      </button>
+    </div>
+  </header>
+
+  <div class="page-body">
+
+    <!-- ─── Stats ──────────────────────────────────────────────────────── -->
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let s of stats">
+        <div class="stat-top">
+          <div class="stat-icon-box">
+            <span class="material-symbols-outlined">{{ s.icon }}</span>
+          </div>
+          <span class="stat-trend" [class.up]="s.up" [class.down]="!s.up">{{ s.trend }}</span>
+        </div>
+        <p class="stat-label">{{ s.label }}</p>
+        <h3 class="stat-value">{{ s.value }}</h3>
+        <p class="stat-sub">{{ s.sub }}</p>
+      </div>
+    </div>
+
+    <!-- ─── Revenue Chart ──────────────────────────────────────────────── -->
+    <div class="chart-card">
+      <div class="card-header">
+        <div>
+          <h3 class="card-title">Monthly Revenue</h3>
+          <p class="card-sub">Full year overview • 2025</p>
+        </div>
+        <div class="legend">
+          <span class="legend-dot"></span>
+          <span class="legend-label">Revenue</span>
+        </div>
+      </div>
+
+      <div class="bar-chart">
+        <!-- Y-axis labels -->
+        <div class="y-axis">
+          <span>$40k</span>
+          <span>$30k</span>
+          <span>$20k</span>
+          <span>$10k</span>
+          <span>$0</span>
+        </div>
+
+        <!-- Bars -->
+        <div class="bars-area">
+          <!-- Grid lines -->
+          <div class="grid-lines">
+            <div class="grid-line" *ngFor="let _ of [1,2,3,4]"></div>
+          </div>
+
+          <div class="bar-group" *ngFor="let d of revenueData">
+            <div class="bar-wrap">
+              <span class="bar-tooltip">{{ formatRevenue(d.value) }}</span>
+              <div
+                class="bar"
+                [class.bar--peak]="d.pct >= 90"
+                [style.height.%]="d.pct"
+              ></div>
+            </div>
+            <span class="bar-label">{{ d.label }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Middle row: Sports breakdown + Top Fields ──────────────────── -->
+    <div class="mid-grid">
+
+      <!-- Sports breakdown -->
+      <div class="chart-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Bookings by Sport</h3>
+            <p class="card-sub">Distribution this month</p>
+          </div>
+        </div>
+
+        <!-- Donut -->
+        <div class="donut-wrap">
+          <svg viewBox="0 0 120 120" class="donut-svg">
+            <circle cx="60" cy="60" r="42" fill="none" stroke="var(--yardly-border)" stroke-width="18"/>
+
+            <!-- Soccer 46% -->
+            <circle cx="60" cy="60" r="42" fill="none" stroke="#39E819" stroke-width="18"
+              stroke-dasharray="121.1 142.9" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+            <!-- Basketball 24% -->
+            <circle cx="60" cy="60" r="42" fill="none" stroke="#f97316" stroke-width="18"
+              stroke-dasharray="63.3 201.7" stroke-dashoffset="-121.1" transform="rotate(-90 60 60)"/>
+            <!-- Tennis 18% -->
+            <circle cx="60" cy="60" r="42" fill="none" stroke="#8b5cf6" stroke-width="18"
+              stroke-dasharray="47.5 217.5" stroke-dashoffset="-184.4" transform="rotate(-90 60 60)"/>
+            <!-- Padel 12% -->
+            <circle cx="60" cy="60" r="42" fill="none" stroke="#06b6d4" stroke-width="18"
+              stroke-dasharray="31.6 233.4" stroke-dashoffset="-231.9" transform="rotate(-90 60 60)"/>
+
+            <text x="60" y="56" text-anchor="middle" class="donut-center-label">284</text>
+            <text x="60" y="68" text-anchor="middle" class="donut-center-sub">bookings</text>
+          </svg>
+        </div>
+
+        <!-- Legend -->
+        <div class="sport-legend">
+          <div class="sport-row" *ngFor="let s of sportsData">
+            <div class="sport-left">
+              <span class="sport-dot" [style.background]="s.color"></span>
+              <span class="sport-name">{{ s.sport }}</span>
+            </div>
+            <div class="sport-right">
+              <div class="sport-bar-wrap">
+                <div class="sport-bar" [style.width.%]="s.pct" [style.background]="s.color"></div>
+              </div>
+              <span class="sport-pct">{{ s.pct }}%</span>
+              <span class="sport-count">{{ s.bookings }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top fields table -->
+      <div class="chart-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Top Performing Fields</h3>
+            <p class="card-sub">Ranked by bookings this month</p>
+          </div>
+        </div>
+
+        <div class="top-fields">
+          <div class="top-field-row" *ngFor="let f of topFields; let i = index">
+            <span class="rank" [class.rank--top]="i === 0">{{ i + 1 }}</span>
+            <div class="tf-info">
+              <span class="tf-name">{{ f.name }}</span>
+              <div class="tf-sport-badge" [style.background]="sportColor(f.sport) + '22'" [style.color]="sportColor(f.sport)">
+                {{ f.sport }}
+              </div>
+            </div>
+            <div class="tf-stats">
+              <div class="tf-util-wrap">
+                <div class="tf-util-bar">
+                  <div class="tf-util-fill" [style.width.%]="f.utilization" [style.background]="sportColor(f.sport)"></div>
+                </div>
+                <span class="tf-util-val">{{ f.utilization }}%</span>
+              </div>
+              <div class="tf-numbers">
+                <span class="tf-bookings">{{ f.bookings }} bookings</span>
+                <span class="tf-revenue">{{ f.revenue }}</span>
+                <span class="tf-trend" [class.up]="f.trend.startsWith('+')">{{ f.trend }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── Peak Hours Heatmap ─────────────────────────────────────────── -->
+    <div class="chart-card">
+      <div class="card-header">
+        <div>
+          <h3 class="card-title">Peak Booking Hours</h3>
+          <p class="card-sub">Activity intensity by day and time</p>
+        </div>
+        <div class="heatmap-legend">
+          <span class="hm-legend-label">Low</span>
+          <span class="hm-swatch hm-s1"></span>
+          <span class="hm-swatch hm-s2"></span>
+          <span class="hm-swatch hm-s3"></span>
+          <span class="hm-swatch hm-s4"></span>
+          <span class="hm-swatch hm-s5"></span>
+          <span class="hm-legend-label">High</span>
+        </div>
+      </div>
+
+      <div class="heatmap-wrap">
+        <!-- Day headers -->
+        <div class="hm-days">
+          <div class="hm-hour-label"></div>
+          <div class="hm-day" *ngFor="let d of days">{{ d }}</div>
+        </div>
+        <!-- Rows -->
+        <div class="hm-row" *ngFor="let row of heatmap; let hi = index">
+          <div class="hm-hour-label">{{ hours[hi] }}</div>
+          <div
+            class="hm-cell"
+            *ngFor="let val of row"
+            [class]="heatIntensity(val)"
+            [title]="hours[hi]"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

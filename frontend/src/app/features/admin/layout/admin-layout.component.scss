@@ -1,0 +1,237 @@
+.admin-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Lexend', sans-serif;
+  background-color: var(--yardly-bg);
+}
+
+// ─── Sidebar ──────────────────────────────────────────────────────────────────
+
+.sidebar {
+  width: 16rem;
+  flex-shrink: 0;
+  background-color: var(--yardly-bg-nav);
+  border-right: 1px solid var(--yardly-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-top {
+  flex: 1;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--yardly-border);
+}
+
+.logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(57, 232, 25, 0.15);
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yardly-accent);
+  flex-shrink: 0;
+
+  .material-symbols-outlined { font-size: 1.4rem; }
+}
+
+.logo-name {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--yardly-text);
+  margin: 0;
+  line-height: 1;
+}
+
+.logo-sub {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--yardly-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+
+.sidebar-nav {
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: var(--yardly-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+
+  .material-symbols-outlined { font-size: 1.25rem; }
+
+  &:hover {
+    background-color: rgba(57, 232, 25, 0.08);
+    color: var(--yardly-text);
+  }
+
+  &.active {
+    background-color: var(--yardly-accent);
+    color: #021e0c;
+    font-weight: 700;
+  }
+}
+
+// ─── Bottom ────────────────────────────────────────────────────────────────────
+
+.sidebar-bottom {
+  padding: 1rem;
+  border-top: 1px solid var(--yardly-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.storage-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--yardly-border);
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+}
+
+.storage-label {
+  font-size: 0.7rem;
+  color: var(--yardly-muted);
+  margin: 0 0 0.5rem;
+}
+
+.storage-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.storage-fill {
+  height: 100%;
+  width: 75%;
+  background: var(--yardly-accent);
+  border-radius: 999px;
+}
+
+.storage-meta {
+  font-size: 0.65rem;
+  color: var(--yardly-muted);
+  margin: 0.375rem 0 0;
+  opacity: 0.7;
+}
+
+.btn-export {
+  width: 100%;
+  padding: 0.625rem;
+  background: var(--yardly-accent);
+  border: none;
+  border-radius: 0.625rem;
+  color: #021e0c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'Lexend', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: filter 0.2s;
+
+  .material-symbols-outlined { font-size: 1rem; }
+
+  &:hover { filter: brightness(1.1); }
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem;
+  background: rgba(57, 232, 25, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid var(--yardly-border);
+}
+
+.user-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--yardly-accent), var(--yardly-accent-soft));
+  color: #021e0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--yardly-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 0.7rem;
+  color: var(--yardly-accent);
+  opacity: 0.8;
+}
+
+.btn-signout-icon {
+  background: none;
+  border: none;
+  color: var(--yardly-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  flex-shrink: 0;
+
+  .material-symbols-outlined { font-size: 1.1rem; }
+  &:hover { color: var(--yardly-danger); }
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
+
+.admin-main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}

@@ -1,0 +1,37 @@
+<header [class.scrolled]="isScrolled()" class="sticky-nav">
+  <div class="sticky-nav-container">
+    <a class="sticky-nav-logo" routerLink="/">
+      <img style="width: 80px; height: 80px;" src="assets/image/logo.png" alt="logo">
+    </a>
+
+    <nav [class.mobile-active]="mobileMenuActive()" class="sticky-nav-menu">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+        <li><a routerLink="/fields" routerLinkActive="active">Fields</a></li>
+
+        @if (authFacade.vm.isLoggedIn()) {
+          <li><a routerLink="/reservations" routerLinkActive="active">Reservations</a></li>
+          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+          <li><a (click)="logout()" class="cursor-pointer">Logout</a></li>
+        } @else {
+          <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        }
+      </ul>
+    </nav>
+
+    <div class="d-flex align-items-center gap-3">
+      <button
+        class="theme-toggle"
+        (click)="themeService.toggle()"
+        [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        [title]="themeService.isDark() ? 'Light mode' : 'Dark mode'"
+      >
+        <i class="fa-solid" [class.fa-sun]="themeService.isDark()" [class.fa-moon]="!themeService.isDark()"></i>
+      </button>
+
+      <button class="sticky-nav-toggle" (click)="toggleMobileMenu()">
+        <i class="fa-solid" [class.fa-bars]="!mobileMenuActive()" [class.fa-times]="mobileMenuActive()"></i>
+      </button>
+    </div>
+  </div>
+</header>

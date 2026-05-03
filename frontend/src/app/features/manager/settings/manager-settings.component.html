@@ -1,0 +1,255 @@
+<div class="settings-page">
+
+  <!-- Header -->
+  <header class="page-header">
+    <div>
+      <h2 class="page-title">Settings</h2>
+      <p class="page-sub">Manage your account, venue and preferences.</p>
+    </div>
+    <button class="btn-save" (click)="saveSettings()">
+      <span class="material-symbols-outlined">{{ saved() ? 'check' : 'save' }}</span>
+      {{ saved() ? 'Saved!' : 'Save changes' }}
+    </button>
+  </header>
+
+  <div class="settings-body">
+
+    <!-- Sidebar tabs -->
+    <nav class="settings-nav">
+      <button
+        *ngFor="let t of tabs"
+        class="nav-tab"
+        [class.active]="activeTab === t.id"
+        (click)="activeTab = t.id"
+      >
+        <span class="material-symbols-outlined">{{ t.icon }}</span>
+        {{ t.label }}
+      </button>
+    </nav>
+
+    <!-- Content -->
+    <div class="settings-content">
+
+      <!-- ── Profile ───────────────────────────────────────────────── -->
+      <div class="tab-panel" *ngIf="activeTab === 'profile'">
+        <div class="panel-section">
+          <h3 class="section-title">Personal Information</h3>
+          <p class="section-sub">Update your name, contact details and role.</p>
+
+          <div class="avatar-row">
+            <div class="avatar-circle">{{ profile.fullName[0] }}</div>
+            <div class="avatar-info">
+              <p class="avatar-name">{{ profile.fullName }}</p>
+              <p class="avatar-role">{{ profile.role }}</p>
+            </div>
+            <button class="btn-ghost">
+              <span class="material-symbols-outlined">upload</span>
+              Change photo
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input class="form-control" [(ngModel)]="profile.fullName" type="text" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-control" [(ngModel)]="profile.email" type="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input class="form-control" [(ngModel)]="profile.phone" type="tel" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <input class="form-control" [value]="profile.role" type="text" disabled />
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section danger-zone">
+          <h3 class="section-title danger">Danger Zone</h3>
+          <p class="section-sub">Irreversible actions. Proceed with caution.</p>
+          <div class="danger-actions">
+            <div class="danger-item">
+              <div>
+                <p class="danger-item-title">Change Password</p>
+                <p class="danger-item-sub">Send a password reset link to your email.</p>
+              </div>
+              <button class="btn-ghost">Reset password</button>
+            </div>
+            <div class="danger-item">
+              <div>
+                <p class="danger-item-title">Delete Account</p>
+                <p class="danger-item-sub">Permanently delete your account and all data.</p>
+              </div>
+              <button class="btn-danger">Delete account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Venue ─────────────────────────────────────────────────── -->
+      <div class="tab-panel" *ngIf="activeTab === 'venue'">
+        <div class="panel-section">
+          <h3 class="section-title">Venue Details</h3>
+          <p class="section-sub">Basic information shown to customers.</p>
+          <div class="form-grid">
+            <div class="form-group span-2">
+              <label class="form-label">Venue Name</label>
+              <input class="form-control" [(ngModel)]="venue.name" type="text" />
+            </div>
+            <div class="form-group span-2">
+              <label class="form-label">Address</label>
+              <input class="form-control" [(ngModel)]="venue.address" type="text" />
+            </div>
+            <div class="form-group span-2">
+              <label class="form-label">Description</label>
+              <textarea class="form-control form-textarea" [(ngModel)]="venue.description" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3 class="section-title">Operating Hours & Locale</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Opening Time</label>
+              <input class="form-control" [(ngModel)]="venue.openTime" type="time" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Closing Time</label>
+              <input class="form-control" [(ngModel)]="venue.closeTime" type="time" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Currency</label>
+              <select class="form-control form-select" [(ngModel)]="venue.currency">
+                <option>RON</option><option>EUR</option><option>USD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Timezone</label>
+              <select class="form-control form-select" [(ngModel)]="venue.timezone">
+                <option>Europe/Bucharest</option>
+                <option>Europe/London</option>
+                <option>America/New_York</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Notifications ─────────────────────────────────────────── -->
+      <div class="tab-panel" *ngIf="activeTab === 'notifications'">
+        <div class="panel-section">
+          <h3 class="section-title">Email Notifications</h3>
+          <p class="section-sub">Choose which emails you receive.</p>
+          <div class="toggle-list">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p class="toggle-label">New Bookings</p>
+                <p class="toggle-sub">Get notified when a new reservation is made.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="notifs.emailBookings" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p class="toggle-label">Cancellations</p>
+                <p class="toggle-sub">Get notified when a booking is cancelled.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="notifs.emailCancels" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p class="toggle-label">Weekly Reports</p>
+                <p class="toggle-sub">Receive a weekly summary of revenue and bookings.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="notifs.emailReports" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3 class="section-title">Push Notifications</h3>
+          <div class="toggle-list">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p class="toggle-label">New Bookings</p>
+                <p class="toggle-sub">Browser push for new reservations.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="notifs.pushBookings" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p class="toggle-label">Cancellations</p>
+                <p class="toggle-sub">Browser push for cancelled bookings.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" [(ngModel)]="notifs.pushCancels" />
+                <span class="toggle-track"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Billing ────────────────────────────────────────────────── -->
+      <div class="tab-panel" *ngIf="activeTab === 'billing'">
+        <div class="panel-section">
+          <h3 class="section-title">Current Plan</h3>
+          <div class="plan-card">
+            <div class="plan-left">
+              <span class="plan-badge">{{ plan.name }}</span>
+              <div>
+                <p class="plan-price">{{ plan.price }}<span>/{{ plan.period }}</span></p>
+                <p class="plan-renew">Next billing: {{ plan.nextBilling }}</p>
+              </div>
+            </div>
+            <div class="plan-right">
+              <button class="btn-ghost">Upgrade plan</button>
+              <button class="btn-ghost btn-cancel-plan">Cancel plan</button>
+            </div>
+          </div>
+
+          <div class="seats-row">
+            <div class="seats-info">
+              <span class="material-symbols-outlined">group</span>
+              <span>Team seats: <strong>{{ plan.usedSeats }}/{{ plan.seats }}</strong> used</span>
+            </div>
+            <div class="seats-bar">
+              <div class="seats-fill" [style.width.%]="(plan.usedSeats / plan.seats) * 100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3 class="section-title">Payment Method</h3>
+          <div class="payment-row">
+            <div class="card-icon">
+              <span class="material-symbols-outlined">credit_card</span>
+            </div>
+            <div class="card-info">
+              <p class="card-brand">{{ paymentMethod.brand }} ending in {{ paymentMethod.last4 }}</p>
+              <p class="card-expiry">Expires {{ paymentMethod.expiry }}</p>
+            </div>
+            <button class="btn-ghost">Replace</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

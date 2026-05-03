@@ -1,0 +1,57 @@
+<div class="admin-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <span class="material-symbols-outlined">sports_soccer</span>
+        </div>
+        <div>
+          <h1 class="logo-name">Yardly</h1>
+          <p class="logo-sub">Admin Panel</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a *ngFor="let item of navItems"
+           [routerLink]="item.path"
+           routerLinkActive="active"
+           class="nav-item">
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+          <span>{{ item.label }}</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="storage-card">
+        <p class="storage-label">Storage Usage</p>
+        <div class="storage-bar">
+          <div class="storage-fill"></div>
+        </div>
+        <p class="storage-meta">75% of 10GB used</p>
+      </div>
+
+      <button class="btn-export">
+        <span class="material-symbols-outlined">download</span>
+        Export Reports
+      </button>
+
+      <div class="user-card">
+        <div class="user-avatar">{{ userInitials }}</div>
+        <div class="user-info">
+          <span class="user-name">{{ displayName }}</span>
+          <span class="user-role">Super Admin</span>
+        </div>
+        <button class="btn-signout-icon" (click)="logout()" title="Sign Out">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main area -->
+  <div class="admin-main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

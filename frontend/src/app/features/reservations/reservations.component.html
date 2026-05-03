@@ -1,0 +1,228 @@
+<div class="rv-page">
+
+  <!-- Page Header -->
+  <div class="rv-header">
+    <h1 class="rv-title">Rezervă un Teren</h1>
+    <p class="rv-subtitle">Alege sportul, terenul, data și ora potrivite pentru tine</p>
+  </div>
+
+  <div class="rv-layout">
+
+    <!-- ── Left: Form + Calendar + Slots ──────────────────────────────────────── -->
+    <div class="rv-left">
+
+      <!-- Step 1: Sport + Field + Duration -->
+      <div class="rv-card">
+        <h2 class="rv-card-title">
+          <span class="rv-step">1</span> Detalii rezervare
+        </h2>
+
+        <form [formGroup]="bookingForm" class="rv-form">
+
+          <!-- Sport -->
+          <div class="rv-form-group">
+            <label class="rv-label">Ce vrei să joci?</label>
+            <div class="rv-select-wrap">
+              <span class="material-symbols-outlined rv-select-icon">sports</span>
+              <select class="rv-select" formControlName="sport">
+                <option value="">Selectează sportul...</option>
+                @for (opt of (sportsOptions$ | async) || []; track opt.value) {
+                  <option [value]="opt.value">{{ opt.label }}</option>
+                }
+              </select>
+              <span class="material-symbols-outlined rv-select-arrow">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Field -->
+          <div class="rv-form-group">
+            <label class="rv-label">Unde vrei să joci?</label>
+            <div class="rv-select-wrap" [class.rv-disabled]="!bookingForm.get('sport')?.value">
+              <span class="material-symbols-outlined rv-select-icon">location_on</span>
+              <select class="rv-select" formControlName="field"
+                [disabled]="!bookingForm.get('sport')?.value">
+                <option value="">Selectează terenul...</option>
+                @for (opt of (filteredFieldsOptions$ | async) || []; track opt.value) {
+                  <option [value]="opt.value">{{ opt.label }}</option>
+                }
+              </select>
+              <span class="material-symbols-outlined rv-select-arrow">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Duration -->
+          <div class="rv-form-group">
+            <label class="rv-label">Cât timp vrei să joci?</label>
+            <div class="rv-select-wrap">
+              <span class="material-symbols-outlined rv-select-icon">timer</span>
+              <select class="rv-select" formControlName="duration">
+                <option value="">Selectează durata...</option>
+                @for (opt of durationOptions; track opt.value) {
+                  <option [value]="opt.value">{{ opt.label }}</option>
+                }
+              </select>
+              <span class="material-symbols-outlined rv-select-arrow">expand_more</span>
+            </div>
+          </div>
+
+          <!-- Event toggle -->
+          <label class="rv-toggle">
+            <div class="rv-toggle-track" [class.rv-toggle-on]="bookingForm.get('isEvent')?.value">
+              <input type="checkbox" formControlName="isEvent" (change)="onEventToggle()" hidden>
+              <div class="rv-toggle-thumb"></div>
+            </div>
+            <div>
+              <span class="rv-toggle-label">Rezervare pentru eveniment</span>
+              <span class="rv-toggle-hint">Corporate, turneu, echipă (până la 10h)</span>
+            </div>
+          </label>
+
+        </form>
+      </div>
+
+      <!-- Step 2: Calendar (desktop, after field selected) -->
+      @if (bookingForm.get('field')?.value) {
+        <div class="rv-card">
+          <h2 class="rv-card-title">
+            <span class="rv-step">2</span> Alege data
+          </h2>
+
+          <div class="rv-cal-nav">
+            <button class="rv-cal-nav-btn" (click)="prevMonth()">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <span class="rv-cal-month">{{ monthName }} {{ currentYear }}</span>
+            <button class="rv-cal-nav-btn" (click)="nextMonth()">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+
+          <div class="rv-cal-grid">
+            @for (d of dayNames; track d) {
+              <div class="rv-cal-day-name">{{ d.slice(0, 2) }}</div>
+            }
+            @for (day of calendarDays; track $index) {
+              <button
+                class="rv-cal-day"
+                [class.rv-cal-today]="day.isToday"
+                [class.rv-cal-available]="day.isOpen && !day.isPast && day.date !== 0"
+                [class.rv-cal-past]="day.isPast || !day.isOpen"
+                [class.rv-cal-selected]="isSelectedDay(day)"
+                [class.rv-cal-empty]="day.date === 0"
+                [disabled]="day.date === 0 || day.isPast || !day.isOpen"
+                (click)="onDaySelected(day)"
+              >{{ day.date !== 0 ? day.date : '' }}</button>
+            }
+          </div>
+
+          <div class="rv-cal-legend">
+            <span class="rv-legend-item rv-legend-available">Disponibil</span>
+            <span class="rv-legend-item rv-legend-closed">Închis</span>
+            <span class="rv-legend-item rv-legend-selected">Selectat</span>
+          </div>
+        </div>
+      }
+
+      <!-- Step 3: Time Slots -->
+      @if (bookingForm.get('date')?.value) {
+        <div class="rv-card">
+          <h2 class="rv-card-title">
+            <span class="rv-step">3</span> Alege ora
+          </h2>
+
+          @if (loadingSlots$ | async) {
+            <app-skeleton type="slots" [count]="8" />
+          } @else {
+            @if ((slots$ | async)?.length) {
+              <div class="rv-slots-grid">
+                @for (slot of (slots$ | async)!; track slot.from) {
+                  <button
+                    class="rv-slot"
+                    [class.rv-slot-active]="bookingForm.value.time === slot.from"
+                    (click)="bookingForm.get('time')?.setValue(slot.from)"
+                  >
+                    <span class="material-symbols-outlined">schedule</span>
+                    {{ slot.from }} – {{ slot.to }}
+                  </button>
+                }
+              </div>
+            } @else {
+              <div class="rv-slots-empty">
+                <span class="material-symbols-outlined">event_busy</span>
+                <p>Nu există sloturi disponibile pentru ziua selectată.</p>
+              </div>
+            }
+          }
+        </div>
+      }
+
+    </div>
+
+    <!-- ── Right: Summary ──────────────────────────────────────────────────────── -->
+    <div class="rv-right">
+      <div class="rv-summary-card">
+        <h2 class="rv-summary-title">Sumar Rezervare</h2>
+
+        <div class="rv-summary-rows">
+          <div class="rv-summary-row">
+            <span class="material-symbols-outlined">sports</span>
+            <span class="rv-row-label">Sport</span>
+            <span class="rv-row-value">
+              {{ getLabelFromOptions((sportsOptions$ | async), bookingForm.value.sport) || '—' }}
+            </span>
+          </div>
+          <div class="rv-summary-row">
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="rv-row-label">Teren</span>
+            <span class="rv-row-value">
+              {{ getLabelFromOptions((filteredFieldsOptions$ | async), bookingForm.value.field) || '—' }}
+            </span>
+          </div>
+          <div class="rv-summary-row">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="rv-row-label">Data</span>
+            <span class="rv-row-value">
+              {{ bookingForm.value.date ? (bookingForm.value.date | date:'dd/MM/yyyy') : '—' }}
+            </span>
+          </div>
+          <div class="rv-summary-row">
+            <span class="material-symbols-outlined">timer</span>
+            <span class="rv-row-label">Durată</span>
+            <span class="rv-row-value">{{ bookingForm.value.duration || '—' }}</span>
+          </div>
+          @if ((slots$ | async); as slots) {
+            <div class="rv-summary-row">
+              <span class="material-symbols-outlined">schedule</span>
+              <span class="rv-row-label">Orar</span>
+              <span class="rv-row-value">{{ getSelectedSlot(slots) }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="rv-summary-divider"></div>
+
+        <div class="rv-total-row">
+          <span class="rv-total-label">Total</span>
+          <span class="rv-total-price">
+            {{ getTotalPrice((fields$ | async) || [], bookingForm.value.field, bookingForm.value.duration) || 0 }} RON
+          </span>
+        </div>
+
+        <button
+          class="rv-reserve-btn"
+          (click)="reserve()"
+          [disabled]="!bookingForm.value.field || !bookingForm.value.date || !bookingForm.value.time || !bookingForm.value.duration"
+        >
+          <span class="material-symbols-outlined">calendar_add_on</span>
+          Rezervă acum
+        </button>
+
+        <p class="rv-summary-hint">
+          <span class="material-symbols-outlined">info</span>
+          Rezervarea se confirmă instant. Vei primi un email de confirmare.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

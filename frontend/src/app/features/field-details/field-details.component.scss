@@ -1,0 +1,379 @@
+// ── Variables ──────────────────────────────────────────────────────────────
+$bg:           var(--yardly-bg);
+$card:         var(--yardly-bg-card);
+$border:       var(--yardly-border);
+$accent:       var(--yardly-accent);
+$accent-soft:  var(--yardly-accent-soft);
+$muted:        var(--yardly-muted);
+
+.fd-page {
+  background-color: $bg;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+}
+
+// ── Gallery ────────────────────────────────────────────────────────────────
+.fd-gallery { overflow: hidden; }
+
+.fd-gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4px;
+  height: 460px;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    height: 260px;
+  }
+}
+
+.fd-gallery-main { overflow: hidden; }
+
+.fd-gallery-side {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  gap: 4px;
+
+  @media (max-width: 576px) { display: none; }
+}
+
+.fd-gallery-cell {
+  position: relative;
+  overflow: hidden;
+  &:hover img { transform: scale(1.05); }
+}
+
+.fd-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fd-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fd-show-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+// ── Content ────────────────────────────────────────────────────────────────
+.fd-content { padding-top: 2.5rem; }
+
+.border-white-10 { border-color: rgba(255,255,255,0.1) !important; }
+
+// ── Title ──────────────────────────────────────────────────────────────────
+.fd-badge {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  background: rgba(50,205,50,0.15);
+  color: $accent-soft;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fd-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--yardly-text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+// ── Facilities ─────────────────────────────────────────────────────────────
+.fd-facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  @media (min-width: 576px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.fd-facility-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: $card;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 0.75rem;
+}
+
+// ── Sections ───────────────────────────────────────────────────────────────
+.fd-section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--yardly-text);
+  margin-bottom: 1rem;
+}
+
+.fd-description {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  max-width: 42rem;
+}
+
+.fd-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+  }
+}
+
+// ── Reviews ────────────────────────────────────────────────────────────────
+.fd-review-card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.fd-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(50,205,50,0.2);
+  border: 2px solid rgba(50,205,50,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: $accent;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.fd-review-text {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.fill-1 { font-variation-settings: 'FILL' 1; }
+
+// ── Booking Panel ──────────────────────────────────────────────────────────
+.fd-booking-panel {
+  position: sticky;
+  top: 6rem;
+  background: $card;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+.fd-price {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: $accent;
+}
+
+.fd-step-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--yardly-text);
+  margin-bottom: 0.75rem;
+}
+
+// Calendar
+.fd-calendar {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.fd-calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.fd-cal-nav-btn {
+  background: none;
+  border: none;
+  color: $accent;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  &:hover { background: rgba(50,205,50,0.1); }
+}
+
+.fd-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.fd-cal-weekday {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: $muted;
+  padding: 0.3rem 0;
+  text-transform: uppercase;
+}
+
+.fd-cal-day {
+  padding: 0.4rem 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: white;
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) { background: rgba(50,205,50,0.2); }
+  &.fd-cal-other-month   { color: $muted; }
+  &.fd-cal-past          { color: rgba(255,255,255,0.2); cursor: not-allowed; }
+  &.fd-cal-today         { color: $accent; font-weight: 900; }
+  &.fd-cal-selected {
+    background: $accent;
+    color: #072A1C;
+    box-shadow: 0 0 12px rgba(50,205,50,0.4);
+    &:hover { background: $accent; }
+  }
+}
+
+// Time slots
+.fd-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.fd-slot-btn {
+  padding: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  background: rgba(50,205,50,0.15);
+  color: $accent-soft;
+  border: 1px solid rgba(50,205,50,0.3);
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover { background: $accent; color: #072A1C; border-color: $accent; }
+
+  &.fd-slot-selected {
+    background: $accent;
+    color: #072A1C;
+    border-color: $accent;
+    box-shadow: 0 0 12px rgba(50,205,50,0.4);
+  }
+}
+
+.fd-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  &.fd-legend-available { background: rgba(50,205,50,0.4); }
+  &.fd-legend-selected  { background: $accent; }
+}
+
+// Price breakdown
+.fd-price-breakdown {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+// Book button
+.fd-book-btn {
+  background: $accent;
+  color: #072A1C;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(50,205,50,0.4);
+  transition: transform 0.15s;
+  width: 100%;
+
+  &:hover:not(:disabled)  { transform: scale(1.02); }
+  &:active:not(:disabled) { transform: scale(0.98); }
+  &:disabled {
+    background: rgba(50,205,50,0.3);
+    color: rgba(255,255,255,0.4);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+// Location
+.fd-location-card {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.fd-map-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: $accent !important;
+  &:hover { text-decoration: underline; }
+}
+
+// ── Related Fields ─────────────────────────────────────────────────────────
+.fd-related-card {
+  cursor: pointer;
+  &:hover .fd-related-img { transform: scale(1.08); }
+}
+
+.fd-related-img-wrap {
+  aspect-ratio: 4/3;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.fd-related-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}

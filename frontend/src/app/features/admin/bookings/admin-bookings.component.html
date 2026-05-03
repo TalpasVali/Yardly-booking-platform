@@ -1,0 +1,211 @@
+<div class="page-shell">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="page-title">Reservations</h1>
+      <div class="search-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input class="search-input" [(ngModel)]="searchQuery" placeholder="Search ID, Player, Field..." />
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="btn-icon">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="notif-dot"></span>
+      </button>
+      <div class="admin-badge">
+        <span class="material-symbols-outlined">shield_person</span>
+        Admin User
+      </div>
+      <button class="filter-btn">
+        <span class="material-symbols-outlined">download</span>
+        Export
+      </button>
+      <button class="btn-add">
+        <span class="material-symbols-outlined">add</span>
+        New Booking
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter Row -->
+  <div class="filter-row">
+    <div class="filter-pill">
+      <span class="filter-pill-label">Status:</span>
+      <select class="filter-select" [(ngModel)]="filterStatus">
+        <option *ngFor="let o of statusOptions" [value]="o">{{ o }}</option>
+      </select>
+    </div>
+    <div class="filter-pill">
+      <span class="filter-pill-label">City:</span>
+      <select class="filter-select" [(ngModel)]="filterCity">
+        <option *ngFor="let o of cityOptions" [value]="o">{{ o }}</option>
+      </select>
+    </div>
+    <div class="filter-pill">
+      <span class="filter-pill-label">Manager:</span>
+      <select class="filter-select" [(ngModel)]="filterManager">
+        <option *ngFor="let o of managerOptions" [value]="o">{{ o }}</option>
+      </select>
+    </div>
+    <div class="filter-pill">
+      <span class="filter-pill-label">Sport:</span>
+      <select class="filter-select" [(ngModel)]="filterSport">
+        <option *ngFor="let o of sportOptions" [value]="o">{{ o }}</option>
+      </select>
+    </div>
+    <div class="filter-pill">
+      <span class="filter-pill-label">Date:</span>
+      <select class="filter-select" [(ngModel)]="filterDate">
+        <option *ngFor="let o of dateOptions" [value]="o">{{ o }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap">
+    <div class="main-area">
+
+      <!-- Table -->
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Field</th>
+              <th>User</th>
+              <th>Date / Time</th>
+              <th>Booking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let b of filteredBookings"
+              (click)="selectBooking(b)"
+              [class.selected]="selectedBooking?.id === b.id"
+            >
+              <td class="booking-id">{{ b.id }}</td>
+              <td>
+                <p class="field-name">{{ b.field }}</p>
+                <p class="field-sport">{{ b.sport }}</p>
+              </td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar">{{ b.userInitials }}</div>
+                  <span class="user-name">{{ b.user }}</span>
+                </div>
+              </td>
+              <td class="muted">{{ b.dateTime }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="getStatusClass(b.status)">{{ b.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span class="muted">Showing 1–4 of 1,280 entries</span>
+          <div class="pagination-btns">
+            <button class="page-btn">Previous</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Panel: Reservation Details -->
+    <div class="detail-panel" *ngIf="selectedBooking">
+      <div class="panel-header">
+        <h3 class="panel-title">Reservation Details</h3>
+        <button class="btn-close" (click)="closePanel()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Status + Booking Info -->
+      <div class="booking-meta">
+        <span class="status-badge-lg" [ngClass]="getStatusClass(selectedBooking.status)">
+          {{ selectedBooking.status }}
+        </span>
+        <div class="meta-row">
+          <span class="meta-label">Booking</span>
+          <span class="meta-value">{{ selectedBooking.id }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Amount</span>
+          <span class="meta-value accent">{{ selectedBooking.price }}</span>
+        </div>
+      </div>
+
+      <!-- Reservation Host -->
+      <div class="panel-section">
+        <p class="panel-section-label">RESERVATION HOST</p>
+        <div class="host-card">
+          <div class="host-avatar">{{ selectedBooking.userInitials }}</div>
+          <div>
+            <p class="host-name">{{ selectedBooking.user }}</p>
+            <p class="host-email">{{ selectedBooking.userEmail }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="panel-section">
+        <p class="panel-section-label">TIMELINE</p>
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let step of selectedBooking.timeline; let last = last">
+            <div class="tl-indicator">
+              <div class="tl-dot" [class.done]="step.done" [class.pending]="!step.done"></div>
+              <div class="tl-line" *ngIf="!last" [class.done]="step.done"></div>
+            </div>
+            <div class="tl-content">
+              <p class="tl-label" [class.tl-done]="step.done" [class.tl-pending]="!step.done">{{ step.label }}</p>
+              <p class="tl-time">{{ step.time }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Venue & Time -->
+      <div class="panel-section">
+        <p class="panel-section-label">VENUE &amp; TIME</p>
+        <div class="venue-card">
+          <div class="venue-row">
+            <span class="material-symbols-outlined venue-icon">stadium</span>
+            <div>
+              <p class="venue-name">{{ selectedBooking.venueField }}</p>
+              <p class="venue-sub">{{ selectedBooking.venue }}</p>
+            </div>
+          </div>
+          <div class="venue-row">
+            <span class="material-symbols-outlined venue-icon">schedule</span>
+            <p class="venue-name">{{ selectedBooking.dateTime }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="panel-actions">
+        <button class="btn-cancel-booking">
+          <span class="material-symbols-outlined">cancel</span>
+          Cancel Booking
+        </button>
+        <button class="btn-refund">
+          <span class="material-symbols-outlined">payments</span>
+          Issue Refund
+        </button>
+      </div>
+
+      <!-- Check-in CTA -->
+      <button class="btn-checkin" [disabled]="selectedBooking.status !== 'CONFIRMED'">
+        <span class="material-symbols-outlined">how_to_reg</span>
+        CHECK-IN PLAYER
+      </button>
+    </div>
+
+  </div>
+</div>

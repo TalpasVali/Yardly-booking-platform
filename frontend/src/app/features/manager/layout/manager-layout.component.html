@@ -1,0 +1,43 @@
+<div class="manager-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <span class="material-symbols-outlined">sports_soccer</span>
+      </div>
+      <div>
+        <h1 class="logo-name">Yardly</h1>
+        <p class="logo-sub">Manager Portal</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a *ngFor="let item of navItems"
+         [routerLink]="item.path"
+         routerLinkActive="active"
+         class="nav-item">
+        <span class="material-symbols-outlined">{{ item.icon }}</span>
+        <span>{{ item.label }}</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">{{ userInitials }}</div>
+        <div class="user-info">
+          <span class="user-name">{{ displayName }}</span>
+          <span class="user-role">Head Manager</span>
+        </div>
+      </div>
+      <button class="btn-signout" (click)="logout()">
+        <span class="material-symbols-outlined">logout</span>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main area -->
+  <div class="manager-main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

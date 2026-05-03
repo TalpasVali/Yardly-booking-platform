@@ -1,0 +1,116 @@
+@switch (type) {
+  @case ("field-card") {
+    <div class="skeleton-grid">
+      @for (i of items; track i) {
+        <div class="skeleton-field-card">
+          <div class="skeleton-img animate-skeleton"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line w-75 animate-skeleton"></div>
+            <div
+              class="skeleton-line w-50 animate-skeleton"
+              style="animation-delay: 0.15s"
+            ></div>
+            <div
+              class="skeleton-line w-33 animate-skeleton"
+              style="animation-delay: 0.3s"
+            ></div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @case ("stat") {
+    <div class="skeleton-stats-grid">
+      @for (i of items; track i) {
+        <div class="skeleton-stat animate-skeleton">
+          <div class="skeleton-line w-50"></div>
+          <div
+            class="skeleton-line w-75 skeleton-line--lg"
+            style="animation-delay: 0.2s"
+          ></div>
+        </div>
+      }
+    </div>
+  }
+
+  @case ("table-row") {
+    <div class="skeleton-table">
+      @for (i of items; track i) {
+        <div
+          class="skeleton-row animate-skeleton"
+          [style.animation-delay]="i * 0.15 + 's'"
+        >
+          <div class="skeleton-line w-25"></div>
+          <div class="skeleton-line w-33"></div>
+          <div class="skeleton-line w-20"></div>
+          <div class="skeleton-btn"></div>
+        </div>
+      }
+    </div>
+  }
+
+  @case ("slots") {
+    <div class="skeleton-slots-grid">
+      @for (i of items; track i) {
+        <div
+          class="skeleton-slot animate-skeleton"
+          [style.animation-delay]="i * 0.07 + 's'"
+        ></div>
+      }
+    </div>
+  }
+
+  @case ("field-detail") {
+    <div class="skeleton-fd-page">
+      <div class="skeleton-fd-gallery">
+        <div class="skeleton-fd-main animate-skeleton"></div>
+        <div class="skeleton-fd-side">
+          <div class="animate-skeleton"></div>
+          <div class="animate-skeleton" style="animation-delay: 0.2s"></div>
+        </div>
+      </div>
+      <div class="skeleton-fd-content">
+        <div class="skeleton-fd-left">
+          <div
+            class="skeleton-line w-20 animate-skeleton"
+            style="height: 22px"
+          ></div>
+          <div
+            class="skeleton-line w-75 animate-skeleton"
+            style="height: 42px; animation-delay: 0.1s"
+          ></div>
+          <div
+            class="skeleton-line w-50 animate-skeleton"
+            style="animation-delay: 0.15s"
+          ></div>
+          <div
+            class="skeleton-fd-facilities animate-skeleton"
+            style="animation-delay: 0.2s"
+          ></div>
+          <div
+            class="skeleton-line w-33 animate-skeleton"
+            style="animation-delay: 0.25s; margin-top: 0.5rem"
+          ></div>
+          <div
+            class="skeleton-line w-75 animate-skeleton"
+            style="animation-delay: 0.3s"
+          ></div>
+          <div
+            class="skeleton-line w-50 animate-skeleton"
+            style="animation-delay: 0.35s"
+          ></div>
+          <div
+            class="skeleton-line w-75 animate-skeleton"
+            style="animation-delay: 0.4s"
+          ></div>
+          <div
+            class="skeleton-line w-33 animate-skeleton"
+            style="animation-delay: 0.45s"
+          ></div>
+        </div>
+        <div class="skeleton-fd-panel animate-skeleton"></div>
+      </div>
+    </div>
+  }
+}

@@ -1,0 +1,153 @@
+// Layout Utilities
+.h-20  { height: 5rem; }
+.z-2   { z-index: 2; }
+.z-3   { z-index: 3; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.max-w-md  { max-width: 28rem; }
+.max-w-xl  { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-4xl { max-width: 56rem; }
+.object-cover { object-fit: cover; }
+.grayscale    { filter: grayscale(100%); }
+
+// Buttons
+.btn-primary {
+  background-color: var(--yardly-accent);
+  border-color: var(--yardly-accent);
+  color: #021e0c;
+  font-weight: 700;
+
+  &:hover {
+    background-color: var(--yardly-accent-soft);
+    border-color: var(--yardly-accent-soft);
+    color: #021e0c;
+    transform: scale(1.05);
+  }
+}
+
+.btn-primary-outline {
+  background-color: rgba(57, 232, 25, 0.08);
+  border: 1px solid rgba(57, 232, 25, 0.3);
+  color: var(--yardly-accent);
+
+  &:hover {
+    background-color: var(--yardly-accent);
+    color: #021e0c;
+    border-color: var(--yardly-accent);
+  }
+}
+
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(57, 232, 25, 0.3);
+}
+
+// Hero Section
+.homepage {
+  background-color: var(--yardly-bg);
+  color: var(--yardly-text);
+
+  .text-primary      { color: var(--yardly-accent) !important; }
+  .text-accent-light { color: var(--yardly-accent-soft) !important; }
+  .bg-card-dark      { background-color: var(--yardly-bg-card) !important; }
+  .border-secondary  { border-color: var(--yardly-border) !important; }
+  .bg-dark           { background-color: var(--yardly-bg) !important; }
+}
+
+.hero-section {
+  min-height: 600px;
+
+  .bg-gradient-dark {
+    background: linear-gradient(
+      to bottom,
+      rgba(7, 42, 28, 0.4),
+      rgba(7, 42, 28, 0.8),
+      var(--yardly-bg)
+    );
+  }
+}
+
+.search-bar-container {
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2339E819' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  }
+}
+
+// Sport pills
+.sport-pill {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--yardly-bg-card) !important;
+  border-color: var(--yardly-border) !important;
+
+  &:hover {
+    background-color: var(--yardly-accent) !important;
+    transform: translateY(-5px);
+    border-color: var(--yardly-accent) !important;
+
+    .text-accent-light,
+    .text-primary {
+      color: #021e0c !important;
+    }
+  }
+}
+
+// Field cards
+.field-card {
+  background-color: var(--yardly-bg-card);
+  border-color: var(--yardly-border) !important;
+
+  .card-img-transition {
+    transition: transform 0.5s ease;
+  }
+
+  &:hover {
+    border-color: rgba(57, 232, 25, 0.5) !important;
+
+    .card-img-transition { transform: scale(1.1); }
+    .field-name          { color: var(--yardly-accent) !important; }
+  }
+}
+
+.bg-dark-opacity {
+  background-color: rgba(7, 42, 28, 0.8);
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+}
+
+// Animations
+.scale-hover {
+  transition: transform 0.2s;
+  &:hover  { transform: scale(1.05); }
+  &:active { transform: scale(0.95); }
+}
+
+.bounce-hover {
+  transition: all 0.2s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(57, 232, 25, 0.2);
+  }
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  transition: all 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--yardly-accent) !important;
+    color: #021e0c !important;
+  }
+}
+
+.hover-primary:hover { color: var(--yardly-accent) !important; }
+
+.fill-1 { font-variation-settings: 'FILL' 1; }
+
+// Scrollbar
+.homepage::-webkit-scrollbar        { width: 8px; }
+.homepage::-webkit-scrollbar-track  { background: var(--yardly-bg); }
+.homepage::-webkit-scrollbar-thumb  { background: var(--yardly-bg-card); border-radius: 10px; }

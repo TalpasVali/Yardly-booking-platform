@@ -1,0 +1,57 @@
+<div class="mb-3 position-relative w-100">
+  <label *ngIf="label" class="form-label">{{ label }}</label>
+
+  <div
+    class="form-control d-flex justify-content-between align-items-center"
+    [ngClass]="{ 'is-invalid': error, disabled: disabled }"
+    (click)="toggleDropdown()"
+  >
+    <span class="text-truncate">
+      {{ selectedOption?.label || placeholder }}
+    </span>
+    <i class="bi bi-chevron-down ms-2"></i>
+  </div>
+
+  <div
+    *ngIf="isOpen"
+    class="dropdown-menu show w-100 shadow p-2"
+    style="max-height: 240px; overflow-y: auto"
+  >
+    <div *ngIf="searchable" class="mb-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Căutați..."
+        [value]="searchTerm"
+        (input)="onSearchChange($event)"
+      />
+    </div>
+
+    <div
+      *ngFor="let option of filteredOptions"
+      class="dropdown-item d-flex justify-content-between align-items-center"
+      [ngClass]="{
+        disabled: option.disabled,
+        active: selectedOption?.value === option.value
+      }"
+      (click)="selectOption(option)"
+    >
+      <span>{{ option.label }}</span>
+      <i
+        *ngIf="selectedOption?.value === option.value"
+        class="fas fa-check text-success"
+      ></i>
+    </div>
+
+    <div
+      *ngIf="filteredOptions.length === 0"
+      class="dropdown-item text-muted text-center"
+    >
+      Nu s-au găsit opțiuni
+    </div>
+  </div>
+
+  <div *ngIf="error" class="invalid-feedback d-block mt-1">
+    {{ error }}
+  </div>
+</div>

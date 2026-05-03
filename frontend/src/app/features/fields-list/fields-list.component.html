@@ -1,0 +1,122 @@
+<div class="fl-page">
+
+  <!-- Page Header -->
+  <div class="fl-header">
+    <div>
+      <h1 class="fl-title">Explorează Terenurile</h1>
+      <p class="fl-subtitle">Găsește și rezervă terenul perfect pentru tine</p>
+    </div>
+    <span class="fl-count">{{ filteredFields().length }} terenuri găsite</span>
+  </div>
+
+  <div class="fl-layout">
+
+    <!-- Sidebar Filters -->
+    <aside class="fl-sidebar">
+
+      <!-- Sport -->
+      <div class="fl-filter-group">
+        <h4 class="fl-filter-title">
+          <span class="material-symbols-outlined">sports</span> Sport
+        </h4>
+        <div class="fl-pills">
+          <button
+            class="fl-pill"
+            [class.fl-pill-active]="selectedSport() === 'toate'"
+            (click)="selectSport('toate')"
+          >Toate</button>
+          @for (sport of sports(); track sport._id) {
+            <button
+              class="fl-pill"
+              [class.fl-pill-active]="selectedSport() === sport.name"
+              (click)="selectSport(sport.name)"
+            >
+              <span class="material-symbols-outlined">{{ sport.icon }}</span>
+              {{ sport.name }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="fl-filter-group">
+        <h4 class="fl-filter-title">
+          <span class="material-symbols-outlined">location_on</span> Locație
+        </h4>
+        <div class="fl-pills">
+          <button
+            class="fl-pill"
+            [class.fl-pill-active]="selectedLocation() === 'Toate locațiile'"
+            (click)="selectLocation('Toate locațiile')"
+          >Toate</button>
+          @for (city of cities(); track city._id) {
+            <button
+              class="fl-pill"
+              [class.fl-pill-active]="selectedLocation() === city.name"
+              (click)="selectLocation(city.name)"
+            >{{ city.name }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="fl-filter-group">
+        <h4 class="fl-filter-title">
+          <span class="material-symbols-outlined">payments</span> Preț / oră
+        </h4>
+        <div class="fl-pills fl-pills-col">
+          @for (range of priceRanges; track range.label) {
+            <button
+              class="fl-pill fl-pill-wide"
+              [class.fl-pill-active]="selectedPrice().label === range.label"
+              (click)="selectPrice(range)"
+            >{{ range.label }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Availability -->
+      <div class="fl-filter-group">
+        <h4 class="fl-filter-title">
+          <span class="material-symbols-outlined">event_available</span> Disponibilitate
+        </h4>
+        <div class="fl-pills fl-pills-col">
+          @for (avail of availabilityOptions; track avail) {
+            <button
+              class="fl-pill fl-pill-wide"
+              [class.fl-pill-active]="selectedAvailability() === avail"
+              (click)="selectAvailability(avail)"
+            >{{ avail }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Reset -->
+      <button class="fl-reset-btn" (click)="resetFilters()">
+        <span class="material-symbols-outlined">refresh</span>
+        Resetează filtrele
+      </button>
+
+    </aside>
+
+    <!-- Field Cards Grid -->
+    <div class="fl-content">
+      @if (loading()) {
+        <app-skeleton type="field-card" [count]="6" />
+      } @else if (filteredFields().length === 0) {
+        <div class="fl-empty">
+          <span class="material-symbols-outlined fl-empty-icon">search_off</span>
+          <h3>Niciun teren găsit</h3>
+          <p>Încearcă să modifici filtrele selectate.</p>
+        </div>
+      } @else {
+        <div class="fl-grid">
+          @for (field of filteredFields(); track field._id) {
+            <app-card [field]="field" (viewDetails)="navigateToDetails($event)"></app-card>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

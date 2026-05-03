@@ -1,0 +1,193 @@
+<div class="reservations-page">
+
+  <!-- ─── Header ─────────────────────────────────────────────────────── -->
+  <header class="page-header">
+    <div>
+      <h2 class="page-title">Reservations</h2>
+      <p class="page-sub">Manage and track all bookings across your fields.</p>
+    </div>
+    <div class="header-actions">
+      <div class="search-box">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" placeholder="Search by name, field..." [(ngModel)]="searchQuery" />
+      </div>
+      <button class="btn-export">
+        <span class="material-symbols-outlined">download</span>
+        Export
+      </button>
+      <button class="btn-new">
+        <span class="material-symbols-outlined">add</span>
+        New Reservation
+      </button>
+    </div>
+  </header>
+
+  <div class="page-body">
+
+    <!-- ─── Stats ──────────────────────────────────────────────────────── -->
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let s of stats()">
+        <div class="stat-top">
+          <div class="stat-icon-box">
+            <span class="material-symbols-outlined">{{ s.icon }}</span>
+          </div>
+          <span class="stat-trend" [class.up]="s.up" [class.down]="!s.up">{{ s.trend }}</span>
+        </div>
+        <p class="stat-label">{{ s.label }}</p>
+        <h3 class="stat-value">{{ s.value }}</h3>
+        <p class="stat-sub">{{ s.sub }}</p>
+      </div>
+    </div>
+
+    <!-- ─── Table Card ─────────────────────────────────────────────────── -->
+    <div class="table-card">
+
+      <!-- Toolbar -->
+      <div class="table-toolbar">
+        <!-- Status tabs -->
+        <div class="filter-tabs">
+          <button
+            *ngFor="let f of filters"
+            class="filter-tab"
+            [class.active]="activeFilter === f.id"
+            (click)="setFilter(f.id)"
+          >
+            {{ f.label }}
+            <span class="tab-count">{{ countByStatus[f.id] }}</span>
+          </button>
+        </div>
+
+        <!-- Field select -->
+        <div class="toolbar-right">
+          <div class="select-wrap">
+            <span class="material-symbols-outlined select-icon">grid_view</span>
+            <select [(ngModel)]="selectedField">
+              <option value="all">All Fields</option>
+              <option *ngFor="let f of availableFields()" [value]="f.name">{{ f.name }}</option>
+            </select>
+          </div>
+          <button class="icon-btn">
+            <span class="material-symbols-outlined">filter_list</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Field</th>
+              <th>Date &amp; Time</th>
+              <th>Duration</th>
+              <th>Status</th>
+              <th class="text-right">Amount</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of filteredReservations">
+
+              <!-- User -->
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar">{{ r.initials }}</div>
+                  <div class="user-info">
+                    <span class="user-name">{{ r.name }}</span>
+                    <span class="user-email">{{ r.email }}</span>
+                  </div>
+                </div>
+              </td>
+
+              <!-- Field -->
+              <td>
+                <div class="field-cell">
+                  <span class="field-name">{{ r.field }}</span>
+                  <span class="field-sport">{{ r.sport }}</span>
+                </div>
+              </td>
+
+              <!-- Date & Time -->
+              <td>
+                <div class="datetime-cell">
+                  <span class="dt-date">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    {{ r.date }}
+                  </span>
+                  <span class="dt-time">
+                    <span class="material-symbols-outlined">schedule</span>
+                    {{ r.time }}
+                  </span>
+                </div>
+              </td>
+
+              <!-- Duration -->
+              <td>
+                <span class="duration-chip">
+                  <span class="material-symbols-outlined">timer</span>
+                  {{ formatDuration(r.duration) }}
+                </span>
+              </td>
+
+              <!-- Status -->
+              <td>
+                <span class="status-badge" [class]="'status--' + r.status">
+                  {{ r.status | titlecase }}
+                </span>
+              </td>
+
+              <!-- Amount -->
+              <td class="text-right amount">${{ r.amount }}.00</td>
+
+              <!-- Actions -->
+              <td class="text-center">
+                <div class="row-actions">
+                  <button class="action-icon" title="View details">
+                    <span class="material-symbols-outlined">visibility</span>
+                  </button>
+                  <button class="action-icon" title="Edit" *ngIf="r.status === 'pending' || r.status === 'confirmed'">
+                    <span class="material-symbols-outlined">edit</span>
+                  </button>
+                  <button class="action-icon action-icon--confirm" title="Confirm" *ngIf="r.status === 'pending'">
+                    <span class="material-symbols-outlined">check_circle</span>
+                  </button>
+                  <button class="action-icon action-icon--danger" title="Cancel" *ngIf="r.status === 'pending' || r.status === 'confirmed'">
+                    <span class="material-symbols-outlined">cancel</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Empty state -->
+            <tr *ngIf="filteredReservations.length === 0">
+              <td colspan="7">
+                <div class="empty-state">
+                  <span class="material-symbols-outlined">event_busy</span>
+                  <p>No reservations found.</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <div class="table-footer">
+        <span class="results-count">Showing {{ filteredReservations.length }} of {{ reservations.length }} reservations</span>
+        <div class="pagination">
+          <button class="page-btn" disabled>
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

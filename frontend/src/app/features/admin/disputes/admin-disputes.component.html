@@ -1,0 +1,131 @@
+<div class="page-shell">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="page-title">Disputes</h1>
+      <div class="search-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input class="search-input" [(ngModel)]="searchQuery" placeholder="Search by ID, user, or field name..." />
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap">
+    <div class="main-area">
+
+      <!-- Filters -->
+      <div class="filter-tabs">
+        <button
+          *ngFor="let f of filters"
+          class="filter-tab"
+          [class.active]="activeFilter === f"
+          (click)="activeFilter = f"
+        >{{ f }}</button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dispute ID</th>
+              <th>Field Name</th>
+              <th>User</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let d of filteredDisputes"
+              (click)="selectDispute(d)"
+              [class.selected]="selectedDispute?.id === d.id"
+            >
+              <td class="dispute-id">{{ d.id }}</td>
+              <td class="field-name-cell">{{ d.fieldName }}</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar">{{ d.userInitials }}</div>
+                  <span>{{ d.user }}</span>
+                </div>
+              </td>
+              <td class="muted">{{ d.type }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="getStatusClass(d.status)">{{ d.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span class="muted">Showing 1–4 of 24 disputes</span>
+          <div class="pagination-btns">
+            <button class="page-btn">‹</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">›</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Panel: Dispute Details -->
+    <div class="detail-panel" *ngIf="selectedDispute">
+      <div class="panel-header">
+        <div>
+          <h3 class="panel-title">Dispute Details</h3>
+          <p class="panel-id">{{ selectedDispute.id }}</p>
+        </div>
+        <button class="btn-close" (click)="closePanel()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Complaint Description -->
+      <div class="panel-section">
+        <p class="panel-section-label">COMPLAINT DESCRIPTION</p>
+        <div class="complaint-box">
+          {{ selectedDispute.complaintDescription }}
+        </div>
+      </div>
+
+      <!-- Manager Response -->
+      <div class="panel-section">
+        <p class="panel-section-label">MANAGER RESPONSE (SKYLINE 190GDE)</p>
+        <div class="manager-response-box">
+          {{ selectedDispute.managerResponse }}
+        </div>
+      </div>
+
+      <!-- Activity Timeline -->
+      <div class="panel-section">
+        <p class="panel-section-label">ACTIVITY TIMELINE</p>
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let step of selectedDispute.timeline; let last = last">
+            <div class="tl-indicator">
+              <div class="tl-dot" [class.done]="step.done" [class.pending]="!step.done"></div>
+              <div class="tl-line" *ngIf="!last" [class.done]="step.done"></div>
+            </div>
+            <p class="tl-label" [class.tl-done]="step.done" [class.tl-pending]="!step.done">{{ step.label }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="panel-actions">
+        <button class="btn-refund">
+          <span class="material-symbols-outlined">payments</span>
+          Issue Refund
+        </button>
+        <button class="btn-resolve">
+          <span class="material-symbols-outlined">check_circle</span>
+          Mark Resolved
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

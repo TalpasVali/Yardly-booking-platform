@@ -1,0 +1,51 @@
+// ============================================================
+// YARDLY DESIGN TOKENS - aliniate cu Stitch Design System
+// ============================================================
+
+// --- Accent / Primary Green ---
+$accent:        #39E819;
+$accent-soft:   #57E439;
+$accent-dark:   #32CD32;
+
+// --- Dark Mode Palette ---
+$dark-bg:       #072A1C;
+$dark-nav:      #021e0c;
+$dark-card:     #114D31;
+$dark-hover:    #1a5e3d;
+$dark-border:   #1a5e3d;
+$dark-text:     #ffffff;
+$dark-muted:    #8ba98b;
+
+// --- Light Mode Palette ---
+$light-bg:      #F1F5F9;
+$light-nav:     #ffffff;
+$light-card:    #ffffff;
+$light-border:  #E2E8F0;
+$light-text:    #0F172A;
+$light-muted:   #64748B;
+
+// --- Semantic Colors ---
+$danger:        #C34040;
+$success:       $accent;
+$warning:       #f4c430;
+$info:          #29b6f6;
+$available:     #A3E635;
+$unavailable:   #C34040;
+
+// ============================================================
+// UTILITY CLASSES (dark mode defaults)
+// ============================================================
+
+.bg-yardly        { background-color: var(--yardly-bg) !important; }
+.bg-yardly-card   { background-color: var(--yardly-bg-card) !important; }
+.bg-accent        { background-color: var(--yardly-accent) !important; }
+.bg-danger        { background-color: $danger !important; }
+
+.text-accent      { color: var(--yardly-accent) !important; }
+.text-accent-soft { color: var(--yardly-accent-soft) !important; }
+.text-yardly      { color: var(--yardly-text) !important; }
+.text-yardly-muted{ color: var(--yardly-muted) !important; }
+.text-danger      { color: $danger !important; }
+
+.border-yardly    { border-color: var(--yardly-border) !important; }
+.border-accent    { border-color: var(--yardly-accent) !important; }

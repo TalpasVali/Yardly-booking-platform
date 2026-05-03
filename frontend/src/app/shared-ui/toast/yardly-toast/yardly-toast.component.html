@@ -1,0 +1,15 @@
+<div
+  class="yardly-toast d-flex align-items-center justify-content-between shadow-lg"
+  [ngClass]="borderClass"
+>
+  <div class="d-flex align-items-center">
+    <i [class]="icon + ' me-2 icon'"></i>
+    <span class="text-white">{{ message }}</span>
+  </div>
+  <button
+    type="button"
+    class="btn-close btn-close-white"
+    aria-label="Close"
+    (click)="close.emit()"
+  ></button>
+</div>

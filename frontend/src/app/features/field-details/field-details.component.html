@@ -1,0 +1,365 @@
+@if (field(); as field) {
+  <div class="fd-page">
+    <!-- Image Gallery -->
+    <section class="fd-gallery container-fluid px-0">
+      <div class="fd-gallery-grid">
+        <div class="fd-gallery-main">
+          <img
+            [src]="field.images[0]"
+            [alt]="field.name"
+            class="fd-gallery-img"
+          />
+        </div>
+        @if (field.images.length > 1) {
+          <div class="fd-gallery-side">
+            @for (img of field.images.slice(1, 3); track img; let i = $index) {
+              <div
+                class="fd-gallery-cell"
+                [class.fd-gallery-last]="i === 1 && field.images.length > 3"
+              >
+                <img [src]="img" [alt]="field.name" class="fd-gallery-img" />
+                @if (i === 1 && field.images.length > 3) {
+                  <div class="fd-gallery-overlay">
+                    <button class="fd-show-all-btn">
+                      <span class="material-symbols-outlined">grid_view</span>
+                      +{{ field.images.length - 3 }} poze
+                    </button>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container fd-content">
+      <div class="row g-5">
+        <!-- Left Column -->
+        <div class="col-12 col-lg-8">
+          <!-- Title Block -->
+          <div class="fd-title-block">
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <span class="fd-badge">{{
+                field.status === "available" ? "Disponibil" : field.status
+              }}</span>
+              <div class="d-flex align-items-center gap-1 text-warning">
+                <span
+                  class="material-symbols-outlined fill-1"
+                  style="font-size: 1rem"
+                  >star</span
+                >
+                <span class="fw-bold text-white">{{
+                  field.averageRating
+                }}</span>
+              </div>
+            </div>
+            <h1 class="fd-title">{{ field.name }}</h1>
+            <div class="d-flex align-items-center gap-2 text-muted mt-2">
+              <span class="material-symbols-outlined" style="font-size: 1.2rem"
+                >location_on</span
+              >
+              <span>{{ field.address }}</span>
+            </div>
+          </div>
+
+          <!-- Facilities Grid -->
+          <div
+            class="fd-facilities-grid border-top border-bottom border-white-10 py-4 my-4"
+          >
+            @for (facility of field.facilities; track facility) {
+              <div class="fd-facility-card">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  style="font-size: 2rem"
+                  >{{ getFacilityIcon(facility) }}</span
+                >
+                <div>
+                  <div class="fw-bold text-white">{{ facility }}</div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- About -->
+          <div class="fd-section">
+            <h3 class="fd-section-title">Despre acest teren</h3>
+            <p class="fd-description">{{ field.description }}</p>
+            <ul class="fd-checklist">
+              <li>
+                <span class="material-symbols-outlined text-primary"
+                  >check_circle</span
+                >
+                Capacitate: {{ field.capacity }} jucători
+              </li>
+              <li>
+                <span class="material-symbols-outlined text-primary"
+                  >check_circle</span
+                >
+                Program: {{ getScheduleLabel(field.schedule) }}
+              </li>
+              <li>
+                <span class="material-symbols-outlined text-primary"
+                  >check_circle</span
+                >
+                Rezervare online disponibilă
+              </li>
+            </ul>
+          </div>
+
+          <!-- Reviews (placeholder) -->
+          <div class="fd-section mt-5">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h3 class="fd-section-title mb-0">Recenzii</h3>
+              <button class="btn btn-link text-primary fw-bold p-0">
+                Scrie o recenzie
+              </button>
+            </div>
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <div class="fd-review-card">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="fd-avatar">A</div>
+                    <div class="flex-fill">
+                      <div class="fw-bold text-white">Alex Moldovan</div>
+                      <div class="text-muted small">Rezervat de 3 ori</div>
+                    </div>
+                    <div class="d-flex text-warning">
+                      @for (s of [1, 2, 3, 4, 5]; track s) {
+                        <span
+                          class="material-symbols-outlined fill-1"
+                          style="font-size: 0.9rem"
+                          >star</span
+                        >
+                      }
+                    </div>
+                  </div>
+                  <p class="fd-review-text">
+                    "Teren excelent, gazon de calitate și iluminat nocturn
+                    impecabil."
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="fd-review-card">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="fd-avatar">I</div>
+                    <div class="flex-fill">
+                      <div class="fw-bold text-white">Ioana Popa</div>
+                      <div class="text-muted small">Rezervat de 1 dată</div>
+                    </div>
+                    <div class="d-flex text-warning">
+                      @for (s of [1, 2, 3, 4]; track s) {
+                        <span
+                          class="material-symbols-outlined fill-1"
+                          style="font-size: 0.9rem"
+                          >star</span
+                        >
+                      }
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 0.9rem"
+                        >star</span
+                      >
+                    </div>
+                  </div>
+                  <p class="fd-review-text">
+                    "Experiență plăcută, procesul de rezervare a fost simplu și
+                    rapid."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column — Booking Panel -->
+        <div class="col-12 col-lg-4">
+          <div class="fd-booking-panel">
+            <!-- Price -->
+            <div class="d-flex justify-content-between align-items-end mb-4">
+              <div>
+                <div class="text-muted small">Începând de la</div>
+                <div class="d-flex align-items-baseline gap-1">
+                  <span class="fd-price">{{ field.pricePerHour }} RON</span>
+                  <span class="text-muted">/ oră</span>
+                </div>
+              </div>
+              <span class="fd-badge">POPULAR</span>
+            </div>
+
+            <!-- Calendar -->
+            <div class="mb-4">
+              <div class="fd-step-label">1. Selectează Data</div>
+              <div class="fd-calendar">
+                <div class="fd-calendar-nav">
+                  <button (click)="prevMonth()" class="fd-cal-nav-btn">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  <span class="fw-bold text-white text-capitalize">{{
+                    monthLabel()
+                  }}</span>
+                  <button (click)="nextMonth()" class="fd-cal-nav-btn">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+                <div class="fd-calendar-grid">
+                  @for (wd of weekDays; track wd) {
+                    <div class="fd-cal-weekday">{{ wd }}</div>
+                  }
+                  @for (day of calendarDays(); track day.date.toISOString()) {
+                    <button
+                      class="fd-cal-day"
+                      [class.fd-cal-other-month]="!day.isCurrentMonth"
+                      [class.fd-cal-past]="day.isPast"
+                      [class.fd-cal-today]="isToday(day)"
+                      [class.fd-cal-selected]="isSelectedDate(day)"
+                      [disabled]="day.isPast"
+                      (click)="selectDate(day.date)"
+                    >
+                      {{ day.day }}
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Time Slots -->
+            <div class="mb-4">
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <div class="fd-step-label mb-0">2. Alege Ora</div>
+                <span class="text-muted small">Durata: 1h</span>
+              </div>
+
+              @if (loadingSlots()) {
+                <app-skeleton type="slots" [count]="9" />
+              } @else if (availableSlots().length === 0) {
+                <p class="text-muted small text-center py-2">
+                  Nicio oră disponibilă pentru această zi.
+                </p>
+              } @else {
+                <div class="fd-slots-grid">
+                  @for (slot of availableSlots(); track slot.from) {
+                    <button
+                      class="fd-slot-btn"
+                      [class.fd-slot-selected]="selectedSlot() === slot.from"
+                      (click)="selectSlot(slot.from)"
+                    >
+                      {{ slot.from }}
+                    </button>
+                  }
+                </div>
+                <div class="d-flex gap-3 mt-2">
+                  <div class="d-flex align-items-center gap-1">
+                    <span class="fd-legend-dot fd-legend-available"></span>
+                    <span
+                      class="text-muted"
+                      style="
+                        font-size: 0.65rem;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                      "
+                      >Disponibil</span
+                    >
+                  </div>
+                  <div class="d-flex align-items-center gap-1">
+                    <span class="fd-legend-dot fd-legend-selected"></span>
+                    <span
+                      class="text-muted"
+                      style="
+                        font-size: 0.65rem;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                      "
+                      >Selectat</span
+                    >
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Price Breakdown -->
+            @if (selectedSlot()) {
+              <div class="fd-price-breakdown mb-4">
+                <div class="d-flex justify-content-between text-sm mb-2">
+                  <span class="text-muted">Tarif teren (1h)</span>
+                  <span class="text-white fw-bold"
+                    >{{ field.pricePerHour }} RON</span
+                  >
+                </div>
+                <div class="d-flex justify-content-between text-sm mb-3">
+                  <span class="text-muted">Comision Yardly</span>
+                  <span class="text-white fw-bold">{{ serviceFee }} RON</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between border-top border-white-10 pt-3"
+                >
+                  <span class="fw-bold text-white text-uppercase">Total</span>
+                  <span class="fd-price">{{ total }} RON</span>
+                </div>
+              </div>
+            }
+
+            <button class="fd-book-btn w-100" [disabled]="!selectedSlot()">
+              REZERVĂ ACUM
+            </button>
+            <p class="text-center text-muted mt-2" style="font-size: 0.7rem">
+              Nu vei fi taxat până la confirmarea rezervării.
+            </p>
+
+            <!-- Location -->
+            @if (field.locationUrl) {
+              <div class="fd-location-card mt-4">
+                <div class="fd-step-label">Locație</div>
+                <a
+                  [href]="field.locationUrl"
+                  target="_blank"
+                  class="fd-map-link d-flex align-items-center gap-2 text-primary"
+                >
+                  <span class="material-symbols-outlined">location_on</span>
+                  <span>{{ field.address }}</span>
+                </a>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Fields -->
+      @if (relatedFields().length > 0) {
+        <section class="fd-related mt-5 pt-4 border-top border-white-10">
+          <h3 class="fd-section-title mb-4">Alte terenuri disponibile</h3>
+          <div class="row g-4">
+            @for (rel of relatedFields(); track rel._id) {
+              <div class="col-6 col-md-3">
+                <div
+                  class="fd-related-card group"
+                  [routerLink]="['/field-details', rel._id]"
+                >
+                  <div class="fd-related-img-wrap">
+                    <img
+                      [src]="rel.images[0] | imageUrl"
+                      [alt]="rel.name"
+                      class="fd-related-img"
+                    />
+                  </div>
+                  <div class="fw-bold text-white mt-2 group-hover-text-primary">
+                    {{ rel.name }}
+                  </div>
+                  <div class="text-muted small">
+                    {{ rel.pricePerHour }} RON / oră
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  </div>
+} @else {
+  <app-skeleton type="field-detail" />
+}

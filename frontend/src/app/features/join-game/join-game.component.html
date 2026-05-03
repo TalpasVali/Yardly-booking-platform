@@ -1,0 +1,188 @@
+<div class="jg-page">
+
+  <!-- Page Header -->
+  <div class="jg-header">
+    <h1 class="jg-title">Join Game</h1>
+    <p class="jg-subtitle">Secure your spot on the field for tonight's showdown.</p>
+  </div>
+
+  <div class="jg-layout">
+
+    <!-- Left Column -->
+    <div class="jg-left">
+
+      <!-- Match Card -->
+      <div class="jg-match-card">
+        <!-- Map / Image area -->
+        <div class="jg-map-area">
+          <div class="jg-map-gradient"></div>
+          <div class="jg-map-grid">
+            @for (i of mapGrid; track i) {
+              <div class="jg-map-cell"></div>
+            }
+          </div>
+          <div class="jg-map-location">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>New York</span>
+          </div>
+          <div class="jg-map-bottom-fade"></div>
+          <span class="jg-premium-badge">{{ game.badge }}</span>
+        </div>
+
+        <!-- Game Info -->
+        <div class="jg-match-body">
+          <div class="jg-match-top">
+            <div>
+              <h2 class="jg-match-title">{{ game.title }}</h2>
+              <p class="jg-match-venue">
+                <span class="material-symbols-outlined">location_on</span>
+                {{ game.venue }}
+              </p>
+            </div>
+            <div class="jg-time-col">
+              <span class="jg-time-range">{{ game.timeStart }} - {{ game.timeEnd }}</span>
+              <span class="jg-time-label">LOCAL TIME</span>
+            </div>
+          </div>
+
+          <div class="jg-meta-grid">
+            <div class="jg-meta-item">
+              <div class="jg-meta-icon-box">
+                <span class="material-symbols-outlined">sports_soccer</span>
+              </div>
+              <div>
+                <p class="jg-meta-label">Sport</p>
+                <p class="jg-meta-value">{{ game.sport }}</p>
+              </div>
+            </div>
+            <div class="jg-meta-item">
+              <div class="jg-meta-icon-box">
+                <span class="material-symbols-outlined">bolt</span>
+              </div>
+              <div>
+                <p class="jg-meta-label">Intensity</p>
+                <p class="jg-meta-value">{{ game.intensity }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="jg-match-footer">
+            <button class="jg-map-btn" (click)="viewMap()">
+              <span class="material-symbols-outlined">map</span>
+              View Map
+            </button>
+            <div class="jg-price">
+              <span class="material-symbols-outlined">payments</span>
+              <span class="jg-price-amount">${{ game.pricePerPlayer }}.00</span>
+              <span class="jg-price-per">/ player</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Players Joined -->
+      <div class="jg-card jg-players-card">
+        <div class="jg-players-header">
+          <div>
+            <h3>Players Joined</h3>
+            <p class="jg-players-sub">Join {{ joinedCount }} others already on the roster</p>
+          </div>
+          <span class="jg-spots-count">{{ joinedCount }} / {{ maxPlayers }} spots filled</span>
+        </div>
+
+        <div class="jg-progress-wrap">
+          <div class="jg-progress-bar" [style.width.%]="progressPercent"></div>
+        </div>
+        <div class="jg-progress-labels">
+          <span>{{ spotsLeft }} spots remaining</span>
+          <span>{{ progressPercent }}% Full</span>
+        </div>
+
+        <div class="jg-avatars">
+          @for (player of players; track player.id) {
+            <img [src]="player.avatarUrl" [alt]="player.name" class="jg-avatar">
+          }
+          <div class="jg-avatar jg-avatar-add">
+            <span class="material-symbols-outlined">person_add</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column -->
+    <div class="jg-right">
+
+      <!-- Reserve Card -->
+      <div class="jg-card jg-reserve-card">
+        <h3>Reserve Your Spot</h3>
+
+        @if (!joined) {
+          <div class="jg-form-group">
+            <label class="jg-label">FULL NAME</label>
+            <input class="jg-input" type="text" placeholder="John Doe" [(ngModel)]="fullName">
+          </div>
+          <div class="jg-form-group">
+            <label class="jg-label">EMAIL ADDRESS</label>
+            <input class="jg-input" type="email" placeholder="john&#64;example.com" [(ngModel)]="email">
+          </div>
+          <button class="jg-join-btn" (click)="joinMatch()" [disabled]="!fullName || !email || joining">
+            @if (joining) {
+              <span class="material-symbols-outlined jg-spin">progress_activity</span>
+            } @else {
+              JOIN MATCH
+            }
+          </button>
+          <p class="jg-terms">By joining, you agree to Yardly's fair play policy</p>
+        } @else {
+          <div class="jg-success">
+            <span class="material-symbols-outlined">check_circle</span>
+            <p>You're in! See you on the pitch.</p>
+          </div>
+        }
+      </div>
+
+      <!-- Invite Your Crew -->
+      <div class="jg-card jg-invite-card">
+        <h3>
+          <span class="material-symbols-outlined">share</span>
+          Invite your crew
+        </h3>
+        <div class="jg-share-link">
+          <span class="jg-share-text">{{ shareLink }}</span>
+          <button class="jg-icon-btn" (click)="copyLink()">
+            <span class="material-symbols-outlined">{{ copied ? 'check' : 'content_copy' }}</span>
+          </button>
+        </div>
+        <div class="jg-invite-icons">
+          <button class="jg-invite-btn" (click)="shareEmail()" title="Email">
+            <span class="material-symbols-outlined">mail</span>
+          </button>
+          <button class="jg-invite-btn" (click)="shareMessage()" title="Message">
+            <span class="material-symbols-outlined">chat_bubble</span>
+          </button>
+          <button class="jg-invite-btn" (click)="showQR()" title="QR Code">
+            <span class="material-symbols-outlined">qr_code</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mini Map -->
+      <div class="jg-card jg-mini-map-card">
+        <div class="jg-mini-map">
+          <div class="jg-mini-map-grid">
+            @for (i of mapGrid; track i) {
+              <div class="jg-mini-cell"></div>
+            }
+          </div>
+          <div class="jg-mini-pin">
+            <span class="material-symbols-outlined">location_on</span>
+          </div>
+        </div>
+        <p class="jg-mini-map-hint">Need directions? Use our GPS coordinates.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

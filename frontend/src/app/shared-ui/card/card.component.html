@@ -1,0 +1,62 @@
+<div class="yc-card" (click)="goToDetails(field._id)">
+  <!-- Image -->
+  <div class="yc-img-wrap">
+    <img [src]="field.images[0]" [alt]="field.name" class="yc-img" />
+    <div class="yc-img-overlay"></div>
+
+    <!-- Rating badge -->
+    <div class="yc-rating-badge">
+      <span class="material-symbols-outlined fill-1">star</span>
+      <span>{{ field.averageRating }}</span>
+    </div>
+
+    <!-- Status badge -->
+    <span
+      class="yc-status-badge"
+      [class.yc-status-available]="field.status === 'available'"
+    >
+      {{ field.status === "available" ? "Disponibil" : field.status }}
+    </span>
+  </div>
+
+  <!-- Body -->
+  <div class="yc-body">
+    <div class="yc-top-row">
+      <div class="yc-name-col">
+        <h4 class="yc-name">{{ field.name }}</h4>
+        <p class="yc-address">
+          <span class="material-symbols-outlined">location_on</span>
+          {{ field.address }}
+        </p>
+      </div>
+      <div class="yc-price-col">
+        <span class="yc-price">{{ field.pricePerHour }}</span>
+        <span class="yc-price-unit">RON/h</span>
+      </div>
+    </div>
+
+    <!-- Facilities -->
+    @if (field.facilities?.length) {
+      <div class="yc-facilities">
+        @for (f of field.facilities.slice(0, 3); track f) {
+          <span class="yc-facility-tag">{{ f }}</span>
+        }
+        @if (field.facilities.length > 3) {
+          <span class="yc-facility-tag"
+            >+{{ field.facilities.length - 3 }}</span
+          >
+        }
+      </div>
+    }
+
+    <!-- Book button -->
+    <button
+      class="yc-book-btn"
+      [disabled]="field.status === 'full'"
+      (click)="$event.stopPropagation(); goToDetails(field._id)"
+    >
+      <span class="material-symbols-outlined">calendar_month</span>
+      {{ field.status === "full" ? "Indisponibil" : "REZERVĂ" }}
+    </button>
+  </div>
+</div>

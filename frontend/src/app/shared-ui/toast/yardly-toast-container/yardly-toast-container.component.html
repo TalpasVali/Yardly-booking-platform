@@ -1,0 +1,13 @@
+<div
+  class="position-fixed bottom-0 start-50 translate-middle-x mb-4 d-flex flex-column align-items-center"
+  style="z-index: 1055"
+>
+  <yardly-toast
+    *ngFor="let notif of notifications"
+    [message]="notif.message"
+    [type]="notif.type"
+    (close)="startLeaveAnimation(notif)"
+    [ngClass]="notif.state"
+  >
+  </yardly-toast>
+</div>

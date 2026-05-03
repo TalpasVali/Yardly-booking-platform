@@ -1,0 +1,462 @@
+// ─── Dev Quick Login ──────────────────────────────────────────────────────────
+.dev-accounts {
+    margin-bottom: 1.25rem;
+    padding: 0.875rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 10px;
+
+    &-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.35);
+        margin-bottom: 0.625rem;
+    }
+
+    &-row {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+.dev-account-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--acc-color, #39E819);
+    background: transparent;
+    color: var(--acc-color, #39E819);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Lexend', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    .material-symbols-outlined {
+        font-size: 1rem;
+    }
+
+    &:hover:not(:disabled) {
+        background: var(--acc-color, #39E819);
+        color: #0d1a0d;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.login-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--yardly-bg);
+    font-family: 'Lexend', sans-serif;
+    color: var(--yardly-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    @media (max-width: 991px) {
+        flex-direction: column;
+    }
+}
+
+// ─── Left Hero Section (desktop only) ────────────────────────────────────────
+
+.hero-section {
+    display: none;
+    flex: 1;
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--yardly-accent-10);
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+
+    @media (min-width: 992px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.2;
+
+    .blob {
+        position: absolute;
+        width: 24rem;
+        height: 24rem;
+        background-color: var(--yardly-accent);
+        border-radius: 50%;
+        filter: blur(120px);
+    }
+
+    .blob-top    { top: 0; left: -5rem; }
+    .blob-bottom { bottom: 0; right: -5rem; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 32rem;
+    text-align: center;
+
+    @media (min-width: 992px) { text-align: left; }
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--yardly-accent);
+    margin-bottom: 2rem;
+
+    .brand-icon { font-size: 2.5rem; }
+    .brand-name { font-size: 1.875rem; font-weight: 700; }
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--yardly-text);
+
+    @media (min-width: 1200px) { font-size: 4.5rem; }
+
+    .text-accent { color: var(--yardly-accent); }
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--yardly-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.hero-image-container {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--yardly-accent-20);
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGvt4FpfNP5svZzCSZATORLuBNjEHMi4dc_dfH4KIZvSGhfUGa39OcSBiGAgVI60jxNdL0ihtIbYVwmtbTKxY4ZqOYQqNvp2sTZj4hkMuUi9RcIRUX1WtDHOdXoae3y15CV2c48dtuND2oxFuFbcCu8iwqYYL2HhpJB6zXccPkwoCai9WcK-vuBr_jefJ63cHz2AJBFiS5gJmd5j6F1GDOwA57tBBwAcsNW_YKy16yndq9qrGD38tkIHcExH6A1avKBdzuPSwJgHI');
+    background-size: cover;
+    background-position: center;
+}
+
+// ─── Right Form Section ───────────────────────────────────────────────────────
+
+.form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    @media (min-width: 640px) { padding: 3rem; }
+    @media (min-width: 992px) { padding: 5rem; }
+}
+
+.login-card {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--yardly-bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--yardly-accent-20);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    @media (min-width: 640px) { padding: 3rem; }
+}
+
+// ─── Card Header ─────────────────────────────────────────────────────────────
+
+.card-header   { margin-bottom: 2rem; }
+
+.card-title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: var(--yardly-text);
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle { color: var(--yardly-muted); font-size: 1rem; }
+
+// ─── Form ─────────────────────────────────────────────────────────────────────
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--yardly-text);
+    margin-left: 0.25rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 1rem;
+    background-color: var(--yardly-input-bg);
+    border: 1px solid var(--yardly-accent-20);
+    border-radius: 0.75rem;
+    color: var(--yardly-text);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+
+    &::placeholder { color: var(--yardly-muted); }
+
+    &:focus {
+        outline: none;
+        border-color: var(--yardly-accent);
+        box-shadow: 0 0 0 2px var(--yardly-accent-20);
+    }
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--yardly-muted);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    &:hover { color: var(--yardly-accent); }
+}
+
+// ─── Validation ───────────────────────────────────────────────────────────────
+
+.error-text {
+    color: var(--yardly-danger);
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.alert-error {
+    background-color: rgba(195, 64, 64, 0.1);
+    border: 1px solid rgba(195, 64, 64, 0.5);
+    color: var(--yardly-danger);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+// ─── Remember me & Forgot Password ───────────────────────────────────────────
+
+.form-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -0.25rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+        accent-color: var(--yardly-accent);
+        cursor: pointer;
+    }
+
+    span {
+        font-size: 0.875rem;
+        color: var(--yardly-muted);
+    }
+}
+
+.forgot-password {
+    a {
+        font-size: 0.75rem;
+        color: var(--yardly-accent);
+        font-weight: 500;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+}
+
+// ─── Submit Button ────────────────────────────────────────────────────────────
+
+.btn-login {
+    margin-top: 1rem;
+    height: 3.5rem;
+    width: 100%;
+    background-color: var(--yardly-accent);
+    color: #021e0c;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(:disabled)  { transform: scale(1.02); background-color: var(--yardly-accent-soft); }
+    &:active:not(:disabled) { transform: scale(0.98); }
+    &:disabled              { opacity: 0.5; cursor: not-allowed; }
+}
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+
+    &::before,
+    &::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background-color: var(--yardly-accent-20);
+    }
+
+    .divider-text {
+        font-size: 0.75rem;
+        color: var(--yardly-muted);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+// ─── Social Buttons ───────────────────────────────────────────────────────────
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-social {
+    height: 3.5rem;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--yardly-accent-30);
+    color: var(--yardly-text);
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    &:hover {
+        border-color: var(--yardly-accent);
+        background-color: var(--yardly-hover);
+    }
+
+    .social-icon { width: 1.25rem; height: 1.25rem; }
+}
+
+// ─── Register Hint ────────────────────────────────────────────────────────────
+
+.register-hint {
+    margin-top: 2.5rem;
+    text-align: center;
+    color: var(--yardly-muted);
+
+    .register-link {
+        color: var(--yardly-accent);
+        font-weight: 700;
+        text-decoration: none;
+        margin-left: 0.25rem;
+        &:hover { text-decoration: underline; }
+    }
+}
+
+// ─── Loading spinner ──────────────────────────────────────────────────────────
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+// ─── Mobile Layout ────────────────────────────────────────────────────────────
+
+.mobile-header {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem 0;
+    gap: 1.5rem;
+
+    @media (max-width: 991px) {
+        display: flex;
+    }
+
+    .mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--yardly-accent);
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .mobile-hero-image {
+        width: 100%;
+        max-width: 480px;
+        aspect-ratio: 16 / 9;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--yardly-accent-20);
+
+        div {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGvt4FpfNP5svZzCSZATORLuBNjEHMi4dc_dfH4KIZvSGhfUGa39OcSBiGAgVI60jxNdL0ihtIbYVwmtbTKxY4ZqOYQqNvp2sTZj4hkMuUi9RcIRUX1WtDHOdXoae3y15CV2c48dtuND2oxFuFbcCu8iwqYYL2HhpJB6zXccPkwoCai9WcK-vuBr_jefJ63cHz2AJBFiS5gJmd5j6F1GDOwA57tBBwAcsNW_YKy16yndq9qrGD38tkIHcExH6A1avKBdzuPSwJgHI');
+            background-size: cover;
+            background-position: center;
+        }
+    }
+}

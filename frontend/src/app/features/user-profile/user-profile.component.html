@@ -1,0 +1,193 @@
+<div class="up-page">
+
+  <!-- ── Profile Header ─────────────────────────────────────────────────────── -->
+  <div class="up-header-card">
+    <div class="up-hero">
+      <!-- Avatar -->
+      <div class="up-avatar-wrap">
+        <div class="up-avatar">{{ userInitials }}</div>
+        <span class="up-avatar-verified material-symbols-outlined">verified</span>
+      </div>
+
+      <!-- Info -->
+      <div class="up-info">
+        <h1 class="up-name">{{ displayName }}</h1>
+        <p class="up-since">
+          Member since {{ authFacade.vm.user()?.createdAt ? (authFacade.vm.user()?.createdAt | date:'MMM yyyy') : 'Oct 2023' }}
+        </p>
+        <div class="up-badges">
+          <span class="up-badge up-badge-green">
+            {{ authFacade.vm.user()?.role === 'manager' ? 'FIELD MANAGER' : 'PRO PLAYER' }}
+          </span>
+          <span class="up-badge up-badge-gold">LOCAL LEGEND</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="up-actions">
+        <button class="up-btn-outline">
+          <span class="material-symbols-outlined">edit</span>
+          Edit Profile
+        </button>
+        <button class="up-btn-primary">
+          <span class="material-symbols-outlined">share</span>
+          Share Profile
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="up-stats">
+      @for (s of stats(); track s.label) {
+        <div class="up-stat">
+          <div class="up-stat-top">
+            <span class="up-stat-label">{{ s.label }}</span>
+            <span class="material-symbols-outlined up-stat-icon">{{ s.icon }}</span>
+          </div>
+          <span class="up-stat-value">{{ s.value }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- ── Main Content ────────────────────────────────────────────────────────── -->
+  <div class="up-content">
+
+    <!-- Left: My Bookings -->
+    <div class="up-left">
+      <div class="up-section-card">
+        <div class="up-section-head">
+          <h2 class="up-section-title">My Bookings</h2>
+          <a routerLink="/reservations" class="up-view-all">View All</a>
+        </div>
+
+        @if (loading()) {
+          <app-skeleton type="table-row" [count]="3" />
+        } @else if (myReservations().length === 0) {
+          <div class="up-empty">
+            <span class="material-symbols-outlined">event_busy</span>
+            <p>No bookings yet.</p>
+            <a routerLink="/fields" class="up-btn-primary">Find a field</a>
+          </div>
+        } @else {
+          <div class="up-bookings-list">
+            @for (b of myReservations().slice(0, 5); track b._id) {
+              <div class="up-booking-card">
+                <!-- Image -->
+                <div class="up-booking-img">
+                  @if (fieldsEntities()[getFieldId(b.field)]?.images?.length) {
+                    <img [src]="fieldsEntities()[getFieldId(b.field)]!.images[0] | imageUrl"
+                         [alt]="getFieldName(b.field)" class="up-booking-img-el">
+                  } @else {
+                    <div class="up-booking-img-placeholder">
+                      <span class="material-symbols-outlined">sports_soccer</span>
+                    </div>
+                  }
+                  <span class="up-booking-status-badge up-status-{{ getBookingStatus(b) }}">
+                    {{ getBookingStatus(b) === 'upcoming' ? 'UPCOMING' : 'COMPLETED' }}
+                  </span>
+                </div>
+
+                <!-- Info -->
+                <div class="up-booking-info">
+                  <h3 class="up-booking-title">{{ getFieldName(b.field) }}</h3>
+                  <p class="up-booking-location">
+                    <span class="material-symbols-outlined">location_on</span>
+                    {{ getFieldCity(b.field) }}
+                  </p>
+                  <div class="up-booking-datetime">
+                    <span><span class="material-symbols-outlined">calendar_month</span>{{ b.date | date:'MMM d, yyyy' }}</span>
+                    <span><span class="material-symbols-outlined">schedule</span>{{ b.time }} · {{ b.duration }}</span>
+                  </div>
+                  <div class="up-booking-actions">
+                    @if (getBookingStatus(b) === 'upcoming') {
+                      <a [routerLink]="['/booking-details', b._id]" class="up-action-btn up-action-outline">View Details</a>
+                      <button class="up-action-btn up-action-ghost">Reschedule</button>
+                    } @else {
+                      <a [routerLink]="['/field-details', getFieldId(b.field)]" class="up-action-btn up-action-outline">Rebook Field</a>
+                    }
+                  </div>
+                </div>
+
+                <!-- Menu -->
+                <button class="up-booking-menu">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </div>
+            }
+          </div>
+
+          <a routerLink="/fields" class="up-book-another">
+            <span class="material-symbols-outlined">add_circle</span>
+            Book Another Field
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Right: Favorites + Reviews -->
+    <div class="up-right">
+
+      <!-- Favorite Fields -->
+      <div class="up-section-card">
+        <h2 class="up-section-title">Favorite Fields</h2>
+        <div class="up-fav-list">
+          <div class="up-fav-card">
+            <div class="up-fav-img">
+              <span class="material-symbols-outlined">sports_soccer</span>
+            </div>
+            <div class="up-fav-info">
+              <span class="up-fav-name">Green Arena</span>
+              <span class="up-fav-meta">5 bookings this month</span>
+            </div>
+            <span class="material-symbols-outlined up-fav-star">star</span>
+          </div>
+          <div class="up-fav-card">
+            <div class="up-fav-img">
+              <span class="material-symbols-outlined">sports_basketball</span>
+            </div>
+            <div class="up-fav-info">
+              <span class="up-fav-name">Downtown Courts</span>
+              <span class="up-fav-meta">Basketball · 2.4km away</span>
+            </div>
+            <span class="material-symbols-outlined up-fav-star">star</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Reviews -->
+      <div class="up-section-card">
+        <h2 class="up-section-title">My Reviews</h2>
+        <div class="up-reviews-list">
+          <div class="up-review-card">
+            <div class="up-review-top">
+              <span class="up-review-field">Green Arena</span>
+              <div class="up-stars">
+                @for (s of [1,2,3,4,5]; track s) {
+                  <span class="material-symbols-outlined up-star">star</span>
+                }
+              </div>
+            </div>
+            <p class="up-review-text">"Best turf in the city! Lighting is perfect for night games. Highly recommend for 7v7 matches."</p>
+            <span class="up-review-date">OCT 19, 2023</span>
+          </div>
+          <div class="up-review-card">
+            <div class="up-review-top">
+              <span class="up-review-field">Elite Padel Club</span>
+              <div class="up-stars">
+                @for (s of [1,2,3,4]; track s) {
+                  <span class="material-symbols-outlined up-star">star</span>
+                }
+                <span class="material-symbols-outlined up-star up-star-empty">star</span>
+              </div>
+            </div>
+            <p class="up-review-text">"Great facility, but the courts are often booked weeks in advance."</p>
+            <span class="up-review-date">SEP 30, 2023</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
