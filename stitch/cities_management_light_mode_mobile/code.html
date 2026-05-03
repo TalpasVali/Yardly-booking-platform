@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cities Management - Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22c55e",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Main Container (Mobile Form Factor Simulation on Desktop) -->
+<div class="relative mx-auto min-h-screen max-w-md bg-background-light dark:bg-background-dark border-x border-slate-200 dark:border-slate-800 shadow-2xl overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">map</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Yardly Admin</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<img class="w-full h-full rounded-full object-cover" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsvAYNzMsZIQR9ugZg74lw-HAkYsz0Zo5yT1RTgXP1PBJIhDqN3xhnV-AFKNSqa-FVLnaEeZNPdw91D5oU1I5aK7syUzCVnnARTokuVrlBtvgIiGP0rsT8zxOPAb-MZ5VRslv7mSg4-l9Tm1IGokN5L5ArubCmbjHDF1BaVH_fNNjEEwM8BQqd7PBc2q_7Jsn1Bn0hw49wBOOz_XrGqVOo6FVtgQwxffV--Nc57H7mOObYbVKPRbLbrVQ9Ll3yj6Y1paElUbJpIdI"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="p-4 pb-24">
+<!-- Page Title & Subtext -->
+<div class="mb-6">
+<h2 class="text-2xl font-black text-slate-900 dark:text-slate-100">Cities Management</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage 14 active service locations</p>
+</div>
+<!-- Filters & Tabs -->
+<div class="flex overflow-x-auto gap-2 mb-6 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 bg-primary text-white text-sm font-semibold rounded-full">
+                    All Cities
+                </button>
+<button class="whitespace-nowrap px-4 py-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 text-sm font-medium rounded-full">
+                    Active
+                </button>
+<button class="whitespace-nowrap px-4 py-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 text-sm font-medium rounded-full">
+                    Inactive
+                </button>
+<button class="whitespace-nowrap px-4 py-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 text-sm font-medium rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm leading-none">filter_list</span>
+                    Filter
+                </button>
+</div>
+<!-- City List -->
+<div class="space-y-3">
+<!-- City Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg">Austin, TX</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-xs">group</span>
+                                    42 Providers
+                                </span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Updated Oct 12</span>
+</div>
+</div>
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC40iMlLdoCiRbuNWnkKzQoC_nTe5Jv6mA1me-4LLecvIRKOMeraz1mz6HZSkhI6qxxNJKHMRGx3tvDaBYHlES4EeZVXeq1fvCRrNVzCHrg6AR76LSAloUNTCSCHZ-KZXf05CgKxI0tU2Zn412yqAq7tdRt_C0PoVZVl65pmrqjFqcZ263diI5VkLbMZ_sok8HceDOUIECDNCdXVZEpTWMzNwNFZ-e4btkR91qPcnzUWbrrl1ZRejfccHpC2zbCxPe0f7m2jQBl5Y0"/>
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIqb7ayUM_rwlsYkebeDMXH5kBpuoQ2stAQOhVfGl7BmgEjb5FaWlWtBpEz7GzcTAkuDGL9TSi3uX5QPtNqDOLrkVZWA57fcJqrKDgBM97W520IRWqxGQ0ZZEXf5_TRThPSGHDv2Tq3w84jHfyPpv9N1ggjrSZDd_TORDCPH_wmBTO_Y8tnP7QAr1KUxRwpY8Ylj17U5ZhXA7hrJfdqLvccJNPnms3afD4vm1ql1hud9KY0N5juUmoKRpgIEsRk3VkE21JkWlPr28"/>
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4_mrcLVM3kZI81KpFlNIjHp8q7Xb5pnWMmq_WUaleK8sFTeQATCk-gca1bHVegbm7CkeMQEpNbmUA9bqJqW-aWbrOcy6QD_18WexunliQACnCpIziojFXkl2hs3roTStaH1WRhpA42H2Mi56nyVUGy4A8zBosHHo1QxGKou3x_HBjPZbZD4rvjYcLWv6uJYvdCMvC5X60ueb2X9cQxkfEKxVCHAyALloSJw_ZH6IC5K9RBOUe1J9biwvgTvHrOX8SlJAyYCPknuU"/>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-bold text-slate-500">+39</div>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                            Manage <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- City Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg">Denver, CO</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-xs">group</span>
+                                    31 Providers
+                                </span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Updated Oct 10</span>
+</div>
+</div>
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVch-AgKntXK0PVV5XE-J5FKxQonebVuO59B1Fba955st0wo4Ktij_fq0YL3R6QoTZct2jNJaSDLe3-XfZXgkQ_hsH7VvOJs4PTne5xp3QA1du1dAvjgRT6uxdthQlQ0tqLbqM25qIZdg5r_JCa6fNdw18ZQda63jivNOkb1V-lqOw5c2qvJgrrgiCmlHi5EqTZrhlkAj_iXK5akemcNLESsG9OMmljtGA6PQ-BZdgwheDt_b-xjXRTEt5xcWvEzDUha9jN4Pd52s"/>
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIIzsxqphe1L6ueWST-rBn-0FxD59JGlne8FL-R6ALlMB_RTvHN6VIel5PnBP-5vuLYSnbRuREmAcQOX2KDarutntIEArUxlUBzTgu-YKVIBLMaWMeVIqmFFSnVVFD9SoRnR16rwXO6zXp_8H6VvFRco-0Tp4gKp0emIqCAd_HaETvwZ3MASUpXd3UWILc41l6FvPhYyeGMxgEP2ZKgX4R4QhGr7f4JZ9z1os9olJg4zFrOTs5ONOODR1Ga0QVowkZAHC1Xu8eF9s"/>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-bold text-slate-500">+29</div>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                            Manage <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- City Card 3 (Inactive) -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm opacity-75">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg">Seattle, WA</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-xs">group</span>
+                                    18 Providers
+                                </span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Updated Sep 28</span>
+</div>
+</div>
+<span class="bg-slate-100 text-slate-500 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Inactive</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVXH-Zgv72D_NovytWMJ7bo6LdMbEPU-t1qN9P18gHvef9a8dNis-yseBpk0YEN6nqw3cblig6Th3wePMiM7YfSLI3z9Medh-xB5apyb3chCRgpqAJoBj0nhrNi8V4hfmnbOdDvGfRzVHCndOiaw01moUQ12D-EARbC5A4hadUQx4sV5wIOI6fMlz4-JQ8saKxWBRotkWHW6t-aKst3QF10qf-Vsh9xIf_D5HdVk4ocY0jyPPjOWp_HDA5AwvKWg8t0cIg2dchf8Q"/>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-bold text-slate-500">+17</div>
+</div>
+<button class="text-slate-500 font-bold text-sm flex items-center gap-1">
+                            Manage <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- City Card 4 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 text-lg">Miami, FL</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-xs">group</span>
+                                    25 Providers
+                                </span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Updated Oct 14</span>
+</div>
+</div>
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuKUPSQRA33hKphZvS48RLAS-5ZoN64z6ortxMmNyRM1rYn29i_XBoP7l8aV8_LAb55GcmJmxgrTYA99sJ4jX9mdn0tqRkdGoJL2KYG8r_KiUQLFJ_brxzA0-6nks_aCpC2XHCaylLreDjY0u6DnVzTnG2T-lwG0lchiGXCQuvLpEBWyeLCL2UBNeHhMOZciXAV5JO0GQV--zw30UyllZpZAE0AaTYLrnLbvzXH8Ee-eNkdBPswFSBEh4dbC0Ihp80qMMZbkBWXMs"/>
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Uimkx05wUta4XSQlEwTPvYenLTF_CIpH3Eqkju6DtFpa4TsgsotxukfVgqvxBi7DVvjS_DX4-MNzIquVvjV647y7uFRMwd9KrX-SJWg304Kgnf8aowPZkRoQLixperpqbN07mzreSdJefSG_nSjiU3LM-kEN17wO3S8LDjLDaPOeepJ_p1Q8zx3ZdO4AEKYEpLO66ig29Hmc4zH3BIB9YGG1ga2Ch2Q197FrxdK_oJcbqs0gtxMfZPWIbv-nDGmUmKhzJ7P82TA"/>
+<img class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900" data-alt="Service provider headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABD4RUD_3zuxa8V2fQ4ckz9Ms566TJeUsrsWUHz0MNChEqY938ajeNfbdPa-jnpUhGNSDUJBnN5-kf5HBHAdRnpefclVsYLMk0zxvOF69nXO9XGPJDy-cq8Oe9F6cdDe0HJrpkTj4ZaFkq_v_AUy8d_YKG16vVHK3aMl6jg7h8TkXKGT0Lt_LNhDf8kWD3ZewxNOJ-Vf_x4-P-zdPnYlnyACN_iyI9gq9RTVWSUnGbSgSpJwg1XOMb99zALu0L9BPSe1KqDT51qr8"/>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-bold text-slate-500">+22</div>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                            Manage <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More (Simplified for Mobile) -->
+<div class="mt-8 flex justify-center">
+<button class="flex items-center gap-2 px-6 py-3 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 font-bold rounded-xl text-sm shadow-sm transition-all active:scale-95">
+                    View More Cities
+                    <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-1/2 translate-x-1/2 sm:right-6 sm:translate-x-0 z-50 flex items-center gap-2 bg-primary text-white px-6 py-4 rounded-full shadow-xl shadow-primary/30 font-bold transition-transform active:scale-95">
+<span class="material-symbols-outlined">add_location</span>
+            Add New City
+        </button>
+<!-- Bottom Navigation (Mobile Native Feel) -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 max-w-md mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 flex items-center justify-around py-3 px-6">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-semibold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">location_city</span>
+<span class="text-[10px] font-semibold">Cities</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-semibold">Users</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-semibold">Settings</span>
+</a>
+</nav>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

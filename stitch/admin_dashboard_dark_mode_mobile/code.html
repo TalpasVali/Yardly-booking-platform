@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly Admin Dashboard - Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#43f320",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#072A1C", // Custom background for Yardly
+                        "surface-dark": "#114D31",    // Card background
+                        "accent-dark": "#1a3b2a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col max-w-[480px] mx-auto bg-background-light dark:bg-background-dark min-h-screen shadow-2xl relative overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-20 flex items-center justify-between px-4 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-accent-dark">
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-accent-dark">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark text-sm font-bold">grass</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Yardly</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-accent-dark">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="size-8 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJB6nEvcpZj1CjyOmSuf1eXtKlcpRyVrqWBOh6xue9pOXl2w_J0Lg7d4p3BA9NGVC4BOwBaaZDVk_f7Lm4oPye732CKRx42Pyp-U1yh1BQGFxy8hazaRHtK4Z8q9mXv_ygynabKlRSD8VXJxV0fHbXopr8RQWi8IWoO_Pu7olscWY3v3u0sC9kq3Hk9pESznQ2QmtiY0T8Ehf7I0AfNzl-iGtkGb_sOOGaGc4sT-AxTr2_qOj_t-d3HANU8i1kCAbM1fYyzbDBo0U"/>
+</div>
+</div>
+</header>
+<!-- KPI Scrolling Row -->
+<section class="py-6 overflow-hidden">
+<div class="flex gap-4 overflow-x-auto px-4 pb-2 no-scrollbar scroll-smooth">
+<div class="min-w-[160px] flex-1 flex flex-col gap-2 rounded-xl p-4 bg-white dark:bg-surface-dark shadow-sm border border-slate-100 dark:border-white/5">
+<div class="flex justify-between items-start">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Total Users</span>
+<span class="material-symbols-outlined text-primary text-sm">group</span>
+</div>
+<p class="text-2xl font-bold leading-tight">12.5k</p>
+<p class="text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12%
+                    </p>
+</div>
+<div class="min-w-[160px] flex-1 flex flex-col gap-2 rounded-xl p-4 bg-white dark:bg-surface-dark shadow-sm border border-slate-100 dark:border-white/5">
+<div class="flex justify-between items-start">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Revenue</span>
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+</div>
+<p class="text-2xl font-bold leading-tight">$450k</p>
+<p class="text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +8%
+                    </p>
+</div>
+<div class="min-w-[160px] flex-1 flex flex-col gap-2 rounded-xl p-4 bg-white dark:bg-surface-dark shadow-sm border border-slate-100 dark:border-white/5">
+<div class="flex justify-between items-start">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Bookings</span>
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+</div>
+<p class="text-2xl font-bold leading-tight">8.2k</p>
+<p class="text-red-400 text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span> -2%
+                    </p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="px-4 pb-6 grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-primary text-background-dark font-bold text-sm shadow-lg shadow-primary/10 transition-transform active:scale-95">
+<span class="material-symbols-outlined">verified</span>
+<span>Approve Fields</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-dark text-white font-bold text-sm border border-white/10 active:scale-95">
+<span class="material-symbols-outlined text-primary">report_problem</span>
+<span>Review Disputes</span>
+</button>
+</section>
+<!-- Charts Stack -->
+<section class="px-4 flex flex-col gap-6">
+<div class="flex flex-col gap-4 rounded-xl p-5 bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5">
+<div class="flex justify-between items-center">
+<h3 class="font-bold text-sm uppercase tracking-wider text-slate-500">Revenue Trend</h3>
+<select class="bg-transparent border-none text-xs text-primary font-bold focus:ring-0 cursor-pointer">
+<option>Last 7 Days</option>
+<option>Last Month</option>
+</select>
+</div>
+<div class="h-32 w-full relative">
+<!-- Simple SVG Chart for Mobile -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 100">
+<path d="M0,80 Q50,70 100,50 T200,60 T300,20 T400,40" fill="none" stroke="#43f320" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0,80 Q50,70 100,50 T200,60 T300,20 T400,40 V100 H0 Z" fill="url(#grad1)" opacity="0.2"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#43f320;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#43f320;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-5 bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5">
+<h3 class="font-bold text-sm uppercase tracking-wider text-slate-500">Booking Volume</h3>
+<div class="flex items-end justify-between h-24 gap-2 pt-2">
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/40 rounded-t-sm" style="height: 60%"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/40 rounded-t-sm" style="height: 45%"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/40 rounded-t-sm" style="height: 80%"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary rounded-t-sm shadow-[0_0_10px_rgba(67,243,32,0.3)]" style="height: 95%"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/40 rounded-t-sm" style="height: 55%"></div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-background-dark rounded-t-sm relative group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/40 rounded-t-sm" style="height: 40%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity Lists -->
+<section class="px-4 py-8 flex flex-col gap-8">
+<!-- Recent Activity -->
+<div>
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-lg font-bold">Recent Activity</h2>
+<button class="text-primary text-sm font-medium">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add_task</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">New booking created</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Highland Park, IL • 2m ago</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">+$85</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5">
+<div class="size-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Dispute raised</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Austin, TX • 15m ago</p>
+</div>
+<button class="px-3 py-1 bg-accent-dark text-xs font-bold rounded-lg border border-white/10">Solve</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5">
+<div class="size-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">New Partner verified</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Toronto, CA • 1h ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Marketplace Activity -->
+<div>
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-lg font-bold">Marketplace Status</h2>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-100 dark:border-white/5 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="text-sm font-bold">Chicago Metro</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase">Active</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-white/5">
+<div class="text-center flex-1 border-r border-white/5">
+<p class="text-xs text-slate-400">Providers</p>
+<p class="font-bold">142</p>
+</div>
+<div class="text-center flex-1 border-r border-white/5">
+<p class="text-xs text-slate-400">Requests</p>
+<p class="font-bold">28</p>
+</div>
+<div class="text-center flex-1">
+<p class="text-xs text-slate-400">Avg. Rate</p>
+<p class="font-bold">$62</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Tab Navigation -->
+<nav class="sticky bottom-0 z-20 flex justify-around items-center px-4 py-3 bg-white/90 dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-accent-dark">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-[10px] font-bold">Market</span>
+</button>
+<div class="-mt-8 size-14 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/40">
+<span class="material-symbols-outlined text-background-dark font-bold text-3xl">add</span>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Users</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Config</span>
+</button>
+</nav>
+<!-- Extra padding for bottom nav -->
+<div class="h-4"></div>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

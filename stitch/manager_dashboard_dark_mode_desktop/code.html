@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly | Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#32cd32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072A1C",
+                        "sidebar-dark": "#114D31",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-sidebar-dark flex flex-col border-r border-primary/10">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">potted_plant</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-none">Yardly</h1>
+<p class="text-primary/70 text-xs font-medium">Manager Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-background-dark font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Fields</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Reservations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<div class="bg-white/5 rounded-xl p-4 border border-white/10">
+<div class="flex items-center gap-3 mb-3">
+<div class="size-8 rounded-full bg-slate-500 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Manager profile portrait photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaSXsPZRTOcWwE1iM6nuDvnEDy2MqoRqPk93IXadfBHA4JvYKpwGxSfBfRnDjxK4hOLaYiORnLBL3QR052lEJfdbR4XQcmb4RgheSQQsvGCREVivVEuo9ZvIbKA9Zlq-jKyvJNihn6daKHPB6mS9jHJgZ-ujJoqdpuwHUeDGwnrhs0lp1iifDyAxcjLYcbhpC2q210v7AExVzre40M6PNDFrBOGdRrSNnw8ucvsd9xi8agVoiAq8edoOSOw3h7JEOHs6MMzhOvaQ0"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Alex Rivera</p>
+<p class="text-xs text-slate-400 truncate">Head Manager</p>
+</div>
+</div>
+<button class="w-full py-2 text-xs font-bold text-slate-300 hover:text-white flex items-center justify-center gap-2 border border-white/10 rounded-lg hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined text-sm">logout</span> Sign Out
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="h-20 flex items-center justify-between px-8 border-b border-primary/5 sticky top-0 bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex flex-col">
+<h2 class="text-2xl font-bold">Dashboard Overview</h2>
+<p class="text-slate-400 text-sm">Welcome back, here's what's happening today.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="bg-sidebar-dark/50 border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm w-64 focus:ring-primary focus:border-primary" placeholder="Search data..." type="text"/>
+</div>
+<button class="size-10 flex items-center justify-center rounded-xl bg-sidebar-dark text-slate-300 hover:text-primary transition-colors border border-white/10">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-background-dark px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined">add</span> Create Booking
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Analytics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-sidebar-dark p-6 rounded-2xl border border-white/5">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Revenue Today</p>
+<h3 class="text-2xl font-bold mt-1">$1,240.00</h3>
+</div>
+<div class="bg-sidebar-dark p-6 rounded-2xl border border-white/5">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Revenue Month</p>
+<h3 class="text-2xl font-bold mt-1">$38,500.00</h3>
+</div>
+<div class="bg-sidebar-dark p-6 rounded-2xl border border-white/5">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<span class="text-red-400 text-xs font-bold bg-red-400/10 px-2 py-1 rounded-full">-2.4%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Bookings Today</p>
+<h3 class="text-2xl font-bold mt-1">12</h3>
+</div>
+<div class="bg-sidebar-dark p-6 rounded-2xl border border-white/5">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">query_stats</span>
+</div>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+8.1%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Utilization Rate</p>
+<h3 class="text-2xl font-bold mt-1">84%</h3>
+</div>
+</div>
+<!-- Quick Actions Section -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Quick Actions</h3>
+<button class="text-primary text-sm font-medium hover:underline">View All Actions</button>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-3 bg-sidebar-dark border border-white/10 hover:border-primary/50 px-6 py-3 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_box</span>
+<span class="font-semibold text-sm">Add New Field</span>
+</button>
+<button class="flex items-center gap-3 bg-sidebar-dark border border-white/10 hover:border-primary/50 px-6 py-3 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">person_add</span>
+<span class="font-semibold text-sm">Invite Staff</span>
+</button>
+<button class="flex items-center gap-3 bg-sidebar-dark border border-white/10 hover:border-primary/50 px-6 py-3 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">content_copy</span>
+<span class="font-semibold text-sm">Duplicate Schedule</span>
+</button>
+<button class="flex items-center gap-3 bg-sidebar-dark border border-white/10 hover:border-primary/50 px-6 py-3 rounded-xl transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">download</span>
+<span class="font-semibold text-sm">Export Reports</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Upcoming Reservations Table -->
+<div class="xl:col-span-2 bg-sidebar-dark rounded-2xl border border-white/5 flex flex-col">
+<div class="p-6 border-b border-white/5 flex items-center justify-between">
+<h3 class="text-lg font-bold">Upcoming Reservations</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-white/5 rounded-lg text-slate-400"><span class="material-symbols-outlined">filter_list</span></button>
+<button class="p-2 hover:bg-white/5 rounded-lg text-slate-400"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="text-xs text-slate-400 uppercase bg-white/5">
+<tr>
+<th class="px-6 py-4 font-semibold">User</th>
+<th class="px-6 py-4 font-semibold">Field</th>
+<th class="px-6 py-4 font-semibold">Time</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">JD</div>
+<span class="font-medium">John Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">North Field A</td>
+<td class="px-6 py-4 text-slate-300">Today, 4:00 PM</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase bg-primary/10 text-primary border border-primary/20">Confirmed</span>
+</td>
+<td class="px-6 py-4 text-right font-bold">$45.00</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-xs">MS</div>
+<span class="font-medium">Maria Santos</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">South Court 2</td>
+<td class="px-6 py-4 text-slate-300">Today, 5:30 PM</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">Pending</span>
+</td>
+<td class="px-6 py-4 text-right font-bold">$30.00</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">RK</div>
+<span class="font-medium">Ryan King</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">East Pitch 1</td>
+<td class="px-6 py-4 text-slate-300">Tomorrow, 9:00 AM</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase bg-primary/10 text-primary border border-primary/20">Confirmed</span>
+</td>
+<td class="px-6 py-4 text-right font-bold">$60.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 mt-auto border-t border-white/5 text-center">
+<button class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">View All Reservations</button>
+</div>
+</div>
+<!-- Fields Summary -->
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold">Fields Summary</h3>
+<button class="text-primary text-sm font-medium">Manage</button>
+</div>
+<!-- Field Card 1 -->
+<div class="bg-sidebar-dark rounded-2xl overflow-hidden border border-white/5 group hover:border-primary/30 transition-all">
+<div class="h-32 relative">
+<img class="w-full h-full object-cover" data-alt="Lush green soccer field aerial view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjqft_hpFXWHslzqsv32kYX07Y4kWMO2JXaqJOxGfZTGRrTOXOD1WjGqvZJS_inbGKodH8s0J0ER5TwRo367GMtPFEFZCt--v2fgexR6-06xckclAm0dwCGpLQG_o_3ni4CArWyTjJPS4HtTWcwC_J5ScokfKRWvqnHKDAqPfjg_OQqJ-_ewQe_mAbvq4TMIsyeN0cCW7_4ONhAdZUwsqTRx93xsmH18GG4c7Vi92_iAbdw7gWLLbgocQ6kQobyp6CGsNaIErd9bM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-sidebar-dark to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<h4 class="font-bold text-white">North Field A</h4>
+<p class="text-xs text-slate-300">Regulation Size • Grass</p>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Today's Utilization</span>
+<span class="text-lg font-bold text-primary">92%</span>
+</div>
+<div class="flex -space-x-2">
+<div class="size-7 rounded-full border-2 border-sidebar-dark bg-slate-400 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcEh2wAdd2mddtePaAawADP5C2PLNLLq97E8suiWfoAQNe8zQnlleWmjjCRYtAcRtivnejWZUZ4mAVnhD3CoaxMT8MvBMckinGpJvoyLiSBDtGCn0IWZc8yTnCM54NVF8ZJu_fPmpUnMIKqMjMfvLRwD4-aA_RC8zSODIbZLLxsFR3pO-_0DGbaX_MCpoTiYvgg8tq-sjrweXEe5SnTya6NXK-UmUWtSsBDAiT7_CDQt8siPdEDbXYOix76UQ8iuTd9Q_NtfanU4A"/>
+</div>
+<div class="size-7 rounded-full border-2 border-sidebar-dark bg-slate-400 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9fc71xrEecGwKCxNf2smyfMl8IcLLsAA1dpJpOeuXjAn2TJrwdVWYyJWk_1SBzzE0raOLm9VsPX_LvcqVD0RVGQKyB8AciRc2fHXqvJkymrD53Erum8TEDDrttRoiNniMypkWicPnWEkJc9M_E6pccfg1_Hd9QxY1No3G4k2mvsMVKTB2e6CsDMCIxsxdOKcE4Z_NqWy_bltP2lsLepBZhC3aTjOnatdWdHm9KC6dBt06bLXod43B7Tmdqj2NYp0a9zVYCT0q-8k"/>
+</div>
+<div class="size-7 rounded-full border-2 border-sidebar-dark bg-primary flex items-center justify-center text-[10px] font-bold text-background-dark">+5</div>
+</div>
+</div>
+</div>
+<!-- Field Card 2 -->
+<div class="bg-sidebar-dark rounded-2xl overflow-hidden border border-white/5 group hover:border-primary/30 transition-all">
+<div class="h-32 relative">
+<img class="w-full h-full object-cover" data-alt="Indoor synthetic turf sports complex" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSBBNhcpHlxbpjGmp6LycPVaS2AqH5hz8EkvwvFteKaT8NNFyVahzSgbUofV6vsCrMBlfdWUFv0hvrRnOuG54NnAsF7fTYAjm1glaB1nvTnKjiHcHPPki7iPxy7lXlZbEEVUT4TT03LXVlqPE4kbG5UsFy3PGYrP50IRAncCcVw89HOmhAzpqlEI4qN5qHG923izJ66B_MDILs4sEMJtb5sK0kpFUOVbIe3DdqeAfeyIY33J5pJkpeDVUmMFFdYPp8j8eR-GSqNSs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-sidebar-dark to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<h4 class="font-bold text-white">East Pitch 1</h4>
+<p class="text-xs text-slate-300">Five-a-side • Turf</p>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Today's Utilization</span>
+<span class="text-lg font-bold text-primary">76%</span>
+</div>
+<div class="flex -space-x-2">
+<div class="size-7 rounded-full border-2 border-sidebar-dark bg-slate-400 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq14N8xbc2TwcH28uva5JGJcRS4nyO3iGYbmErBQtjaL6EeSOTyRNrGDyb8b5mEaYeMmCB2cPCSM8eu62ugNntVLbUyx2hXHRXDeDEFQW1eTVT6fhtgONWGEL9avgvjQTZCyO3RDE9nO4xZv6BhCUYemTkQP7kUupMJpjZOWWF202YZnFgojkjGAV4Rceg7QcIydTtdST7Mte7Gnzu3XcnTSRYs2YLYWj1vMqxPNdJHErp2PlqqN8H037bYQQQGgfATsGFDwig7A4"/>
+</div>
+<div class="size-7 rounded-full border-2 border-sidebar-dark bg-primary flex items-center justify-center text-[10px] font-bold text-background-dark">+3</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-white/10 rounded-2xl text-slate-400 hover:text-primary hover:border-primary/30 transition-all flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-sm font-semibold">Add More Fields</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

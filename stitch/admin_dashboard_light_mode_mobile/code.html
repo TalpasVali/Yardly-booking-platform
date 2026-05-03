@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly Admin Dashboard - Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#12201b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur-md px-4 py-3 dark:bg-background-dark dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">eco</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Yardly</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">search</span>
+</button>
+<button class="relative flex items-center justify-center rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden border border-slate-200" data-alt="User profile avatar placeholder">
+<img alt="Avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpv5kbcaCJI8pmGZxvtT4nED6anIoryue45t3FWWTMe6s1cISRZgpATvZ5P2YW5v6_7h3BdXVYflZFovqJyjG629jTfaltpd-W_eIbszpG66Ia-qLZjwDsX59vwA2ts7YAkJrP4dfBI_Z8WhnUABqXryHIbZOv2P-W4sMocp0EM9C3TDLAjD38C_HJYSt_QDr9PvFouFiqksiPEXPfgfOXR8B5vkCa56dzt0l3emPFqDTEbkG18koR9QCQC5f6Z9uMgplV47gwEkI"/>
+</div>
+</div>
+</header>
+<main class="flex-1 pb-24">
+<!-- Header Title -->
+<div class="px-4 pt-6 pb-2">
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Platform Overview</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">Live monitoring for Platform Admin</p>
+</div>
+<!-- KPI Cards Horizontal Scroll -->
+<div class="flex gap-4 overflow-x-auto px-4 py-4 hide-scrollbar">
+<div class="min-w-[240px] flex-shrink-0 rounded-xl bg-white p-5 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</span>
+<span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Revenue</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">$42,500.00</p>
+</div>
+<div class="min-w-[240px] flex-shrink-0 rounded-xl bg-white p-5 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">task_alt</span>
+</span>
+<span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Tasks</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">1,284</p>
+</div>
+<div class="min-w-[240px] flex-shrink-0 rounded-xl bg-white p-5 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">person_add</span>
+</span>
+<span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">+8.1%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">New Providers</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">45</p>
+</div>
+</div>
+<!-- Main Charts -->
+<div class="px-4 space-y-4 mt-2">
+<!-- Revenue Trend Card -->
+<div class="rounded-xl bg-white p-5 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Revenue Trend</h3>
+<div class="flex gap-2">
+<span class="text-xs font-medium px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">7D</span>
+</div>
+</div>
+<div class="relative h-48 w-full">
+<svg class="h-full w-full" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#22C55E" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#22C55E" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,30 T320,70 T400,20 L400,150 L0,150 Z" fill="url(#chartGradient)"></path>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,30 T320,70 T400,20" fill="none" stroke="#22C55E" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] font-bold text-slate-400">MON</span>
+<span class="text-[10px] font-bold text-slate-400">TUE</span>
+<span class="text-[10px] font-bold text-slate-400">WED</span>
+<span class="text-[10px] font-bold text-slate-400">THU</span>
+<span class="text-[10px] font-bold text-slate-400">FRI</span>
+<span class="text-[10px] font-bold text-slate-400">SAT</span>
+<span class="text-[10px] font-bold text-slate-400">SUN</span>
+</div>
+</div>
+<!-- Activity Feed Card -->
+<div class="rounded-xl bg-white p-5 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Recent Activity</h3>
+<button class="text-primary text-xs font-bold">See All</button>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex-shrink-0 h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-primary text-xl">grass</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200">New Mowing Task</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Client: Robert Fox • $45.00</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">2 mins ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Provider Verified</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Green Thumb Landscapes LLC</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">1 hour ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center dark:bg-slate-800">
+<span class="material-symbols-outlined text-primary text-xl">chat_bubble</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Support Inquiry</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Subject: Billing Adjustment</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">3 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Platform Status -->
+<div class="rounded-xl bg-primary p-6 shadow-lg shadow-primary/20 text-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined animate-pulse">cloud_done</span>
+<h3 class="font-bold">System Status: Optimal</h3>
+</div>
+<p class="text-white/80 text-xs mt-2 leading-relaxed">All core platform microservices are performing within expected latency parameters.</p>
+<div class="mt-4 flex gap-4">
+<div class="bg-white/20 px-3 py-2 rounded-lg text-center flex-1">
+<p class="text-[10px] font-bold uppercase tracking-wider opacity-70">Latency</p>
+<p class="text-sm font-bold">42ms</p>
+</div>
+<div class="bg-white/20 px-3 py-2 rounded-lg text-center flex-1">
+<p class="text-[10px] font-bold uppercase tracking-wider opacity-70">Uptime</p>
+<p class="text-sm font-bold">99.99%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 px-6 py-3 flex justify-between items-center dark:bg-background-dark dark:border-slate-800">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1">grid_view</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-bold">Stats</span>
+</a>
+<div class="-mt-12 bg-primary h-14 w-14 rounded-full flex items-center justify-center text-white shadow-xl shadow-primary/30 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">add</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Users</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Config</span>
+</a>
+</nav>
+</div>
+</body></html>

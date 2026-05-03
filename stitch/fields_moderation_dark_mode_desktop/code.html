@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly Admin - Fields Moderation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec13",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072A1C",
+                        "sidebar": "#114D31",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(19, 236, 19, 0.2); border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-sidebar flex-shrink-0 flex flex-col border-r border-primary/10">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">sports_soccer</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">Yardly Admin</h1>
+</div>
+<nav class="flex-1 px-4 space-y-2 py-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-background-dark font-bold shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">stadium</span>
+<span class="font-medium">Fields</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-medium">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-medium">Revenue</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/10 mt-auto">
+<div class="flex items-center gap-3 mb-4">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Admin user avatar headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEogA1BgFuS7SUfG8TamB7e3A8UNDLKz2hHV2GNdCPZ05H7ACunWojgO0w0RfXBcT2evmMmrYB8kOqZl6b-qKCbJRpkUs9BTYib1t7y4E4XBoGt5vmHKZEYelYHTvH1hgSUX_C2D4yQX-3jTb82cNeG3Z798oaLoBlxVcg_6vFMPshNdbbmq-s5V23H-Qs1p5pVHVV0wRFCyBjgWa_uf5ScAx450Cny0Y3sxe7VaJeEzd7EYgbIE5z8btSmsvQi8KJMKlUocWrfas"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-white truncate">Marcus Chen</p>
+<p class="text-xs text-primary/70 truncate">Global Moderator</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors text-sm font-semibold border border-red-500/30">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Logout
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-primary/10 flex items-center justify-between px-8 bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold">Fields Moderation</h2>
+<div class="h-6 w-px bg-primary/20"></div>
+<div class="flex items-center bg-primary/5 rounded-lg border border-primary/20 px-3 py-1.5 w-80">
+<span class="material-symbols-outlined text-primary/50 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-primary/30" placeholder="Search fields, cities, or managers..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 rounded-lg flex items-center justify-center hover:bg-white/5 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full ring-2 ring-background-dark"></span>
+</button>
+<button class="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Register New Field
+                </button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-8">
+<!-- Pending Approval Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">pending_actions</span>
+                        Pending Approval
+                        <span class="ml-2 px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 text-xs">3 Requests</span>
+</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Pending Card 1 -->
+<div class="bg-sidebar/30 border border-primary/10 rounded-xl overflow-hidden group hover:border-primary/40 transition-all duration-300">
+<div class="h-40 relative overflow-hidden">
+<img alt="Soccer Field" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="High quality green turf soccer pitch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWPS65pWNAtBHRE2tO9EnlL_idlyyVQ7rkBtiiQe_UIAS8sioWnnPGa-Gd3BOA88FTJrKy4HcVuY_hwRnBozu5off1_wUr_0n0X8fgnmmC6EVSdbElYihCeD8yai_3F0SCIDo_miFx9SAdX3wWXgrEaFLJkbbeqMeCWMYb9jP08xWGU1xKzX4COH9oIklM4qO7vysmvijWZpz4uZoKII8nImhfonyCUZ8ScItb0kqN9qA9V1ZQCGD236AuWUpNrvEqWIOWg60uK48"/>
+<div class="absolute top-3 left-3 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider text-white">Submitted 2h ago</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg">Downtown Futbol Hub</h4>
+<span class="text-primary font-bold">$45/hr</span>
+</div>
+<div class="space-y-1 mb-6 text-sm text-slate-400">
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Chicago, IL</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">person</span> Owner: Sarah Miller</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">sports_soccer</span> 5-a-side Turf</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary/20 text-primary border border-primary/40 hover:bg-primary hover:text-background-dark font-bold transition-all">
+<span class="material-symbols-outlined text-sm">check_circle</span> Approve
+                                </button>
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500 hover:text-white font-bold transition-all">
+<span class="material-symbols-outlined text-sm">cancel</span> Reject
+                                </button>
+</div>
+</div>
+</div>
+<!-- Pending Card 2 -->
+<div class="bg-sidebar/30 border border-primary/10 rounded-xl overflow-hidden group hover:border-primary/40 transition-all duration-300">
+<div class="h-40 relative overflow-hidden">
+<img alt="Tennis Court" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Blue professional tennis court outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8wZrzjSbFiHnQoJdXQRoNkTexAZGXe3hpVldrgzdrkgp4WfoG6sUiJlZh4ArT-0KseFzhU4M_KqSYgFsH5ZBsm_t2EPtvE7DGxsPW0Rly1enQkPLvBj5qIgpSqXrH8bmzkXW2EghVx3IbTirJ2odWXp8mYVAArUqZd4H4Vi6miIrPSM6UvRvs3ha6TczXSiXSJcYtVsvf2U_WWua-4zmRHYXb63gyL1uQDE8mAoXPtv2PijmmQ5rpibEjumoRDhOuIlcrYIq-9jQ"/>
+<div class="absolute top-3 left-3 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider text-white">Submitted 5h ago</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg">Elite Racket Club</h4>
+<span class="text-primary font-bold">$30/hr</span>
+</div>
+<div class="space-y-1 mb-6 text-sm text-slate-400">
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Austin, TX</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">person</span> Owner: James Kovic</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">sports_tennis</span> 2x Hard Court</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary/20 text-primary border border-primary/40 hover:bg-primary hover:text-background-dark font-bold transition-all">
+<span class="material-symbols-outlined text-sm">check_circle</span> Approve
+                                </button>
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500 hover:text-white font-bold transition-all">
+<span class="material-symbols-outlined text-sm">cancel</span> Reject
+                                </button>
+</div>
+</div>
+</div>
+<!-- Pending Card 3 -->
+<div class="bg-sidebar/30 border border-primary/10 rounded-xl overflow-hidden group hover:border-primary/40 transition-all duration-300">
+<div class="h-40 relative overflow-hidden">
+<img alt="Basketball Court" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Indoor glossy wooden basketball court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp8vrzc3Z4SHi6aMod6RM-2zgsscT_DNJpTMB-Y1dMU9Q6SfaN2TvlujDAqxV6RS25n8tjG199pJf3POF2Uiq0SCOelP9p3dSsEaZvhDLm_MqxC8fv_UFPEzboxV705cn3sM7qdEBXk2ps_0pn8iGwC0R9PA7CtTcPrz76NIK4nM8dZz55eNYLM2XW_Ga74UWSaqEx-lZQaW2XQlWl0IVhkefoqzlgenW7RzcoW7uVvOU18cGX8Fls3wIWYoFv-8TZE0OIX7y6PJg"/>
+<div class="absolute top-3 left-3 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] uppercase font-bold tracking-wider text-white">Submitted 1d ago</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-lg">Northside Arena</h4>
+<span class="text-primary font-bold">$60/hr</span>
+</div>
+<div class="space-y-1 mb-6 text-sm text-slate-400">
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Seattle, WA</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">person</span> Owner: Alex Chen</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">sports_basketball</span> Full Size Indoor</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary/20 text-primary border border-primary/40 hover:bg-primary hover:text-background-dark font-bold transition-all">
+<span class="material-symbols-outlined text-sm">check_circle</span> Approve
+                                </button>
+<button class="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500 hover:text-white font-bold transition-all">
+<span class="material-symbols-outlined text-sm">cancel</span> Reject
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- All Fields Table Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+                        Inventory Management
+                    </h3>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-sidebar border border-primary/10 text-xs font-semibold flex items-center gap-2 hover:bg-sidebar/70">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+<button class="px-3 py-1.5 rounded-lg bg-sidebar border border-primary/10 text-xs font-semibold flex items-center gap-2 hover:bg-sidebar/70">
+<span class="material-symbols-outlined text-[16px]">download</span> Export CSV
+                        </button>
+</div>
+</div>
+<div class="bg-sidebar/20 border border-primary/10 rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-sidebar/40 text-xs uppercase tracking-wider text-slate-400 border-b border-primary/10">
+<tr>
+<th class="px-6 py-4 font-bold">Image</th>
+<th class="px-6 py-4 font-bold">Name</th>
+<th class="px-6 py-4 font-bold">Sport</th>
+<th class="px-6 py-4 font-bold">City</th>
+<th class="px-6 py-4 font-bold">Manager</th>
+<th class="px-6 py-4 font-bold">Price</th>
+<th class="px-6 py-4 font-bold">Status</th>
+<th class="px-6 py-4 font-bold"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5 text-sm">
+<!-- Row 1 Verified -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="size-10 rounded overflow-hidden">
+<img alt="Field" class="w-full h-full object-cover" data-alt="Miniature soccer pitch view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6anykCykQFqxpg646ibuCoQ6j_hSki0rL09Y9lVbK75pvP9QUm2Xm2cRgsiBo6QxeavrytHUsEpse4PkpbgFfW1K0D-5BAwkYBUo-QKw8XWbhicRF3jCGELY-WE6J0Ap0e4arfkVjL9eEqfeN-6__kneBeWBR0d7dyEi1oAl3nWVV9G07Rh3jewJK6VUMcuZhEbBNfa01w5pd5pLod9QmyYm64UETO-VPjpT76BaAYVXOUQZMrBPeSYadaJcwz7ULw8fB58kacII"/>
+</div>
+</td>
+<td class="px-6 py-4 font-semibold text-white">Central Park Soccer</td>
+<td class="px-6 py-4">Football</td>
+<td class="px-6 py-4">New York</td>
+<td class="px-6 py-4">David G.</td>
+<td class="px-6 py-4 font-bold text-primary">$80/hr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wide">Verified</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</td>
+</tr>
+<!-- Row 2 Pending -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="size-10 rounded overflow-hidden">
+<img alt="Court" class="w-full h-full object-cover" data-alt="Basketball court from side angle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsRBcm3--pwd9IHDYvf84auZoboJrBOpsTaLYlfRAngZ4TaXPAG0z-3fDZlqjkK5D96TK9ZUvk6Wt_rqRTY1ST35yJOaVIIsrc3X5WmodTRwJG_UQZa1JFUc42wnDptCW4ZWp_jtjLvBlCdh0XPPZEN1JQgzuliQI-ubC8LSaobqQHPckBitutEjK2AzRe1-Cexh5daF7KBY76Kn5Fd6p9MDyh6e0ZYtTET4rztX99SXhw0wZdunIjDjzFKl5wGmM6RyGD6N2UyvI"/>
+</div>
+</td>
+<td class="px-6 py-4 font-semibold text-white">Lakeside Hoops</td>
+<td class="px-6 py-4">Basketball</td>
+<td class="px-6 py-4">Chicago</td>
+<td class="px-6 py-4">Sarah M.</td>
+<td class="px-6 py-4 font-bold text-primary">$45/hr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-500 text-[10px] font-bold uppercase tracking-wide">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</td>
+</tr>
+<!-- Row 3 Suspended -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="size-10 rounded overflow-hidden grayscale">
+<img alt="Field" class="w-full h-full object-cover" data-alt="Blurred sports facility background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLq2_YQoFL0aC7J5zMXeaXcRpSvdIVRx8hBLVbQ3sfDWJUr3WnOZoIMxBCSoepE0kbBX8Bmb0QCVb7Zuq_-nbPwixhGtJYE0buf7EjCq1G-zJnS0A5Ik7JBTh5ySGGs55lOpx1D_xIs6UKTA43_k5b6kCepWETOfCVsb4W9CbPI1GbNg8ibf4iY76stRsEscZNKDWlKjG0GCkNNAB6ZELHO9imI7DNVcYL6nDhOsL-5_apfCq9NAynkLoBUheVAlLgEuymv8Q9rsU"/>
+</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-400">Sunset Beach Volleyball</td>
+<td class="px-6 py-4">Volleyball</td>
+<td class="px-6 py-4">Miami</td>
+<td class="px-6 py-4">Carlos E.</td>
+<td class="px-6 py-4 font-bold text-primary/50">$25/hr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-500/20 text-slate-400 text-[10px] font-bold uppercase tracking-wide">Suspended</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</td>
+</tr>
+<!-- Row 4 Rejected -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="size-10 rounded overflow-hidden grayscale">
+<img alt="Field" class="w-full h-full object-cover" data-alt="Field with low quality resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw3SDIa21A2skOwzKAnj6SC37vhZNrGXFLQDdAFeR_dBiSmTBHU5EwZYKSe2lck-Y4eBHv4pl2hYCBGm_6Ypf7yZcRvi76YulA4KuJ7qJcV1TyCqbD6bRGjbbMjaqnlEn14QzETgQi7Qg-gGLg6x7A4dbepIsbx_GV6avTjN6imw0QYS3pcVlR30uGHAgtYIKvKo6RcSTNefVAKgmb7E_uLUGvzNGmWIT14Gyffk3KEWX9g21PjnJGYZCJzIAMbWTLllbNAl-fUXM"/>
+</div>
+</td>
+<td class="px-6 py-4 font-semibold text-slate-400">Rooftop Padel X</td>
+<td class="px-6 py-4">Padel</td>
+<td class="px-6 py-4">San Diego</td>
+<td class="px-6 py-4">Nina R.</td>
+<td class="px-6 py-4 font-bold text-primary/50">$90/hr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-wide">Rejected</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</td>
+</tr>
+<!-- Row 5 Verified -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="size-10 rounded overflow-hidden">
+<img alt="Field" class="w-full h-full object-cover" data-alt="Tennis court top view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAJCP4-ec_Ecrjr2Vh7BiLhB-uyUg__wGVp-6ku7YsbcDh55SxzuYHvdvofbXulMvzfBhtDMHfRvNgY44OtHxderLBtOpqKvGp_iRIkRTuv5GDoS7DorPGWeYNl5xFcANMnGTPfmBArs02B0eNnaNppSZd-PFFAtlBPFDlTud5S5jeZi7lE_0Yk-meNeYdqY0OWTUPyYjjIXxWkLRTnPIVtnOgbQhkvEkcZDyWU_U2kQOeqXxw8wOvy6tYwULdHnKcOWZG4xMSTeg"/>
+</div>
+</td>
+<td class="px-6 py-4 font-semibold text-white">Skyline Tennis Academy</td>
+<td class="px-6 py-4">Tennis</td>
+<td class="px-6 py-4">Phoenix</td>
+<td class="px-6 py-4">Robert L.</td>
+<td class="px-6 py-4 font-bold text-primary">$35/hr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wide">Verified</span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-sidebar/20 border-t border-primary/10 flex items-center justify-between">
+<p class="text-xs text-slate-400 italic">Showing 1-10 of 124 fields registered in Yardly ecosystem</p>
+<div class="flex items-center gap-2">
+<button class="size-8 rounded border border-primary/20 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<span class="text-xs font-bold px-2">Page 1 of 13</span>
+<button class="size-8 rounded border border-primary/20 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Detailed Side Drawer (Simulation Overlay) -->
+<div class="fixed inset-y-0 right-0 w-[450px] bg-sidebar shadow-2xl border-l border-primary/20 flex flex-col transform translate-x-0 z-50">
+<div class="p-6 border-b border-white/10 flex items-center justify-between">
+<h3 class="text-xl font-bold">Venue Details</h3>
+<button class="size-10 rounded-full hover:bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8">
+<!-- Gallery -->
+<section>
+<h4 class="text-xs uppercase font-bold tracking-widest text-primary mb-4">Photo Gallery</h4>
+<div class="grid grid-cols-2 gap-3">
+<img alt="Detail 1" class="rounded-lg h-24 w-full object-cover border border-white/10" data-alt="Close up of sports grass turf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ5Ny6OAOWmsKzs6FzBJAiVQUGlKZoGnRRL7U7jTk0jGB67v4Wm6I6laRp8iNCfq0vwwwcAWKCPJasVmw8KVYDgZ61TH5yqUQz1WHaLStGJKLPEDHUMeAXt1BZ1uKUemTABSormWPRhdaUs3O6Dy2KyOJlcaugFhNOjjNs-zbTma8QLxCPCQHbz1HaPhaniSfDoez64bl_1KXkHXQbRiFk7Pp1dpXb3C7o9_N83X0iPTvBAuaCqZCxQOMFXZR6eqqk1bDYh6vnDIw"/>
+<img alt="Detail 2" class="rounded-lg h-24 w-full object-cover border border-white/10" data-alt="Sports lighting tower" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_WnoMuhR0fkm7up7ed5eUBmREo-AY452Vuasa0nfkCk-mJvEuUcBLI4uNvDyEVQa5zJl84YRhMPtanj0NyH9orKs6P18sPmVODUi5ctUiUCn6n_vvTUqKn3UpVI3GeLKeFE2qTrOj6qBwk5gqUx-lOeGUfZy4NvBZsKlgoBYImy23i-BjHdZfGnWXQGWvTX2A12VmtJ-usORKexB3L5vkRjiTzN3tkEUMG3REGutVcxdpStrTHxGV4BLEYFHZT98zVzoDpqE0rHM"/>
+<img alt="Detail 3" class="rounded-lg h-24 w-full object-cover border border-white/10" data-alt="Sports stadium seating area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZIsTwMuZpPEn8Hd9WCeTnWgFqkwWU-MuwpWx6z2gBYxvF_zfYlJlMKOKILrv-ldr24AYMoRbJwcSV-IiWuElZok6MzVEoDV4exOyrUkO4eNP4gPRd77lfVrLBxn_BDE4mH8F8uq2_JHSTrey0SMpjZay0aLOxtj2mptVXMofCmV4JKKa89NCFOSptsTX7ssp2CwA7vjAb_kA4kw9f5LmwrmC70heTbeBADfG2J62LgtsWRnzCDSHJrVrYQhFYvvmdUh4JeKNCJcQ"/>
+<div class="rounded-lg h-24 w-full bg-primary/10 border border-dashed border-primary/30 flex items-center justify-center flex-col gap-1 cursor-pointer hover:bg-primary/20">
+<span class="material-symbols-outlined">add</span>
+<span class="text-[10px] font-bold">More</span>
+</div>
+</div>
+</section>
+<!-- Location Map -->
+<section>
+<h4 class="text-xs uppercase font-bold tracking-widest text-primary mb-4">Location Map</h4>
+<div class="h-40 bg-slate-800 rounded-xl overflow-hidden border border-white/10 relative">
+<img alt="Map" class="w-full h-full object-cover opacity-50 grayscale contrast-125" data-alt="Dark stylized map of city streets" data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjxPpwH3v9jYQxQyNytQIque5dMHTndklFvK1Ri-NF7hVe8ivqxnp-WlLVCeNmKjZ9iYN9o0nEOr7yYVJ9ezcO4hjF4SAvOR5FPDCnAoEFjJ0BkNTFesJsnEQeyswcKZvda_JTkqmpv5Dg8lFaTLZE6qMgxmeKMCdK9MiHlf9cKHkgteAmTRW6XUkJg6obY2z9_DkS1YuDEjOmZaeGmMH0ZCJI3PQeFt6LJ3FLZqzXAgknkiW_uAwyPvykQ5LboLBTy2ngVx1VuXg"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-6 bg-primary rounded-full animate-ping absolute"></div>
+<div class="size-4 bg-primary rounded-full border-2 border-white shadow-xl"></div>
+</div>
+</div>
+<p class="mt-2 text-sm text-slate-300">122 Broadway St, New York, NY 10012</p>
+</section>
+<!-- Facilities -->
+<section>
+<h4 class="text-xs uppercase font-bold tracking-widest text-primary mb-4">Venue Facilities</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-primary">shower</span>
+<span class="text-sm">Locker Rooms</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-primary">local_parking</span>
+<span class="text-sm">Free Parking</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<span class="text-sm">Night Lights</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-primary">coffee</span>
+<span class="text-sm">Snack Bar</span>
+</div>
+</div>
+</section>
+<!-- Field Manager -->
+<section class="bg-primary/5 p-4 rounded-xl border border-primary/20">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full border-2 border-primary/40 p-0.5">
+<img alt="Manager" class="rounded-full bg-slate-800" data-alt="Small avatar of field manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeWXBbQi3UJZEHEo2s-kGROVLI5yAZ0T-SwCJcCb1qe2efDEw1XzrcJMsyi_FRE317_5uFnpwKqKJFXhrEOjkseC-PCJk9akuuK49CETiaKCaIHX9_DFZJTXqAU5oVMNlXwd9gT3Vg0P1qthYUxqTxq1Fed3FJGIjbx9TnTmqkLjWHoP7pGMlZ12kHkdJ5_tSGesqOBOLaKqx27lMV52uiE1AEDO5Xh0JAGlIUhYtNYXiC2uGrX4L9ua0bRK-gJuhI77OuyHXG3MU"/>
+</div>
+<div>
+<p class="font-bold">David Goldman</p>
+<p class="text-xs text-slate-400">Manager since 2021</p>
+</div>
+<button class="ml-auto size-10 rounded-lg bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">chat</span>
+</button>
+</div>
+</section>
+</div>
+<div class="p-6 border-t border-white/10 bg-sidebar/80 backdrop-blur-sm grid grid-cols-2 gap-4">
+<button class="py-3 px-4 rounded-lg border border-primary/40 text-primary font-bold hover:bg-primary/10 transition-colors">Modify Details</button>
+<button class="py-3 px-4 rounded-lg bg-red-500/20 text-red-500 font-bold border border-red-500/30 hover:bg-red-500/30 transition-colors">Suspend Field</button>
+</div>
+</div>
+</body></html>

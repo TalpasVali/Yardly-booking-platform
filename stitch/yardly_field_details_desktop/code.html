@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly Field Details - Premium Sports Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#32cd32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072a1c",
+                        "card-dark": "#114d31",
+                        "accent-text": "#57e439"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #114d31;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-8">
+<div class="flex items-center gap-8 flex-1">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">sports_soccer</span>
+<h2 class="text-2xl font-extrabold tracking-tight">Yardly</h2>
+</div>
+<div class="hidden md:flex flex-1 max-w-md">
+<label class="relative w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-full border-none bg-card-dark text-slate-100 placeholder:text-slate-400 focus:ring-2 focus:ring-primary text-sm" placeholder="Search fields, cities, or sports" value=""/>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Explore</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Bookings</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Host a Field</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full bg-card-dark hover:bg-card-dark/80 transition-colors">
+<span class="material-symbols-outlined text-slate-100">notifications</span>
+</button>
+<button class="flex items-center gap-2 p-1.5 pr-4 rounded-full bg-card-dark hover:bg-card-dark/80 transition-colors">
+<div class="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="text-sm font-bold">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-6 lg:px-20 py-8">
+<section class="grid grid-cols-4 grid-rows-2 gap-3 h-[450px] mb-8 overflow-hidden rounded-xl">
+<div class="col-span-2 row-span-2 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Main wide view of a professional green turf football field at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtWOzJiTse2WFbbWv_a4Wa3734VMVN2ZAXyJAOKotmKnKx6Zb3-XpoA-DYlnJs0qjZtyrxWEEgl2O9rE1cBJbBpWZwEcQI1J5FyivCxFIWq7NYCWjgnshF-CWnmmnS5p1ak4BNznDI-PS-wDhbJd_Ut_G85jd1T1J5ygBOfhN2kWEk1CBGsFy7Z4rWRfwsYgAu6grcRapjxiAflpo9P-0-GhXW0mBs4LID0NbGMlg6_44ty5xhI2-vZw_k1IPP6cpWdMti19DC--4')"></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close up of a soccer ball on a high quality grass field" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_5waElIFmMZFHx6_HbIBElLt2z7EK3wvYAxTqt33gdeu1kuGUVrV_rtUti1X3JIsJHQCj3xT_OCcgbNrNPJSMfJlpHhuSGlBM1FQLoeFZlhN6FMFM-O9JmiIWgD4rJaKFlPoZwJclIoEmZnIo2ivPxfrBi0d8_RqL7sGzDYbiOAlai1hEEfUV0mAtyS2WyN-NfHhDDsFrTLQDODxbPs3gYLErZ-aAlDCdrF8sYDIjF5hfAhrCOsd2aI5Lelcw0dcDIWGmD1HKbJ4')"></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Goal post and net of a sports arena" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCiG8KGeNUChXk6G_nGvMNHW6yss0VFJ9nBGOEtqpCnxwrbk_ndXd11x_oEhSK0ckaguFKJM2NpcQ7WUkyl0sk_qnqjTKrrUAluNypv6mTIuIjXS_jWzd11AJiryL1RSKa5y_7L4UzSBtn28lofLWZAdF2S5nfUH2mSOQGJl74qAcUAp6ivtrWwS_SXFFLntB298GPk3iBQktOkZCXXeCukIzFJ_dcJTdJ-c8nwtPyBpsoxDGtzXW_a_Brdzdmp-GbTze6LueY2peY')"></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Overhead view of football pitch stadium lights" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYaxQXH3pT2e_vky8AvXd7NRBK2_Rg7kVVG72TblZ4RJSukkjwwjA4M77LXgJ2HvSKDEW2tmBJkOc9m4LzdBzYLx3RJpav9OVmIimZ5WU_XeyySnjsECDsGz6w1viICBZTxio9Gu6HoDTgpmryqP8lZ7Fn8oX41Yb7TL_fIZhvl2ikpYnbaVnUHnzxEEW5cgD1UCdEkDAk10kpWO9jY5Z1rTBj_w7p1WYBDVb2Gq2vgZ6Vb5B_r9Nve1ct9U6aMss-8qfg6oCegWo')"></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Football players training on high energy turf" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCveLeJfbGiiy-N_ZCGDECmuKAcZtjXr2PLdCCOZGp5b-Oc7Ml5O9uPtBA4Le58IXtDVDblnb1kVCiq7fQrObhoT9FcV3IE9_aiOx446BiPclC6I8jn_CoF9a5Qz1GzBRHGL-hDwMMRriBIdfRnKGe6TPqZ2mogX1wfqAxm-mk9T0jnYBhthgVCZrYQ8bOTSVqwmYSezf7aTj7LGLFnUF1xJW_FY7PaaFdeQiqkLFuBpIE-rgx8GkQh71eqT_ZpgwHR7dmsSaPtCXw')"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+                            Show all photos
+                        </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2 space-y-10">
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-primary/20 text-accent-text text-xs font-bold rounded-full uppercase tracking-widest">Premium Turf</span>
+<div class="flex items-center text-yellow-400">
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="text-sm font-bold ml-1 text-slate-100">4.9</span>
+<span class="text-sm text-slate-400 font-normal ml-1">(128 reviews)</span>
+</div>
+</div>
+<h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">Greenwood Championship 7-a-side Arena</h1>
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-base font-medium">Olympic Way, Wembley Park, London, HA9 0WS</span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-8 border-y border-white/10">
+<div class="flex flex-col gap-3 p-4 rounded-xl bg-card-dark border border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl">local_parking</span>
+<div>
+<h4 class="font-bold text-slate-100">Free Parking</h4>
+<p class="text-xs text-slate-400">50+ spots available</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4 rounded-xl bg-card-dark border border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl">lightbulb</span>
+<div>
+<h4 class="font-bold text-slate-100">Floodlights</h4>
+<p class="text-xs text-slate-400">Pro-grade night lighting</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4 rounded-xl bg-card-dark border border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl">shower</span>
+<div>
+<h4 class="font-bold text-slate-100">Showers</h4>
+<p class="text-xs text-slate-400">Hot water &amp; towels</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4 rounded-xl bg-card-dark border border-white/5">
+<span class="material-symbols-outlined text-primary text-3xl">lock</span>
+<div>
+<h4 class="font-bold text-slate-100">Lockers</h4>
+<p class="text-xs text-slate-400">RFID secure storage</p>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-2xl font-bold text-white">About this field</h3>
+<p class="text-slate-300 leading-relaxed max-w-2xl">
+                            Experience premier football on our recently renovated 4G synthetic turf. Designed for high-intensity 7-a-side matches, the Greenwood Arena features FIFA-standard rebound boards, overhead netting, and state-of-the-art LED floodlighting for evening games. 
+                        </p>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-300">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                FIFA Quality Pro Certified Turf
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Automated water stations
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Ball and bib rental included
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Professional referee booking available
+                            </li>
+</ul>
+</div>
+<div class="space-y-8 pt-6">
+<div class="flex items-center justify-between">
+<h3 class="text-2xl font-bold text-white">Player Reviews</h3>
+<button class="text-primary font-bold text-sm underline">Write a review</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4 p-6 rounded-xl bg-card-dark/40 border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User avatar" data-alt="Portrait of a young male sports enthusiast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw-VC2I4xawDTkKNVU9c13EZ9k6nYEJc-UKLbcdA3t21Xu0uFAEIVL353azxRDMvQH_bYNm2h3EDrnaO0XYSaKm7uJ22W6wFQzF3RMAYR1pTiGBh5mhylMBRne8x6ITiElcy7JN7GbZHnz6zD8qUZ31aT-zK1_NrrMFlWTV3MzAllVJJUHLBf2igJust0_qZYhhw6Dfxs4lTWpQyGnyZQuyfkcODvHpEh8LJuYy5QGf_mRjDWTPTlPWMN6I6RaiY-rQTj2VcWQEQo"/>
+</div>
+<div>
+<h4 class="font-bold text-slate-100">Marcus Rashford</h4>
+<p class="text-xs text-slate-400">Booked 15 times</p>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+</div>
+</div>
+<p class="text-sm text-slate-300 italic">"Best turf in the city. The lights are incredible and the surface feels very premium. Easy to access and plenty of parking."</p>
+</div>
+<div class="space-y-4 p-6 rounded-xl bg-card-dark/40 border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User avatar" data-alt="Portrait of a happy female soccer player" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD75MplqaV8Vt67bCow456QDZUfv_beFE1QhL5PUnjmFyOpZRi3M6GfzvwhyXcj8WtA8ILAN21eLg8qZwj4_hGhobnHaxv-6NqznVBv3Ear2mnJN7zGiEF43jG25nJwxkbN_wMZbrykVnDkjm_KXehXdenX2YuJtDAeC0Xt0d3mrA6acGbvSeAm6R9Lrrq0jdmIDQz0D8L_0oHUPu-JWG9wgW9vsmDlckGlylnlN06-uqoee0vJzBioVdVnY-xwDLmrdshGz0X5XBU"/>
+</div>
+<div>
+<h4 class="font-bold text-slate-100">Sarah Jenkins</h4>
+<p class="text-xs text-slate-400">Booked 4 times</p>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<p class="text-sm text-slate-300 italic">"Great facility. Very clean showers and the staff is super friendly. The booking process on Yardly was seamless."</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="sticky top-28 space-y-6">
+<div class="rounded-2xl bg-card-dark p-6 shadow-2xl border border-white/10">
+<div class="flex justify-between items-end mb-6">
+<div>
+<p class="text-slate-400 text-sm font-medium">Starting from</p>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-extrabold text-primary">£65</span>
+<span class="text-slate-400 font-medium">/ hour</span>
+</div>
+</div>
+<div class="bg-primary/20 px-3 py-1 rounded text-accent-text text-xs font-bold">
+                                    POPULAR
+                                </div>
+</div>
+<div class="space-y-6">
+<div class="space-y-3">
+<h4 class="text-sm font-bold text-slate-100 uppercase tracking-wider">1. Select Date</h4>
+<div class="grid grid-cols-7 gap-1 text-center text-xs p-3 bg-background-dark/50 rounded-xl border border-white/5">
+<div class="text-slate-500 py-1">Su</div>
+<div class="text-slate-500 py-1">Mo</div>
+<div class="text-slate-500 py-1">Tu</div>
+<div class="text-slate-500 py-1">We</div>
+<div class="text-slate-500 py-1">Th</div>
+<div class="text-slate-500 py-1">Fr</div>
+<div class="text-slate-500 py-1">Sa</div>
+<div class="text-slate-600 py-2">28</div>
+<div class="text-slate-600 py-2">29</div>
+<div class="text-slate-600 py-2">30</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">1</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">2</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">3</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">4</div>
+<div class="text-slate-100 py-2 font-bold bg-primary text-background-dark rounded cursor-pointer shadow-[0_0_15px_rgba(50,205,50,0.4)]">5</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">6</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">7</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">8</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">9</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">10</div>
+<div class="text-slate-100 py-2 font-bold hover:bg-primary/20 rounded cursor-pointer">11</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h4 class="text-sm font-bold text-slate-100 uppercase tracking-wider">2. Pick Time Slot</h4>
+<span class="text-[10px] text-slate-400">Duration: 1 hr</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-xs font-bold rounded-lg bg-primary/20 text-accent-text border border-primary/30 hover:bg-primary hover:text-background-dark transition-all">09:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-primary/20 text-accent-text border border-primary/30 hover:bg-primary hover:text-background-dark transition-all">10:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 cursor-not-allowed opacity-60">11:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-primary text-background-dark shadow-[0_0_15px_rgba(50,205,50,0.4)]">12:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 cursor-not-allowed opacity-60">13:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-primary/20 text-accent-text border border-primary/30 hover:bg-primary hover:text-background-dark transition-all">14:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-500 border border-slate-700 cursor-not-allowed">15:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-slate-800 text-slate-500 border border-slate-700 cursor-not-allowed">16:00</button>
+<button class="py-2 text-xs font-bold rounded-lg bg-primary/20 text-accent-text border border-primary/30 hover:bg-primary hover:text-background-dark transition-all">17:00</button>
+</div>
+<div class="flex gap-4 pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary/40"></span>
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Available</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-red-500/40"></span>
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Reserved</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Blocked</span>
+</div>
+</div>
+</div>
+<div class="pt-4 space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Field Fee (1h x £65)</span>
+<span class="text-slate-100 font-bold">£65.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Yardly Service Fee</span>
+<span class="text-slate-100 font-bold">£4.50</span>
+</div>
+<div class="border-t border-white/10 pt-4 flex justify-between items-center">
+<span class="text-lg font-bold text-white uppercase tracking-tight">Total</span>
+<span class="text-2xl font-black text-primary">£69.50</span>
+</div>
+<button class="w-full bg-primary text-background-dark h-14 rounded-xl text-lg font-black uppercase tracking-widest shadow-[0_0_20px_rgba(50,205,50,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                        Book Now
+                                    </button>
+<p class="text-center text-[11px] text-slate-500">You won't be charged until the booking is confirmed by host.</p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl bg-card-dark p-6 border border-white/10">
+<h4 class="text-sm font-bold text-slate-100 uppercase tracking-wider mb-4">Location</h4>
+<div class="aspect-video w-full rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale brightness-50" data-alt="Modern dark themed map UI showing London city streets" data-location="London" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTWWfYmitvRc1LushpS-rnng6ojofKIcTVnnDApP-s-UnQRafWOzrkIEfF6quRTa1HZ6WCD4L8mYAk1LKewU8A2aoDCRWKsUzC-fRHsxaHIi0IfCs-7AkcEz395BGBRLde5eZuplLWOSLTNDeTluULDutsUOk6ZJ8Ym1gNGody_Of20G5DR0n5SOLZMbelZsd9Lw1QAntK-d5k280l3pPa_ZzOc6tVZloSUAfh8cnwZysg3fvyYLxuvuNVhRt_pMHHMI5UyW3dQlo"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-5xl animate-bounce">location_on</span>
+<div class="bg-primary text-background-dark px-3 py-1 rounded text-xs font-bold shadow-lg">GREENWOOD ARENA</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="mt-20 pt-10 border-t border-white/10">
+<h3 class="text-2xl font-bold text-white mb-8">Other fields near Wembley</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Underground urban sports court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv6_esomdpe_u_c5fgDkwszXw1vRehyTdH1G4-buUKPJgxeXIESD9v_PSbLtBM3qbEl1Db72zSdC9mu04MBaFBtxSfGOLiqzMzDYtunQaPjpHETHk5FwFKgKyyk9WA8EYTKsDOTAf3-lrco5mNY8MQPs-cw-blApjofeeAXbX8GuAIwlLL0WwmNJu7LgYlqYyVqrTFkfrdvYbz44czzXgkBFKWghlwdYd4xe9sNgcKw9qhhpJidkCHIiTZ9N7dIyg8JIhfWUrFE5I"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-slate-100 group-hover:text-primary transition-colors">Underground 5s Hub</h4>
+<p class="text-sm text-slate-400">1.2 miles away • 5-a-side</p>
+<p class="text-primary font-bold mt-1">£45/hr</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Outdoor rooftop sports field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdnjP7TJhUk_ml2u2iSk7nIHJerhMoNIJwXd4GXjy8626g6FzBiFRoe4G6TnEpGpKlVbxi024sD8d4DGE2fmq6zGKRYgayLs4-v3qtulg_HkL0pJU09A6yshGEJgwP470MkOC8Ssbb-bAw27jIBJfaYbJu_2cxit-fG9-LkirwpS3OfnwyVj2uSoGGtGOgwxNzbZ2lCJWx-0egGt5ivBik9BSrA2KmD-YGyOhsMs5VRzd9xJJJ96wKUBB2wKVJvNwwbhiOG6jpDTI"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-slate-100 group-hover:text-primary transition-colors">Skyline Rooftop Pitch</h4>
+<p class="text-sm text-slate-400">2.5 miles away • 7-a-side</p>
+<p class="text-primary font-bold mt-1">£80/hr</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Indoor basketball and multi sport court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn0hMMadis2d0M96j99D5CxUFbffVt_EtVEgC03uxIeaj7La-y7b1qdVnx_IMRzX-teQKgfLp6ksX0guijcoQq88MdvxGOTOAluKjp3NnHzPO4bNrUTiVMuqvO89nhZ_dZVKxuQ1Cy3p6hcNrV7S5tabRMTy9dIjylWz56Iovsrvioa4gaPj2hq1H6u9zBdgn9fdGfXIWXke95Sj54wvamVRfpeWdtRYC4tKFUFtUZqfoG-xhoI0XYMHnbMYX0mkJ9JtxefkprExU"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-slate-100 group-hover:text-primary transition-colors">Metro Multi-Sport Dome</h4>
+<p class="text-sm text-slate-400">0.8 miles away • Indoor</p>
+<p class="text-primary font-bold mt-1">£55/hr</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Community grass football pitch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8OzzcVfm5RDFoRkLMAJUunXIgB6OPqZQxMSnd3gcbbRwSEiFyFl7iBk4h8RncP-L9mqzR35h0odJrKJNRSh4XYAZ1bvzWwnEa9xa85vr3YpHwtaD5KULYRrK24PFwcvFc8DCik7u14HpB_xBI36vbnxHMBuoHxsQnJa4gkPPo6u4lZ54BMxJezuBvb_clZmeiNxPIiqaePSzdFge-Kb21kl34jPTzQvT3G8jT18s8yiehYtx-r_YSynk_bbG85eXmxn_mo7piW6A"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md p-1.5 rounded-full text-white">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</div>
+</div>
+<h4 class="font-bold text-slate-100 group-hover:text-primary transition-colors">Parkside Community Turf</h4>
+<p class="text-sm text-slate-400">3.1 miles away • 11-a-side</p>
+<p class="text-primary font-bold mt-1">£95/hr</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-card-dark py-12 px-6 lg:px-20 border-t border-white/5 mt-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl font-bold">sports_soccer</span>
+<h2 class="text-xl font-extrabold tracking-tight">Yardly</h2>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">The premier destination for discovering and booking premium sports fields. High energy, seamless booking, local community.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold">Platform</h4>
+<ul class="space-y-2 text-sm text-slate-400">
+<li><a class="hover:text-primary" href="#">Search Fields</a></li>
+<li><a class="hover:text-primary" href="#">How it Works</a></li>
+<li><a class="hover:text-primary" href="#">Host a Field</a></li>
+<li><a class="hover:text-primary" href="#">Yardly Pro</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold">Support</h4>
+<ul class="space-y-2 text-sm text-slate-400">
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+<li><a class="hover:text-primary" href="#">Trust &amp; Safety</a></li>
+<li><a class="hover:text-primary" href="#">Cancellation Policy</a></li>
+<li><a class="hover:text-primary" href="#">Community Guidelines</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center text-slate-400 hover:text-primary border border-white/5" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center text-slate-400 hover:text-primary border border-white/5" href="#">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-background-dark flex items-center justify-center text-slate-400 hover:text-primary border border-white/5" href="#">
+<span class="material-symbols-outlined text-xl">forum</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 uppercase tracking-widest font-bold">
+<p>© 2024 Yardly Sports Inc. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+<a href="#">Cookies</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

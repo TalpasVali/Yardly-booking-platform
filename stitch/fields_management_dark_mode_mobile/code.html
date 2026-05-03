@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fields Management - Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#32cd32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072a1c",
+                        "card-dark": "#114d31",
+                        "border-dark": "#1a5e3d",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Main Container -->
+<div class="relative flex min-h-screen flex-col overflow-x-hidden font-display">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-40 flex items-center justify-between border-b border-border-dark bg-background-dark/80 backdrop-blur-md px-4 py-3">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg p-2 text-primary hover:bg-primary/10">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="flex size-8 items-center justify-center rounded-lg bg-primary text-background-dark">
+<span class="material-symbols-outlined text-xl font-bold">sports_soccer</span>
+</div>
+<h2 class="text-lg font-extrabold tracking-tight">Yardly</h2>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full border-2 border-primary/30 bg-cover bg-center" data-alt="User profile picture of a manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5mdBJN-iNAfn9U0XqEnDFlZC2ay4AmmzwXCub7yvfo3-vRO6w5s54all5R7qvYbIOv0OgdEDuV31QEh6SAMuEcK4gJ0mxYnUHUFPH7lKsNfIGwGIhKUbfjOFEe6nRWPDjokcvZHdW_IfXCj6xw1p9odTEQT7vToQh9G1EPwRs8dElJXoU9XWPdB2b99egIF2OTpbSN7gyymEqo0UM-2WCURPLVazeh2LyehNDXOyhb-5MF9-Sa14MDJlwBs9khOVLDneWe4fApsI")'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 pb-24">
+<!-- Page Header -->
+<div class="p-6">
+<h1 class="text-3xl font-black tracking-tight text-white">Fields Management</h1>
+<p class="mt-1 text-slate-400">Monitor and update your venue status</p>
+</div>
+<!-- Stats Overview -->
+<div class="flex gap-4 px-6 mb-6">
+<div class="flex-1 rounded-xl bg-card-dark p-4 shadow-lg border border-border-dark">
+<p class="text-xs font-semibold uppercase tracking-wider text-primary/80">Total Fields</p>
+<p class="mt-1 text-2xl font-bold text-white">12</p>
+</div>
+<div class="flex-1 rounded-xl bg-card-dark p-4 shadow-lg border border-border-dark">
+<p class="text-xs font-semibold uppercase tracking-wider text-primary/80">Bookings</p>
+<p class="mt-1 text-2xl font-bold text-white">48</p>
+</div>
+</div>
+<!-- Fields List -->
+<div class="flex flex-col gap-4 px-6">
+<!-- Field Card 1 -->
+<div class="group overflow-hidden rounded-2xl bg-card-dark border border-border-dark shadow-xl">
+<div class="relative h-40 w-full">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Lush green professional outdoor soccer turf" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGXv0uxNWCaleqGDBL4qzakOVDEhCPq1hxFoHAx3SeUafiIVZ9e07kDucN7S3W7pBPKFOibwYUcfH_iKTTxSXH2niJ5wvi1UgkRECtyZG60JDJTwcRNWRNH0RplBsy-MPE-l4bQPawAP1c3K3z0PckxC77myyi_SaiUaQm__2HfjYfBabm1HbyYLAz0DXw-hLliaMqL0LkKkaOqm7G3dVfWtpy8zlzmYfpbN7kZXKSYinmM9Eqy70VLhXETUB-CFR7CbLdqZ_EB6Y")'></div>
+<div class="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-black uppercase text-background-dark">
+                            Available
+                        </div>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white">Main Turf A</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="ml-1 text-sm font-bold">4.9</span>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Bookings Today</span>
+<span class="text-lg font-bold text-slate-100">8 Slots</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Price / Hour</span>
+<span class="text-lg font-bold text-primary">$50.00</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-border-dark py-3 text-sm font-bold text-white transition-colors hover:bg-border-dark/80">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                View
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-bold text-background-dark transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+</div>
+</div>
+</div>
+<!-- Field Card 2 -->
+<div class="group overflow-hidden rounded-2xl bg-card-dark border border-border-dark shadow-xl">
+<div class="relative h-40 w-full">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Indoor synthetic grass soccer court" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARL_94x621wbdly5yxWu_kd_PsKqok94c8LUKuet6Jc-zp8rh90JYMxzs_ow4QmT3z4gaJbOHIxQeOkv465DL2GWg_u-4weTl-OOFgsPGQMUFpxoG41-Ff0oghkX-MFhhg7WyAmnMLTdoIQ_MG-pmjZXwqrVIgL2cIIGO94vHmdlCU6uCmD0HZRBm7huV595vHV4CoKLCVp9xY-_fCPbyn7NzUroxSzBaxK1Zj7K0yy2EiZj1xndx157CozbiAvITvEel4mh9sjRs")'></div>
+<div class="absolute right-3 top-3 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-black uppercase text-white">
+                            Occupied
+                        </div>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white">Indoor Court 1</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="ml-1 text-sm font-bold">4.7</span>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Bookings Today</span>
+<span class="text-lg font-bold text-slate-100">12 Slots</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Price / Hour</span>
+<span class="text-lg font-bold text-primary">$75.00</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-border-dark py-3 text-sm font-bold text-white">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                View
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-bold text-background-dark">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+</div>
+</div>
+</div>
+<!-- Field Card 3 -->
+<div class="group overflow-hidden rounded-2xl bg-card-dark border border-border-dark shadow-xl opacity-80">
+<div class="relative h-40 w-full">
+<div class="absolute inset-0 bg-cover bg-center grayscale" data-alt="Maintenance view of an empty arena" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyuXQ72H_ccIkC975IaINWdwiAenR_HgoJDad5mp_pcVCogDQP_2jPhUcGq4_jU1avbJuOtAXG8Hj7cZk1Tx3uISapCzCiOLoTEnswMLvvMSktvvAVQK14qqlyP1YpVNas6nfxbiPoIVtMX0xRf3jOjp9hGRIVguXlgRGHHVrxHZrksFb87TWA1pmr111bif6O-4219HPLRiwAyNtSPh0QpAWVsU_In_luLWB50pTz8hF8ba0d4266rnKjixNiLNlPu6WAqAPN0RI")'></div>
+<div class="absolute right-3 top-3 rounded-full bg-slate-600 px-3 py-1 text-[10px] font-black uppercase text-white">
+                            Maintenance
+                        </div>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white">Premium Arena B</h3>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="ml-1 text-sm font-bold">5.0</span>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Bookings Today</span>
+<span class="text-lg font-bold text-slate-100">0 Slots</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Price / Hour</span>
+<span class="text-lg font-bold text-primary">$120.00</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-border-dark py-3 text-sm font-bold text-white">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                View
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-bold text-background-dark">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-background-dark shadow-[0_8px_32px_rgba(50,205,50,0.4)] transition-transform hover:scale-110 active:scale-95 z-50">
+<span class="material-symbols-outlined text-4xl font-bold">add</span>
+</button>
+<!-- Bottom Tab Bar (Contextual for Mobile) -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 border-t border-border-dark bg-background-dark/95 backdrop-blur-lg px-6 py-3">
+<div class="flex items-center justify-between">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Fields</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-2xl text-slate-500">calendar_month</span>
+<span class="text-[10px] font-bold uppercase">Schedule</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-2xl text-slate-500">payments</span>
+<span class="text-[10px] font-bold uppercase">Revenue</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-2xl text-slate-500">settings</span>
+<span class="text-[10px] font-bold uppercase">Settings</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Managers Management | Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072a1c",
+                        "sidebar-dark": "#114d31",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(43, 238, 91, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(43, 238, 91, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-sidebar-dark border-r border-primary/10 flex flex-col h-screen shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">sports_soccer</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-none">Yardly Admin</h1>
+<p class="text-primary/70 text-xs mt-1">Sports Ecosystem</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary text-background-dark rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span class="text-sm font-bold">Managers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm font-medium">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">stadium</span>
+<span class="text-sm font-medium">Venues</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<div class="pt-4 pb-2 px-3 text-[10px] font-bold uppercase tracking-wider text-primary/40">SaaS Config</div>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-300 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<button class="w-full bg-primary/10 text-primary border border-primary/20 rounded-lg py-2.5 flex items-center justify-center gap-2 text-sm font-bold hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Manager
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden bg-background-dark">
+<!-- Top Header -->
+<header class="h-16 border-b border-primary/10 flex items-center justify-between px-8 shrink-0 bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-8 flex-1">
+<h2 class="text-xl font-bold text-white tracking-tight">Managers</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/50 text-xl">search</span>
+<input class="w-full bg-sidebar-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 placeholder:text-primary/30 focus:ring-1 focus:ring-primary/50 transition-all" placeholder="Search by name, email or venue..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 rounded-full flex items-center justify-center text-primary/70 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-primary/10"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right">
+<p class="text-xs font-bold text-white">Platform Admin</p>
+<p class="text-[10px] text-primary">Super User</p>
+</div>
+<div class="size-9 rounded-full bg-primary/20 border border-primary/30 overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Close up professional portrait of a male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWtaRdVZF3CG9dDWt_osfRbi8tZYdZvISU-fJltVmHFW7u59cqsWHCZ2io4wEaGfriBqhLyL3kwwPn7xAaih__A5hMzgNQoBYaYfpfMB7Fdups9PG2mOuilpQvy8Qr_v8TNCztZkju5S69XLZsRQ80v3V-zygrGz-OhnN_qH2-VCbFxwWJMKB_mVnQ1cJL8L831Lpk4b0hl_YodctGwNU6Mg1rmnRBlR0Cz3fCKqGOV0Z2hd108eXM9rZrtxGstKcHlPUsjOc9e8E"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Dashboard -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8">
+<!-- Pending Verifications Section -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">pending_actions</span>
+                        Pending Verifications
+                    </h3>
+<button class="text-primary text-xs font-bold hover:underline">View All Requests</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Pending Card 1 -->
+<div class="bg-sidebar-dark border border-primary/5 rounded-xl p-5 hover:border-primary/30 transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center overflow-hidden">
+<img alt="Alex Rivera" class="w-full h-full object-cover" data-alt="Portrait of a male sports manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-JFD84gVBKi3y1ohawOWWbepoOdFsr-L8ZxhEiQgzqfV98rXsYclKda1Pd4RM0cK2tkhcCo3u-cpMHu00aTVMHPqEnRwNCeFX6y-2MYb8Lb6nZIyxIzltiPBKcqL4J3AfUW1ZWct7_B9kqFnT66gEj_uOFF6gkXnD6K2KyoS4UJhlvxqCUNnAwMxdqwsaxVUTLmSdg-_MRu_smcDn3y3co8opvwaYZbEUvajnQQb8RxN3HTjyW18uhVN0Kd-W4awEXPbFtJlyH9Q"/>
+</div>
+<div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Alex Rivera</h4>
+<p class="text-xs text-primary/50">Miami, FL</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">4 Fields Pending</span>
+</div>
+<div class="space-y-3 mb-5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Business License</span>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Identity Proof</span>
+<span class="material-symbols-outlined text-yellow-500 text-sm">schedule</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-background-dark text-xs font-bold py-2 rounded-lg hover:brightness-110 transition-all">Approve</button>
+<button class="px-3 bg-white/5 text-slate-300 text-xs font-bold py-2 rounded-lg hover:bg-white/10">Details</button>
+</div>
+</div>
+<!-- Pending Card 2 -->
+<div class="bg-sidebar-dark border border-primary/5 rounded-xl p-5 hover:border-primary/30 transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center overflow-hidden">
+<img alt="Jordan Smith" class="w-full h-full object-cover" data-alt="Portrait of a person in sportswear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSfkJpwjQ4XY-7HTlNEM9nSoAUlv6g5e-gEkF58nVbVcKG8miNj-4mYILkzCBxJ8aQCh6gdEHnxfw_YMdtFyS8ldqDt0rWOAIa29P4JheVdSO1kDFcgtJ31JCUBuWqvD8ELTN6V8C7CJ8Ugx5XAVX0SJmwJ-8RrZ8RvTefvEvFvdBak6ZHxbXF4dfRaGFj1Yi2FcaQszdhX8b82QhP00U-oWS2h4TxJxRcOZ9xoiv5yVpjmQhvC48ROXbOrfSz5jIKR2faBIbngsw"/>
+</div>
+<div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Jordan Smith</h4>
+<p class="text-xs text-primary/50">Austin, TX</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">2 Fields Pending</span>
+</div>
+<div class="space-y-3 mb-5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Insurance Docs</span>
+<span class="material-symbols-outlined text-yellow-500 text-sm">schedule</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Address Verification</span>
+<span class="material-symbols-outlined text-yellow-500 text-sm">schedule</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-background-dark text-xs font-bold py-2 rounded-lg hover:brightness-110 transition-all">Approve</button>
+<button class="px-3 bg-white/5 text-slate-300 text-xs font-bold py-2 rounded-lg hover:bg-white/10">Details</button>
+</div>
+</div>
+<!-- Pending Card 3 -->
+<div class="bg-sidebar-dark border border-primary/5 rounded-xl p-5 hover:border-primary/30 transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center overflow-hidden">
+<img alt="Taylor Chen" class="w-full h-full object-cover" data-alt="Portrait of a young professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2GvCVtDq7XtMzokSh6QE5zpXrcaLZKGcDFzsJyY_mwVtjIc_QVTKonmvgv2iovMpvOBZbA_CYTho2si3X3orZYe7FGq9deSp1g0vW_6NNY4Hi9xFnaQw1bYS8ilZ1IKWj_n_VooTJ1s-jWcrDm3-LgZVtXgd2Jz34wShnFZ6mNFjcZJWGNPzjmQkFtmyc3uAv60qkZ9o41sc9mZnDuMj2q51xSc6tx0Bzo01NPGRwRLYWMs3d9B82PL4UstT7gjY7MNw34GkXzDc"/>
+</div>
+<div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Taylor Chen</h4>
+<p class="text-xs text-primary/50">Seattle, WA</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">5 Fields Pending</span>
+</div>
+<div class="space-y-3 mb-5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Business Registry</span>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-400">Court Affiliation</span>
+<span class="material-symbols-outlined text-yellow-500 text-sm">schedule</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-background-dark text-xs font-bold py-2 rounded-lg hover:brightness-110 transition-all">Approve</button>
+<button class="px-3 bg-white/5 text-slate-300 text-xs font-bold py-2 rounded-lg hover:bg-white/10">Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- All Managers Table Section -->
+<section class="bg-sidebar-dark/40 rounded-xl border border-primary/10 overflow-hidden flex flex-col">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between bg-sidebar-dark/60">
+<h3 class="text-lg font-bold text-white">All Managers</h3>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-background-dark border border-primary/10 rounded-lg text-xs font-medium text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                        </button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-background-dark border border-primary/10 rounded-lg text-xs font-medium text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-sidebar-dark/30">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Manager</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Location</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Fields</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Bookings</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Revenue</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40">Status</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-primary/40 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<!-- Table Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-800 overflow-hidden ring-2 ring-primary/20">
+<img alt="Marco" class="w-full h-full object-cover" data-alt="Avatar of a male professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTKJ3YuatwX70XGUhO05r6niC6ee60gmYwQskmkt2XOIYLsd5EY47R3S4bPsJZ-7Bc85A7uLdC3TouCDPIFV3z2GiccQKK5336SyE5SOn2Y72LBFwK1iimUT7oFdQOy16oE9TeKTJRcDPThWt0EG0EGAsvk3WmMf9HiysNtB7zz6hzI2HZI3tIWW6qGemqszlQhYx2_rkKRkt8M5CQ2aC8g5ftOVL3MkK9PuV4cCY3ADoaS8oklGBbVxLgqgUd5jRYrTBo5WFs36g"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Marco Hernandez</p>
+<p class="text-[10px] text-slate-500">marco.h@yardly.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-300">San Diego, CA</p>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">12 Managed</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">1,452</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-primary">$45.2k</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider border border-primary/20">
+<span class="size-1.5 rounded-full bg-primary"></span> Verified
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 transition-all">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-800 overflow-hidden ring-2 ring-yellow-500/20">
+<img alt="Sarah" class="w-full h-full object-cover" data-alt="Avatar of a female professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAorWWEpXOlHUD4qmMnUTrC645AEM75LO35FGrBdowKrG7Lkfb32QFzseCc_146uWTwRDfzArC0oUFGTtlYCQz9mbMF6G2JKfSuVjYq2-JmLdvS06efneEUglMq23P_vQNvPWSg_5b3IApipoIt052SbpKk073od8qB_3tngeBCPxuD87r35_Lm8Tk8BdRXzZJ_1DLgFxw50oW8-BGt5d8-BF2uCJKbRUuIPdOxrgGwyVeFwRgp0fAPHAwnQvv6_DauBUGcCBeidiE"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Sarah Jenkins</p>
+<p class="text-[10px] text-slate-500">s.jenkins@sportsbox.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-300">Chicago, IL</p>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">4 Managed</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">238</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-primary">$8.4k</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider border border-yellow-500/20">
+<span class="size-1.5 rounded-full bg-yellow-500"></span> Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 transition-all">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-800 overflow-hidden ring-2 ring-red-500/20">
+<img alt="Mike" class="w-full h-full object-cover" data-alt="Avatar of a middle-aged male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzATsdMElOLxlXXu1fcStc3KoCz1gcfS2i22UB-Rfn16EwrdEb2p-lbVq5R3Vio_glxcbvGjT5k9IvBKp9orsMo7LD0ux-LxAI3hZ0vWvm-5kCRMSTfAGV7KpT8bXttpr5ptlTpOPDNhqnehbT-PkBLokKUDW7c-jOmB2abJmZonkBMHqb4C4mAEoZcTZJaHPobakf8ArrcWnC0Yek55W4i5jE1_1Jmnc3fxp-BQ6-OHw_fq4dfCbgIg89tABnCNN5u9hNBO8FMZE"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Michael Chang</p>
+<p class="text-[10px] text-slate-500">mike.c@netcourts.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-300">Denver, CO</p>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">0 Managed</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">0</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-slate-400">$0.00</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-red-500/10 text-red-500 text-[10px] font-bold uppercase tracking-wider border border-red-500/20">
+<span class="size-1.5 rounded-full bg-red-500"></span> Suspended
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-primary hover:text-primary/80 transition-all">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-800 overflow-hidden ring-2 ring-primary/20">
+<img alt="Lisa" class="w-full h-full object-cover" data-alt="Avatar of a female administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsFwktW8AtaxwFtudMJrrnuRk_k2EOV_kdQGrjpgkudiGjDj21fKcOxVXVmU7OLx_MiCvWFbtjLXRDHeuZJop3izivj8bz_hsW3z1KSTVEUju_qzFtuy66eQb0qciTq4zP_8cRp3H7P2vvbSShJwuxAoaQpxfAzBX2DQCKRh5utS5pTcxSkME19rpYoWTRqXbFzf3yDOLPtNbI9DWWigE3TmwsMd2CZihIiSZ5JeZFxKpmorKXvu1M7kx1LvUuTaVFgKtXp6qWKVM"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Lisa Wong</p>
+<p class="text-[10px] text-slate-500">lisa@greenfields.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-xs text-slate-300">Portland, OR</p>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">8 Managed</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-300">920</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-primary">$29.1k</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider border border-primary/20">
+<span class="size-1.5 rounded-full bg-primary"></span> Verified
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-red-500 transition-all">
+<span class="material-symbols-outlined text-lg">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-primary/10 flex items-center justify-between bg-sidebar-dark/30">
+<p class="text-xs text-slate-500">Showing 1-10 of 248 managers</p>
+<div class="flex gap-1">
+<button class="size-8 rounded flex items-center justify-center text-slate-400 hover:bg-primary/10 transition-all"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="size-8 rounded bg-primary text-background-dark text-xs font-bold">1</button>
+<button class="size-8 rounded text-slate-400 hover:bg-primary/10 text-xs font-bold transition-all">2</button>
+<button class="size-8 rounded text-slate-400 hover:bg-primary/10 text-xs font-bold transition-all">3</button>
+<button class="size-8 rounded flex items-center justify-center text-slate-400 hover:bg-primary/10 transition-all"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Side Drawer (Selected Manager Stats) -->
+<aside class="w-80 bg-sidebar-dark border-l border-primary/10 h-screen shrink-0 overflow-y-auto custom-scrollbar">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between bg-background-dark/20">
+<h3 class="font-bold text-white">Manager Profile</h3>
+<button class="size-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-white/5"><span class="material-symbols-outlined text-lg">close</span></button>
+</div>
+<div class="p-6">
+<div class="flex flex-col items-center text-center mb-8">
+<div class="size-24 rounded-2xl bg-primary/20 p-1 ring-4 ring-primary/10 mb-4">
+<img alt="Marco Profile" class="w-full h-full object-cover rounded-xl" data-alt="Close up avatar of selected manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClKH6dKs1Hu4cCuMGyb8iojPJnakkv2GC4qEdEj2szF00SymLnVritulqs5JDSqZZf1-ouzbHrMaHgw8QFbe1f2Zh9Kzzv6-auM_tE3uZ-zpDWqB8zCCK8ez4-s7t_-_SnPA6gDpAj86iyDmoejtHM1YWleZGwa2h0A0WCNQLnmV5gzrUmv_vRU8S7S8W7R-Ywkim6gZll2fKjIzfXByJM9i-uz4VwlgA54wQJxgcqrF77unNiYYIdCajBiFOYn6MKtZ7-WK9dcjQ"/>
+</div>
+<h4 class="text-lg font-bold text-white">Marco Hernandez</h4>
+<p class="text-primary text-xs font-medium uppercase tracking-widest mt-1">Elite Partner</p>
+</div>
+<div class="space-y-6">
+<!-- Mini Stats Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-background-dark/40 border border-primary/5 rounded-lg p-3">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">Field Utilization</p>
+<p class="text-lg font-bold text-primary">88%</p>
+</div>
+<div class="bg-background-dark/40 border border-primary/5 rounded-lg p-3">
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">Active Fields</p>
+<p class="text-lg font-bold text-primary">12</p>
+</div>
+</div>
+<!-- Managed Fields -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">stadium</span>
+                        Managed Fields
+                    </h5>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-background-dark/40 border border-primary/5">
+<div class="size-10 rounded bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">sports_soccer</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-200 truncate">South Beach Turf A</p>
+<p class="text-[10px] text-slate-500">Football • Miami</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-primary">$120/h</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg bg-background-dark/40 border border-primary/5">
+<div class="size-10 rounded bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">sports_tennis</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-200 truncate">Padel Center Court</p>
+<p class="text-[10px] text-slate-500">Padel • Miami</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-primary">$80/h</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg bg-background-dark/40 border border-primary/5">
+<div class="size-10 rounded bg-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">sports_basketball</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="text-xs font-bold text-slate-200 truncate">Downtown Arena</p>
+<p class="text-[10px] text-slate-500">Basketball • Miami</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-primary">$150/h</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Log -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">history</span>
+                        Recent Activity
+                    </h5>
+<div class="relative pl-4 space-y-4 before:content-[''] before:absolute before:left-[3px] before:top-1 before:bottom-1 before:w-[2px] before:bg-primary/20">
+<div class="relative">
+<div class="absolute -left-[17px] top-1.5 size-2 rounded-full bg-primary ring-4 ring-sidebar-dark"></div>
+<p class="text-xs text-slate-200 font-medium">Added new field "Clay Court 4"</p>
+<p class="text-[10px] text-slate-500">2 hours ago</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[17px] top-1.5 size-2 rounded-full bg-slate-500 ring-4 ring-sidebar-dark"></div>
+<p class="text-xs text-slate-200 font-medium">Updated pricing for Night Sessions</p>
+<p class="text-[10px] text-slate-500">Yesterday at 4:30 PM</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-primary/10">
+<button class="w-full bg-primary text-background-dark font-bold text-sm py-3 rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">contact_page</span>
+                    Contact Manager
+                </button>
+</div>
+</div>
+</aside>
+</body></html>

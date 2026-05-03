@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reservations Calendar - Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee93",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#072A1C",
+                        "card-dark": "#114D31",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Main Content Container -->
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-[480px] flex-1 pb-24">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 py-4 sticky top-0 bg-background-dark/80 backdrop-blur-md z-30">
+<div class="flex items-center gap-4 text-slate-100">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">sports_tennis</span>
+</div>
+<h2 class="text-slate-100 text-xl font-bold leading-tight tracking-tight">Yardly</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-card-dark text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile picture of a male manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBR2UoS19OrmSTw0mWZf5zxkFUYQ_Reff5L_EjcGjp0Ts7N6amTyGBsaVaMiunXe7fvN_5XOQiYAB3EmEussyZZ-qZeOxBj7bbnuajM-WZMkYYyIxoP7EnNZBNmUZipyglhSX2gsvOChm3rI5KuVV1L1RIhSVPjyyWn2DapfJKFhptveto0Z0nVHGSdGXB9GhPcDcdhc2-wvGxiuSpocoJwhrQb4UBXl09YiuGM8gu2eAFrKywa-dHfi5Bwuyklzpuhd55kpERFSqk");'></div>
+</div>
+</header>
+<!-- Horizontal Date Selector -->
+<div class="flex gap-3 p-4 overflow-x-auto no-scrollbar border-b border-primary/10">
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-card-dark border border-primary/10">
+<p class="text-slate-400 text-xs font-medium uppercase">Mon</p>
+<p class="text-slate-100 text-lg font-bold">12</p>
+</div>
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-card-dark border border-primary/10">
+<p class="text-slate-400 text-xs font-medium uppercase">Tue</p>
+<p class="text-slate-100 text-lg font-bold">13</p>
+</div>
+<!-- Active Day -->
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-primary text-background-dark">
+<p class="text-background-dark/70 text-xs font-bold uppercase">Wed</p>
+<p class="text-background-dark text-lg font-black">14</p>
+</div>
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-card-dark border border-primary/10">
+<p class="text-slate-400 text-xs font-medium uppercase">Thu</p>
+<p class="text-slate-100 text-lg font-bold">15</p>
+</div>
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-card-dark border border-primary/10">
+<p class="text-slate-400 text-xs font-medium uppercase">Fri</p>
+<p class="text-slate-100 text-lg font-bold">16</p>
+</div>
+<div class="flex flex-col h-16 min-w-[60px] shrink-0 items-center justify-center gap-1 rounded-xl bg-card-dark border border-primary/10">
+<p class="text-slate-400 text-xs font-medium uppercase">Sat</p>
+<p class="text-slate-100 text-lg font-bold">17</p>
+</div>
+</div>
+<!-- Selected Date Title -->
+<div class="px-6 py-6">
+<h2 class="text-slate-100 text-2xl font-bold leading-tight tracking-tight">Wednesday, Oct 14</h2>
+<p class="text-primary/70 text-sm mt-1">8 active reservations today</p>
+</div>
+<!-- Reservations List -->
+<div class="flex flex-col gap-4 px-4">
+<!-- Reservation Card 1: Confirmed -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-card-dark p-4 shadow-lg border-l-4 border-primary">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<p class="text-primary text-xs font-bold uppercase tracking-wider">Confirmed</p>
+</div>
+<p class="text-slate-100 text-lg font-bold">Marco Rossi</p>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<p class="text-sm font-medium">09:00 AM - 10:30 AM</p>
+</div>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm">Court A - Padel</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 cursor-pointer items-center justify-center rounded-lg h-10 bg-primary/10 text-primary text-sm font-bold border border-primary/20 hover:bg-primary/20 transition-all">
+                                        Check-in
+                                    </button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-slate-800 text-slate-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-auto bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Aerial view of a green padel court" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUjKIZx1C_NnDuUcOMxNcSd7eIOUqrcHmhrmthWJ7H_aCWpFCC8ndllyVWHQRK8wBLWTN0KnrojTDeanM69mZP7Jzwjaot4jqL7rkJiE-ZA1lGykAqVgYp5eFhIeYibSH00k0-pvab4byZXfmwoAA26C0SOycovdAoy7TVNQ9aTF5-GJtYB1CYLRVyLVNji5fHF12c7V0x61Vpb_TvsgYKb9uFKhjwIJI5LDIX5ulkIekdqEHnpdNRyJ3OF1ea5tvt9JNokSAHx9g");'></div>
+</div>
+<!-- Time Gap / Slot Availability -->
+<div class="px-2 flex items-center gap-4">
+<span class="text-xs text-slate-500 font-bold w-12 text-right">10:30</span>
+<div class="h-[1px] flex-1 bg-slate-800"></div>
+<div class="px-3 py-1 rounded-full border border-primary/30 text-[10px] text-primary uppercase font-black">Available</div>
+<div class="h-[1px] flex-1 bg-slate-800"></div>
+</div>
+<!-- Reservation Card 2: Pending -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-card-dark p-4 shadow-lg border-l-4 border-amber-500">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-amber-500 animate-pulse"></span>
+<p class="text-amber-500 text-xs font-bold uppercase tracking-wider">Pending Approval</p>
+</div>
+<p class="text-slate-100 text-lg font-bold">Sarah Jenkins</p>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<p class="text-sm font-medium">11:00 AM - 12:00 PM</p>
+</div>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm">Court B - Tennis</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 cursor-pointer items-center justify-center rounded-lg h-10 bg-primary text-background-dark text-sm font-bold shadow-md">
+                                        Approve
+                                    </button>
+<button class="flex-1 cursor-pointer items-center justify-center rounded-lg h-10 bg-red-500/10 text-red-500 border border-red-500/20 text-sm font-bold">
+                                        Decline
+                                    </button>
+</div>
+</div>
+<div class="w-24 h-auto bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Tennis court with player blurred in distance" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDm8kSpLuy3A-kOaEtoS0h7_nR6U6ZhbBrGehmIL9EqQrdtvgJuFYUFs797qLUg9DXjEn3WYdGszLgAjKJCTKOC0K23Ldv1QcYdiHFs0ONQ0qNDWWgMDq6km6peMaOr6_6YHaPqyYpzungM7H6NFIp3EB9tIkUv4Tx4zoEr0hnDqMhlcewHSGk6VJ1RqDBX09rPY8q9k9GDDkXXTGtvbk82p3Y3BPEPYPF7KaWCdoQQY7FsxfMlBmRm-gKNdiGyQRSBMPfiryaDSjI");'></div>
+</div>
+<!-- Reservation Card 3: Blocked / Unavailable -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-900/50 p-4 border border-dashed border-slate-700 opacity-80">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-2">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm">block</span>
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Maintenance</p>
+</div>
+<p class="text-slate-400 text-lg font-bold">Court C Closed</p>
+<p class="text-slate-500 text-sm font-medium">01:00 PM - 03:00 PM</p>
+</div>
+<button class="flex w-fit cursor-pointer items-center justify-center rounded-lg h-8 px-4 bg-slate-800 text-slate-400 text-xs font-bold">
+                                    Unblock Slot
+                                </button>
+</div>
+<div class="w-24 h-24 bg-slate-800/50 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-700 text-4xl">construction</span>
+</div>
+</div>
+<!-- Reservation Card 4: Confirmed -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-card-dark p-4 shadow-lg border-l-4 border-primary">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<p class="text-primary text-xs font-bold uppercase tracking-wider">Confirmed</p>
+</div>
+<p class="text-slate-100 text-lg font-bold">David Thompson</p>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<p class="text-sm font-medium">03:30 PM - 05:00 PM</p>
+</div>
+<div class="flex items-center gap-1 text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p class="text-sm">Court A - Padel</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 cursor-pointer items-center justify-center rounded-lg h-10 bg-primary/10 text-primary text-sm font-bold border border-primary/20 hover:bg-primary/20 transition-all">
+                                        Manage
+                                    </button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-slate-800 text-slate-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-auto bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Padel court net and green floor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfJso9BrO5wr2OH680fdHp3S6VcHDvfjMywvQwVpisuQOIP_4Xd1SJztKjnieYCpMbb_Pk6VbWRwEu9K8LyUdhOaV7wotMmAG1gZ-a4WIkM22pUM2Tfv53mb-99v6YC2RYc6U0-4KoBd9kqTNLOM4dqaVBWeWCtQBoB9jKrrimE8JiT5Zqc15QkJ4QApmG89_2rgsA6cY80k0RA4wHRqQN2OVuoR9g2ajmy4wp2EA2e50RKI3Yw6mBCAdK5zPQF8sB2YJ7_x72x20");'></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-background-dark shadow-[0_8px_30px_rgb(43,238,147,0.4)] transition-transform active:scale-95 z-50">
+<span class="material-symbols-outlined font-bold">event_busy</span>
+<span class="text-sm font-black uppercase tracking-tight">Block Slot</span>
+</button>
+<!-- Bottom Navigation Tab Bar (Mobile App Style) -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-background-dark/95 backdrop-blur-md border-t border-primary/10 flex items-center justify-around px-4 z-40">
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-bold">Schedule</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold">Insights</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Users</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</div>
+</nav>
+</div>
+</div>
+</body></html>

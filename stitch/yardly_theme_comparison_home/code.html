@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly - Home Comparison</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10B981", // Emerald Green
+                        "primary-neon": "#39FF14",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#072A1C",
+                        "card-dark": "#0B3D29",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                },
+            },
+        };
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-black transition-colors duration-300">
+<button class="fixed bottom-8 right-8 z-50 flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-6 py-3 rounded-full shadow-2xl border border-slate-200 dark:border-slate-700 hover:scale-105 transition-all" onclick="toggleTheme()">
+<span class="material-icons-round dark:hidden">dark_mode</span>
+<span class="material-icons-round hidden dark:block">light_mode</span>
+<span class="font-semibold">Switch Mode</span>
+</button>
+<div class="max-w-[1600px] mx-auto p-4 md:p-8 space-y-8">
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Yardly Theme Comparison</h1>
+<p class="text-slate-500 dark:text-slate-400">Previewing Home Page layout across modes</p>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-2 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-sm font-medium italic">Active Design</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<span class="text-sm font-bold uppercase tracking-wider text-slate-500">Light Mode (#F8FAFC)</span>
+<span class="text-xs text-slate-400">Brand: Emerald Green</span>
+</div>
+<div class="bg-background-light border border-slate-200 rounded-3xl overflow-hidden shadow-xl min-h-[800px] text-slate-900">
+<nav class="flex items-center justify-between p-6 border-b border-slate-200 bg-white/50 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-white text-sm">sports_soccer</span>
+</div>
+<span class="font-bold text-xl tracking-tight">Yardly</span>
+</div>
+<div class="flex gap-6 text-sm font-medium text-slate-600">
+<a class="text-primary" href="#">Find a Field</a>
+<a href="#">Leagues</a>
+<a href="#">About</a>
+</div>
+<button class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold">Sign In</button>
+</nav>
+<div class="p-8 pt-16 text-center max-w-2xl mx-auto">
+<h2 class="text-4xl font-extrabold mb-4 tracking-tight">Rent the perfect field for your next game.</h2>
+<p class="text-slate-600 mb-8">Over 5,000 sports facilities available across the country for soccer, basketball, tennis and more.</p>
+<div class="bg-white p-2 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2">
+<div class="flex-1 flex items-center gap-2 px-4 border-r border-slate-100">
+<span class="material-icons-round text-slate-400">location_on</span>
+<input class="w-full border-none focus:ring-0 text-sm bg-transparent" placeholder="Where are you playing?" type="text"/>
+</div>
+<div class="flex-1 flex items-center gap-2 px-4">
+<span class="material-icons-round text-slate-400">calendar_today</span>
+<input class="w-full border-none focus:ring-0 text-sm bg-transparent" placeholder="Select Date" type="text"/>
+</div>
+<button class="bg-primary text-white p-3 rounded-xl">
+<span class="material-icons-round">search</span>
+</button>
+</div>
+</div>
+<div class="px-8 mt-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg">Popular Sports</h3>
+<a class="text-primary text-sm font-semibold" href="#">View all</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-primary shadow-sm">
+<span class="material-icons-round text-3xl">sports_soccer</span>
+</div>
+<span class="text-xs font-semibold">Soccer</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-slate-400">
+<span class="material-icons-round text-3xl">sports_basketball</span>
+</div>
+<span class="text-xs font-semibold">Basketball</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-slate-400">
+<span class="material-icons-round text-3xl">sports_tennis</span>
+</div>
+<span class="text-xs font-semibold">Tennis</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-slate-400">
+<span class="material-icons-round text-3xl">sports_volleyball</span>
+</div>
+<span class="text-xs font-semibold">Volleyball</span>
+</div>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-bold text-lg mb-6">Top Rated Near You</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+<div class="h-32 bg-slate-200 relative">
+<img alt="Soccer Field" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0d0YbLrq9969HRE7XBRpUS9zgwwn8dFugJc-lzOmYrRaZdhPbTqti_7A1b90AR4RG48tnDGDJfb2xQPZBrmyfNAX-ITQbuQMvXC9zjHpwCXf-QZ2fAkFaEL8Io0SjtawPaIVOIHKnw7RFRPfJ1CrD39irhVHS7kAuVxHg4PJuNNkIbSOl75hVcRboFOB2wnfInhysaswjYiceeeIMtZej7vv1QMZdOoU1TbUpyrCLufxDFBv5NSu7kjAdpfbSDdVU5BQBoOg3tT0"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold">4.9 ★</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-sm">Green Valley Arena</h4>
+<p class="text-slate-500 text-xs">Brooklyn, NY</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-primary font-bold text-sm">$45/hr</span>
+<button class="text-xs font-bold bg-slate-100 px-3 py-1 rounded-full">Book</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+<div class="h-32 bg-slate-200 relative">
+<img alt="Basketball Court" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlhNRsHvOy0P7tBW9fuijHYgAle_0YtuYkr5K0KSybKMmf6weN3wZ1DUC0_TcpE1VIAlRBlZzvn-M-OJPGETSCM7jZy0C-Q9l0qvICSOCkwv8S6R8KPdL9kMwLffGT98QmSIS_iEg8GqtpuL839APorFP5ZQwIC6EuyoIDR8xHpLqx1l7QVk7cOZLw7JxX1eyWTb3nXRiLrtYx-v_Ryw-poAsNFtL0jpc79c8sPnkmxSBLvmLOWqwHctgx6C6Th7TBmkpTGMJ-e8w"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold">4.7 ★</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-sm">Central Park Courts</h4>
+<p class="text-slate-500 text-xs">Manhattan, NY</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-primary font-bold text-sm">$30/hr</span>
+<button class="text-xs font-bold bg-slate-100 px-3 py-1 rounded-full">Book</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2 text-right lg:text-left">
+<span class="text-sm font-bold uppercase tracking-wider text-slate-500">Dark Mode (#072A1C)</span>
+<span class="text-xs text-slate-400">Brand: Neon Green</span>
+</div>
+<div class="bg-background-dark border border-emerald-900/50 rounded-3xl overflow-hidden shadow-xl min-h-[800px] text-white">
+<nav class="flex items-center justify-between p-6 border-b border-emerald-900/30 bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary-neon rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-background-dark text-sm">sports_soccer</span>
+</div>
+<span class="font-bold text-xl tracking-tight">Yardly</span>
+</div>
+<div class="flex gap-6 text-sm font-medium text-emerald-100/60">
+<a class="text-primary-neon" href="#">Find a Field</a>
+<a href="#">Leagues</a>
+<a href="#">About</a>
+</div>
+<button class="bg-white text-background-dark px-5 py-2 rounded-full text-sm font-bold">Sign In</button>
+</nav>
+<div class="p-8 pt-16 text-center max-w-2xl mx-auto">
+<h2 class="text-4xl font-extrabold mb-4 tracking-tight">Rent the perfect field for your next game.</h2>
+<p class="text-emerald-100/60 mb-8">Over 5,000 sports facilities available across the country for soccer, basketball, tennis and more.</p>
+<div class="bg-card-dark p-2 rounded-2xl shadow-2xl border border-emerald-800/50 flex items-center gap-2">
+<div class="flex-1 flex items-center gap-2 px-4 border-r border-emerald-800/30">
+<span class="material-icons-round text-emerald-500/50 text-xl">location_on</span>
+<input class="w-full border-none focus:ring-0 text-sm bg-transparent placeholder-emerald-100/30" placeholder="Where are you playing?" type="text"/>
+</div>
+<div class="flex-1 flex items-center gap-2 px-4">
+<span class="material-icons-round text-emerald-500/50 text-xl">calendar_today</span>
+<input class="w-full border-none focus:ring-0 text-sm bg-transparent placeholder-emerald-100/30" placeholder="Select Date" type="text"/>
+</div>
+<button class="bg-primary-neon text-background-dark p-3 rounded-xl">
+<span class="material-icons-round font-bold">search</span>
+</button>
+</div>
+</div>
+<div class="px-8 mt-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg">Popular Sports</h3>
+<a class="text-primary-neon text-sm font-semibold" href="#">View all</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-card-dark border border-emerald-800/50 rounded-2xl flex items-center justify-center text-primary-neon shadow-lg">
+<span class="material-icons-round text-3xl">sports_soccer</span>
+</div>
+<span class="text-xs font-semibold text-emerald-100/80">Soccer</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-card-dark border border-emerald-800/30 rounded-2xl flex items-center justify-center text-emerald-500/30">
+<span class="material-icons-round text-3xl">sports_basketball</span>
+</div>
+<span class="text-xs font-semibold text-emerald-100/40">Basketball</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-card-dark border border-emerald-800/30 rounded-2xl flex items-center justify-center text-emerald-500/30">
+<span class="material-icons-round text-3xl">sports_tennis</span>
+</div>
+<span class="text-xs font-semibold text-emerald-100/40">Tennis</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-card-dark border border-emerald-800/30 rounded-2xl flex items-center justify-center text-emerald-500/30">
+<span class="material-icons-round text-3xl">sports_volleyball</span>
+</div>
+<span class="text-xs font-semibold text-emerald-100/40">Volleyball</span>
+</div>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-bold text-lg mb-6 text-white/90">Top Rated Near You</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-emerald-800/50 shadow-lg group">
+<div class="h-32 relative">
+<img alt="Soccer Field" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXlEoEk-bqst1vuKltX8RCg0i1zHBX-t43bLvFeujlKdTlL7BwQFArhD2sW4AQrhY0rZkChnlkd5abst6fX_wo5-uSq2S12wyItv2GP5ndsA0UYnSX_GX9t02QdqTutkb-LTw5RkyG4ypfZCoAcfuSNDqnGOsjC_2C0USD4nUY8GV_-dAejz5snDXB4Wth_OFTZElp2pUpmHER1-H6W1-XC70KJfazL9FoLnB_fdDWYnOoTCJGJr8X0u8AQlFPhY8Zu129miB0ue4"/>
+<div class="absolute top-2 right-2 bg-primary-neon text-background-dark px-2 py-1 rounded-lg text-[10px] font-black">4.9 ★</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-sm">Green Valley Arena</h4>
+<p class="text-emerald-500/60 text-xs">Brooklyn, NY</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-primary-neon font-bold text-sm">$45/hr</span>
+<button class="text-xs font-bold bg-emerald-900/50 text-emerald-100 px-3 py-1 rounded-full border border-emerald-800/50">Book</button>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl overflow-hidden border border-emerald-800/50 shadow-lg group">
+<div class="h-32 relative">
+<img alt="Basketball Court" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIdtOTTQ0LXduMtYjBH0TK5BHYXPt-C3dnU5HW3zjOuxAvroQ5dYSKX0oQE6NkmBtBbPCzLLZv-8BHKy7nWKJCLlXw9XykBZmPSyn9H4Xez3crA5ijpsXWQh_7g4OSOss8qG2ZS0uHyjtb8OL15xyHqbhwPE-1IWMf2THwdZIFGCOBOYG51Q1K4Ier9JbIMJ3Z2LxqEtmF_XmDZQBrYRL2iv4giw-Qf8M33QwsrhGNKiZbwkLbkZ02-g-Ubx1S2PtdsBSfkP1_hfw"/>
+<div class="absolute top-2 right-2 bg-primary-neon text-background-dark px-2 py-1 rounded-lg text-[10px] font-black">4.7 ★</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-sm">Central Park Courts</h4>
+<p class="text-emerald-500/60 text-xs">Manhattan, NY</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-primary-neon font-bold text-sm">$30/hr</span>
+<button class="text-xs font-bold bg-emerald-900/50 text-emerald-100 px-3 py-1 rounded-full border border-emerald-800/50">Book</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-white">Design Tokens</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Property</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Light Theme</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Dark Theme</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Background</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">#F8FAFC</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">#072A1C</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Primary Color</td>
+<td class="px-6 py-4 text-sm font-mono text-emerald-600">#10B981 (Emerald)</td>
+<td class="px-6 py-4 text-sm font-mono text-emerald-400">#39FF14 (Neon Green)</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">Cards</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">#FFFFFF</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">#0B3D29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body></html>

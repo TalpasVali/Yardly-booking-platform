@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loading Skeletons Light Mode Desktop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3fe97d",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#112117",
+                        "neutral-light": "#e2e8f0",
+                        "neutral-border": "#cbd5e1"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .animate-skeleton {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Nav Bar Skeleton -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-neutral-light bg-white px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="size-8 rounded-lg bg-primary/20 animate-skeleton"></div>
+<div class="h-6 w-24 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="flex items-center gap-4 h-10 w-64 bg-neutral-light/50 rounded-lg animate-skeleton"></div>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-6">
+<div class="h-4 w-16 bg-neutral-light rounded animate-skeleton"></div>
+<div class="h-4 w-16 bg-neutral-light rounded animate-skeleton"></div>
+<div class="h-4 w-16 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="flex gap-2">
+<div class="size-10 rounded-lg bg-neutral-light animate-skeleton"></div>
+<div class="size-10 rounded-lg bg-neutral-light animate-skeleton"></div>
+<div class="size-10 rounded-full bg-neutral-light animate-skeleton"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[1200px] mx-auto w-full p-8">
+<!-- Dashboard Header Skeleton -->
+<div class="mb-8">
+<div class="h-10 w-64 bg-neutral-light rounded-lg mb-2 animate-skeleton"></div>
+<div class="h-5 w-96 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+<!-- Analytics Grid Skeleton -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white p-6 rounded-xl border border-neutral-light shadow-sm">
+<div class="h-4 w-24 bg-neutral-light rounded mb-4 animate-skeleton"></div>
+<div class="h-8 w-32 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-neutral-light shadow-sm">
+<div class="h-4 w-24 bg-neutral-light rounded mb-4 animate-skeleton"></div>
+<div class="h-8 w-32 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-neutral-light shadow-sm">
+<div class="h-4 w-24 bg-neutral-light rounded mb-4 animate-skeleton"></div>
+<div class="h-8 w-32 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between mb-6">
+<div class="h-7 w-48 bg-neutral-light rounded animate-skeleton"></div>
+<div class="h-10 w-32 bg-primary/20 rounded-lg animate-skeleton"></div>
+</div>
+<!-- Field Cards Grid Skeleton -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- Card 1 -->
+<div class="bg-white rounded-xl border border-neutral-light overflow-hidden shadow-sm">
+<div class="aspect-video bg-neutral-light animate-skeleton"></div>
+<div class="p-4">
+<div class="h-5 w-3/4 bg-neutral-light rounded mb-3 animate-skeleton"></div>
+<div class="h-4 w-1/2 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-xl border border-neutral-light overflow-hidden shadow-sm">
+<div class="aspect-video bg-neutral-light animate-skeleton"></div>
+<div class="p-4">
+<div class="h-5 w-3/4 bg-neutral-light rounded mb-3 animate-skeleton"></div>
+<div class="h-4 w-1/2 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-xl border border-neutral-light overflow-hidden shadow-sm">
+<div class="aspect-video bg-neutral-light animate-skeleton"></div>
+<div class="p-4">
+<div class="h-5 w-3/4 bg-neutral-light rounded mb-3 animate-skeleton"></div>
+<div class="h-4 w-1/2 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white rounded-xl border border-neutral-light overflow-hidden shadow-sm">
+<div class="aspect-video bg-neutral-light animate-skeleton"></div>
+<div class="p-4">
+<div class="h-5 w-3/4 bg-neutral-light rounded mb-3 animate-skeleton"></div>
+<div class="h-4 w-1/2 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+</div>
+</div>
+<!-- Table Row Skeletons -->
+<div class="mb-6">
+<div class="h-7 w-48 bg-neutral-light rounded mb-6 animate-skeleton"></div>
+<div class="bg-white rounded-xl border border-neutral-light overflow-hidden shadow-sm">
+<!-- Table Header -->
+<div class="grid grid-cols-5 gap-4 p-4 border-b border-neutral-light bg-slate-50">
+<div class="h-4 w-20 bg-neutral-light/80 rounded animate-skeleton"></div>
+<div class="h-4 w-20 bg-neutral-light/80 rounded animate-skeleton"></div>
+<div class="h-4 w-20 bg-neutral-light/80 rounded animate-skeleton"></div>
+<div class="h-4 w-20 bg-neutral-light/80 rounded animate-skeleton"></div>
+<div class="h-4 w-20 bg-neutral-light/80 rounded animate-skeleton text-right"></div>
+</div>
+<!-- Rows -->
+<div class="divide-y divide-neutral-light">
+<div class="grid grid-cols-5 gap-4 p-4 items-center">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-neutral-light animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="h-4 w-32 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-6 w-20 bg-primary/10 rounded-full animate-skeleton"></div>
+<div class="h-4 w-12 bg-neutral-light/60 rounded justify-self-end animate-skeleton"></div>
+</div>
+<div class="grid grid-cols-5 gap-4 p-4 items-center">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-neutral-light animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="h-4 w-32 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-6 w-20 bg-primary/10 rounded-full animate-skeleton"></div>
+<div class="h-4 w-12 bg-neutral-light/60 rounded justify-self-end animate-skeleton"></div>
+</div>
+<div class="grid grid-cols-5 gap-4 p-4 items-center">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-neutral-light animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light rounded animate-skeleton"></div>
+</div>
+<div class="h-4 w-32 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-4 w-24 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-6 w-20 bg-primary/10 rounded-full animate-skeleton"></div>
+<div class="h-4 w-12 bg-neutral-light/60 rounded justify-self-end animate-skeleton"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chart Section Skeleton -->
+<div class="bg-white p-6 rounded-xl border border-neutral-light shadow-sm">
+<div class="h-6 w-40 bg-neutral-light rounded mb-8 animate-skeleton"></div>
+<div class="flex items-end gap-4 h-64 px-4">
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 40%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 70%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 55%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 90%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 30%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 65%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 80%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 45%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 60%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 75%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 50%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t animate-skeleton" style="height: 85%;"></div>
+</div>
+<div class="flex justify-between mt-4 px-4">
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+<div class="h-3 w-8 bg-neutral-light/60 rounded animate-skeleton"></div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

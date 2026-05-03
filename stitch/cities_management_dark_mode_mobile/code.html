@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cities Management - Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#32cd32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072a1c",
+                        "card-dark": "#114d31",
+                        "accent-dark": "#1a6b45"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1a6b45;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<div class="relative flex h-full w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-100">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">potted_plant</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Yardly</h2>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-10 flex items-center justify-center rounded-full bg-card-dark hover:bg-accent-dark transition-colors">
+<span class="material-symbols-outlined text-slate-100">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB05a7JvylqnjrfE4P4WeqN3F27Zs7sDRgpMl1iE3u9MR3NT-sbfSoiHEBqYYyX0fso-MIbZ1aOl7hUt-FDa5hB-zsEEk5_3Hqkb9Kpmd8V8eC6KMIbN2n-XME2Y1egD8zMzzrlwIsTKlMHOWEn9lNhY43zb5O3h9YlYZUt6Q7nC0cpqhUgL-bGIAwTL2ga8NRdCZTzgvzWt_6fHbKHnJOKLo5aEe4bOEmVjVODfDCbz58gOx2W3cjMYBDEPNtWZRQzszhdp2X-VY0')"></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col p-4 pb-24 md:max-w-3xl md:mx-auto w-full">
+<div class="mb-6">
+<h1 class="text-3xl font-black text-slate-100 mb-2">Cities Management</h1>
+<p class="text-slate-400">Control service zones and field availability across regions.</p>
+</div>
+<div class="flex gap-2 mb-6">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-card-dark border-none rounded-xl py-4 pl-12 pr-4 text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary transition-all" placeholder="Search cities or countries..." type="text"/>
+</div>
+<button class="bg-card-dark px-4 rounded-xl flex items-center justify-center hover:bg-accent-dark transition-colors">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+</button>
+</div>
+<div class="flex gap-2 mb-8 overflow-x-auto no-scrollbar pb-2">
+<button class="shrink-0 px-5 py-2 rounded-full bg-primary text-background-dark font-bold text-sm">All Cities</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-card-dark text-slate-300 font-medium text-sm hover:bg-accent-dark">Active Only</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-card-dark text-slate-300 font-medium text-sm hover:bg-accent-dark">Expansion Pending</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-card-dark text-slate-300 font-medium text-sm hover:bg-accent-dark">North America</button>
+</div>
+<div class="space-y-4">
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="size-14 rounded-xl bg-accent-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">location_city</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Austin</h3>
+<p class="text-slate-400 text-sm">Texas, United States</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Service Fields</p>
+<p class="text-white text-lg font-bold">142</p>
+</div>
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Avg Rating</p>
+<div class="flex items-center gap-1">
+<p class="text-white text-lg font-bold">4.8</p>
+<span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-accent-dark hover:bg-primary/20 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">edit</span>
+                            Edit
+                        </button>
+<button class="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-500 font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">block</span>
+                            Deactivate
+                        </button>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="size-14 rounded-xl bg-accent-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">location_city</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Vancouver</h3>
+<p class="text-slate-400 text-sm">BC, Canada</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Service Fields</p>
+<p class="text-white text-lg font-bold">89</p>
+</div>
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Avg Rating</p>
+<div class="flex items-center gap-1">
+<p class="text-white text-lg font-bold">4.6</p>
+<span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-accent-dark hover:bg-primary/20 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">edit</span>
+                            Edit
+                        </button>
+<button class="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-500 font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">block</span>
+                            Deactivate
+                        </button>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl p-5 border border-white/5 shadow-xl opacity-75">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="size-14 rounded-xl bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-3xl">location_city</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">London</h3>
+<p class="text-slate-400 text-sm">England, UK</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider">Inactive</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Service Fields</p>
+<p class="text-white text-lg font-bold">0</p>
+</div>
+<div class="bg-background-dark/40 rounded-xl p-3">
+<p class="text-slate-500 text-xs uppercase font-bold mb-1">Avg Rating</p>
+<div class="flex items-center gap-1">
+<p class="text-white text-lg font-bold">—</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-accent-dark hover:bg-primary/20 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">edit</span>
+                            Edit
+                        </button>
+<button class="flex-1 bg-primary text-background-dark font-bold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(50,205,50,0.3)] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+                            Activate
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<button class="fixed bottom-8 right-6 size-16 bg-primary rounded-full shadow-[0_8px_32px_rgba(50,205,50,0.4)] flex items-center justify-center text-background-dark hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+<div class="fixed bottom-0 left-0 w-full bg-background-dark border-t border-white/10 p-6 rounded-t-3xl shadow-2xl z-50 transform translate-y-full transition-transform md:hidden">
+<div class="w-12 h-1 bg-slate-700 rounded-full mx-auto mb-6"></div>
+<h4 class="text-lg font-bold mb-4">Filter Options</h4>
+<div class="space-y-6">
+<div>
+<p class="text-sm font-bold text-slate-400 mb-3 uppercase tracking-widest">Status</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-primary text-background-dark rounded-full text-sm font-bold">Active</span>
+<span class="px-4 py-2 bg-card-dark text-slate-300 rounded-full text-sm font-medium">Inactive</span>
+<span class="px-4 py-2 bg-card-dark text-slate-300 rounded-full text-sm font-medium">Pending Review</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-400 mb-3 uppercase tracking-widest">Region</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-card-dark text-slate-300 rounded-full text-sm font-medium">North America</span>
+<span class="px-4 py-2 bg-card-dark text-slate-300 rounded-full text-sm font-medium">Europe</span>
+<span class="px-4 py-2 bg-card-dark text-slate-300 rounded-full text-sm font-medium">Asia Pacific</span>
+</div>
+</div>
+<button class="w-full bg-primary text-background-dark font-bold py-4 rounded-xl mt-4">Apply Filters</button>
+</div>
+</div>
+</div>
+</body></html>

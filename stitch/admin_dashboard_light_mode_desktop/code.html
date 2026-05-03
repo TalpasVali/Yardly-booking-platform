@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yardly Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                        "surface": "#FFFFFF",
+                        "border-light": "#E2E8F0"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            background-color: rgba(34, 197, 94, 0.1);
+            color: #22C55E;
+            border-right: 3px solid #22C55E;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-surface border-r border-border-light hidden lg:flex flex-col sticky top-0 h-screen">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined block">sports_tennis</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900">Yardly Admin</h1>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="sidebar-active flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Venues</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 rounded-lg font-medium transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-light">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Admin Profile" data-alt="Professional male portrait for admin profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSyXVfXKgFiZc7s-xduX4ubxTcep3iflYbI2SXB9Q-2bmPPIvrYdfu13jT5SYld17Vm5nkjgPELyj2uJTIwc4dsxBqiTHv5zTN5Njr1XhNiSJuODoCM8j1KfthjfBNo665zCrHlugbSAWmrHKiSk-mjFU-4qfR9hZ7cUTzJBleOG_dhgvawmJ8K4ASRAwIdzAsj54NpbH4r4siedREI-mITa6HgIxvddnYzju8iC7tIRxZgqe6XXNjirY6sFVlm8gsOA2Ct1rxcg"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate">Alex Rivera</p>
+<p class="text-xs text-slate-500 truncate">Global Administrator</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<!-- Top Navbar -->
+<header class="bg-surface border-b border-border-light px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 border-border-light rounded-lg focus:ring-primary focus:border-primary text-sm" placeholder="Search bookings, users, or venues..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Venue
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Platform Overview</h2>
+<p class="text-slate-500 mt-1">Real-time ecosystem health and performance metrics.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface border border-border-light text-slate-600 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+                            Export Data
+                        </button>
+<select class="px-4 py-2 bg-surface border border-border-light text-slate-600 rounded-lg text-sm font-semibold focus:ring-primary focus:border-primary">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+<option>Last 24 Hours</option>
+</select>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Total Revenue</p>
+<h3 class="text-2xl font-bold mt-1">$128,430</h3>
+</div>
+<div class="bg-primary/10 text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                12.5%
+                            </span>
+<span class="text-xs text-slate-400">vs last month</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Active Bookings</p>
+<h3 class="text-2xl font-bold mt-1">1,240</h3>
+</div>
+<div class="bg-primary/10 text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                5.2%
+                            </span>
+<span class="text-xs text-slate-400">vs last week</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">New Users</p>
+<h3 class="text-2xl font-bold mt-1">482</h3>
+</div>
+<div class="bg-primary/10 text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                18.3%
+                            </span>
+<span class="text-xs text-slate-400">vs last month</span>
+</div>
+</div>
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Utilization Rate</p>
+<h3 class="text-2xl font-bold mt-1">76%</h3>
+</div>
+<div class="bg-primary/10 text-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">speed</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-xs font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-xs">arrow_downward</span>
+                                2.1%
+                            </span>
+<span class="text-xs text-slate-400">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Revenue Trend -->
+<div class="lg:col-span-2 bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold">Revenue Trend</h4>
+<p class="text-sm text-slate-500">Weekly revenue growth analysis</p>
+</div>
+<div class="flex items-center gap-4 text-xs font-semibold">
+<div class="flex items-center gap-1.5">
+<span class="size-2.5 rounded-full bg-primary"></span>
+<span>Direct</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="size-2.5 rounded-full bg-slate-200"></span>
+<span>Partner</span>
+</div>
+</div>
+</div>
+<div class="h-64 relative">
+<!-- SVG Chart Simulation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 240">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#22C55E" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#22C55E" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,200 Q100,180 200,120 T400,140 T600,60 T800,80 L800,240 L0,240 Z" fill="url(#chartGradient)"></path>
+<path d="M0,200 Q100,180 200,120 T400,140 T600,60 T800,80" fill="none" stroke="#22C55E" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="flex justify-between mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest px-2">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Bookings by Sport -->
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<div class="mb-8">
+<h4 class="text-lg font-bold">Bookings by Sport</h4>
+<p class="text-sm text-slate-500">Popularity distribution</p>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-sm font-semibold mb-2">
+<span class="text-slate-700">Tennis</span>
+<span class="text-slate-500">42%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm font-semibold mb-2">
+<span class="text-slate-700">Soccer</span>
+<span class="text-slate-500">28%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-primary/70 h-full rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm font-semibold mb-2">
+<span class="text-slate-700">Padel</span>
+<span class="text-slate-500">18%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-primary/50 h-full rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm font-semibold mb-2">
+<span class="text-slate-700">Basketball</span>
+<span class="text-slate-500">12%</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-primary/30 h-full rounded-full" style="width: 12%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100">
+<button class="w-full py-2.5 text-primary text-sm font-bold bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors">
+                                View Full Breakdown
+                            </button>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Recent Activity and Quick Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Recent Activity Feed -->
+<div class="lg:col-span-2 bg-surface rounded-xl border border-border-light shadow-sm overflow-hidden">
+<div class="p-6 border-b border-border-light flex items-center justify-between">
+<h4 class="text-lg font-bold text-slate-900">Recent System Activity</h4>
+<button class="text-sm font-semibold text-primary hover:underline">See all</button>
+</div>
+<div class="divide-y divide-slate-100">
+<div class="p-6 flex items-start gap-4">
+<div class="size-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-800">
+<span class="font-bold">New Venue Approved:</span> "Grand Slam Tennis Center" has been added to the platform.
+                                    </p>
+<p class="text-xs text-slate-400 mt-1">2 minutes ago • By System Admin</p>
+</div>
+</div>
+<div class="p-6 flex items-start gap-4">
+<div class="size-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">payment</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-800">
+<span class="font-bold">Payout Processed:</span> $12,400 distributed to 24 venue partners.
+                                    </p>
+<p class="text-xs text-slate-400 mt-1">45 minutes ago • By Financial Services</p>
+</div>
+</div>
+<div class="p-6 flex items-start gap-4">
+<div class="size-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-800">
+<span class="font-bold">Account Flagged:</span> User @mark_tennis01 flagged for multiple late cancellations.
+                                    </p>
+<p class="text-xs text-slate-400 mt-1">2 hours ago • By Moderation Bot</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Panel -->
+<div class="space-y-6">
+<div class="bg-surface p-6 rounded-xl border border-border-light shadow-sm">
+<h4 class="text-lg font-bold mb-4">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-lg hover:bg-primary/10 hover:text-primary transition-all group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">person_add</span>
+<span class="text-xs font-bold">Add Admin</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-lg hover:bg-primary/10 hover:text-primary transition-all group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">confirmation_number</span>
+<span class="text-xs font-bold">Promo Codes</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-lg hover:bg-primary/10 hover:text-primary transition-all group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">support_agent</span>
+<span class="text-xs font-bold">Support Desk</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-lg hover:bg-primary/10 hover:text-primary transition-all group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">settings_applications</span>
+<span class="text-xs font-bold">App Settings</span>
+</button>
+</div>
+</div>
+<!-- Mini Map / Local Activity -->
+<div class="bg-surface rounded-xl border border-border-light shadow-sm overflow-hidden h-48 relative">
+<div class="absolute inset-0 bg-slate-200" data-alt="Stylized simplified map of city area showing venue locations" data-location="Los Angeles" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="text-xs font-bold uppercase tracking-widest opacity-80">Local Market</p>
+<p class="text-sm font-bold">Live Activity: California</p>
+</div>
+<!-- Pulse dots to simulate live bookings -->
+<div class="absolute top-1/4 left-1/3 size-3 bg-primary rounded-full animate-pulse border-2 border-white"></div>
+<div class="absolute top-1/2 left-2/3 size-3 bg-primary rounded-full animate-pulse border-2 border-white delay-150"></div>
+<div class="absolute top-3/4 left-1/4 size-3 bg-primary rounded-full animate-pulse border-2 border-white delay-300"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

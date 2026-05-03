@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rachetă badminton -->
+  <circle cx="32" cy="20" r="14" stroke="white" stroke-width="3" fill="none"/>
+  <!-- Corzi verticale -->
+  <line x1="26" y1="7" x2="26" y2="33" stroke="white" stroke-width="1.5"/>
+  <line x1="32" y1="6" x2="32" y2="34" stroke="white" stroke-width="1.5"/>
+  <line x1="38" y1="7" x2="38" y2="33" stroke="white" stroke-width="1.5"/>
+  <!-- Corzi orizontale -->
+  <line x1="19" y1="14" x2="45" y2="14" stroke="white" stroke-width="1.5"/>
+  <line x1="18" y1="20" x2="46" y2="20" stroke="white" stroke-width="1.5"/>
+  <line x1="19" y1="26" x2="45" y2="26" stroke="white" stroke-width="1.5"/>
+  <!-- Mâner -->
+  <line x1="32" y1="34" x2="32" y2="58" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <!-- Fluturași (volant) -->
+  <circle cx="50" cy="12" r="4" stroke="white" stroke-width="2" fill="none"/>
+  <line x1="50" y1="16" x2="50" y2="26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M46 20 Q50 18 54 20" stroke="white" stroke-width="1.5" fill="none"/>
+  <path d="M46 23 Q50 21 54 23" stroke="white" stroke-width="1.5" fill="none"/>
+</svg>

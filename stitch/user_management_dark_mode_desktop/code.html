@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - Yardly SaaS Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#56e43a",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072A1C",
+                        "sidebar-dark": "#114D31",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #072A1C; }
+        ::-webkit-scrollbar-thumb { background: #114D31; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #56e43a; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-sidebar-dark border-r border-primary/10 flex flex-col h-screen sticky top-0 shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">sports_tennis</span>
+</div>
+<div>
+<h1 class="text-white text-xl font-bold leading-tight tracking-tight">Yardly</h1>
+<p class="text-primary text-xs font-medium uppercase tracking-wider">SaaS Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-background-dark font-semibold" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-sm font-medium">Venues</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Revenue</span>
+</a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 overflow-hidden">
+<img class="size-full object-cover" data-alt="Administrator profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYwcXwdMRb2oieIcashUolvy5zlfwE6MQ5FiLKkGqMVrAUl60oDKD5oPJAXvrMJhH7Ab33PS70_5_ubvBHB_AZF8OZabiKUkV_NFf1RWvyWwjtQBaNEe4kMhzz97fnpdJk95hQCf3XKkK6R4AdFSsibOMYJpp_-4hqIePMo0SFnJz78-owWrZm8GK1g8-Dq3ztA9fWM9Ya3quflByUcn8i1smw0ZnbUjkmyJqLP9Qy6X6D64jeLHFuEjjYgr-iBNeTmFJUkjf0HZI"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Admin Portal</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-primary/10 flex items-center justify-between px-8 bg-background-dark/50 backdrop-blur-md z-10 sticky top-0">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<h2 class="text-xl font-bold text-white whitespace-nowrap">User Management</h2>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/60 text-xl">search</span>
+<input class="w-full bg-sidebar-dark/40 border-none rounded-lg pl-10 pr-4 py-2 text-sm text-slate-200 placeholder:text-primary/30 focus:ring-1 focus:ring-primary/50" placeholder="Search by name, email, or ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-primary/80 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="h-8 w-[1px] bg-primary/10 mx-2"></div>
+<button class="bg-primary text-background-dark px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                    Invite User
+                </button>
+</div>
+</header>
+<!-- Filters & Table -->
+<div class="flex flex-1 overflow-hidden">
+<div class="flex-1 flex flex-col p-8 overflow-y-auto">
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<div class="flex items-center bg-sidebar-dark/40 rounded-lg p-1 border border-primary/10">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-primary text-background-dark">All Users</button>
+<button class="px-4 py-1.5 text-xs font-bold rounded-md text-primary/60 hover:text-primary transition-colors">Active</button>
+<button class="px-4 py-1.5 text-xs font-bold rounded-md text-primary/60 hover:text-primary transition-colors">Blocked</button>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-sidebar-dark/40 border border-primary/10 rounded-lg text-xs font-medium text-slate-300 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-sm">location_city</span>
+                        City: All
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-sidebar-dark/40 border border-primary/10 rounded-lg text-xs font-medium text-slate-300 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span>
+                        Bookings: High to Low
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-xs text-primary/60 font-medium">Showing 142 users</span>
+<button class="p-1.5 hover:bg-sidebar-dark rounded text-primary/60">
+<span class="material-symbols-outlined text-xl">file_download</span>
+</button>
+</div>
+</div>
+<!-- Users Table -->
+<div class="bg-sidebar-dark/20 border border-primary/10 rounded-xl overflow-hidden backdrop-blur-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-sidebar-dark/40 border-b border-primary/10">
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">User</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">Contact &amp; City</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">Bookings (T/C)</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">No-shows</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider">Created</th>
+<th class="px-6 py-4 text-xs font-bold text-primary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group bg-primary/5 border-l-2 border-primary">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="size-10 rounded-full border border-primary/30" data-alt="Alex Rivera avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ01c2pC9ru_z2RpqRWrilNQv04xv5l6Ap_Wa6yhWehQL9Br0Gk7x3nhZvHrpPvufHel1j9OW2vvw-qYCuaX-m972Ck5qiW4LCISGfUuHqTPVJP5-wYV4l7xYrxvJ8GRAR20iMGEnJJVJb7A7zPNJNToKPZBIiROpMLUJ8w6dMQFGI-SM9741qKzh4sFbPVE8gkxtA-yej2Rg4BtZJvI2UeRSf4G2PSDBEhcKd3M0mbawrfSo9ExbUnBzRAVdtMghw6GKClMxIkjU"/>
+<div>
+<p class="text-sm font-bold text-white group-hover:text-primary transition-colors">Alex Rivera</p>
+<p class="text-[10px] text-primary/50 font-mono">ID: YRD-8821</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm text-slate-300">alex.r@gmail.com</p>
+<p class="text-xs text-primary/40">Miami, FL</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white">48</span>
+<span class="text-xs text-primary/40">/ 42</span>
+</div>
+<div class="w-16 h-1 bg-sidebar-dark rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-sidebar-dark border border-primary/10 text-xs font-bold text-primary">2</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs text-primary/60 font-medium">Oct 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 hover:text-red-400 transition-colors"><span class="material-symbols-outlined text-lg">block</span></button>
+<button class="p-1.5 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Repeat Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="size-10 rounded-full border border-primary/30" data-alt="Jordan Smith avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ5NF8vRCjJk2FrxklaCYU3Es8yDr18Cx5SdMaARCSDJInJp_9NKKvioyOpFBrISeV6I5rRSJhjWCJLj-U1BtVO-VN3pogYu80xwpxgYlgRlWXo_YHxB3DrPZDz9Ck1HU7PF69abttP8b7Yfme1zWAG8uUTXTjJtsd0BbMWPH2mYimu2f8jhZ99XCUehRO3WWLXy8sBKv0WX8Dfn82Zda7ik7MuJKzDHv0EYX0FFeNvJ7-MF6O3tcyPUlxRymORe9KtGP4WhlHn_s"/>
+<div>
+<p class="text-sm font-bold text-white group-hover:text-primary transition-colors">Jordan Smith</p>
+<p class="text-[10px] text-primary/50 font-mono">ID: YRD-9012</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm text-slate-300">jordan.s@outlook.com</p>
+<p class="text-xs text-primary/40">New York, NY</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white">12</span>
+<span class="text-xs text-primary/40">/ 12</span>
+</div>
+<div class="w-16 h-1 bg-sidebar-dark rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-sidebar-dark border border-primary/10 text-xs font-bold text-primary">0</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs text-primary/60 font-medium">Nov 01, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-slate-400">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 hover:text-red-400 transition-colors"><span class="material-symbols-outlined text-lg">block</span></button>
+<button class="p-1.5 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 - Blocked -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="size-10 rounded-full border border-primary/30" data-alt="Casey Bloom avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZJUyBZhUPQc8w_gbGFi4NHSuHVO7WSNg0A8IGG8b8vu57f-omdpMpY4X5C8LTdhrVV2h12RPeDsqO4pR-j22n8lu2BN3xyyJQGOJ4prmBE8jP9cdRMqGTnmbhbYClOtUd-T5EOaAeD45yS1FaqaFnlMb-gkeyTaqhk2sFit9yN5S2ne_7sQRYK_DXW9fuV7nI7mkp-M_yWNUZTwaeOEkMbImAibUP2haHvKCEzxYAqRTXNvJYeDm36bHd0n9c1rCavJchc3JyT8w"/>
+<div>
+<p class="text-sm font-bold text-white group-hover:text-primary transition-colors">Casey Bloom</p>
+<p class="text-[10px] text-primary/50 font-mono">ID: YRD-4421</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm text-slate-300">casey@example.com</p>
+<p class="text-xs text-primary/40">Austin, TX</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white">8</span>
+<span class="text-xs text-primary/40">/ 2</span>
+</div>
+<div class="w-16 h-1 bg-sidebar-dark rounded-full mt-1 overflow-hidden">
+<div class="bg-red-500 h-full w-[25%]"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/30 text-xs font-bold text-red-500">5</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-red-500"></span>
+                                        Blocked
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs text-primary/60 font-medium">Sep 15, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-slate-400">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">lock_open</span></button>
+<button class="p-1.5 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- More rows -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="size-10 rounded-full border border-primary/30" data-alt="Riley Vance avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqJxaM0O_rI335A9WvipZ4vwrkMV3XZspTfhSJUSdbJQ642JtTomQk2OchDJzYs_9qQNvlBZxRz9lNGWunmAylv0omLTNl-K2O5O8Qi8rtRBOTGC9UzhrZ_b0Fc0d81sD7ow2PvUPZpFo5SVtiI8C3DrRxCxH7186AZ2rkJ72vub5PgpksPPKEVLxx-v5EDgvR7_iwHROGG7chVQJY_Lj_TAuAlNyf234FHHx17EZt7jLa3yNG_CCPm1l-ZnQCPjdLumbkZv6Vv2k"/>
+<div>
+<p class="text-sm font-bold text-white group-hover:text-primary transition-colors">Riley Vance</p>
+<p class="text-[10px] text-primary/50 font-mono">ID: YRD-2210</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm text-slate-300">riley@vance.io</p>
+<p class="text-xs text-primary/40">Seattle, WA</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-white">20</span>
+<span class="text-xs text-primary/40">/ 19</span>
+</div>
+<div class="w-16 h-1 bg-sidebar-dark rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-sidebar-dark border border-primary/10 text-xs font-bold text-primary">1</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-xs text-primary/60 font-medium">Aug 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 text-slate-400">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-1.5 hover:text-red-400 transition-colors"><span class="material-symbols-outlined text-lg">block</span></button>
+<button class="p-1.5 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-primary/10 bg-sidebar-dark/20 flex items-center justify-between">
+<p class="text-xs text-primary/60 font-medium">Page 1 of 8</p>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded bg-sidebar-dark/60 text-primary/40 cursor-not-allowed">Previous</button>
+<button class="px-3 py-1.5 rounded bg-primary text-background-dark font-bold text-xs">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Drawer (Selected User Detail) -->
+<div class="w-80 bg-sidebar-dark border-l border-primary/10 flex flex-col h-full overflow-y-auto">
+<div class="p-6 border-b border-primary/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold text-primary uppercase tracking-widest">User Insights</h3>
+<button class="text-primary/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center mb-6">
+<div class="relative">
+<img class="size-20 rounded-full border-2 border-primary mb-3" data-alt="Alex Rivera large avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLMatGhRm9PlEgG4vug277_bj_V_yCEwWfMZW6mAhEPEDm9g8pIyxr2oXVB7LDbwUvbBImfeNA6_lIqzLVgBv50oncmCIKT_BVyPDyoN-esKasnCjH4Z3JgCLZ3zIA09GM6qr3Jf8zWcEtX2koqyoxmnvR5MgVTJjc6aWko4OLQ8LDpMOGX_9qTNGkpz41W9BnM7pzovtg8fR_eCcA4n2YGd30gAKLdtfk9rKX5Rr2MUp7PhLsDxDHfNXs5aAxlonDl-hRSjC0bLs"/>
+<span class="absolute bottom-4 right-0 size-4 bg-primary border-4 border-sidebar-dark rounded-full"></span>
+</div>
+<h4 class="text-lg font-bold text-white">Alex Rivera</h4>
+<p class="text-xs text-primary/60 font-medium">Power User • Member since 2023</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-background-dark/40 p-3 rounded-xl border border-primary/5">
+<p class="text-[10px] text-primary/40 font-bold uppercase mb-1">Cancellations</p>
+<p class="text-xl font-bold text-white">4</p>
+</div>
+<div class="bg-background-dark/40 p-3 rounded-xl border border-primary/5">
+<p class="text-[10px] text-primary/40 font-bold uppercase mb-1">Lifetime Spend</p>
+<p class="text-xl font-bold text-primary">$1.2k</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h5 class="text-xs font-bold text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">history</span>
+                        Recent Activity
+                    </h5>
+<div class="space-y-4">
+<div class="flex gap-3 relative before:absolute before:left-2 before:top-6 before:bottom-0 before:w-[1px] before:bg-primary/20">
+<div class="size-4 rounded-full bg-primary mt-1 border-4 border-sidebar-dark z-10"></div>
+<div>
+<p class="text-xs font-bold text-slate-200">Booked Padel Court #2</p>
+<p class="text-[10px] text-primary/40">Yesterday at 4:15 PM • Miami Sports Hub</p>
+</div>
+</div>
+<div class="flex gap-3 relative before:absolute before:left-2 before:top-6 before:bottom-0 before:w-[1px] before:bg-primary/20">
+<div class="size-4 rounded-full bg-primary mt-1 border-4 border-sidebar-dark z-10"></div>
+<div>
+<p class="text-xs font-bold text-slate-200">Completed Tennis Lesson</p>
+<p class="text-[10px] text-primary/40">Oct 24, 2023 • Sunset Club</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="size-4 rounded-full bg-red-500 mt-1 border-4 border-sidebar-dark z-10"></div>
+<div>
+<p class="text-xs font-bold text-slate-200">Late Cancellation</p>
+<p class="text-[10px] text-primary/40">Oct 18, 2023 • Penalty Applied ($15)</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<button class="w-full py-2.5 border border-primary/30 rounded-lg text-xs font-bold text-primary hover:bg-primary/10 transition-colors mb-2">
+                            Download Full History
+                        </button>
+<button class="w-full py-2.5 bg-red-500/10 border border-red-500/20 rounded-lg text-xs font-bold text-red-500 hover:bg-red-500/20 transition-colors">
+                            Block alex.r@gmail.com
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

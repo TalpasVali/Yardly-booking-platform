@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manager Settings | Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "slate-card": "#FFFFFF",
+                        "slate-border": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-border bg-white px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">potted_plant</span>
+<h2 class="text-slate-900 text-xl font-extrabold leading-tight tracking-tight">Yardly</h2>
+</div>
+<div class="flex items-center">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-50 border border-slate-border rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Search venues or bookings" value=""/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 hover:text-primary text-sm font-semibold transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 hover:text-primary text-sm font-semibold transition-colors" href="#">Bookings</a>
+<a class="text-slate-600 hover:text-primary text-sm font-semibold transition-colors" href="#">Venues</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-border">
+<button class="flex items-center justify-center rounded-full p-2 hover:bg-slate-100 text-slate-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-9 w-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="h-full w-full object-cover" data-alt="Professional headshot of a male venue manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZs_fi34OJW4LEu8MxEYTe4FwElaJ7LZef5iir_6zM1VKaw8qaCtT87TL3aJtDTAj2kqCSmjIIYrms--cnVuIGa3C76idjwGC8EDAgROvCcw3yvYZNlQ3DR5bbrMnC_Bo5O9WwYBVkVm_oQTG3rV9N5l4ir2sLj_i4RNYl1kTgPQipXG1CDu2bpTkuu4vxGeLhDfuhE8xEbYSnPzlKpEhU5qZ0K_RRZVcloJTibDLtjjUnSi2b7DKf_7wkDe8HQ0vAXFgxq4LgxWI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-10 py-8 flex gap-8">
+<aside class="w-64 flex flex-col gap-6 shrink-0">
+<div class="flex flex-col gap-1 px-2">
+<h1 class="text-slate-900 text-lg font-bold">Venue Management</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider">Administration</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-bold transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+<span class="text-sm">Venue Info</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">schedule</span>
+<span class="text-sm">Opening Hours</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">gavel</span>
+<span class="text-sm">Policies</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications_active</span>
+<span class="text-sm">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+<span class="text-sm">Billing &amp; Payouts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">group</span>
+<span class="text-sm">Team Access</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-slate-100 rounded-xl">
+<p class="text-xs text-slate-500 font-medium mb-2">Platform Status</p>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-slate-700">All systems operational</span>
+</div>
+</div>
+</aside>
+<section class="flex-1 flex flex-col gap-6">
+<div class="flex justify-between items-end mb-2">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Venue Information</h2>
+<p class="text-slate-500 font-medium">Update your public profile and contact details.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-lg transition-all shadow-sm">
+                        Save Changes
+                    </button>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="bg-white border border-slate-border rounded-xl p-8 shadow-sm">
+<h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                            General Profile
+                        </h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Venue Name</label>
+<input class="w-full border border-slate-border rounded-lg p-3 text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" type="text" value="Green Valley Padel Club"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Sport Category</label>
+<select class="w-full border border-slate-border rounded-lg p-3 text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+<option>Padel</option>
+<option>Tennis</option>
+<option>Football</option>
+<option>Basketball</option>
+</select>
+</div>
+<div class="col-span-2 flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Description</label>
+<textarea class="w-full border border-slate-border rounded-lg p-3 text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" rows="3">The premier padel experience in the heart of the valley. 8 panoramic courts with professional lighting and club house facilities.</textarea>
+</div>
+</div>
+</div>
+<div class="bg-white border border-slate-border rounded-xl p-8 shadow-sm">
+<h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                            Location &amp; Contact
+                        </h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Address</label>
+<input class="w-full border border-slate-border rounded-lg p-3 text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" type="text" value="123 Sportive Avenue, East District"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700">Phone Number</label>
+<input class="w-full border border-slate-border rounded-lg p-3 text-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" type="tel" value="+1 (555) 000-1234"/>
+</div>
+<div class="col-span-2">
+<div class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden border border-slate-border">
+<div class="w-full h-full bg-cover bg-center" data-alt="Abstract map representation of venue location" data-location="Austin, Texas" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLeW35j82jxJgoL7FNjv1_YIMI-RRRe1re5Xb5qdW6dPSVuEg5KDaBoNEG4NP0AT0AfjGImkVSt_STh1yj6i_vPd6QLSOnqTpxuoJox0Uef1S9hanOcbRgetLcfJcVqlQy2pxOvjDx5VlCQqdE113S0WdpCrqcIGU71nh8TlQVlBxT69DgTxwkRcgKzEWWlWOqdMlFvYt8e-Fptq27tuySmM6Lv4S1A1CQbkOYa3hfiUzJZkpK6f7g6U_LOjWoY3FfL0yVprYXKeY');">
+<div class="flex items-center justify-center h-full">
+<span class="material-symbols-outlined text-primary text-4xl">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white border border-slate-border rounded-xl p-8 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings</span>
+                                Preferences
+                            </h3>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+<div>
+<p class="font-bold text-slate-900">Instant Booking</p>
+<p class="text-xs text-slate-500">Allow players to book without waiting for approval</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+<div>
+<p class="font-bold text-slate-900">Email Notifications</p>
+<p class="text-xs text-slate-500">Receive summaries of daily bookings and cancellations</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+<div>
+<p class="font-bold text-slate-900">Public Visibility</p>
+<p class="text-xs text-slate-500">Show your venue in the search results for all users</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

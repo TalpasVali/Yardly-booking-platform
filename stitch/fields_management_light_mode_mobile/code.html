@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fields Management - Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#21c45d",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#122017",
+                        "border-light": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-border-light px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">sports_soccer</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Yardly</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 hover:bg-slate-100 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-slate-600 hover:bg-slate-100 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<div class="ml-1 size-8 rounded-full bg-slate-200 overflow-hidden border border-border-light" data-alt="User profile avatar placeholder">
+<img alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ihicdH3EqEeFwCKyGRwCsNRHkgd7PJjI0Aan2DNTuTDVaM_3RH6xZkxaCTDfvjIfLaL2PFvtaeRFGeUnBDustb3NzggKCjplbDvOAjYv8wckUIrLa6Q4J8yw0g_POSgdIRr4q2UJe9j4p0UL3rGIczvGFtsE3JP81WuZhSoIKMk57dFnJHLMr9OPMKvYsVdJmF_POKs-sTfPlKuIbokLRYz0iFMnVK5hUhNz3jqU5caAKkez8W2uhr3sWFWZ4BUXwfdktl5GBys"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col pb-24">
+<div class="px-4 pt-6 pb-2">
+<div class="flex items-end justify-between mb-4">
+<div>
+<p class="text-sm font-medium text-primary mb-1">Venue Manager</p>
+<h2 class="text-2xl font-extrabold tracking-tight">Fields Management</h2>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+<button class="bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap shadow-sm shadow-primary/30">All Fields</button>
+<button class="bg-white border border-border-light text-slate-600 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap">Football</button>
+<button class="bg-white border border-border-light text-slate-600 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap">Tennis</button>
+<button class="bg-white border border-border-light text-slate-600 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap">Basketball</button>
+</div>
+</div>
+<div class="px-4 space-y-4 mt-2">
+<div class="bg-white border border-border-light rounded-xl overflow-hidden shadow-sm">
+<div class="relative h-48 w-full bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="Main lush green football pitch aerial view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu1SGYJDitIc8JGbYnvWEX3NtxH9s_ka51rfu_0Ss2aOkumitJRU2TyLL6Y9dYJFc0CXAqBDW1b6rhFkMrUUTL9G2EMuRqZxgxeQCXhwZvFkHirjCww43atjqvZjd5YvyFTvPuYBcD62NWeXnLX6TDDlsAt3Gm5Pr1VhCC9iNpuYvpmow7Ziy5SVP1Na9AjMrW3TkLEMJpo0RW4cbRn2d2bX9gzM1qTeSaT6bLOIn6GOft3iO90K7Y3S1sI2gfhyJJDQBcjxecTpg"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-bold text-slate-800">Available</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-bold text-lg">Main Football Pitch (A1)</h3>
+<div class="flex items-center gap-1 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>East Sector</span>
+</div>
+</div>
+<button class="p-2 hover:bg-slate-50 rounded-lg">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 my-4 py-3 border-y border-slate-50">
+<div>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Type</p>
+<p class="text-sm font-semibold text-slate-700">11-a-side Turf</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Maintenance</p>
+<p class="text-sm font-semibold text-slate-700">2 days ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Manage
+                            </button>
+<button class="flex-1 border border-primary text-primary py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Schedule
+                            </button>
+</div>
+</div>
+</div>
+<div class="bg-white border border-border-light rounded-xl overflow-hidden shadow-sm">
+<div class="relative h-48 w-full bg-slate-100">
+<img class="w-full h-full object-cover grayscale-[0.2]" data-alt="Outdoor tennis court with net" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD32qKrWa0LuEDUfw67pXBW8hLs6bBgcnJO7eNEl2edHjqau6vRTBg8TXnJ8XbooXUNGbJE0S2VNmJ95tVAsyRZzRekKn5CkorbK5j-HvqcfLJT7OZkfC1nxoWnErDxXue74y4kLUUUuZp9ergVLt-XChV9muuwqamGYcEpJ_HvVWvW8ioNWIAsEAfMWJnclT9qTMpzRKeaWPlEG6q4m3QnNa3FPy8-Na5HMBwjVsTTaSBwl288SAtbmFBvS7bKoC98uihsSkfpbUc"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-orange-400"></span>
+<span class="text-xs font-bold text-slate-800">Occupied</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-bold text-lg">Hard Court Tennis 1</h3>
+<div class="flex items-center gap-1 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>West Annex</span>
+</div>
+</div>
+<button class="p-2 hover:bg-slate-50 rounded-lg">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 my-4 py-3 border-y border-slate-50">
+<div>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Current Booking</p>
+<p class="text-sm font-semibold text-slate-700">Smith, J. (Until 16:00)</p>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Next Start</p>
+<p class="text-sm font-semibold text-slate-700">16:30 Today</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Manage
+                            </button>
+<button class="flex-1 border border-primary text-primary py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Schedule
+                            </button>
+</div>
+</div>
+</div>
+<div class="bg-white border border-border-light rounded-xl overflow-hidden shadow-sm opacity-80">
+<div class="relative h-48 w-full bg-slate-100">
+<img class="w-full h-full object-cover saturate-50" data-alt="Indoor wooden basketball court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWzhHsV52vVKRr019RTDL9lRAksV8fXrenYbJr6yZfQjHSBkDGmFShrCnfppWJww3t7fbJjk0cgky0Trj-CbYPpZiocG1QiYrfIh3cj54XgkjVJAh4MKviOIWevbdBxQuwC2xPQ_C4Gsvd8zWcP9esd9NK5eeqDIM-y9M-oHw8IFjLKxfovNxv85USZAQJYcboMQDDZbn9MMS6NRoIB67YE1DVfsUo5-7YQYSDJ2-KkRHWc13RE6pDuaeymeV6hZ3sSL0oRwdP-VA"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span class="text-xs font-bold text-slate-800">Maintenance</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-bold text-lg">Main Gym Basketball</h3>
+<div class="flex items-center gap-1 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Indoor Pavilion</span>
+</div>
+</div>
+<button class="p-2 hover:bg-slate-50 rounded-lg">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</div>
+<p class="text-sm text-amber-600 bg-amber-50 p-2 rounded-lg border border-amber-100 flex items-center gap-2 my-3">
+<span class="material-symbols-outlined text-base">warning</span>
+                            Flooring repair in progress.
+                        </p>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Manage
+                            </button>
+<button class="flex-1 border border-primary text-primary py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Schedule
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<button class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-border-light px-6 py-3 flex justify-between items-center z-40">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">stadium</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Fields</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">More</span>
+</a>
+</nav>
+</div>
+</body></html>

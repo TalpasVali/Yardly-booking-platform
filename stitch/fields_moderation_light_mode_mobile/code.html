@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fields Moderation - Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dc95c",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#112117",
+                        "neutral-border": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-neutral-border bg-white px-4 md:px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">potted_plant</span>
+<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-tight hidden sm:block">Yardly Admin</h2>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-3 items-center">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 border border-neutral-border">
+<div class="text-slate-500 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-500" placeholder="Search fields..." type="text"/>
+</div>
+</label>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-8 w-8 border border-neutral-border" data-alt="Administrator profile avatar photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1VEcRWvrVpCXG9_zxOWTgNdKluVEnBCW95FQ0tv2jtJvVGFnP2KXCTox35U7-3iBhW0j63C7YWgNBFW-ZMLwBK-Y-caBRkmzUTbjOjvvkbNCRyMJjmLcrxAMaL27r8y7A9qLEXoLV12tRAaU-pBg7w3VmyvGhZNVxFxU2_J1GHF1ZTDYDqPKeQvFHUZxPle9x6_wdPX43M7jRwSKOhfi6QFQPXk6UMvDDR0VX_2EgbfI4VCcAZcRCeMpcBziHjyPd1dqZ6XC6Bm8");'></div>
+</div>
+</header>
+<main class="flex flex-col max-w-5xl mx-auto w-full px-4 py-6 gap-6">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 text-3xl font-black leading-tight tracking-tight">Fields Moderation</h1>
+<p class="text-slate-500 text-sm">Review and manage new yard submissions for the platform.</p>
+</div>
+<!-- Filter/Tab Section -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide no-scrollbar">
+<button class="flex-none px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold whitespace-nowrap">Pending (12)</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white border border-neutral-border text-slate-600 text-sm font-semibold whitespace-nowrap">Verified</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white border border-neutral-border text-slate-600 text-sm font-semibold whitespace-nowrap">Rejected</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white border border-neutral-border text-slate-600 text-sm font-semibold whitespace-nowrap">All Requests</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-400">Showing 12 pending requests</span>
+<button class="flex items-center gap-1 text-primary text-sm font-bold">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                    Filter
+                </button>
+</div>
+</div>
+<!-- Mobile Card List -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Card 1: Pending -->
+<div class="bg-white rounded-xl border border-neutral-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-4 flex gap-4">
+<div class="h-20 w-20 rounded-lg bg-cover bg-center shrink-0 border border-slate-100" data-alt="Lush green residential backyard lawn" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm86BdiuuX95ibYopBBy-14e912OIKTMKI5ydBXsct9iDfaAftGGYkv8zQFY8-evGAU6rr5UPTP-ZW_VZ1TyQFnNcdHdBScSD-1vmvIBopElksb94cQ7dZl4mmWg22EzVObaTP-hnLGNQ6hsiNSfWt1tuItXt0uL-o3TXsN7nwgpeBNT6JSqRDmSJzJdnOXdkzJVqM417StkdNyY_6lYY3-goSE2eVtcMFT7LNT3n2GKWGVWQ7xJi8yBtizUVMQqQ5dwG7dJzmjUs");'></div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-slate-900 truncate">Hillside Backyard</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 border border-amber-200 shrink-0">Pending</span>
+</div>
+<p class="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Austin, TX
+                            </p>
+</div>
+<p class="text-slate-400 text-[11px] italic">Submitted by John Doe • Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex border-t border-neutral-border">
+<button class="flex-1 py-3 text-sm font-bold text-rose-600 hover:bg-rose-50 border-r border-neutral-border flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">close</span> Reject
+                    </button>
+<button class="flex-1 py-3 text-sm font-bold text-primary hover:bg-emerald-50 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check_circle</span> Approve
+                    </button>
+</div>
+</div>
+<!-- Card 2: Pending -->
+<div class="bg-white rounded-xl border border-neutral-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-4 flex gap-4">
+<div class="h-20 w-20 rounded-lg bg-cover bg-center shrink-0 border border-slate-100" data-alt="Modern patio with outdoor furniture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0TNOqtYHAogiXAi5BHfHmpdjSnZwxzuoGSTmb3qubkl9ZVvjkQM-X2aWblkqqMmB46eDb-q9rlKNLu7ZrI8V1SZzuwN6S5TSWwApdkgG6rqKJVhs_UNjVD04pq87Ap5mKxyDtD69ELV1yyiSk3gPAYvj9W00LUMVn2c1VuWcbZXObjsEw4ePvmn4NTJKSRQpOtTS_tL_Zan3jmtMSpxDHKkjQKEkT-VryvgCwQaiWfez0RZ9ZG2KL0cX7zeFBiVuZgdtMiDDP7gE");'></div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-slate-900 truncate">Modern Urban Oasis</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 border border-amber-200 shrink-0">Pending</span>
+</div>
+<p class="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Seattle, WA
+                            </p>
+</div>
+<p class="text-slate-400 text-[11px] italic">Submitted by Sarah Jenkins • Oct 23, 2023</p>
+</div>
+</div>
+<div class="flex border-t border-neutral-border">
+<button class="flex-1 py-3 text-sm font-bold text-rose-600 hover:bg-rose-50 border-r border-neutral-border flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">close</span> Reject
+                    </button>
+<button class="flex-1 py-3 text-sm font-bold text-primary hover:bg-emerald-50 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check_circle</span> Approve
+                    </button>
+</div>
+</div>
+<!-- Card 3: Pending -->
+<div class="bg-white rounded-xl border border-neutral-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-4 flex gap-4">
+<div class="h-20 w-20 rounded-lg bg-cover bg-center shrink-0 border border-slate-100" data-alt="Suburban garden with flower beds" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5Zx_9PVY_xTx1-9q6koR_DjXjac8pwU5xzyxSKtEzlT0r4xZrJxYT-OhymQ6qcvA1-dROTyAHYd5-OoUFeWFU_kRRpESQLUrkc5Iyn1GR1ZQfWO31Ibzeh2Ibz5KAhAcH6pLzRYoHk5COt_ubdziiN6mxlwc3corKNpAq54lG1S0x-gLW_Qd-D7SqV5NWa83j4QdlCDhNT9q-OgA_uAZyp7TNLuISEzy5b3o2WtmRn7vyBRd9GQOxH3NZG_SEFSE7m0KhDgYjHXo");'></div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-bold text-slate-900 truncate">Pet-Friendly Garden</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-700 border border-amber-200 shrink-0">Pending</span>
+</div>
+<p class="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Miami, FL
+                            </p>
+</div>
+<p class="text-slate-400 text-[11px] italic">Submitted by Mike Ross • Oct 22, 2023</p>
+</div>
+</div>
+<div class="flex border-t border-neutral-border">
+<button class="flex-1 py-3 text-sm font-bold text-rose-600 hover:bg-rose-50 border-r border-neutral-border flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">close</span> Reject
+                    </button>
+<button class="flex-1 py-3 text-sm font-bold text-primary hover:bg-emerald-50 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check_circle</span> Approve
+                    </button>
+</div>
+</div>
+</div>
+<!-- Section: Recently Processed -->
+<div class="mt-4 flex flex-col gap-4">
+<h2 class="text-slate-900 text-xl font-bold">Recently Processed</h2>
+<div class="bg-white rounded-xl border border-neutral-border p-4 flex items-center gap-4 opacity-70 grayscale-[0.5]">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Small fenced backyard area" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAD-TSF8A9UDub-oLT3hXWFOfw5vs6_Gw4a2blXxd8GsVN-H_Bwfo4PACF-IwbZSo-gdeMw-FXoqQYOB5R4A0LYcaTUkcIkHByoDGRLodWTiD2NK0XXB-GDSAZ5iTFvcbCiLpkty0PsSZXZtWeglRIk2KEOC8V-r8A_Yaw_1tPrhODNdovjQ8tX1WCTtfLggup0vCPOHm1ntd0ZZUB9gWYdU6Kdq__P23bcG6EaZVIv8sHMrdyNM7zIljXronUqfDTmXaaUgeHK-Hk");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<h4 class="font-bold text-slate-800 text-sm truncate">Sunny Side Court</h4>
+<p class="text-slate-400 text-[10px]">Verified by Admin • 2h ago</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-emerald-100 text-emerald-700 border border-emerald-200">Verified</span>
+</div>
+<div class="bg-white rounded-xl border border-neutral-border p-4 flex items-center gap-4 opacity-70 grayscale-[0.5]">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Architectural view of a lawn and house" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCL-Nbys78qPM4IOudx0kZSLNchryTQbDxWOFrXRvGIAuF_QgYFjRC6CJXp1T1H4pCq9YyDaeXRlcgQh6zG5fgCe44gw8b5VtIo_I8nYThEaS8HmkBIfQpPoy6YKPiB-pM55WFbAYGBWuE-n1DYEqTpPsKgcgShuYSWFPPGQ0RnqCtvuuLiy7nsrG26D7LfagWO9wgWgIMz0Or1xjt2R8qsh3Kv5CuWZgJRvcGCyePMD7swMcvKx4iZVzTmqUDzN2jXUAKWKTShX9A");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<h4 class="font-bold text-slate-800 text-sm truncate">Luxury Estate Lawn</h4>
+<p class="text-slate-400 text-[10px]">Rejected by Admin • 5h ago</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-rose-100 text-rose-700 border border-rose-200">Rejected</span>
+</div>
+</div>
+<!-- Pagination/Load More for Mobile -->
+<button class="w-full py-4 rounded-xl border-2 border-dashed border-slate-300 text-slate-500 font-bold hover:bg-slate-50 transition-colors mt-2 mb-10">
+            Load More Pending Submissions
+        </button>
+</main>
+<!-- Mobile Bottom Navigation (Optional but good for UX) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-border px-6 py-2 flex items-center justify-between md:hidden z-50">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-medium">Fields</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Users</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</nav>
+</div>
+</body></html>

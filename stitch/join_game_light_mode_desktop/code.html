@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                        "card-light": "#FFFFFF",
+                        "border-light": "#E2E8F0",
+                        "text-main": "#0F172A",
+                        "text-muted": "#64748B"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display text-text-main antialiased min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light bg-card-light px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<h2 class="text-text-main text-xl font-bold leading-tight tracking-tight">Yardly</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full bg-slate-100 border border-border-light">
+<div class="text-text-muted flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-text-main focus:outline-0 focus:ring-2 focus:ring-primary/20 border-none bg-transparent h-full placeholder:text-text-muted px-4 pl-2 text-sm font-normal" placeholder="Search matches or courts" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Find Games</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">My Matches</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Leagues</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Courts</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-full h-10 px-5 bg-primary text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity">
+<span class="truncate">Create Game</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-border-light" data-alt="User profile avatar of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBr-E9Ha21MtUX1uWA0BuACPkTtVk12KTApk_WsSCGKAglw2OKYdv61BW_y0KjUC3cbDKCWMJYh4h3LQLbSANUtUNqpNYTVOgFJks7yUSn0ttSpi_wm98zN76C0L6M-DBZpyiFnuVbW7Z9-C2KDyBrHh1-gJPxf5zTzwjJSlaRjimqhFAzSV_NZ9VFdF_1nh6LETEHRsKJ4oXmVCMvgsH6HC_0p4TARYAlWCRQWfSOSPvmHEcyXRhnh2-84AoQ7W_sXj8FCtjcRIYk")'></div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1100px] flex-1 px-6">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6">
+<a class="text-text-muted text-sm font-medium hover:text-primary transition-colors" href="#">Games</a>
+<span class="material-symbols-outlined text-sm text-text-muted">chevron_right</span>
+<span class="text-text-main text-sm font-semibold">Match Details</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Content (Left Column) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Hero Card -->
+<div class="bg-card-light rounded-xl border border-border-light overflow-hidden shadow-sm">
+<div class="h-80 w-full bg-center bg-cover" data-alt="Outdoor green tennis court with bright sunlight" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCH0M6uukUUjS7CmWEOu-PYJyz6PaMFaOuqHxqFrlTYjYvsyIN8yUNEtB5NgnStsdR6y6xXYrJxt-j9rZ5miJweYhcMQeW4qezRqDFyD0_vwxW7dRsQCTWQRFZdArCnUpZ1-M0MydA1ceGZG8JvitsM6sTzw4jRODjjloIT26wlvGJ-bpKrbvYwtDAR8F-PMZ4Y3LEkIf8K8cKrxFFt4AZ-8Mey0AcsOtfKr81v3RZGaogHG-Yp1e1cGkVTHTIqqFfBleZW_tKwXwU")'></div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h1 class="text-3xl font-black text-text-main mb-2">Saturday Afternoon Pick-up</h1>
+<div class="flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-primary text-lg">location_on</span>
+<p class="text-base font-normal">Central Park - Court 4 • New York, NY</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-4 py-1 rounded-full font-bold text-sm">
+                                    Intermediate
+                                </div>
+</div>
+<div class="grid grid-cols-3 gap-4 py-6 border-y border-border-light my-6">
+<div class="flex flex-col items-center border-r border-border-light">
+<span class="material-symbols-outlined text-text-muted mb-1">calendar_month</span>
+<span class="text-text-main font-bold">Oct 14, 2023</span>
+<span class="text-xs text-text-muted">Date</span>
+</div>
+<div class="flex flex-col items-center border-r border-border-light">
+<span class="material-symbols-outlined text-text-muted mb-1">schedule</span>
+<span class="text-text-main font-bold">4:00 PM</span>
+<span class="text-xs text-text-muted">Start Time</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-text-muted mb-1">timer</span>
+<span class="text-text-main font-bold">90 mins</span>
+<span class="text-xs text-text-muted">Duration</span>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-lg font-bold">About this match</h3>
+<p class="text-text-muted leading-relaxed">
+                                    Competitive 2v2 Basketball match. Looking for intermediate players to join a friendly but intense session. We play full court if more people show up, but plan for 2v2 half-court for now. Please bring water and a dark/light shirt for teams.
+                                </p>
+<div class="flex gap-4 pt-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-text-main text-sm font-semibold hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-base">map</span>
+                                        View Location
+                                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 text-text-main text-sm font-semibold hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-base">share</span>
+                                        Invite Friends
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Players Joined Section -->
+<div class="bg-card-light rounded-xl border border-border-light p-8 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold">Players Joined (3/4)</h2>
+<span class="text-primary font-semibold text-sm">1 slot left</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+<div class="flex flex-col items-center gap-2 group">
+<div class="relative">
+<div class="size-16 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar of organizer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6t6Hfwo2f0Dgp5K59gl2IsEd3Nkm9QkqirMNsETPG8MpQRmsYHvoLTy5YHByHogjre90CnYvT08ZpSgYcTTV55Uks8E4Vgcx7FBoziZlW0PVMOxcQXe6WF5jL9-4qT02Amk5SJHxk18dZ1GThgp-QgMuLeX4e3L5LLdEx9ehOq16ijQCJrw_jj7-8QH-qjbFnRI4i7vZJoidBxQHde-rKfxBHtsRpZalvI-IUSm0vVMjol_7IW-VRhL-d4UrWitIQrFClvRkZPQ"/>
+</div>
+<div class="absolute bottom-0 right-0 size-5 bg-primary text-white rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[10px] font-bold">star</span>
+</div>
+</div>
+<span class="text-sm font-bold">Alex M.</span>
+<span class="text-[10px] uppercase font-bold text-text-muted tracking-widest">Organizer</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-16 rounded-full border border-border-light overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar of player Sarah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYObIFWexLK_TsNYyhpDiMSlq7mVVVqvulqoUTUYr5BvadWhnK8f5MptewugM5pkdJ_9HOXBHqXGzT9RWFtQxfxY_N1EN_iUVtZGHeSwmJ3QgoUcF94GFjCesbvxBK_WHbZUY1mThFCQc9CQ87saP7p8m6AUXsM-Am3nFN_svJgN9OcsgnsnUhXXaih4DsAYL5uMZPzmOe5gjRwxLiRGymnmF8UmPp0OHDD6YvigENW-3dFs5xPnJnObuPEsdeMO8UGSAhjypnYtk"/>
+</div>
+<span class="text-sm font-bold">Sarah L.</span>
+<span class="text-[10px] uppercase font-bold text-text-muted tracking-widest">Joined</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-16 rounded-full border border-border-light overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar of player David" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCBIi6TQpMZZs4ncyjp2nnyf8Yd86cSv7XU8Gql67RgMMrB0Nw95tVBTkTAQJjDl47m9lCLPYcWehbgHI4UuVWaL_Zvvnfo4UIgvxV3P-_PGKvI6w4p-CcNm4kBn6aLR1PHpg0j_-zvN1A97iew5-bA_3RQQO9HzbKlQoCQfRc6vfulNexHg0x2YrgTtIxTJJ3QA405DhiHV6HL8jwdIY-vD00VfOWBV0ZkQWvNIALnxudi2SsIfGJghWnrqi7dyRc6COzpd_E80Q"/>
+</div>
+<span class="text-sm font-bold">David K.</span>
+<span class="text-[10px] uppercase font-bold text-text-muted tracking-widest">Joined</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-16 rounded-full border-2 border-dashed border-border-light flex items-center justify-center text-text-muted bg-slate-50">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="text-sm font-bold text-text-muted">Empty Slot</span>
+<span class="text-[10px] uppercase font-bold text-primary tracking-widest">Join now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Join Form (Right Column) -->
+<div class="lg:col-span-1">
+<div class="bg-card-light rounded-xl border border-border-light p-8 shadow-md sticky top-24">
+<h2 class="text-xl font-bold mb-6">Join the Match</h2>
+<form class="space-y-4">
+<div>
+<label class="block text-sm font-bold mb-2 text-text-main">Your Level</label>
+<select class="w-full rounded-lg border-border-light bg-slate-50 text-sm focus:ring-primary focus:border-primary">
+<option>Beginner</option>
+<option selected="">Intermediate</option>
+<option>Advanced</option>
+<option>Pro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2 text-text-main">Note to host (Optional)</label>
+<textarea class="w-full rounded-lg border-border-light bg-slate-50 text-sm focus:ring-primary focus:border-primary min-h-[100px]" placeholder="Anything the host should know?"></textarea>
+</div>
+<div class="bg-slate-50 p-4 rounded-lg space-y-2 mb-6">
+<div class="flex justify-between text-sm">
+<span class="text-text-muted">Court Fee</span>
+<span class="font-bold">$5.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-text-muted">Service Fee</span>
+<span class="font-bold">$0.50</span>
+</div>
+<div class="h-px bg-border-light my-2"></div>
+<div class="flex justify-between text-base font-black">
+<span>Total</span>
+<span class="text-primary">$5.50</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-100 transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined">check_circle</span>
+                                Confirm and Join
+                            </button>
+<p class="text-[10px] text-center text-text-muted mt-4">
+                                By joining, you agree to Yardly's Terms of Service and Court Rules.
+                            </p>
+</form>
+</div>
+<!-- Map/Location Card -->
+<div class="mt-6 bg-card-light rounded-xl border border-border-light overflow-hidden shadow-sm h-48 relative">
+<div class="absolute inset-0 bg-slate-200 bg-center bg-cover" data-alt="Stylized map showing park location" data-location="New York City" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6iZdnoa06LfV96ekIGKLFB0y2V3jb083qyPqDZblhMojvJs6Sv2Oi92zb4lvcB4ClPgUvY3OQiVBMskNX0QWemIbzqXs2aiRdlVVvFVlwOn_CGUTUIXZQT_g0ZTBcdvYzhqBZEcmovd-7rAO2QK36JMX2noe_yEPia20ZOmYS7_bag1u_BAWEuPQnTShuUwb2gp4iTCAUdPwAFeyLmRiDB9oLqwH4m2pyH0-bAGLY7zVdGYKQp3hjpXhdj4H2hlQ0dOb2dMAoP4g")'></div>
+<div class="absolute bottom-3 left-3 bg-white px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">directions</span>
+<span class="text-xs font-bold">Open in Maps</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-border-light bg-card-light px-10 py-8">
+<div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">sports_tennis</span>
+</div>
+<h3 class="font-bold text-text-main">Yardly</h3>
+</div>
+<div class="flex gap-8">
+<a class="text-xs font-medium text-text-muted hover:text-primary transition-colors" href="#">About</a>
+<a class="text-xs font-medium text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-medium text-text-muted hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-xs font-medium text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+<div class="text-xs text-text-muted">
+                © 2023 Yardly Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+</div>
+</body></html>

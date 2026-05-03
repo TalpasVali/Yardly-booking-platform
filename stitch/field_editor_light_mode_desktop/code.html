@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                        "border-light": "#E2E8F0",
+                        "card-light": "#FFFFFF",
+                        "text-main": "#0F172A",
+                        "text-muted": "#64748B"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light bg-card-light px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">sports_soccer</span>
+<h2 class="text-text-main text-xl font-bold leading-tight tracking-tight">Yardly</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-border-light bg-background-light">
+<div class="text-text-muted flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm font-normal placeholder:text-text-muted" placeholder="Search fields..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-6">
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold underline decoration-2 underline-offset-4" href="#">Listings</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Earnings</a>
+</nav>
+<div class="flex gap-3 border-l border-border-light pl-8">
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:bg-primary/90 transition-all">
+<span>Save Changes</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 border border-border-light bg-card-light text-text-main text-sm font-bold hover:bg-background-light transition-all">
+<span>Preview</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Manager profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6S5DSD6xaU_SswBSu2BVx5_SDkpc-y95EP3TqapU5QCJ0yztEvDBsQNT9zOwvWsirZwiFVnZnG6PbuutrL-_ySBsrpHUtvShhEezQrgmTDpR-KHuwy5KN4sTe3wcDsszth0-aSbkmp2FMzBqBP0DYaGK08gNu0w2sqJwwk61TDZXWH7owlDCBgrfS6u8tXb9UOye4EnTfKPi_yjjCeJKc6LwCE4dd5Sy42w4Vv2RdfSdpFSrPyarGzcF59slamR9akVOLKOk76Js");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col items-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1200px] w-full px-6 gap-8">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col gap-2">
+<nav class="flex items-center gap-2 text-sm text-text-muted font-medium">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary" href="#">Listings</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-text-main">Edit Field</span>
+</nav>
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-black text-text-main tracking-tight">Field Editor</h1>
+<p class="text-text-muted text-base">Modify listing details for <span class="font-semibold text-text-main">Emerald Turf Arena</span> (ID: 88291)</p>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-wider">
+<span class="size-2 bg-primary rounded-full animate-pulse"></span>
+                                Published
+                            </div>
+</div>
+</div>
+<div class="flex gap-8">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col gap-2 shrink-0">
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-bold transition-all">
+<span class="material-symbols-outlined">info</span>
+<span class="text-sm">General Info</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-background-light transition-all font-medium">
+<span class="material-symbols-outlined">map</span>
+<span class="text-sm">Location</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-background-light transition-all font-medium">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm">Pricing</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-background-light transition-all font-medium">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm">Availability</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-background-light transition-all font-medium">
+<span class="material-symbols-outlined">photo_library</span>
+<span class="text-sm">Media</span>
+</button>
+<div class="mt-4 pt-4 border-t border-border-light">
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition-all font-medium">
+<span class="material-symbols-outlined">delete</span>
+<span class="text-sm">Delete Listing</span>
+</button>
+</div>
+</aside>
+<!-- Main Form Area -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Card: General Information -->
+<div class="bg-card-light border border-border-light rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-6 border-b border-border-light pb-4">
+<span class="material-symbols-outlined text-primary">description</span>
+<h3 class="text-lg font-bold">General Information</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2 flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Field Name</label>
+<input class="rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5" placeholder="e.g. Sunset Soccer Field" type="text" value="Emerald Turf Arena"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Sport Category</label>
+<select class="rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5">
+<option>Soccer</option>
+<option>Football</option>
+<option>Rugby</option>
+<option>Baseball</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Surface Type</label>
+<select class="rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5">
+<option>Artificial Turf</option>
+<option>Natural Grass</option>
+<option>Hard Court</option>
+<option>Sand</option>
+</select>
+</div>
+<div class="col-span-2 flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Description</label>
+<textarea class="rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm" placeholder="Describe your field, amenities, and ground rules..." rows="4">Premier 11v11 FIFA-grade turf field located in the heart of the city. Equipped with stadium lighting, home/away locker rooms, and spectator seating for 200. Ideal for league matches and corporate events.</textarea>
+</div>
+</div>
+</div>
+<!-- Card: Media Upload -->
+<div class="bg-card-light border border-border-light rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6 border-b border-border-light pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">image</span>
+<h3 class="text-lg font-bold">Field Media</h3>
+</div>
+<span class="text-xs text-text-muted">4 / 10 images</span>
+</div>
+<div class="grid grid-cols-4 gap-4 mb-4">
+<div class="relative aspect-video rounded-lg overflow-hidden group">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white p-1.5 rounded-full text-text-main hover:bg-primary hover:text-white"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-white p-1.5 rounded-full text-red-500 hover:bg-red-500 hover:text-white"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="w-full h-full bg-cover bg-center" data-alt="High quality green soccer turf field" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2GSM_Utuj--9Zn-oBnevj_owbxcTESkqKm7BPOfCuAbXQ5Gbt5RT1pdwvo6YR9_ciSFL94vJm1enOl5lOQBE4YL3K4paNsn-miv_uO24YL9vuSFgA8U76Hxr4B0OxS0DcXrp1LQ8wFAAqFQTji0M8jeqWwt_24_r7k0nH4xCjYXeL3T9r8A4l2p7OjBhlYt-FJnd0jj6uOUHciYc0ZCBAs3rCb3j7w_ogTrtCSisgZgbyjFQ9523nHGwhnrlxtH_Y16PrBwmAmlM");'></div>
+</div>
+<div class="relative aspect-video rounded-lg overflow-hidden group">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white p-1.5 rounded-full text-text-main hover:bg-primary hover:text-white"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-white p-1.5 rounded-full text-red-500 hover:bg-red-500 hover:text-white"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of soccer ball on turf" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDgKfy2YLXkIAXOcXt1THyVQ1QI3Bfd6AEXxUxGn_tmjw4Ba4o1o0LVW766UnG6P9p1_lyIyLDoKHJkmL6VutFqxqe3xiypKtiYL3I7u1RuvN9yZP2qBXiddAwGBbMJsyHpqGRqJMs1A0s0hYgDHFETq_kqH5bKHy18Op3GwGQP-x224ctUKakx1iAeAvnpUToahn2kbKIHM80TlwFeH0P6G5RfnyYphiO3SLCNPSzfv5OAaBoyrkquZ3Mpsaf-91dhZ47qMymyg_s");'></div>
+</div>
+<div class="relative aspect-video rounded-lg overflow-hidden group">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white p-1.5 rounded-full text-text-main hover:bg-primary hover:text-white"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-white p-1.5 rounded-full text-red-500 hover:bg-red-500 hover:text-white"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Stadium floodlights at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuClFjosxDs5r1VzuYJ0KnkgoXUl_qxockqio9TCQ38IesmcLr__-8hRjsJemRn1SimfX5foNd42YsTVv7G3eDhnvZ463Rwjgw-Ri7Mu_BeTsOzPImTbis9JonkAI1H4YD3BD4Te1kT2MD0U5mux8sUp8LycJl_tQZg8q-soHbtdP_m_niPHB_oucYMEbvU7xpUu4cZmuu1J7sDXz0oFTwOugOy28-yQXGOVbeqmzoO8kDHsZqHUVfbtsnOe_BkETBf8wK3wMUd12pw");'></div>
+</div>
+<button class="aspect-video rounded-lg border-2 border-dashed border-border-light hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-1 group">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary">add_a_photo</span>
+<span class="text-xs font-bold text-text-muted group-hover:text-primary">Add More</span>
+</button>
+</div>
+<p class="text-xs text-text-muted flex items-center gap-1"><span class="material-symbols-outlined text-sm">info</span> Recommended size: 1920x1080px. Max 5MB per file.</p>
+</div>
+<!-- Card: Pricing & Rates -->
+<div class="bg-card-light border border-border-light rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-6 border-b border-border-light pb-4">
+<span class="material-symbols-outlined text-primary">sell</span>
+<h3 class="text-lg font-bold">Pricing &amp; Rates</h3>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Hourly Rate (Day)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-bold">$</span>
+<input class="w-full pl-8 rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5" type="number" value="85"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Hourly Rate (Night)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-bold">$</span>
+<input class="w-full pl-8 rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5" type="number" value="110"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main">Security Deposit</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-bold">$</span>
+<input class="w-full pl-8 rounded-lg border-border-light focus:border-primary focus:ring-primary/20 text-sm py-2.5" type="number" value="200"/>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-background-light rounded-lg border border-border-light">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<p class="text-sm font-bold">Instant Booking</p>
+<p class="text-xs text-text-muted">Allow users to book immediately without manual approval.</p>
+</div>
+<div class="relative inline-block w-12 h-6 transition duration-200 ease-in-out bg-primary rounded-full cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mini Preview Panel -->
+<div class="w-80 shrink-0 hidden xl:flex flex-col gap-6">
+<div class="sticky top-6">
+<div class="bg-card-light border border-border-light rounded-xl overflow-hidden shadow-md">
+<div class="aspect-[4/3] w-full bg-cover bg-center" data-alt="Thumbnail preview of soccer field" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBx8UfBTi58uJyqeahowmXzwD7QXbND8Dye_DY56VUaGT7l7X8F4WjUWbqPAySSKwsuSXTueMtvIAO2FvODnWpATD4yXyZr1Im10JIcpvv3_r2T9VIU2ZU-SOtqHuBzeVUpbaaA_1U7ATGA233iW-2JUtBR88PtJ5EOZZqlGrxhcwZFV_BjQ_0Jx4e16FI4zRU-n7ZDfWX-4phh7QHoUW8Es6y96klzZ42Akqr2EDieH1xo4tbU8K-mVcc-6p3dpu9mb_Z3v-S-9jo");'></div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-text-main leading-tight">Emerald Turf Arena</h4>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs truncate" data-location="Chicago, IL">North Side, Chicago, IL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-background-light rounded text-[10px] font-bold text-text-muted uppercase">Soccer</span>
+<span class="px-2 py-0.5 bg-background-light rounded text-[10px] font-bold text-text-muted uppercase">11v11</span>
+</div>
+<div class="border-t border-border-light pt-3 mt-1 flex justify-between items-center">
+<span class="text-xs text-text-muted">From <span class="text-lg font-black text-primary">$85</span>/hr</span>
+<button class="bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-lg">Live View</button>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-primary/5 border border-primary/20 rounded-xl p-4 flex gap-3">
+<span class="material-symbols-outlined text-primary">tips_and_updates</span>
+<div class="flex flex-col gap-1">
+<p class="text-xs font-bold text-primary">Pro Tip</p>
+<p class="text-[11px] text-text-muted leading-relaxed">Fields with more than 5 high-quality images see 40% more bookings. Consider adding photos of the parking and lockers.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="mt-auto border-t border-border-light bg-card-light py-6">
+<div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
+<p class="text-xs text-text-muted">© 2024 Yardly Inc. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-xs text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="text-xs text-text-muted hover:text-primary transition-colors" href="#">Field Guidelines</a>
+<a class="text-xs text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,146 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur-md px-6 py-4">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-full p-2 hover:bg-slate-100">
+<span class="material-symbols-outlined text-slate-900" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-slate-900">Join Game</h1>
+</div>
+<div class="flex gap-2">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-900">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 flex-col gap-6 p-6 pb-32">
+<!-- Hero Image Card -->
+<div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+<div class="h-48 w-full bg-slate-200 bg-cover bg-center" data-alt="Outdoor pickleball court with green surface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJd0wRjm5GujqZVxrk5bCo5LatSbVMUzVTIubilNwd60sRWkfw1lrv9P51iyOyfs_9TYjrlzGB_CgUYVkDZ5k1Ggi574xcIy4QBFqTcYWa4bqa3wuh9_TsXz2Oi24B-T_apGPCSpWjAVGOhRdbYoJUUpsuo6vMPLDu1tmjDGES8en7AXX6-CrkSGMZzpAFwVVTqGWcGr7DDzOdjgBSOwSagnhLucrpo6lBkUhO-8Jz7KoVRy49DWd9HuF_RiiUxbF1t9Xeapg7H40");'></div>
+<div class="p-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-slate-800 uppercase tracking-wider">Pickleball</span>
+<span class="text-xs font-medium text-slate-500">• 4 spots left</span>
+</div>
+<h2 class="text-2xl font-black text-slate-900 leading-tight">Saturday Night Pickleball</h2>
+<p class="text-slate-600 font-medium">Central Park West Courts</p>
+</div>
+</div>
+<!-- Details Section -->
+<div class="flex flex-col gap-4 rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+<div class="flex items-start gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<div class="flex flex-col">
+<p class="font-bold text-slate-900">Saturday, Oct 12</p>
+<p class="text-sm text-slate-500">6:00 PM - 8:00 PM</p>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100"></div>
+<div class="flex items-start gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="flex flex-col">
+<p class="font-bold text-slate-900">Central Park West</p>
+<p class="text-sm text-slate-500">Court 4 • New York, NY</p>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100"></div>
+<div class="flex items-start gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+<span class="material-symbols-outlined" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div class="flex flex-col">
+<p class="font-bold text-slate-900">Competitive Doubles</p>
+<p class="text-sm text-slate-500">Level 3.5 - 4.5 recommended</p>
+</div>
+</div>
+</div>
+<!-- Players Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-900">Players Joined (8/12)</h3>
+<button class="text-sm font-bold text-slate-600">View all</button>
+</div>
+<div class="flex items-center -space-x-3 overflow-hidden">
+<div class="h-12 w-12 rounded-full border-4 border-white bg-slate-200 bg-cover bg-center" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTPpSE-_ZsENmTJZRKvhtWSz7UsI3voWUMdFwEI0QvZTivB1tI6ojIsKiPT9B6JSvqPj_Tttb3no7oDFknYyBgHRHbwISX5JqI8hnbrh6HE6wB8O1ros8FaU44Db95SVAPo7W2fwDillO7BPDLnLrHjc71S8zTOJblh0Fv7zfATM4vwO-XUg-jvqtQg1jdnujdOyT7w-YjE2aqXY0JK7RTfl1wZkWPmAyMYflLbAkepfK_xc-eeCWg70kLq0P8Lb0DqVi-14uxjMQ");'></div>
+<div class="h-12 w-12 rounded-full border-4 border-white bg-slate-200 bg-cover bg-center" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG-CJcMKLCrbhq0OoY_7vVlR0YNO6-5eCvBwDE_SOv9ih0SxotzW8GeUfXEISHS2dOM1-ADPDWEnbuwYfq8vyIzbuBEVY1Yce6kIwMUdpGk1R-12wihnaI3QicjnjSVB9DfODvh99V4BbTbGagq6iJ6jSqQEhXRMj4S_9Keue65SOQD4J6bLSucdMdkDN4Hff3ne28OvOC4yfvWOWjopw39yhfDHemjIsdYPLxGhuFJN66JKj96luNBpwVpAnwl_UautWXoXkmPIo");'></div>
+<div class="h-12 w-12 rounded-full border-4 border-white bg-slate-200 bg-cover bg-center" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy-mhROV0rfGBHGySxK81k7_k2ipASSBv8ffyFxb2wXXGvzeyctHUK96Qm5IV6LhIYcH-6UlSd6PVlggZZcuc-wE-gI-fcHhM63hWIszstx1thTtuKNYPkpByYAQvZXoE_fNJh2ZyVsSH0JO95pk2M9IsLW2_K6fmBLFg-71hJc9ZQcZvMsgwk-mI3HR0f-zJqYuhWcWOg4W6vx2yTtF8uMlc7F4xl8mJFhHg0WaJnSpTjpZu2kL-nZJSXBGnSxnjZ36HgS6JFM38");'></div>
+<div class="h-12 w-12 rounded-full border-4 border-white bg-slate-200 bg-cover bg-center" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjHhL_CLJOma8j7FjBx7GuR7ID_z548oMiZ1Ob1B4ffX_x_qVpEUZi6BnrbHBhMcCcdP-dxJ-KCIwwECM2foqwsFIA756T5a07rQahQHn9HLXVzhLLMKscOxfwOP8PSqClktky6bkfXJnIvWHA5TXX-yygy039qEeHeuC_bcUqEqjdzwRKYlnO0pfPZfJn46tkDcZ8PIRXKoXcSoI503Q2ZfPWxihNh6_Mmxe8VTqxFx6TWCEqPyfZPScHhOvpDkV76f4rMqXf5SQ");'></div>
+<div class="h-12 w-12 rounded-full border-4 border-white bg-slate-200 bg-cover bg-center" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjfGLTB9cPjfycXCx2520ED9zCuYGV4IZIFySBk7qXaSfsSOLh9gtWiZ_VaNY7IA3btIaZ7vTmj1yXK8VTXGMAExa699hdXPN0qEvUYIOPafznKCq22AcZVk_mhBStyiP0ht3qwlcqlIb9EciUqnctUa6y67JxO0cbM_Wex62S37RN-2anmXdI0Hhzew8XsT0YiWJyPygCv47uTcuPdDx5gAv6kOtywM_eoFpXfu8bQwEqrwNNSGcfxJSEDB1Hi3BelUB5afSQOgI");'></div>
+<div class="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-slate-100 text-xs font-bold text-slate-600">+3</div>
+</div>
+</section>
+<!-- Map Placeholder -->
+<div class="h-40 w-full rounded-xl bg-slate-200 relative overflow-hidden ring-1 ring-slate-200">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Simplified map view of Central Park New York" data-location="New York" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6iZdnoa06LfV96ekIGKLFB0y2V3jb083qyPqDZblhMojvJs6Sv2Oi92zb4lvcB4ClPgUvY3OQiVBMskNX0QWemIbzqXs2aiRdlVVvFVlwOn_CGUTUIXZQT_g0ZTBcdvYzhqBZEcmovd-7rAO2QK36JMX2noe_yEPia20ZOmYS7_bag1u_BAWEuPQnTShuUwb2gp4iTCAUdPwAFeyLmRiDB9oLqwH4m2pyH0-bAGLY7zVdGYKQp3hjpXhdj4H2hlQ0dOb2dMAoP4g");'></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-slate-900 shadow-lg ring-4 ring-white">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+</div>
+</div>
+<!-- Host Info -->
+<div class="flex items-center justify-between rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Game host profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQKpFlE8IcBajcvlsnrukLoLcMuKIa-qPWFSZ7hWxjLarrkcTvg0dOoX1cUFNA40FOB6DdyrZxGqIikdAhl1nqBgbxvYsUyTj7cKUc0OHWk3Qr5OYLp0HZiJIMRuMkBEoYgu3FcV-zhL0Q0HH6FQnICiQ9utRkn-VA9ddhx7BXDxf3rOrmzf4tPBB6r6llVBsGaXoKbKQmIdmtaVvO_0wxBnbJX2SlNAKFfDjFdlg5pboWcd78RFIW8srP_h8Y3hxm2jSHKK_7TLs");'></div>
+<div class="flex flex-col">
+<p class="text-xs font-bold uppercase tracking-wider text-slate-500">Hosted by</p>
+<p class="font-bold text-slate-900">Alex Rivera</p>
+</div>
+</div>
+<button class="rounded-full bg-slate-100 px-4 py-2 text-sm font-bold text-slate-900">Message</button>
+</div>
+</main>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/90 p-6 backdrop-blur-md">
+<div class="mx-auto flex max-w-lg items-center justify-between gap-4">
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-500 line-through">$25.00</p>
+<p class="text-xl font-black text-slate-900">$12.00</p>
+</div>
+<button class="flex-1 flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 text-lg font-bold text-slate-900 shadow-[0_8px_20px_-4px_rgba(13,242,89,0.4)] active:scale-95 transition-transform">
+<span>Join Game</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

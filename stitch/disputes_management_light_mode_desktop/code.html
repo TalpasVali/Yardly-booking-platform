@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Disputes Management - Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 lg:px-10 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block">sports_tennis</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">Yardly Admin</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Payments</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Disputes</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors" href="#">Users</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search disputes..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:border-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900 dark:text-white leading-none">Alex Rivera</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Senior Admin</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Admin user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsB5Mlf-qlRLdXQ3jc4yaT0A374sciwqf_2reXwcd16gTU1-VFKqgcf7WwrxqTDBDls3lDzLd81yQklrrv_Oei0iddfDYYO4qvCxtR2ssf4izDd8MnRiliMN5JtY2TCzvk0KrywyD8L1K-1oLbWRU4F7tEG0Y8VERQbVXI6eQPoAzhsqIVZdGiD_O6bHZMHWmqdGSBlMszC1SLtl2rfL9amhCq7D-nXBfeGlf1I5sNkC8SH0j6ZiR8_-TxiKr2Qzde-oAAuFa5tps"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto p-6 lg:p-10">
+<!-- Header & Quick Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Disputes Management</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2 text-lg">Review and resolve platform booking conflicts across the Yardly ecosystem.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-sm shadow-sm hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-xl">file_download</span>
+                    Export CSV
+                </button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-xl">gavel</span>
+                    New Resolution
+                </button>
+</div>
+</div>
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg">
+<span class="material-symbols-outlined">analytics</span>
+</span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Disputes</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">1,284</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 rounded-lg">
+<span class="material-symbols-outlined">pending_actions</span>
+</span>
+<span class="text-xs font-bold text-rose-600 bg-rose-50 dark:bg-rose-900/20 px-2 py-1 rounded-full">-2.4%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Pending Review</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">24</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-emerald-50 dark:bg-emerald-900/20 text-primary rounded-lg">
+<span class="material-symbols-outlined">check_circle</span>
+</span>
+<span class="text-xs font-bold text-slate-400 bg-slate-50 dark:bg-slate-800 px-2 py-1 rounded-full">Static</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Resolved Cases</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">1,042</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="p-2 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-lg">
+<span class="material-symbols-outlined">timer</span>
+</span>
+<span class="text-xs font-bold text-rose-600 bg-rose-50 dark:bg-rose-900/20 px-2 py-1 rounded-full">-4.1%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg. Resolution Time</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white mt-1">1.2 days</p>
+</div>
+</div>
+<div class="flex flex-col xl:flex-row gap-8">
+<!-- Table Section -->
+<div class="flex-1 min-w-0">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<!-- Filters and Search -->
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="px-6 py-2 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm font-bold shadow-sm">All</button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-bold hover:text-slate-700 dark:hover:text-slate-200 transition-colors">Pending</button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-bold hover:text-slate-700 dark:hover:text-slate-200 transition-colors">In Progress</button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-bold hover:text-slate-700 dark:hover:text-slate-200 transition-colors">Resolved</button>
+</div>
+<div class="relative w-full md:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">filter_list</span>
+<input class="w-full md:min-w-80 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search by ID, user, or venue..." type="text"/>
+</div>
+</div>
+<!-- Disputes Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Dispute ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">User / Reporter</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Issue Type</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date Filed</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Dispute Item 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-bold text-slate-900 dark:text-white">#DIS-8842</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Female user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC4wMv4MiFGwho8vbc61vGEuZHdyXAJOcul27NBTS6Z8Y6CpiKY8UKA6bCTXlpsxuZyWMs0f1CnDkPu9jFgNk7iULFubba0oBWo6afS4f6-KFEQdyVGvO9hlrDiQ0wpiEabzIOWNzosDH4FajHzcFYIk8nE2ZHdQRc2UTCq09hVOproSxpPUhgqw7tBPOztReFO2DihlsvII9DCCPsrTnm-D0TPI2LYhfM0OnxEVdtJUBen0FRSQUePpo87PIHpWLw0Jizwj2KHNA"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-slate-500">Premium Member</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600 dark:text-slate-400">Venue Quality Issue</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<p class="text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</p>
+<p class="text-[10px] text-slate-400">14:20 PM</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-primary hover:bg-primary/10 px-3 py-1.5 rounded-lg text-sm font-bold transition-all">Review</button>
+</td>
+</tr>
+<!-- Dispute Item 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-bold text-slate-900 dark:text-white">#DIS-8839</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Male user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiCftQOuwdCtcrKyV3zxglwq5jSHcdPHltIiNdC2lMpoKBpCP6vTOT3T9iIU6See8D1xtPnRE6k57ZNadPTAjIEHvVCTfWZwhQXRu5tCdq8PTZ8rPlTnhgjD7FYKE0pNTQaVoGZwKCthNxVDA_RPi4WxI03VD2zDBQWEY9EHDUhnfzJ5umVFuWeOVZz7EeI4ix0EOzoDh2Lu8lOzlzMaRYD0YEOvAA_Tbj6EScAINV1rem5OQinRKLyALjQvZuZF85N_C_Zx-S8W0"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Marcus Thorne</p>
+<p class="text-xs text-slate-500">Regular User</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600 dark:text-slate-400">Refund Request</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<p class="text-sm text-slate-600 dark:text-slate-400">Oct 23, 2023</p>
+<p class="text-[10px] text-slate-400">09:15 AM</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                            In Progress
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-primary hover:bg-primary/10 px-3 py-1.5 rounded-lg text-sm font-bold transition-all">Update</button>
+</td>
+</tr>
+<!-- Dispute Item 3 (Resolved) -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group bg-slate-50/30">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-bold text-slate-900 dark:text-white">#DIS-8831</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Male user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFn1iyw6-z5cvG0jo74XUOpXYEzwExvn9gdsvT8cULZ6U-VJI1icplIhRmJDCJvaI9mzAGhAZVooU8QMRZqvZjYAfVdfirBT82W1Wnf2cjn1ZFc5ab45JJoH9VX8f-7TLfM8FoB8ummsoANQC1DWoeboZl7QOfe0FShPHo_I6AtBRjAY65QgrMEOQX3w0oQtEPP_CGb_sArt1Zu-3riKFbd6t6ta6mf5wQLR5uGGiK1611iuTSWI20OjLGMW0DzFch-5Jfb9xOjMI"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Daniel Wu</p>
+<p class="text-xs text-slate-500">Club Manager</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600 dark:text-slate-400">Double Booking</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<p class="text-sm text-slate-600 dark:text-slate-400">Oct 22, 2023</p>
+<p class="text-[10px] text-slate-400">18:44 PM</p>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-slate-400 hover:text-slate-600 px-3 py-1.5 rounded-lg text-sm font-bold transition-all">Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50/50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="font-bold text-slate-900 dark:text-white">1-10</span> of <span class="font-bold text-slate-900 dark:text-white">128</span> results</p>
+<div class="flex gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:bg-white dark:hover:bg-slate-800">
+<span class="material-symbols-outlined block">chevron_left</span>
+</button>
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:bg-white dark:hover:bg-slate-800">
+<span class="material-symbols-outlined block">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Management Drawer / Sidebar -->
+<div class="w-full xl:w-96 flex flex-col gap-8">
+<!-- Selected Dispute Detail Card -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col h-fit">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">In Detail</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">close</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Dispute #DIS-8842</h3>
+<p class="text-slate-500 text-sm">Reviewing Sarah Jenkins' report about Sunset Tennis Club.</p>
+</div>
+<div class="p-6">
+<div class="space-y-6">
+<!-- Booking Info -->
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Booking Information</h4>
+<div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">sports_tennis</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Sunset Tennis Club</p>
+<p class="text-xs text-slate-500">Court #4 • 2 Hours</p>
+<p class="text-xs font-semibold text-primary mt-1">$45.00 Total</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Complaint History -->
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Complaint Description</h4>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                                    "The lighting at court #4 was flickering throughout our session, making it impossible to play safely. We requested a change at the front desk but were told everything was full. We'd like a partial refund for the inconvenience."
+                                </p>
+</div>
+<!-- Resolution Activity Timeline -->
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Activity Timeline</h4>
+<div class="relative space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-slate-200 dark:before:bg-slate-800">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900 z-10"></div>
+<p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Dispute Created</p>
+<p class="text-[10px] text-slate-500 mt-1">Oct 24, 2:20 PM by Sarah Jenkins</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></div>
+<p class="text-sm font-bold text-slate-500 leading-none">Evidence Requested</p>
+<p class="text-[10px] text-slate-500 mt-1">Pending Admin Action</p>
+</div>
+</div>
+</div>
+<!-- Resolution Actions -->
+<div class="pt-4 flex flex-col gap-3">
+<button class="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm shadow-md hover:brightness-110 transition-all">
+                                    Issue Partial Refund (50%)
+                                </button>
+<button class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-slate-50 transition-colors">
+                                    Contact Venue Owner
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Admin Tools Quick Panel -->
+<div class="bg-gradient-to-br from-primary to-emerald-600 p-6 rounded-2xl shadow-xl shadow-primary/20 text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<h3 class="font-bold">AI Support Suggestions</h3>
+</div>
+<p class="text-white/80 text-sm mb-4 leading-relaxed">Based on policy 4.2 (Facility Quality), a 50% refund or a $20 credit is recommended for lighting issues confirmed by venue logs.</p>
+<button class="w-full py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-bold transition-all border border-white/30 backdrop-blur-sm">
+                        Apply Suggestion
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

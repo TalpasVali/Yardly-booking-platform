@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empty States &amp; 404 - Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#32cd32",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#072a1c",
+                        "card-dark": "#114d31",
+                        "accent-text": "#57e439",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-10 py-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">sports_soccer</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Yardly</h2>
+</div>
+<label class="flex flex-col min-w-64 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full bg-slate-200/50 dark:bg-card-dark">
+<div class="text-slate-500 dark:text-accent-text flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-base font-normal placeholder:text-slate-500 dark:placeholder:text-accent-text/50" placeholder="Search fields, cities, or sports" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium hover:text-primary transition-colors" href="#">Fields</a>
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+</nav>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-full h-10 px-5 bg-primary text-background-dark text-sm font-bold transition-transform active:scale-95">
+                        Log In
+                    </button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0CB1-w_wUEuWsW8Uf7Qmwij4jMTsKB8RDu6KrywNgA0VYIsQhdtHxEnRNRuJwOe-Ssgo2s8WtmB_8m8sf4m4-LrkLcKj5Amppj49thOC0dm8R1jn9WhFHpBZ62k5yphNeH1ZfEimbklRR7iBQXZjZgoEG1hEoH-Jn53nBHC77L60XAjdK-dN4iAJEAvGb0EEV61Vk4fjfRsyMxaGvzjwBtMwEIa3bOJj0B95A_FIE-SVAGSus8JbfRaiu85aiMV0a35N29T2gkdY");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col gap-12 p-10 max-w-7xl mx-auto w-full">
+<!-- Section Header -->
+<div class="border-b border-primary/10 pb-4">
+<h1 class="text-3xl font-bold text-accent-text">Design Showcase: Empty States</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Consistent dark mode states for search, bookings, and errors.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Search Empty State -->
+<div class="bg-slate-100 dark:bg-card-dark rounded-xl p-12 flex flex-col items-center text-center justify-center min-h-[450px] border border-transparent dark:border-primary/5">
+<div class="w-48 h-48 mb-8 relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative flex items-center justify-center h-full">
+<span class="material-symbols-outlined text-8xl text-primary/40">manage_search</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100">No fields found</h3>
+<p class="text-slate-600 dark:text-slate-300 max-w-sm mb-8">
+                            We couldn't find any sports fields matching your current filters. Try adjusting your search or clearing your preferences.
+                        </p>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 px-6 bg-primary text-background-dark text-base font-bold transition-all hover:shadow-[0_0_20px_rgba(50,205,50,0.3)]">
+                            Reset Filters
+                        </button>
+</div>
+<!-- Bookings Empty State -->
+<div class="bg-slate-100 dark:bg-card-dark rounded-xl p-12 flex flex-col items-center text-center justify-center min-h-[450px] border border-transparent dark:border-primary/5">
+<div class="w-48 h-48 mb-8 relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative flex items-center justify-center h-full">
+<span class="material-symbols-outlined text-8xl text-primary/40">event_busy</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100">You have no bookings yet</h3>
+<p class="text-slate-600 dark:text-slate-300 max-w-sm mb-8">
+                            Ready to play? Browse available fields in your area and schedule your next match in just a few clicks.
+                        </p>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-full h-12 px-6 bg-primary text-background-dark text-base font-bold transition-all hover:shadow-[0_0_20px_rgba(50,205,50,0.3)]">
+                            Explore fields
+                        </button>
+</div>
+</div>
+<!-- 404 High Energy Page Section -->
+<div class="mt-8">
+<div class="relative overflow-hidden bg-slate-100 dark:bg-card-dark rounded-xl border border-transparent dark:border-primary/10 min-h-[600px] flex flex-col items-center justify-center text-center px-6">
+<!-- Abstract Background Decoration -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="mb-4">
+<span class="text-[120px] font-black leading-none text-primary/20 select-none">404</span>
+</div>
+<!-- High Energy Illustration Mockup -->
+<div class="w-full max-w-md h-64 mb-8 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl flex items-center justify-center relative overflow-hidden border border-primary/20" data-alt="Futuristic glowing soccer ball and field illustration">
+<span class="material-symbols-outlined text-9xl text-accent-text drop-shadow-[0_0_15px_rgba(87,228,57,0.5)]">sports_score</span>
+<div class="absolute bottom-4 left-4 right-4 h-1 bg-primary/30 rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-primary shadow-[0_0_10px_#32cd32]"></div>
+</div>
+</div>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Oops! Page not found</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
+                                Looks like you've sprinted off the pitch. The page you're looking for doesn't exist or has been moved to a different league.
+                            </p>
+<div class="flex flex-wrap gap-4 justify-center">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-full h-14 px-8 bg-primary text-background-dark text-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(50,205,50,0.4)]">
+                                    Back to Home
+                                </button>
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-full h-14 px-8 border-2 border-primary/30 text-slate-900 dark:text-slate-100 text-lg font-bold transition-all hover:bg-primary/10">
+                                    Contact Support
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Simple -->
+<footer class="mt-auto py-12 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-primary opacity-60">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="font-bold">Yardly</span>
+<span class="text-slate-500 dark:text-slate-400 ml-2">© 2024 Yardly Sports Platform</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

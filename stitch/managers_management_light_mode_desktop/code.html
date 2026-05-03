@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Managers Management - Yardly Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                        "card-light": "#FFFFFF",
+                        "border-light": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 w-full border-b border-border-light bg-card-light/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900">Yardly Admin</h2>
+</div>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="h-10 w-64 rounded-lg border-border-light bg-slate-50 pl-10 text-sm focus:border-primary focus:ring-primary/20" placeholder="Search managers, venues..." type="text"/>
+</div>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-semibold text-primary border-b-2 border-primary py-1" href="#">Managers</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Venues</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Bookings</a>
+<div class="ml-4 flex items-center gap-3 border-l border-border-light pl-6">
+<button class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-slate-200 overflow-hidden border border-border-light">
+<img alt="Admin Profile" data-alt="Professional headshot of a male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApAKHx27jX4jwseYTkbnMKcjof1L_yq6RD6GhnabTvObByP109_R2wsspVbDb8F4xdUgk84VxO_Nrr9L0FyqqDYK1geihlyOrQyTvehKT4MQpc0wMet2h5CNPN_1bCKak2WQH0bD4tbGZriSfO3MNKv8UxtJz-XnCoKZmlM8oGqlQIpP2Qp8SnXxi8_Mkda1MQpQ0In01VDHhheHGhRD3newqpJ6DDjtw7EpHkd7K-AOTgcDzYl24hHgLOs5ZnEtAMcyS0NahWjj4"/>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main class="mx-auto w-full max-w-[1440px] grow px-6 py-8">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+<div>
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Managers Management</h1>
+<p class="mt-1 text-slate-500">Overview and verification of platform sports facility managers.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg border border-border-light bg-card-light px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary/90">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Add Manager
+                    </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<div class="rounded-xl border border-border-light bg-card-light p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-500">Total Managers</p>
+<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-lg">group</span>
+</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<p class="text-2xl font-bold text-slate-900">1,284</p>
+<span class="text-xs font-semibold text-primary">+12%</span>
+</div>
+</div>
+<div class="rounded-xl border border-border-light bg-card-light p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-500">Pending Verification</p>
+<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<p class="text-2xl font-bold text-slate-900">24</p>
+<span class="text-xs font-semibold text-primary">+5%</span>
+</div>
+</div>
+<div class="rounded-xl border border-border-light bg-card-light p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-500">Active Venues</p>
+<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+<span class="material-symbols-outlined text-lg">stadium</span>
+</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<p class="text-2xl font-bold text-slate-900">456</p>
+<span class="text-xs font-semibold text-red-500">-2%</span>
+</div>
+</div>
+<div class="rounded-xl border border-border-light bg-card-light p-5 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-500">Avg. Response Time</p>
+<span class="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
+<span class="material-symbols-outlined text-lg">timer</span>
+</span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<p class="text-2xl font-bold text-slate-900">2.4h</p>
+<span class="text-xs font-semibold text-primary">+15%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Table Section -->
+<div class="flex-1 overflow-hidden rounded-xl border border-border-light bg-card-light shadow-sm">
+<div class="border-b border-border-light px-6 py-4 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900">All Managers</h3>
+<div class="flex gap-2">
+<button class="rounded-lg border border-border-light px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">Filter</button>
+<button class="rounded-lg border border-border-light px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">Sort</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 text-xs font-semibold uppercase text-slate-500">
+<tr>
+<th class="px-6 py-4">Manager</th>
+<th class="px-6 py-4">Venue</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Joined</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light">
+<tr class="group hover:bg-slate-50/50">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-100">
+<img alt="Sarah Connor" data-alt="Portrait of a smiling female manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTgp1IgLGq4dwrtp_qR-lN9gkf6DYZQqokslPyvGx174z-IcVpjis7oE32xHEDMRZ0a2_Xng_lHYDGUjPV5Hj9idKUm1IXUEpdscqZXsGEtgIwGCTZQSrLYDIgCKpspoZxTVs_-AvXqaiMWX07NMy86cGV9PrkP7FUpY4GBvJfrWado3XwP0skvA97kwh_pyMsYFaDflmvYLVTAL0UTIL5qRKCDpoE8FeMIXzDo5ggV7636jue8obyQSbAKnbksyQVjn2X7JYNIzs"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Sarah Connor</p>
+<p class="text-xs text-slate-500">sarah.c@yardly.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-medium text-slate-900">Skyline Tennis Club</p>
+<p class="text-xs text-slate-500">Austin, TX</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+                                            Verified
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Oct 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50/50">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-100">
+<img alt="Marcus Wright" data-alt="Portrait of a professional male sports manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMKv2vUatwwJanI_1cBHfiwTg6vsVsb8WdXf0ehQmW-QzpNFCpmoBQ0eCWxOCMLfyWoZnp67zzxMNX6dMlb0kIRqHh4aesEraV2lOEFdRLZG5spFBez9SalNlwFIWKlTcOCcMosv6JTlvf6EQ4_ADyRdGiAY3wOoeW_BuW2Nj97n5W2J4qs0ZUpz-grlM-Sayah_B2oFdTNvBghsWoGimQrIP1MMw7Bm-90Okb6jVXaOCfEh6o8iRU_sVvm_lpWYNBdkE0gfdQusM"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Marcus Wright</p>
+<p class="text-xs text-slate-500">m.wright@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-medium text-slate-900">Padel Pros Central</p>
+<p class="text-xs text-slate-500">Miami, FL</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold text-amber-600">
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Nov 03, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50/50">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-100">
+<img alt="Elena Fisher" data-alt="Portrait of a female facility coordinator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhUSbcODVea0IwwKczhSVoqWyi_q5u26H5pGRJRoX62qexIbsb4cr18kG20d3a69wn32AgDTtZywVCp23wNC1ejcmZc2am1Zi71n5Vvr1Tba_AQJZ7hmBar5Ofw9_gREkTvUsIBf3uhpZa8wJ-4QFcgTVfjUxz7ww-Zubjd2Q87iMU90BgQ4guZnIgrTJYage1d_Jl3UgZFU9OGIu9iR4GkdwI2E-dbfBBYgEKU58G-fTZVeTQT8SLLtcl2-PZldJmLTivtjV8pBM"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Elena Fisher</p>
+<p class="text-xs text-slate-500">efisher@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-medium text-slate-900">Sunset Turf Arena</p>
+<p class="text-xs text-slate-500">Denver, CO</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+                                            Verified
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Sep 28, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50/50">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-100">
+<img alt="John Wick" data-alt="Portrait of a serious male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsC94WidaSRKBQBqMl3qbzYIY8AIkNMetsXjO_FR5sjru3-RONKpFgt1V4OyIX-ZuCKpmikcmRViG7aPQ4ALRqdOIsdNG0KRLosPGGZjTBkLeGib3UCJ3Qk68Urq8M7JnOZKYNypJUtn4Vjtn_lYlMoJa3w_cH-RJdJvHraSRviAi6ID2D1etT3QUNEb-fwPQSUVeBK4Q7AJReVrSvmt9zjGJIXtQ9Lce2GeWupwFKRFR-Y9xhA5VqoJJf_BOQxgcaDhDmNpsMNw4"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">John Wick</p>
+<p class="text-xs text-slate-500">wick@continental.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="font-medium text-slate-900">The Continental Courts</p>
+<p class="text-xs text-slate-500">New York, NY</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-bold text-red-600">
+                                            Suspended
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600">Aug 15, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="border-t border-border-light bg-slate-50 px-6 py-4 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="font-medium text-slate-900">1 to 10</span> of <span class="font-medium text-slate-900">1,284</span> managers</p>
+<div class="flex gap-2">
+<button class="rounded-lg border border-border-light bg-card-light px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50" disabled="">Previous</button>
+<button class="rounded-lg border border-border-light bg-card-light px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+<!-- Side Drawer / Detail View Component -->
+<aside class="w-full lg:w-80 space-y-6">
+<!-- Manager Profile Summary Card -->
+<div class="rounded-xl border border-border-light bg-card-light p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-slate-900">Manager Details</h3>
+<button class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="text-center mb-6">
+<div class="relative mx-auto h-20 w-20 mb-3">
+<img alt="Marcus Wright" class="rounded-full border-2 border-primary p-0.5" data-alt="Close up of Marcus Wright professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrPT392Kb7_EqJgZxTw2S46-rh6DibDqC2IVKgRCpUtZrBvayZEKo1Qyj2UY1D5VAegVqrltPHtTGQPuXKoC6THywpcDRJd9_PNnowSuIW8q3JVcc0YCQ6eQ2QbHji19_iLU31NiT7iZPuLDdbQBrEsDShewlS06ahZJ1FmNCLU6UdC8kxBHRHllAs5c2sM3Ct8OR8zpyv62g4fKsQQDTWlRiYh78XoHJLJv1P6GxqM9Ok8Q0IYlYKV5s4pXX7hSWs23gFRJy2HIU"/>
+<div class="absolute bottom-0 right-0 h-5 w-5 rounded-full border-2 border-white bg-amber-500"></div>
+</div>
+<h4 class="text-lg font-bold text-slate-900">Marcus Wright</h4>
+<p class="text-sm text-slate-500">Pending Verification</p>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Venue</label>
+<div class="mt-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">location_on</span>
+<p class="text-sm font-semibold text-slate-700">Padel Pros Central</p>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Documentation</label>
+<div class="mt-2 space-y-2">
+<div class="flex items-center justify-between rounded-lg bg-slate-50 p-2 text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span>business_license.pdf</span>
+</div>
+<button class="text-primary hover:underline font-bold">View</button>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-slate-50 p-2 text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">id_card</span>
+<span>id_verification.jpg</span>
+</div>
+<button class="text-primary hover:underline font-bold">View</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-col gap-2">
+<button class="w-full rounded-lg bg-primary py-2.5 text-sm font-bold text-white shadow-md shadow-primary/20 hover:bg-primary/90 transition-all">
+                                Approve Verification
+                            </button>
+<button class="w-full rounded-lg border border-red-200 py-2.5 text-sm font-bold text-red-600 hover:bg-red-50 transition-all">
+                                Reject Manager
+                            </button>
+</div>
+</div>
+<!-- Location Preview -->
+<div class="rounded-xl border border-border-light bg-card-light overflow-hidden shadow-sm">
+<div class="p-4 border-b border-border-light flex items-center justify-between">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Venue Location</h4>
+<span class="text-xs text-slate-400">Miami, FL</span>
+</div>
+<div class="h-40 bg-slate-200 relative group cursor-pointer overflow-hidden">
+<img alt="Map View" class="h-full w-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="Satellite map view of sports facility location" data-location="Miami" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCddWtHN6wwvPU9Ep2hm4Fc4Rc-Y3dqf2m2LVr1kpbkE3aHq5wM1JItNNZfAQ_pFQ1hr0fo2qawO_BBMPVTbxQBeiiWSi61NRrsqybP2G-QjrFuuYiJ9hLXMsBBWQzhu_81697JCzqZ_z3u2dUQgnUBlt3Rx8Ig10vF_Wj7t3V5Uh-CX_2TmDbnYtiYSK4u-eLugShJehO0zcQigZ-uAElhZZQblC8K9oM-Xt5YBLbZ71uhcVXWJGRrmkGC5H71sj1eTAI-5FZiB0U"/>
+<div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center">
+<div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-white shadow-xl animate-bounce">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-border-light bg-card-light py-6 text-center">
+<p class="text-sm text-slate-500">© 2024 Yardly Sports Booking. Admin Platform v2.4.0</p>
+</footer>
+</div>
+</body></html>

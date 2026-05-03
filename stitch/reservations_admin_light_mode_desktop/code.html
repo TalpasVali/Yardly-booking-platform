@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reservations Admin Light Mode Desktop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#122017",
+                        "border-light": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-white border-r border-border-light flex flex-col fixed h-full">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">sports_tennis</span>
+</div>
+<div>
+<h1 class="text-slate-900 text-base font-bold leading-none">Yardly Admin</h1>
+<p class="text-slate-500 text-xs mt-1">Global Management</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">calendar_today</span>
+<span class="text-sm font-bold">Reservations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">stadium</span>
+<span class="text-sm font-medium">Facilities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Finances</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-light space-y-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+<span class="text-sm">New Booking</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 p-8">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-8">
+<div class="space-y-1">
+<h2 class="text-3xl font-black text-slate-900 tracking-tight">Reservations Management</h2>
+<p class="text-slate-500">Manage and monitor all sports facility bookings globally.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-border-light bg-white hover:bg-slate-50 rounded-lg font-bold text-slate-700 text-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                    Export Data
+                </button>
+</div>
+</header>
+<!-- Stats Grid -->
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-6 rounded-xl border border-border-light shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Total Bookings</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-slate-900">1,284</p>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+12%</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-border-light shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Active Now</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-slate-900">42</p>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+5%</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-border-light shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Pending Requests</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-slate-900">15</p>
+<span class="text-rose-500 text-xs font-bold bg-rose-50 px-2 py-1 rounded-full">-2%</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-border-light shadow-sm">
+<p class="text-slate-500 text-sm font-medium mb-1">Revenue Today</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-slate-900">$4,820</p>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+8%</span>
+</div>
+</div>
+</div>
+<!-- Filters and Table -->
+<div class="bg-white rounded-xl border border-border-light shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-border-light flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<button class="border-b-2 border-primary text-slate-900 pb-4 -mb-[17px] font-bold text-sm">All Reservations</button>
+<button class="text-slate-500 hover:text-slate-700 pb-4 -mb-[17px] font-medium text-sm">Confirmed</button>
+<button class="text-slate-500 hover:text-slate-700 pb-4 -mb-[17px] font-medium text-sm">Pending</button>
+<button class="text-slate-500 hover:text-slate-700 pb-4 -mb-[17px] font-medium text-sm">Cancelled</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-primary focus:border-primary w-64 outline-none" placeholder="Search booking ID, user..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-lg border border-slate-200">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 border-b border-border-light">
+<tr>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Reservation ID</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">User</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Facility</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Date &amp; Time</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Amount</th>
+<th class="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light">
+<tr class="hover:bg-slate-50/50 transition-colors cursor-pointer">
+<td class="px-6 py-4 text-sm font-bold text-slate-900">#BK-8842</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiwGTyj1y4yJUo0ozTNN54CUfpZvcsNfRy0o-Htg3hGoQZ5t2eJgKZutvRv0QbY2IMu_g9QnZIey4UeB-GkaaO7iecELPV_H6VLpSxlHTfMr4leFELMgRCGGlnXMEqU4h2D6Au4WmCnmNRLJBkJ84VDuNQKBQzZ6ycnf4eGMLlWYrl5iD7kgpPTWEvhj5RO2xE1-4jtmtc403nrCWVwRXHASFwN5ArjBOM8TcuQU20JE3kkHQQzlgdoDM2Y8008dS_rWOe6ADMuZk"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Alex Thompson</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600">Central Tennis Court 4</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900">Oct 24, 2023</p>
+<p class="text-xs text-slate-500">10:00 AM - 11:30 AM</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                                    Confirmed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right text-sm font-bold text-slate-900">$45.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors cursor-pointer">
+<td class="px-6 py-4 text-sm font-bold text-slate-900">#BK-8841</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa0VuI2RktG24tZ88EEAxMVNiQQQNuW9jOjMbLrhEDhCKxAteJ2hulTI9T4m51qw2N5lQ6s-xs3GQq-HDdlD5UhnWREJF6Wsz3WmQVzI_IrNuQLW5n5ldxcs4X0N8BveWgzqVoQaZ7ydnTNdieG9w3YQd1SCSvAyahrm9WZyh7aYGybvMbun151hbt6CAVZ8FOR7f7K-q2kwXpTkvLyyvcJIf3VSDIRe2QT4MI3UBwjhSihjSZ7F2x7_gSMdlkJ70opSK19R8dzkw"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Sarah Jenkins</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600">North Padel Arena</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900">Oct 24, 2023</p>
+<p class="text-xs text-slate-500">01:00 PM - 02:00 PM</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-600 border border-amber-200">
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right text-sm font-bold text-slate-900">$32.50</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors cursor-pointer">
+<td class="px-6 py-4 text-sm font-bold text-slate-900">#BK-8840</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKqgQh7RQudi4NSb7G4e0EHj5Wf9tP4XpnMV7gPmbZ1Vz8ymd6E7MopVkxnx-AwxR4DezVIiDrQi7RqqHZdJWID6hynFkmXZ4SelLmfm4XRPjcv4hL-yOarIGIBln6P6CarvuNw2BeRsLWem54tsThvkFxTIyZMFoV7AF1xF2FYDjLqEVjYRYsQd85dOW68xs51swwCxBzwSb0YYSn3GDEJ_yno0oeHZCS0nxnbuTKLTKCCIegbjWOPTu4V8I-HkHCkwucHsLWVkQ"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Michael Ross</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600">Beach Volley Sand 1</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900">Oct 24, 2023</p>
+<p class="text-xs text-slate-500">04:30 PM - 06:00 PM</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                                    Confirmed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right text-sm font-bold text-slate-900">$28.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors cursor-pointer">
+<td class="px-6 py-4 text-sm font-bold text-slate-900">#BK-8839</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJFCy1w6j1U07QATHEZ_PaYJuk2jQC1ZidybGmvCxWBECVvfIJH9i-Kewk5f3JkhZZl9BYIW4mW-2XmpM0hzsq6tyWCF9YFzsrZ6wsDyiOqKpGRyaIK85IUy9-XvHdxPH-hoGd0s4VnUwxDlj83fNnBK-SX0W5JRQDcmc-LFwF0iD4Qno2zqZf5_ogh0Hnx85lP2tHVXJ3PviBg9XzWDrJHKHchmXn_Nuea0PD9k1pS199r-AsUETcYvCHEotxlfzRIkDjRm1gSHs"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Emma Wilson</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-600">Downtown Futsal Court</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900">Oct 23, 2023</p>
+<p class="text-xs text-slate-500">08:00 PM - 09:30 PM</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">
+                                    Cancelled
+                                </span>
+</td>
+<td class="px-6 py-4 text-right text-sm font-bold text-slate-900">$60.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-border-light flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing 1 to 4 of 1,284 results</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-border-light rounded hover:bg-slate-50 text-slate-600 transition-colors">Previous</button>
+<button class="px-3 py-1 bg-primary text-white rounded font-bold transition-colors">1</button>
+<button class="px-3 py-1 border border-border-light rounded hover:bg-slate-50 text-slate-600 transition-colors">2</button>
+<button class="px-3 py-1 border border-border-light rounded hover:bg-slate-50 text-slate-600 transition-colors">3</button>
+<button class="px-3 py-1 border border-border-light rounded hover:bg-slate-50 text-slate-600 transition-colors">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Management Drawer (Right Side) -->
+<aside class="w-96 bg-white border-l border-border-light p-6 overflow-y-auto fixed right-0 h-full">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-lg font-bold text-slate-900">Booking Details</h3>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Selected Reservation Summary -->
+<div class="bg-slate-50 rounded-xl p-5 border border-slate-200 mb-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">sports_tennis</span>
+</div>
+<div>
+<p class="text-slate-900 font-bold">Central Tennis Court 4</p>
+<p class="text-slate-500 text-sm">#BK-8842 • Confirmed</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200">
+<div>
+<p class="text-slate-500 text-xs uppercase font-bold tracking-wider">Player Status</p>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-slate-900 text-sm font-medium">Checked-in</span>
+</div>
+</div>
+<div>
+<p class="text-slate-500 text-xs uppercase font-bold tracking-wider">Payment</p>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-slate-900 text-sm font-medium">Paid</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Transaction History -->
+<div class="space-y-6">
+<h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">history</span>
+                Transaction History
+            </h4>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-0 before:w-0.5 before:bg-slate-100">
+<div class="relative">
+<span class="absolute -left-[19px] top-0 w-3 h-3 rounded-full bg-primary border-4 border-white"></span>
+<p class="text-sm font-bold text-slate-900">Booking Confirmed</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 24, 2023 • 09:15 AM</p>
+</div>
+<div class="relative">
+<span class="absolute -left-[19px] top-0 w-3 h-3 rounded-full bg-slate-300 border-4 border-white"></span>
+<p class="text-sm font-medium text-slate-700">Payment Processed ($45.00)</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 24, 2023 • 09:12 AM</p>
+</div>
+<div class="relative">
+<span class="absolute -left-[19px] top-0 w-3 h-3 rounded-full bg-slate-300 border-4 border-white"></span>
+<p class="text-sm font-medium text-slate-700">Reservation Request Received</p>
+<p class="text-xs text-slate-500 mt-0.5">Oct 24, 2023 • 09:10 AM</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-10 pt-6 border-t border-border-light space-y-3">
+<button class="w-full py-2.5 px-4 bg-primary/10 text-primary font-bold rounded-lg hover:bg-primary/20 transition-all text-sm">
+                Message Player
+            </button>
+<button class="w-full py-2.5 px-4 border border-rose-200 text-rose-500 font-bold rounded-lg hover:bg-rose-50 transition-all text-sm">
+                Cancel Reservation
+            </button>
+</div>
+</aside>
+</div>
+
+```</body></html>

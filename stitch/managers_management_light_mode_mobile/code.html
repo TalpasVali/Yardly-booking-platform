@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dc95c",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112117",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Yardly Admin - Mobile Manager Management</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">potted_plant</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Yardly Admin</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col flex-1 p-4 max-w-md mx-auto w-full gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">Managers</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Oversee and manage platform administrators on the go.</p>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex-none px-4 py-2 rounded-full bg-primary text-white text-sm font-bold">All</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">Verified</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">Pending</button>
+<button class="flex-none px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">Suspended</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Manager avatar" class="size-full object-cover" data-alt="Professional portrait of a male manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgmKld9F7PWXwwHgKUfnPDK2Wcqcvzk94heiDWzWdqC8JO9yqprIwclBMdDMg02fX9IifiBJM7pVRq5pIVARx3sVsh3DuZJyNFzb-tPIDk9tgkkeer6VLxYyvAhoVzhJAmDKGBGLr6AWDCvyxijMIIC7VGh8mnldENjIeIffBmv1RC6HG0RYczQcDIemAgotNrSkPvTVXSQ5DNCzOSq0WtWR33fGvZRjJ2FWwWmqyVfHBL4MrTyWVtTQtmkplWAFYxLpanBEViIFg"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Alex Rivera</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Senior Manager • Oct 12, 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">Verified</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 py-2.5 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 transition-colors">Edit Profile</button>
+<button class="px-3 bg-slate-100 dark:bg-slate-800 py-2.5 rounded-lg text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Manager avatar" class="size-full object-cover" data-alt="Professional portrait of a female manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLSMC93oMaaHwiN9bk95e2QTgHJHCzgjLt5Xw8SBEWXSbg_JDg89O7-ZGfVoFHDeovqnzpAUOqrwoO7V1gfvwn442HyCAS1LrTTnDTfPXyDMmzuH6LaegX7Zxv9hI_d11u1GJ2kdX2bBdWBsLGssAlPmiiwMA32KCYzI0H1v3HYrxkesadjp8yvgE3gWnBCVAVMxRkTA8w6HDae79-PVdzhkjbpM3bfuilmv96SiU55_flQ3mmMQWJQN8f-QKCCkiZHV1LIx2nRhM"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Sarah Chen</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Junior Admin • Nov 05, 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white py-2.5 rounded-lg text-sm font-bold shadow-sm shadow-primary/20 transition-colors">Review Application</button>
+<button class="px-3 bg-slate-100 dark:bg-slate-800 py-2.5 rounded-lg text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm opacity-90">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden grayscale">
+<img alt="Manager avatar" class="size-full object-cover" data-alt="Professional portrait of a male staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEGOWFnfT1QQqwQ0PCgZ6_hHNSHTEECADMFf-6YHdq8DC0zKuz9pc2KRmrAcWv_-LM4xuFUTL3-AZS_GKlUU825I5Z4fGBIRZFbec6AcDRTJmASQQ_MHn1B7zYigGnnaEg6-6haicSf3zJpizo7MgVJQ-10RV5vb6Bu-GXN6FTZiG50AO043-hlRZuMHYsmQZqwZcVZTMvedAKp7Ejr8sC_WV_N3WJfhP_mc2E6C_b-YvBymdbFz_5UrbREKyI-9NShMBAtFioFKM"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Mike Johnson</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Staff • Sep 20, 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400 text-[10px] font-bold uppercase tracking-wider">Suspended</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 border border-primary text-primary py-2.5 rounded-lg text-sm font-bold hover:bg-primary/5 transition-colors">Reactivate Account</button>
+<button class="px-3 bg-slate-100 dark:bg-slate-800 py-2.5 rounded-lg text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Manager avatar" class="size-full object-cover" data-alt="Professional portrait of a female regional lead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQl40iZBkKJMpAjHqujyyCjtlDO5o9uMEgc5GqGP5MqqVVFmkWx467S8g-WzjPd-WVk1i4FiYb6L0put5WTUsuZERnEFOn-_dNoPaiwBlJJo0pOwvqKzYktP-n6A5EyKUqlSnjrx-bDxlwAphherHFBxDmdz5bNCcsYHJgpuI5yEIKzcuUpOJzJFp35SfdwJeU1AiJqgD2MOjvrsuCx24tq1rI2v-Jvi2Mzx4emHaRkaF3sGSl0Jjb-F_KyCj_1euJGcUXwPVXV7w"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100">Kathryn Murphy</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Regional Lead • Aug 15, 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">Verified</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 py-2.5 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 transition-colors">Edit Profile</button>
+<button class="px-3 bg-slate-100 dark:bg-slate-800 py-2.5 rounded-lg text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex justify-center items-center gap-4 py-8">
+<button class="size-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-400">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-2">
+<span class="size-10 flex items-center justify-center rounded-full bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20">1</span>
+<span class="size-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-medium text-sm">2</span>
+</div>
+<button class="size-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+<div class="fixed bottom-6 right-6">
+<button class="size-14 bg-primary text-white rounded-full shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<nav class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+<span class="text-[10px] font-bold">Managers</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-[10px] font-medium">Tasks</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</div>
+</nav>
+</div>
+</div>
+</body></html>

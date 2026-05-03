@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Managers Management - Yardly</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3cf91a",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#072A1C",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col h-screen overflow-hidden max-w-md mx-auto border-x border-slate-200 dark:border-primary/10 shadow-2xl relative">
+<header class="flex items-center justify-between px-6 py-4 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-primary/20 sticky top-0 z-20">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 text-slate-900 dark:text-primary">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Yardly <span class="text-primary">Admin</span></h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full bg-slate-100 dark:bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="size-8 rounded-full bg-primary/20 overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="Admin user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyAYKOW9wFtFWmAjtfJgSVl4FNPyyA9YGX-Qg6kdwmoIcOIOlwAMLxcJzfvM4yuKRpcCVKthSGzz-IPLB7PutIlu8aP_-iDMJYlwLqch1hbMy8IQXZQXIKkO-x9mn2DNZQPmZdseGoAcbxHVc-hCPFdpCp1Ku30nrlOCtHeKG6i2IHlHEHZ3Wp2NHHOsi7Jbm7-vy_iU2NJq4XNeKkZSQrN7Cc_RJBfLQAbaxJDkiZUtmVRO5najrw4V0YdILR1c2Z4SWBZnPLYGc"/>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+<div class="px-6 pt-6 pb-2">
+<h2 class="text-2xl font-black tracking-tight dark:text-white uppercase italic">Pending <span class="text-primary">Verifications</span></h2>
+<p class="text-sm text-slate-500 dark:text-primary/60">New applications waiting for review</p>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar px-6 py-4">
+<div class="flex-none w-48 bg-slate-100 dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 p-3 flex flex-col items-center text-center">
+<div class="size-16 rounded-full overflow-hidden border-2 border-primary mb-3 shadow-[0_0_15px_rgba(60,249,26,0.3)]">
+<img class="w-full h-full object-cover" data-alt="Alex Rivers professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHVwUigUWMMWPEy3plbw4T-ml9XyxQXE2jdJiVcaVfuUkC5BUdhlNPiCSSUHH0apsWI90_xMlTQknQcloQGlHdpRTIvEzSO_OjSx-Ip032ZFT-1I7MNnyFprn-hxdnc014Rkq2ZAPXubTrLGBKt83qyfhDlRW56Xm8OfGtMtNFVaM2ykktTn7JqLehW2B7TZyhjK492gh-CWXdrSKU8jlbws-FHVB9KukuUMU4FNQ8Hi3fhWjzfqj8Jy5Do69AHAq3PHJp2oi-mbE"/>
+</div>
+<span class="font-bold text-sm">Alex Rivers</span>
+<span class="text-xs text-slate-500 dark:text-primary/60 mb-3">Miami, FL</span>
+<button class="w-full py-2 bg-primary text-background-dark font-bold text-xs rounded-lg uppercase tracking-wider">Review</button>
+</div>
+<div class="flex-none w-48 bg-slate-100 dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 p-3 flex flex-col items-center text-center">
+<div class="size-16 rounded-full overflow-hidden border-2 border-primary mb-3 shadow-[0_0_15px_rgba(60,249,26,0.3)]">
+<img class="w-full h-full object-cover" data-alt="Sam Knight professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiCkVZRkAwS8PcsMvfiZZgRhMmTp6eOILdolrHtV9ZjSQ_Dtz3eQJRXEIfSgbrwHLPaBtFvQvMUvBK97flY7Ux_Z_wW9YPDIflH-NvRs9PfNPd_23ZLVeeK91_boKJr3Dodf8evvzYkccAWcH0gfLIugBD04A0l6ye5zg0mz_L2D8P6jkx-oxlot-Q2mUYK4UL8axZZel5UygZnFoc8qL2ugKG8axQx6sUpLXXvR2dG6mJbL8WIIeHCzgjiZvV_z-cSYxvf1gcwcE"/>
+</div>
+<span class="font-bold text-sm">Sam Knight</span>
+<span class="text-xs text-slate-500 dark:text-primary/60 mb-3">Austin, TX</span>
+<button class="w-full py-2 bg-primary text-background-dark font-bold text-xs rounded-lg uppercase tracking-wider">Review</button>
+</div>
+<div class="flex-none w-48 bg-slate-100 dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/20 p-3 flex flex-col items-center text-center">
+<div class="size-16 rounded-full overflow-hidden border-2 border-primary mb-3 shadow-[0_0_15px_rgba(60,249,26,0.3)]">
+<img class="w-full h-full object-cover" data-alt="Jordan Lee professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtNkFArhXOPgSRFLyh-LUleMmeZoIUHPT_CrcAP_seNLYu9EWhiKrdrMB90wFVA7txJ7fZccI0vZuEEWtbjNO9bh_C5P64M_20STXMD9PSn91wwWYAjYqsV7_JHIxu_g4lXeuEXlBc0y8QdFZmP9gupYh249VZ33RO8BhskVQEGHzt_2zRkWPD3xQg8_JbHyJCDFdtI0i9hOfU4Mjj3ROMWoHxAMR_S0PQDfSiwX9ToQUK5GQx0swtkSwt-_A9RjNaytmt5WJjpS0"/>
+</div>
+<span class="font-bold text-sm">Jordan Lee</span>
+<span class="text-xs text-slate-500 dark:text-primary/60 mb-3">Denver, CO</span>
+<button class="w-full py-2 bg-primary text-background-dark font-bold text-xs rounded-lg uppercase tracking-wider">Review</button>
+</div>
+</div>
+<div class="px-6 pt-6 flex justify-between items-center">
+<h2 class="text-xl font-bold dark:text-white">All Managers</h2>
+<button class="flex items-center gap-1 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                    Filters
+                </button>
+</div>
+<div class="px-6 py-4 flex flex-col gap-4">
+<div class="bg-slate-50 dark:bg-primary/5 border border-slate-200 dark:border-primary/10 rounded-xl p-4">
+<div class="flex items-start gap-4 mb-4">
+<div class="size-14 rounded-xl overflow-hidden bg-primary/20 shrink-0">
+<img class="w-full h-full object-cover" data-alt="Manager profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbe-ofgOqVlNlR9pEjbqV8ckykTkHNHe2u7zWzyv5Og8_yvPBGGzd7wkoVGMLZSl0XAg0LMUZ8g4_nmUeTha9xGGvcDc8dT6nFgLG1J2DbhpTKGER7cEKw7aasbEsk1JsEZ55-CLVXQMRraKzyNJS_xErjHwcew47k1vd9KWBXZS-CZc_PTn35ja6ARMZxfMuh422uXmW-b88kafNJPcEyh1JsnsCk8SNdnR76joLqvP-UkNKyW0XIaQrWLkI3aoaefp0nX6_kup4"/>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-base leading-tight">Sarah Chen</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="text-xs text-slate-500 dark:text-primary/60">Seattle, WA</span>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase">8 Fields</div>
+<div class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase">Active</div>
+</div>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex-1 py-3 bg-primary text-background-dark font-black text-sm rounded-lg uppercase tracking-tight shadow-[0_4px_10px_rgba(60,249,26,0.2)]">Approve</button>
+<button class="flex-1 py-3 bg-red-500/10 text-red-500 font-bold text-sm rounded-lg uppercase tracking-tight border border-red-500/20">Suspend</button>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-primary/5 border border-slate-200 dark:border-primary/10 rounded-xl p-4 opacity-80">
+<div class="flex items-start gap-4 mb-4">
+<div class="size-14 rounded-xl overflow-hidden bg-primary/20 shrink-0">
+<img class="w-full h-full object-cover" data-alt="Manager profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwbwMI6MP3RxjBuryIXAJSmJ63QeZWNUSGcJSBmzu8zxn9vvDi8aQ_pYPCepvzyMSlsShUojlvWEDKxx8LXTHkZ-D7S1qw4MGYbO7wcvvaKlDWzu2mcKSV4bsRC3O2BvDVLpOTZmEqOrXayqTPgba9qh77jdPJvCKWq_6JXRyon_gpvy1HV9i8dBuVDNCyqmPRQ-CaFH4eULlvYuzuMDMgSiiYCtWhfF7Z-ev4ubkZz5egS909CIjnkWKGol5Ay-fpsgwuGfRsiV0"/>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-base leading-tight">Marcus Miller</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="text-xs text-slate-500 dark:text-primary/60">Portland, OR</span>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase">3 Fields</div>
+<div class="px-2 py-0.5 rounded bg-red-500/10 text-red-400 text-[10px] font-bold uppercase">Suspended</div>
+</div>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex-1 py-3 bg-primary text-background-dark font-black text-sm rounded-lg uppercase tracking-tight">Reinstate</button>
+<button class="flex-1 py-3 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-sm rounded-lg uppercase tracking-tight">Delete</button>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-primary/5 border border-slate-200 dark:border-primary/10 rounded-xl p-4">
+<div class="flex items-start gap-4 mb-4">
+<div class="size-14 rounded-xl overflow-hidden bg-primary/20 shrink-0">
+<img class="w-full h-full object-cover" data-alt="Manager profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCki2FGIDfQkTmGoUclQaLJznYlKkWddWbRXTxMJLGBRrTWZrXVJCdVuPKez0Z_yCw2SIGSe_Atn9VaHiqTra6eqewyIfuwITTl0H3eNh9Lfeoled2MhOrBeF0UwptaJxaoXd16CB5bL7d7KBIz2_KPvrJxPPOQB49h0gSomc-Or0ik9B0z6yaVNC34Lg2tPy_ugD3n9Yd62UM4kcMT3LxrYKKz7wBrncNZeb_lEEir5s834g8Qi4ZVXJvHoZckcqhGL62p6v2KhQg"/>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-base leading-tight">Elena Rodriguez</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="text-xs text-slate-500 dark:text-primary/60">San Diego, CA</span>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<div class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase">12 Fields</div>
+<div class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase">Active</div>
+</div>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex-1 py-3 bg-primary text-background-dark font-black text-sm rounded-lg uppercase tracking-tight">Approve</button>
+<button class="flex-1 py-3 bg-red-500/10 text-red-500 font-bold text-sm rounded-lg uppercase tracking-tight border border-red-500/20">Suspend</button>
+</div>
+</div>
+</div>
+</main>
+<nav class="absolute bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 px-8 py-4 flex justify-between items-center z-20">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-primary/40">
+<span class="material-symbols-outlined text-2xl">group</span>
+<span class="text-[10px] font-bold uppercase">Managers</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-primary/40">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="text-[10px] font-bold uppercase">Fields</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-primary/40">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-bold uppercase">Settings</span>
+</button>
+</nav>
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden"></div>
+<div class="absolute bottom-0 left-0 right-0 bg-background-light dark:bg-[#0c3e29] rounded-t-3xl p-6 z-50 transform translate-y-full transition-transform duration-300 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] border-t border-primary/20">
+<div class="w-12 h-1.5 bg-slate-300 dark:bg-primary/20 rounded-full mx-auto mb-6"></div>
+<h3 class="text-xl font-bold mb-6">Filter Managers</h3>
+<div class="space-y-6 mb-8">
+<div>
+<label class="block text-sm font-bold text-slate-500 dark:text-primary/60 uppercase tracking-wider mb-3">By City</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 rounded-lg bg-primary text-background-dark font-bold text-sm">All Cities</span>
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Seattle</span>
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Miami</span>
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Denver</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold text-slate-500 dark:text-primary/60 uppercase tracking-wider mb-3">By Status</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Active</span>
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Pending</span>
+<span class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 text-sm">Suspended</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-background-dark font-black text-lg rounded-xl uppercase tracking-tighter shadow-[0_4px_15px_rgba(60,249,26,0.3)]">Apply Filters</button>
+</div>
+</div>
+</body></html>
