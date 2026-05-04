@@ -15,7 +15,7 @@ services:
       - "3000:3000"
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/yardly
-      - JWT_SECRET=secret_de_dev_local
+      - JWT_SECRET=your_jwt_secret_here
       - PORT=3000
     volumes:
       - ./backend:/usr/src/app
